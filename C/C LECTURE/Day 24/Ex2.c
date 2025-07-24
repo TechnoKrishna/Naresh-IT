@@ -26,6 +26,8 @@ int main()
 
     a > b && puts("A is Greater") || b > a && puts("B is Greater") || a == b && puts("Both are Equal");
 
+    // flushall();
+    // fflush(stdin);
 
     return 0;
 }
