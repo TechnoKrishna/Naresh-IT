@@ -10,7 +10,7 @@ int main() {
     printf("%.2f\n", 0.9999);
     printf("%.2f\n", 12.1234);
     printf("%.2f\n", ceil(9.9));
-    printf("%.2f\n", floor(9.9));
+    printf("%.2f\n", floor(9.9));  
 
     return 0;
 }
