@@ -12,7 +12,7 @@ int main() {
         printf("Krishna\n");
         i++;
         goto start;
-    }
+    }  
 
     return 0;
 }
