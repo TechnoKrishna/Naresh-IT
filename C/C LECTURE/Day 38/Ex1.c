@@ -9,7 +9,7 @@ int main() {
 
     puts("Hyd");
 
-    goto last; // if this
+    goto last; //  if this
 
     getch(); return; // or this
 
@@ -27,7 +27,7 @@ int main() {
 
     goto b;
 
-    last:
+    last:  
 
     return 0;
 }
