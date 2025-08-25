@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      * {
+        margin: 5px;
+      }
+
+      h2 {
+        color: #842500;
+        margin-bottom: 20px;
+      }
+
+      legend {
+        color: #ab522f;
+      }
+
+      body {
+        background-color: #e8e8e8;
+      }
+
+      input,
+      textarea {
+        background-color: #dedede;
+        border: #ab522f 1px solid;
+      }
+
+      input:hover {
+        background-color: #d1d1d1;
+      }
+      textarea:hover {
+        background-color: #d1d1d1;
+      }
+
+      input[type="text"] {
+        width: 30vw;
+      }
+
+      input[list]:hover {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>1. Software Training Institute Registraction Form</h2>
+
+    <fieldset>
+      <legend>Personal Details</legend>
+
+      <form action="">
+        <div>
+          <label for="">Full Name:</label>
+          <input type="text" name="" id="" />
+        </div>
+        <div>
+          <label for="">Email Address:</label>
+          <input type="text" name="" id="" />
+        </div>
+        <div>
+          <label for="">Phone Number:</label>
+          <input type="text" name="" id="" />
+        </div>
+        <div>
+          <label for="">Highest Educational Qualification:</label>
+          <input type="text" list="l1" placeholder="Select Education Level" />
+        </div>
+        <div>
+          <label for="">Employment Status:</label>
+        </div>
+        <div>
+          <input type="radio" name="e1" id="" /> Student <br />
+          <input type="radio" name="e1" id="" /> Employed <br />
+          <input type="radio" name="e1" id="" /> Unemployed <br />
+          <input type="radio" name="e1" id="" /> Self-employed <br />
+        </div>
+      </form>
+      <datalist id="l1">
+        <option value="10th"></option>
+        <option value="12th"></option>
+        <option value="Diploma"></option>
+      </datalist>
+    </fieldset>
+
+    <fieldset>
+      <legend>Course Selection</legend>
+
+      <form action="">
+        <div>
+          <label for="">Course Category:</label>
+          <input type="text" list="l2" placeholder="Select Category" />
+        </div>
+        <div>
+          <label for="">Specific Course:</label>
+          <input type="text" list="l3" placeholder="First Select a Category" />
+        </div>
+        <div>
+          <label for="">Course Level:</label>
+        </div>
+        <input type="text" list="l4" placeholder="Select Level" />
+        <div>
+          <label for="">Preferred Batch Timing:</label>
+        </div>
+        <input type="text" list="l5" placeholder="Select Timing" />
+      </form>
+      <datalist id="l2">
+        <option value="JAVA"></option>
+        <option value="DOT NET"></option>
+      </datalist>
+      <datalist id="l3">
+        <option value="C#"></option>
+        <option value="JAVA"></option>
+        <option value="Python"></option>
+      </datalist>
+      <datalist id="l4">
+        <option value="5"></option>
+        <option value="4"></option>
+      </datalist>
+      <datalist id="l5">
+        <option value="11 AM"></option>
+        <option value="5 PM"></option>
+      </datalist>
+    </fieldset>
+
+    <fieldset border="1px">
+      <legend>Technical Background</legend>
+
+      <form action="">
+        <label for=""
+          >Programming Language Known (Select All That Apply):</label
+        >
+        <br />
+        <input type="checkbox" />Java <br />
+        <input type="checkbox" />Python <br />
+        <input type="checkbox" />JavaScript <br />
+        <input type="checkbox" />C# <br />
+        <input type="checkbox" />C++ <br />
+        <input type="checkbox" />PHP <br />
+        <input type="checkbox" />Ruby <br />
+        <input type="checkbox" />Other <br />
+
+        <label for="">Years of Programming Expirence:</label>
+        <input type="text" placeholder="0" name="" id="" />
+
+        <br />
+        <label for="">Technical Background</label> <br />
+        <textarea
+          name=""
+          id=""
+          placeholder="Briefly describe your technical background or expirence.."
+          cols="80"
+          rows="5"
+        ></textarea>
+      </form>
+    </fieldset>
+
+    <fieldset>
+      <legend>Payment Detail</legend>
+
+      <form action="">
+        <label for="">Payment Method:</label> <br />
+        <input type="radio" /> Credit Card <br />
+        <input type="radio" /> Debit Card <br />
+        <input type="radio" /> Bank Transfer <br />
+        <input type="radio" /> Paypal <br />
+      </form>
+
+      <label for="">Payment Plan:</label> <br />
+
+      <input type="text" list="l6" placeholder="Select Payment Plan" />
+
+      <datalist id="l6">
+        <option value="Cash"></option>
+        <option value="PhonePay"></option>
+        <option value="Google Pay"></option>
+      </datalist>
+
+      <div>
+        <input type="checkbox" />
+        <label for="">Apply for Early Bird Discount (if available)</label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Additional Information</legend>
+
+      <label for="">How did you hear about us?</label>
+
+      <br />
+
+      <input type="text" list="l7" placeholder="select Option" />
+
+      <datalist id="l7">
+        <option value="College"></option>
+        <option value="classes"></option>
+        <option value="Friend"></option>
+        <option value="Online"></option>
+      </datalist>
+
+      <br />
+
+      <label for="">What are your learing goals?</label>
+
+      <br />
+
+      <textarea
+        name=""
+        id=""
+        placeholder="Describe What you hope to achive throungh this training"
+        cols="80"
+        rows="5"
+      ></textarea>
+
+      <div>
+        <input type="checkbox" />
+        <label for=""
+          >Subcribe to our newsletter for updates on new courses and
+          offers</label
+        >
+      </div>
+
+      <div>
+        <input type="checkbox" />
+        <label for="">I agree to the Terms and Conditions</label>
+      </div>
+    </fieldset>
+
+    <button>Register</button>
+    <button>Clear Form</button>
+  </body>
+</html>
