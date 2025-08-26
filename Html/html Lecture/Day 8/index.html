@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+
+  <style>
+    * {
+      margin: 5px;
+      font-size: 22px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <form action="/text" method="get">
+    <div>
+      <input required id="Username" name="Username" type="text" placeholder="Username" />
+    </div>
+    <div>
+      <input id="number" name="number" type="number" placeholder="Number" />
+    </div>
+    <div>
+      <input id="email" name="email" type="email" placeholder="Email" />
+    </div>
+    <div>
+      <input id="age" name="age" type="number" placeholder="Age" />
+    </div>
+    <div>
+      <label for="">DOB</label>
+      <input id="dob" name="dob" type="date" placeholder="DOB" />
+    </div>
+    <div>
+      <input id="tel" name="tel" type="tel" placeholder="Telephone" min="10" max="10" />
+    </div>
+    <div>
+      <input id="gender" name="gender" type="radio" name="gender" placeholder="submit" />
+      Male
+      <input id="gender" name="gender" type="radio" name="gender" placeholder="submit" />
+      Female
+    </div>
+    <div>
+      <input id="c1" name="c1" type="checkbox" /> English
+      <input id="c2" name="c2" type="checkbox" /> Marathi
+      <input id="c3" name="c3" type="checkbox" /> Hindi
+      <input id="c4" name="c4" type="checkbox" /> Telgu
+    </div>
+    <div>
+      <input id="r1" name="r1" type="range" />
+    </div>
+    <div>
+      <input id="f1" name="f1" type="file" />
+    </div>
+    <div><input id="t1" name="t1" type="time" placeholder="time" /></div>
+    <div>
+      <textarea id="address" name="address" placeholder="Address" cols="40px" rows="10px"></textarea>
+    </div>
+
+  </form>
+  <a href="Login.html"><button onclick="alert('Form submitted!')">Submit</butt<on>
+  </a>
+</body>
+
+</html>

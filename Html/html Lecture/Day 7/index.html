@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: rgb(45, 26, 72);
+      }
+
+      * {
+        font-size: 22px;
+        margin: 5px;
+      }
+
+      label {
+        color: rgb(206, 206, 206);
+      }
+
+      h3 {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: rgb(230, 255, 67);
+      }
+    </style>
+  </head>
+  <body>
+    <hr />
+
+    <h3>GET REQUEST</h3>
+
+    <hr />
+
+    <form action="/demo" method="get">
+      <div>
+        <label for="">User Name</label>
+        <input placeholder="Username" type="text" id="Username" name="User" />
+      </div>
+      <div>
+        <label for="">Password</label>
+        <input placeholder="Password" type="text" id="Password" name="pass" />
+      </div>
+      <input type="submit" value="submit" />
+    </form>
+
+    <hr />
+
+    <h3>POST REQUEST</h3>
+
+    <hr />
+
+    <form action="/test" method="post">
+      <div>
+        <label for="fname">First Name</label>
+        <input
+          placeholder="first name"
+          type="text"
+          id="first name"
+          name="Fname"
+        />
+      </div>
+      <div>
+        <label for="lname">Last Name</label>
+        <input placeholder="last name" type="text" id="lastname" name="lname" />
+      </div>
+      <input type="submit" value="submit" />
+    </form>
+
+    <hr />
+  </body>
+</html>

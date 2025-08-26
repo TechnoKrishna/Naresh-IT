@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 3px;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: Arial, sans-serif;
+        background-color: #e8e8e8;
+        color: #333;
+        margin: 20px;
+      }
+      h2 {
+        color: #2c3e50;
+        margin-bottom: 20px;
+      }
+      table {
+        width: 90%;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        border-collapse: collapse;
+        background-color: #fff;
+        border-radius: 8px;
+      }
+      th {
+        background-color: #3498db;
+        color: white;
+        padding: 12px;
+        text-align: center;
+      }
+      td {
+        padding: 10px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+      }
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      tr:hover {
+        background-color: #ecf6fc;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Student Registration Form</h2>
+
+    <table border="1">
+      <tr>
+        <th colspan="4">Personal Details</th>
+      </tr>
+
+      <tr>
+        <td>First Name</td>
+        <td><input type="text" /></td>
+        <td>Last Name</td>
+        <td><input type="text" /></td>
+      </tr>
+
+      <tr>
+        <td>Date of Birth</td>
+        <td><input type="date" /></td>
+        <td>Gender</td>
+        <td>
+          <input type="radio" />Male <input type="radio" />Female
+          <input type="radio" />Other
+        </td>
+      </tr>
+      <tr>
+        <td>Nationality</td>
+        <td><input type="text" /></td>
+        <td>Aadhaar / ID No</td>
+        <td><input type="text" /></td>
+      </tr>
+    </table>
+
+    <table border="1">
+      <tr>
+        <th colspan="4">Contact Details</th>
+      </tr>
+
+      <tr>
+        <td>Email</td>
+        <td><input type="text" /></td>
+        <td>Mobile Number</td>
+        <td><input type="text" /></td>
+      </tr>
+
+      <tr>
+        <td>Address Line 1</td>
+        <td colspan="3"><input type="text" /></td>
+      </tr>
+      <tr>
+        <td>Address Line 1</td>
+        <td colspan="3"><input type="text" /></td>
+      </tr>
+      <tr>
+        <td>City</td>
+        <td><input type="text" /></td>
+        <td>PIN Code</td>
+        <td><input type="text" /></td>
+      </tr>
+      <tr>
+        <td>Stat2</td>
+        <td><input type="text" /></td>
+        <td>Country</td>
+        <td><input type="text" placeholder="india" /></td>
+      </tr>
+    </table>
+
+    <table border="1">
+      <tr>
+        <th colspan="4">Course Selection</th>
+      </tr>
+
+      <tr>
+        <td>Program Type</td>
+        <td><input type="text" placeholder="Select Program" list="l1" /></td>
+        <td>Preferred Batch</td>
+        <td><input type="time" /></td>
+      </tr>
+
+      <datalist id="l1">
+        <option value="Java 51"></option>
+        <option value="Dot 36"></option>
+      </datalist>
+
+      <datalist id="l2">
+        <option value="Java"></option>
+        <option value="Python"></option>
+        <option value="C++"></option>
+        <option value="C"></option>
+      </datalist>
+
+      <tr>
+        <td>Course</td>
+        <td><input type="text" placeholder="Select Course" list="l2" /></td>
+        <td>Preferred Batch</td>
+        <td>
+          <input type="radio" name="g1" />Classroom
+          <input type="radio" name="g1" />Online
+          <input type="radio" name="g1" />Hybrid
+        </td>
+      </tr>
+
+      <tr>
+        <td>Preferred Start Date</td>
+        <td><input type="date" /></td>
+        <td>Additional Modules</td>
+        <td>
+          <input type="checkbox" />Aptitude <input type="checkbox" />Soft Skills
+          <input type="checkbox" />Place Assistance
+        </td>
+      </tr>
+    </table>
+
+    <table border="1">
+      <tr>
+        <th colspan="4">Education & Background</th>
+      </tr>
+
+      <tr>
+        <td>Highest Qualification</td>
+        <td><input type="text" placeholder="Select Program" list="l3" /></td>
+        <td>Stream / Major</td>
+        <td><input type="text" placeholder="eg, CSE, ECE, B.Com" /></td>
+      </tr>
+
+      <datalist id="l3">
+        <option value="10th"></option>
+        <option value="12th"></option>
+        <option value="Diploma"></option>
+        <option value="Engineering"></option>
+      </datalist>
+
+      <tr>
+        <td>Work Experience (Years)</td>
+        <td><input type="text" placeholder="0" /></td>
+        <td>Known Skills</td>
+        <td><input type="text" placeholder="eg, HTML, Python" /></td>
+      </tr>
+    </table>
+
+    <table border="1">
+      <tr>
+        <th colspan="4">Payment Details</th>
+      </tr>
+
+      <tr>
+        <td>Fee Plan</td>
+        <td><input type="text" placeholder="Lump Sum" list="l4" /></td>
+        <td>Agreed Fee($)</td>
+        <td><input type="text" /></td>
+      </tr>
+
+      <datalist id="l4">
+        <option value="10000"></option>
+        <option value="5000"></option>
+        <option value="2000"></option>
+        <option value="1000"></option>
+      </datalist>
+
+      <datalist id="l5">
+        <option value="Cash"></option>
+        <option value="Online"></option>
+      </datalist>
+
+      <tr>
+        <td>Payment Mode</td>
+        <td><input type="text" placeholder="Cash" list="l5" /></td>
+        <td>Txn/Ref No.</td>
+        <td><input type="text" /></td>
+      </tr>
+    </table>
+
+    <table border="1">
+      <tr>
+        <th colspan="4">Documents</th>
+      </tr>
+
+      <tr>
+        <td>Passport Photo</td>
+        <td><input type="file" /></td>
+        <td>ID Proof</td>
+        <td><input type="file" /></td>
+      </tr>
+    </table>
+
+    <table border="1">
+      <tr>
+        <th colspan="4">Terms & Declaration</th>
+      </tr>
+
+      <tr>
+        <td>
+          <input type="checkbox" />I hereby declare that the information
+          provided is true and I agree to the institute's terms, refund, and
+          conduct policies.
+        </td>
+      </tr>
+    </table>
+
+    <button type="reset">Clear Form</button>
+    <button type="submit">Submit Registration</button>
+
+    <h2>Available Courses</h2>
+
+    <table border="1">
+      <tr>
+        <th>Course</th>
+        <th>Duration</th>
+        <th>Approx. Fee($<)</th>
+      </tr>
+
+      <tr>
+        <td>Full Stack Web (MERN)</td>
+        <td>6 Months</td>
+        <td>45,000</td>
+      </tr>
+      <tr>
+        <td>Java + Spring Boot</td>
+        <td>5 Months</td>
+        <td>40,000</td>
+      </tr>
+      <tr>
+        <td>Data Science & ML</td>
+        <td>6 Months</td>
+        <td>60,000</td>
+      </tr>
+      <tr>
+        <td>Cloud & DevOps (AWS)</td>
+        <td>4 Months</td>
+        <td>55,000</td>
+      </tr>
+    </table>
+  </body>
+</html>
