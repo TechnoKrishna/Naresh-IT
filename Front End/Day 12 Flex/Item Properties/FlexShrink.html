@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flex Shrink Example</title>
+  <style>
+    .container {
+      display: flex;
+      border: 2px solid black;
+      margin-bottom: 20px;
+      width: 400px; /* small width to force shrinking */
+    }
+    .box {
+      background: crimson;
+      color: white;
+      padding: 20px;
+      margin: 5px;
+      text-align: center;
+      width: 200px; /* fixed base size (forces shrink) */
+    }
+  </style>
+</head>
+<body>
+  <!-- flex-shrink = 0 (no shrinking, may overflow) -->
+  <div class="container">
+    <div class="box" style="flex-shrink:0;">1</div>
+    <div class="box" style="flex-shrink:0;">2</div>
+  </div>
+
+  <!-- flex-shrink = equal (1,1) -->
+  <div class="container">
+    <div class="box" style="flex-shrink:1;">1</div>
+    <div class="box" style="flex-shrink:1;">2</div>
+  </div>
+
+  <!-- flex-shrink = different (1,2) -->
+  <div class="container">
+    <div class="box" style="flex-shrink:1;">1</div>
+    <div class="box" style="flex-shrink:2;">2</div>
+  </div>
+</body>
+</html>

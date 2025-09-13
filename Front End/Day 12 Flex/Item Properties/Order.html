@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Order Example</title>
+    <style>
+      .container {
+        display: flex;
+        border: 2px solid black;
+        margin-bottom: 20px;
+        padding: 10px;
+      }
+      .box {
+        background: teal;
+        color: white;
+        padding: 15px;
+        margin: 5px;
+        text-align: center;
+        width: 60px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Default order (all = 0) -->
+    <div class="container">
+      <div class="box">1</div>
+      <div class="box">2</div>
+      <div class="box">3</div>
+    </div>
+
+    <!-- Custom order -->
+    <div class="container">
+      <div class="box" style="order: 3">1</div>
+      <div class="box" style="order: 1">2</div>
+      <div class="box" style="order: 2">3</div>
+    </div>
+
+    <!-- Negative order -->
+    <div class="container">
+      <div class="box" style="order: 1">1</div>
+      <div class="box" style="order: 2">2</div>
+      <div class="box" style="order: -1">3</div>
+    </div>
+  </body>
+</html>

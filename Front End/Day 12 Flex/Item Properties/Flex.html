@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex Property Example</title>
+    <style>
+      .container {
+        display: flex;
+        gap: 10px;
+        border: 2px solid black;
+        padding: 10px;
+      }
+
+      .box {
+        background: lightblue;
+        padding: 20px;
+        text-align: center;
+        border: 1px solid blue;
+      }
+
+      /* Different flex options */
+      .default {
+        flex: 0 1 auto;
+      } /* default: no grow, shrink if needed, auto size */
+      .grow {
+        flex: 1 1 auto;
+      } /* grows equally with others */
+      .shrink {
+        flex: 0 1 150px;
+      } /* fixed 150px but can shrink */
+      .nogrow {
+        flex: 0 0 100px;
+      } /* fixed 100px, no grow, no shrink */
+      .custom {
+        flex: 2 1 200px;
+      } /* grows double, can shrink, starts 200px */
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box default">flex: 0 1 auto</div>
+      <div class="box grow">flex: 1 1 auto</div>
+      <div class="box shrink">flex: 0 1 150px</div>
+      <div class="box nogrow">flex: 0 0 100px</div>
+      <div class="box custom">flex: 2 1 200px</div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flex Direction Example</title>
+  <style>
+    .container {
+      display: flex;
+      border: 2px solid black;
+      margin-bottom: 20px;
+    }
+    .box {
+      background: lightcoral;
+      color: white;
+      padding: 20px;
+      margin: 5px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- Row (default) -->
+  <div class="container" style="flex-direction: row;">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+  </div>
+
+  <!-- Column -->
+  <div class="container" style="flex-direction: column;">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+  </div>
+</body>
+</html>

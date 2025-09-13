@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Align Items Example</title>
+    <style>
+      .container {
+        display: flex;
+        border: 2px solid black;
+        margin-bottom: 20px;
+        height: 120px; /* taller to see vertical alignment */
+      }
+      .box {
+        background: mediumseagreen;
+        color: white;
+        padding: 10px;
+        margin: 5px;
+        text-align: center;
+        width: 60px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- stretch (default) -->
+    <div class="container" style="align-items: stretch">
+      <div class="box">1</div>
+      <div class="box">2</div>
+      <div class="box">3</div>
+    </div>
+
+    <!-- flex-start -->
+    <div class="container" style="align-items: flex-start">
+      <div class="box">1</div>
+      <div class="box">2</div>
+      <div class="box">3</div>
+    </div>
+
+    <!-- flex-end -->
+    <div class="container" style="align-items: flex-end">
+      <div class="box">1</div>
+      <div class="box">2</div>
+      <div class="box">3</div>
+    </div>
+
+    <!-- center -->
+    <div class="container" style="align-items: center">
+      <div class="box">1</div>
+      <div class="box">2</div>
+      <div class="box">3</div>
+    </div>
+
+    <!-- baseline -->
+    <div class="container" style="align-items: baseline">
+      <div class="box" style="font-size: 14px">1</div>
+      <div class="box" style="font-size: 24px">2</div>
+      <div class="box" style="font-size: 18px">3</div>
+    </div>
+  </body>
+</html>

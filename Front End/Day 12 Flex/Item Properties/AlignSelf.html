@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Align Self Example</title>
+  <style>
+    .container {
+      display: flex;
+      border: 2px solid black;
+      height: 250px;
+      gap: 10px;
+      align-items: center; /* default alignment */
+    }
+    .box {
+      width: 80px;
+      background: lightblue;
+      text-align: center;
+      padding: 10px;
+      border: 1px solid blue;
+    }
+    .auto       { align-self: auto; }
+    .start      { align-self: flex-start; }
+    .end        { align-self: flex-end; }
+    .center     { align-self: center; }
+    .baseline   { align-self: baseline; }
+    .stretch    { align-self: stretch; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box auto">auto</div>
+    <div class="box start">start</div>
+    <div class="box end">end</div>
+    <div class="box center">center</div>
+    <div class="box baseline">baseline</div>
+    <div class="box stretch">stretch</div>
+  </div>
+</body>
+</html>

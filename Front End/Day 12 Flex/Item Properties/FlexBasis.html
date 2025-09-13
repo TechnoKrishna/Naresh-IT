@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flex Basis Example</title>
+  <style>
+    .container {
+      display: flex;
+      gap: 10px;
+      border: 2px solid black;
+      padding: 10px;
+    }
+
+    .box {
+      background: lightblue;
+      text-align: center;
+      padding: 10px;
+    }
+
+    /* Different flex-basis options */
+    .auto   { flex-basis: auto; }      /* size depends on content or width */
+    .px     { flex-basis: 150px; }     /* fixed width */
+    .percent{ flex-basis: 30%; }       /* takes % of container width */
+    .zero   { flex-basis: 0; }         /* starts at 0, grows/shrinks with flex-grow/flex-shrink */
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box auto">auto</div>
+    <div class="box px">150px</div>
+    <div class="box percent">30%</div>
+    <div class="box zero">0</div>
+  </div>
+</body>
+</html>
