@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 80px);
+  gap: 5px;
+  background: #f0f0f0;
+  margin-bottom: 25px;
+}
+.item {
+  background: lightcoral;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* 1. Default (row) */
+.row { grid-auto-flow: row; }
+
+/* 2. Column flow */
+.column { grid-auto-flow: column; }
+
+/* 3. Row dense */
+.rowDense { grid-auto-flow: row dense; }
+
+/* 4. Column dense */
+.columnDense { grid-auto-flow: column dense; }
+</style>
+</head>
+<body>
+
+<h2>1. grid-auto-flow: row (default)</h2>
+<div class="container row">
+  <div class="item" style="grid-column: span 2;">A</div>
+  <div class="item">B</div>
+  <div class="item">C</div>
+  <div class="item">D</div>
+  <div class="item">E</div>
+</div>
+
+<h2>2. grid-auto-flow: column</h2>
+<div class="container column">
+  <div class="item" style="grid-row: span 2;">A</div>
+  <div class="item">B</div>
+  <div class="item">C</div>
+  <div class="item">D</div>
+  <div class="item">E</div>
+</div>
+
+<h2>3. grid-auto-flow: row dense</h2>
+<div class="container rowDense">
+  <div class="item" style="grid-column: span 2;">A</div>
+  <div class="item">B</div>
+  <div class="item">C</div>
+  <div class="item">D</div>
+  <div class="item">E</div>
+</div>
+
+<h2>4. grid-auto-flow: column dense</h2>
+<div class="container columnDense">
+  <div class="item" style="grid-row: span 2;">A</div>
+  <div class="item">B</div>
+  <div class="item">C</div>
+  <div class="item">D</div>
+  <div class="item">E</div>
+</div>
+
+</body>
+</html>

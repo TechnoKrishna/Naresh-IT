@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+/* Grid Example */
+.grid-container {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  gap: 10px;
+  background: lightblue;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+.item {
+  background: orange;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Inline-Grid Example */
+.inline-container {
+  display: inline-grid;
+  grid-template-columns: 100px 100px;
+  gap: 10px;
+  background: lightgreen;
+  padding: 10px;
+}
+.inline-item {
+  background: tomato;
+  padding: 20px;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<h2>1. Display: Grid</h2>
+<div class="grid-container">
+  <div class="item">1</div>
+  <div class="item">2</div>
+  <div class="item">3</div>
+</div>
+
+<h2>2. Display: Inline-Grid</h2>
+<p>
+  This text 
+  <span class="inline-container">
+    <div class="inline-item">A</div>
+    <div class="inline-item">B</div>
+  </span> 
+  continues inline with the grid box.
+</p>
+
+</body>
+</html>

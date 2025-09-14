@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 80px);
+  background: #f0f0f0;
+  margin-bottom: 25px;
+}
+.item {
+  background: lightblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* 1. Single value gap (same for rows & columns) */
+.gap1 { gap: 20px; }
+
+/* 2. Two values (row-gap, column-gap) */
+.gap2 { gap: 10px 30px; }
+
+/* 3. row-gap only */
+.gap3 { row-gap: 25px; }
+
+/* 4. column-gap only */
+.gap4 { column-gap: 40px; }
+</style>
+</head>
+<body>
+
+<h2>1. gap: 20px (same for rows & columns)</h2>
+<div class="container gap1">
+  <div class="item">A</div>
+  <div class="item">B</div>
+  <div class="item">C</div>
+  <div class="item">D</div>
+  <div class="item">E</div>
+  <div class="item">F</div>
+</div>
+
+<h2>2. gap: 10px 30px (row-gap = 10px, column-gap = 30px)</h2>
+<div class="container gap2">
+  <div class="item">A</div>
+  <div class="item">B</div>
+  <div class="item">C</div>
+  <div class="item">D</div>
+  <div class="item">E</div>
+  <div class="item">F</div>
+</div>
+
+<h2>3. row-gap: 25px</h2>
+<div class="container gap3">
+  <div class="item">A</div>
+  <div class="item">B</div>
+  <div class="item">C</div>
+  <div class="item">D</div>
+  <div class="item">E</div>
+  <div class="item">F</div>
+</div>
+
+<h2>4. column-gap: 40px</h2>
+<div class="container gap4">
+  <div class="item">A</div>
+  <div class="item">B</div>
+  <div class="item">C</div>
+  <div class="item">D</div>
+  <div class="item">E</div>
+  <div class="item">F</div>
+</div>
+
+</body>
+</html>

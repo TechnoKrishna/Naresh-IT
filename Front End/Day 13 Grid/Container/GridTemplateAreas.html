@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .container {
+        display: grid;
+        grid-template-columns: 100px 100px 100px;
+        grid-template-rows: 60px 80px 60px;
+        gap: 5px;
+        margin-bottom: 30px;
+      }
+      .item {
+        background: rgb(0, 255, 55);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+      }
+
+      /* 1. Simple layout */
+      .simple {
+        grid-template-areas:
+          "header header header"
+          "sidebar main main"
+          "footer footer footer";
+      }
+      .header {
+        grid-area: header;
+        background: lightblue;
+      }
+      .sidebar {
+        grid-area: sidebar;
+        background: lightgreen;
+      }
+      .main {
+        grid-area: main;
+        background: lightpink;
+      }
+      .footer {
+        grid-area: footer;
+        background: lightgray;
+      }
+
+      /* 2. Repeated areas */
+      .repeated {
+        grid-template-areas:
+          "box box ."
+          "box box ."
+          ".   .   .";
+      }
+      .box {
+        grid-area: box;
+        background: tomato;
+      }
+
+      /* 3. Empty cells (using .) */
+      .empty {
+        grid-template-areas:
+          "A . B"
+          ". . ."
+          "C . D";
+      }
+      .A {
+        grid-area: A;
+        background: gold;
+      }
+      .B {
+        grid-area: B;
+        background: skyblue;
+      }
+      .C {
+        grid-area: C;
+        background: lime;
+      }
+      .D {
+        grid-area: D;
+        background: violet;
+      }
+
+      /* 4. Overlapping (using same name for different spots) */
+      .overlap {
+        grid-template-areas:
+          "X X Y"
+          "X X Y"
+          "Z Z Z";
+      }
+      .X {
+        grid-area: X;
+        background: coral;
+      }
+      .Y {
+        grid-area: Y;
+        background: khaki;
+      }
+      .Z {
+        grid-area: Z;
+        background: lightseagreen;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>1. Simple Layout</h2>
+    <div class="container simple">
+      <div class="item header">Header</div>
+      <div class="item sidebar">Sidebar</div>
+      <div class="item main">Main</div>
+      <div class="item footer">Footer</div>
+    </div>
+
+    <h2>2. Repeated Area</h2>
+    <div class="container repeated">
+      <div class="item box">Box</div>
+    </div>
+
+    <h2>3. Empty Cells (.)</h2>
+    <div class="container empty">
+      <div class="item A">A</div>
+      <div class="item B">B</div>
+      <div class="item C">C</div>
+      <div class="item D">D</div>
+    </div>
+
+    <h2>4. Overlapping Areas</h2>
+    <div class="container overlap">
+      <div class="item X">X</div>
+      <div class="item Y">Y</div>
+      <div class="item Z">Z</div>
+    </div>
+  </body>
+</html>

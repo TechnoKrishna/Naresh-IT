@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: 80px 80px;
+  gap: 5px;
+  background: #f0f0f0;
+  margin-bottom: 25px;
+}
+.item {
+  background: lightcoral;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* 1. Start at a specific line number */
+.num .special { grid-column-start: 2; }
+
+/* 2. span keyword */
+.span .special { grid-column-start: span 2; }
+
+/* 3. auto (default) */
+.auto .special { grid-column-start: auto; }
+
+/* 4. Named grid lines */
+.named {
+  grid-template-columns: [line1] 100px [line2] 100px [line3] 100px [line4] 100px [line5];
+}
+.named .special { grid-column-start: line3; }
+</style>
+</head>
+<body>
+
+<h2>1. grid-column-start: 2 (line number)</h2>
+<div class="container num">
+  <div class="item">A</div>
+  <div class="item special">B</div>
+  <div class="item">C</div>
+</div>
+
+<h2>2. grid-column-start: span 2</h2>
+<div class="container span">
+  <div class="item">A</div>
+  <div class="item special">B</div>
+  <div class="item">C</div>
+</div>
+
+<h2>3. grid-column-start: auto</h2>
+<div class="container auto">
+  <div class="item">A</div>
+  <div class="item special">B</div>
+  <div class="item">C</div>
+</div>
+
+<h2>4. grid-column-start: line3 (named line)</h2>
+<div class="container named">
+  <div class="item">A</div>
+  <div class="item special">B</div>
+  <div class="item">C</div>
+</div>
+
+</body>
+</html>

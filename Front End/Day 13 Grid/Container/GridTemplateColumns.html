@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .container {
+        display: grid;
+        gap: 10px;
+        margin-bottom: 25px;
+        background: #f0f0f0;
+        padding: 10px;
+      }
+      .item {
+        background: orange;
+        padding: 15px;
+        text-align: center;
+      }
+
+      /* 1. Fixed values (px, %, em, rem) */
+      .fixed {
+        grid-template-columns: 100px 150px 200px;
+      }
+
+      /* 2. Fractional units (fr) */
+      .fr {
+        grid-template-columns: 1fr 2fr 1fr;
+      }
+
+      /* 3. Repeat() */
+      .repeat {
+        grid-template-columns: repeat(4, 100px);
+      }
+
+      /* 4. Auto-fill with minmax */
+      .auto-fill {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      }
+
+      /* 5. Auto-fit with minmax */
+      .auto-fit {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      }
+
+      /* 6. Mix of fixed + flexible */
+      .mixed {
+        grid-template-columns: 200px 1fr 2fr;
+      }
+
+      /* 7. Keywords (auto, max-content, min-content) */
+      .keywords {
+        grid-template-columns: auto max-content min-content;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>1. Fixed values (px, %, etc.)</h2>
+    <div class="container fixed">
+      <div class="item">100px</div>
+      <div class="item">150px</div>
+      <div class="item">200px</div>
+    </div>
+
+    <h2>2. Fractional units (fr)</h2>
+    <div class="container fr">
+      <div class="item">1fr</div>
+      <div class="item">2fr</div>
+      <div class="item">1fr</div>
+    </div>
+
+    <h2>3. repeat()</h2>
+    <div class="container repeat">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
+    </div>
+
+    <h2>4. auto-fill + minmax()</h2>
+    <div class="container auto-fill">
+      <div class="item">A</div>
+      <div class="item">B</div>
+      <div class="item">C</div>
+      <div class="item">D</div>
+    </div>
+
+    <h2>5. auto-fit + minmax()</h2>
+    <div class="container auto-fit">
+      <div class="item">X</div>
+      <div class="item">Y</div>
+      <div class="item">Z</div>
+    </div>
+
+    <h2>6. Mix of fixed + flexible</h2>
+    <div class="container mixed">
+      <div class="item">200px</div>
+      <div class="item">1fr</div>
+      <div class="item">2fr</div>
+    </div>
+
+    <h2>7. Keywords (auto, max-content, min-content)</h2>
+    <div class="container keywords">
+      <div class="item">Auto adjusts</div>
+      <div class="item">Max Content Content Content</div>
+      <div class="item">Min</div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .container {
+        display: grid;
+        grid-template-rows: 80px; /* one row */
+        grid-template-columns: 100px; /* only first column defined */
+        gap: 5px;
+        margin-bottom: 25px;
+        background: #f0f0f0;
+        padding: 10px;
+      }
+      .item {
+        background: orange;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+      }
+
+      /* 1. Fixed size (px, %, etc.) */
+      .fixed {
+        grid-auto-columns: 120px;
+      }
+
+      /* 2. Fractional units (fr) */
+      .fr {
+        grid-auto-columns: 1fr;
+        width: 400px;
+      }
+
+      /* 3. Minmax() */
+      .minmax {
+        grid-auto-columns: minmax(80px, 150px);
+      }
+
+      /* 4. auto keyword */
+      .auto {
+        grid-auto-columns: auto;
+      }
+
+      /* 5. max-content */
+      .maxc {
+        grid-auto-columns: max-content;
+      }
+
+      /* 6. min-content */
+      .minc {
+        grid-auto-columns: min-content;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>1. Fixed size (px, %)</h2>
+    <div class="container fixed">
+      <div class="item" style="grid-column: 1">A</div>
+      <div class="item" style="grid-column: 2">B</div>
+      <div class="item" style="grid-column: 3">C</div>
+    </div>
+
+    <h2>2. Fractional units (fr)</h2>
+    <div class="container fr">
+      <div class="item" style="grid-column: 1">A</div>
+      <div class="item" style="grid-column: 2">B</div>
+      <div class="item" style="grid-column: 3">C</div>
+    </div>
+
+    <h2>3. Minmax()</h2>
+    <div class="container minmax">
+      <div class="item" style="grid-column: 1">Short</div>
+      <div class="item" style="grid-column: 2">Medium text</div>
+      <div class="item" style="grid-column: 3">Very Long Content Here</div>
+    </div>
+
+    <h2>4. auto</h2>
+    <div class="container auto">
+      <div class="item" style="grid-column: 1">Short</div>
+      <div class="item" style="grid-column: 2">Medium text</div>
+      <div class="item" style="grid-column: 3">Very Long Content Here</div>
+    </div>
+
+    <h2>5. max-content</h2>
+    <div class="container maxc">
+      <div class="item" style="grid-column: 1">Short</div>
+      <div class="item" style="grid-column: 2">Medium text</div>
+      <div class="item" style="grid-column: 3">Very Long Content Here</div>
+    </div>
+
+    <h2>6. min-content</h2>
+    <div class="container minc">
+      <div class="item" style="grid-column: 1">Short</div>
+      <div class="item" style="grid-column: 2">Medium text</div>
+      <div class="item" style="grid-column: 3">Very Long Content Here</div>
+    </div>
+  </body>
+</html>
