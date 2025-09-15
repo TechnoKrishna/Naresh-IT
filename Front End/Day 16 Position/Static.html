@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Position Static Demo</title>
+    <style>
+      .container {
+        border: 2px solid black;
+        padding: 20px;
+        height: 200px;
+      }
+
+      /* Static (default) */
+      .box1 {
+        position: static;
+        background: lightblue;
+        width: 100px;
+        height: 50px;
+      }
+
+      /* Static but with offsets (ignored) */
+      .box2 {
+        position: static;
+        top: 50px; /* will NOT apply */
+        left: 50px; /* will NOT apply */
+        background: lightgreen;
+        width: 100px;
+        height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box1">Static Normal</div>
+      <div class="box2">Static w/ offsets (ignored)</div>
+    </div>
+  </body>
+</html>

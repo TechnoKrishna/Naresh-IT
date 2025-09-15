@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Position Fixed Demo</title>
+    <style>
+      body {
+        height: 800px; /* to allow scrolling */
+      }
+
+      .box {
+        width: 120px;
+        height: 50px;
+        color: white;
+        line-height: 50px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        position: fixed;
+        background: steelblue;
+      }
+
+      /* 1. Fixed top */
+      .box1 {
+        top: 10px;
+        left: 10px;
+        background: red;
+      }
+
+      /* 2. Fixed right */
+      .box2 {
+        top: 10px;
+        right: 10px;
+        background: green;
+      }
+
+      /* 3. Fixed bottom */
+      .box3 {
+        bottom: 10px;
+        left: 10px;
+        background: blue;
+      }
+
+      /* 4. Fixed left */
+      .box4 {
+        top: 10px;
+        left: 150px;
+        background: purple;
+      }
+
+      /* 5. Fixed with multiple offsets */
+      .box5 {
+        top: 200px;
+        right: 50px;
+        background: orange;
+      }
+
+      /* 6. Fixed with z-index */
+      .box6 {
+        bottom: 50px;
+        right: 100px;
+        background: teal;
+        z-index: 10;
+      }
+      .box7 {
+        bottom: 70px;
+        right: 120px;
+        background: pink;
+        z-index: 5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box box1">top 10px</div>
+    <div class="box box2">right 10px</div>
+    <div class="box box3">bottom 10px</div>
+    <div class="box box4">left 150px</div>
+    <div class="box box5">top 200px, right 50px</div>
+    <div class="box box6">z-index 10</div>
+    <div class="box box7">z-index 5</div>
+  </body>
+</html>

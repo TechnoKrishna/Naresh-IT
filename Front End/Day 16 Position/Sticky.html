@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Position Sticky Demo</title>
+    <style>
+      .container {
+        height: 400px;
+        border: 2px solid black;
+        overflow: auto; /* scrollable container */
+        padding: 10px;
+      }
+
+      .content {
+        height: 800px; /* enough content to scroll */
+        background: lightgray;
+      }
+
+      .sticky-box {
+        position: sticky;
+        top: 0; /* sticks to top when scrolling */
+        background: steelblue;
+        color: white;
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        font-family: Arial, sans-serif;
+        margin-bottom: 20px;
+      }
+
+      /* Example with multiple offsets */
+      .sticky-box2 {
+        position: sticky;
+        top: 50px; /* sticks 50px below top */
+        left: 20px; /* offset from left if needed */
+        background: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="sticky-box">Sticky Top 0</div>
+      <div class="content">Scroll down to see the sticky effect</div>
+      <div class="sticky-box2">Sticky Top 50, Left 20</div>
+      <div class="content">More content...</div>
+    </div>
+  </body>
+</html>
