@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CSS Selectors Demo</title>
+    <style>
+      /* 1. Universal Selector */
+      * {
+        font-family: Arial, sans-serif;
+      }
+
+      /* 2. Type Selector */
+      h1 {
+        color: darkblue;
+      }
+
+      /* 3. Class Selector */
+      .highlight {
+        background: yellow;
+      }
+
+      /* 4. ID Selector */
+      #unique {
+        color: red;
+        font-weight: bold;
+      }
+
+      /* 5. Group Selector */
+      h2,
+      p {
+        margin: 5px 0;
+      }
+
+      /* 6. Descendant Selector */
+      div p {
+        color: green;
+      }
+
+      /* 7. Child Selector */
+      div > span {
+        color: purple;
+      }
+
+      /* 8. Adjacent Sibling Selector */
+      h2 + p {
+        color: orange;
+      }
+
+      /* 9. General Sibling Selector */
+      h2 ~ p {
+        font-style: italic;
+      }
+
+      /* 10. Attribute Selector */
+      input[type="text"] {
+        border: 2px solid black;
+      }
+      a[target="_blank"] {
+        color: red;
+      }
+
+      /* 11. Pseudo-class Selector */
+      a:hover {
+        text-decoration: underline;
+        color: blue;
+      }
+      input:focus {
+        border: 2px solid blue;
+      }
+
+      /* 12. Pseudo-element Selector */
+      p::first-letter {
+        font-size: 24px;
+        color: brown;
+      }
+      p::after {
+        content: " ✅";
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>CSS Selectors Demo</h1>
+
+    <h2>Basic Selectors</h2>
+    <p class="highlight">This paragraph has a class selector.</p>
+    <p id="unique">This paragraph has an ID selector.</p>
+
+    <h2>Combinators</h2>
+    <div>
+      <p>Paragraph inside a div (descendant selector).</p>
+      <span>Direct span child of div (child selector).</span>
+    </div>
+    <h2>Heading for sibling demo</h2>
+    <p>Adjacent sibling (next to h2).</p>
+    <p>General sibling (also styled after h2).</p>
+
+    <h2>Attribute Selectors</h2>
+    <input type="text" placeholder="Text input" /><br /><br />
+    <a href="https://example.com" target="_blank">External Link</a>
+
+    <h2>Pseudo-classes & Pseudo-elements</h2>
+    <p>Hover over links and focus on inputs to see effects.</p>
+    <a href="#">Hover me</a><br /><br />
+    <input type="text" placeholder="Focus me" />
+  </body>
+</html>
