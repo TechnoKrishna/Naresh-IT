@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Animation Fill Mode Demo</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .box {
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+        display: inline-block;
+        color: white;
+        text-align: center;
+        line-height: 100px;
+        font-family: Arial, sans-serif;
+        cursor: pointer;
+        background: steelblue;
+        animation-name: fadeMove;
+        animation-duration: 2s;
+        animation-delay: 2s; /* to see backward effect */
+      }
+
+      /* Keyframes */
+      @keyframes fadeMove {
+        from {
+          transform: translateX(0);
+          background: gray;
+        }
+        to {
+          transform: translateX(200px);
+          background: black;
+        }
+      }
+
+      /* 1. None (default) */
+      .box1 {
+        background: red;
+        animation-fill-mode: none;
+      }
+
+      /* 2. Forwards (keeps final state) */
+      .box2 {
+        background: green;
+        animation-fill-mode: forwards;
+      }
+
+      /* 3. Backwards (applies first keyframe during delay) */
+      .box3 {
+        background: blue;
+        animation-fill-mode: backwards;
+      }
+
+      /* 4. Both (backwards + forwards) */
+      .box4 {
+        background: purple;
+        animation-fill-mode: both;
+      }
+
+      /* 5. Multiple fill-modes */
+      .box5 {
+        background: orange;
+        animation-name: fadeMove, fadeMove;
+        animation-duration: 2s, 2s;
+        animation-delay: 1s, 3s;
+        animation-fill-mode: forwards, backwards;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box box1">none</div>
+    <div class="box box2">forwards</div>
+    <div class="box box3">backwards</div>
+    <div class="box box4">both</div>
+    <div class="box box5">multi</div>
+  </body>
+</html>

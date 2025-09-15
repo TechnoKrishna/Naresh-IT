@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Animation Name Demo</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+        display: inline-block;
+        color: white;
+        text-align: center;
+        line-height: 100px;
+        font-family: Arial, sans-serif;
+        cursor: pointer;
+        background: steelblue;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+      }
+
+      /* Keyframes */
+      @keyframes move {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(150px);
+        }
+      }
+
+      @keyframes colorChange {
+        0% {
+          background: red;
+        }
+        50% {
+          background: yellow;
+        }
+        100% {
+          background: red;
+        }
+      }
+
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* 1. none (default) */
+      .box1 {
+        background: blue;
+        animation-name: none;
+      }
+
+      /* 2. Single animation (move) */
+      .box2 {
+        background: green;
+        animation-name: move;
+      }
+
+      /* 3. Single animation (colorChange) */
+      .box3 {
+        background: purple;
+        animation-name: colorChange;
+      }
+
+      /* 4. Multiple animations */
+      .box4 {
+        background: orange;
+        animation-name: move, rotate, colorChange;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box box1">none</div>
+    <div class="box box2">move</div>
+    <div class="box box3">color</div>
+    <div class="box box4">multi</div>
+  </body>
+</html>

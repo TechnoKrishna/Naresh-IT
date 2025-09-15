@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Animation Timing Function Demo</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+        display: inline-block;
+        color: white;
+        text-align: center;
+        line-height: 100px;
+        font-family: Arial, sans-serif;
+        cursor: pointer;
+        background: steelblue;
+        animation-name: move;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+      }
+
+      /* Keyframes */
+      @keyframes move {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(200px);
+        }
+      }
+
+      .box1 {
+        background: red;
+        animation-timing-function: linear;
+      }
+      .box2 {
+        background: green;
+        animation-timing-function: ease;
+      }
+      .box3 {
+        background: blue;
+        animation-timing-function: ease-in;
+      }
+      .box4 {
+        background: purple;
+        animation-timing-function: ease-out;
+      }
+      .box5 {
+        background: orange;
+        animation-timing-function: ease-in-out;
+      }
+      .box6 {
+        background: brown;
+        animation-timing-function: step-start;
+      }
+      .box7 {
+        background: teal;
+        animation-timing-function: step-end;
+      }
+      .box8 {
+        background: pink;
+        animation-timing-function: steps(5, start);
+      }
+      .box9 {
+        background: gray;
+        animation-timing-function: steps(5, end);
+      }
+      .box10 {
+        background: black;
+        animation-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box box1">linear</div>
+    <div class="box box2">ease</div>
+    <div class="box box3">ease-in</div>
+    <div class="box box4">ease-out</div>
+    <div class="box box5">ease-in-out</div>
+    <div class="box box6">step-start</div>
+    <div class="box box7">step-end</div>
+    <div class="box box8">steps(5,start)</div>
+    <div class="box box9">steps(5,end)</div>
+    <div class="box box10">cubic</div>
+  </body>
+</html>

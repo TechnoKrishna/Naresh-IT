@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Animation Direction Demo</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .box {
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+        display: inline-block;
+        color: white;
+        text-align: center;
+        line-height: 100px;
+        font-family: Arial, sans-serif;
+        cursor: pointer;
+        background: steelblue;
+        animation-name: move;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+      }
+
+      /* Keyframes */
+      @keyframes move {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(200px);
+        }
+      }
+
+      /* 1. Normal (default, forward) */
+      .box1 {
+        background: red;
+        animation-direction: normal;
+      }
+
+      /* 2. Reverse (backward) */
+      .box2 {
+        background: green;
+        animation-direction: reverse;
+      }
+
+      /* 3. Alternate (forward → backward → forward...) */
+      .box3 {
+        background: blue;
+        animation-direction: alternate;
+      }
+
+      /* 4. Alternate-reverse (backward → forward → backward...) */
+      .box4 {
+        background: purple;
+        animation-direction: alternate-reverse;
+      }
+
+      /* 5. Multiple directions */
+      .box5 {
+        background: orange;
+        animation-name: move, move;
+        animation-duration: 2s, 2s;
+        animation-direction: alternate, reverse;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box box1">normal</div>
+    <div class="box box2">reverse</div>
+    <div class="box box3">alternate</div>
+    <div class="box box4">alt-rev</div>
+    <div class="box box5">multi</div>
+  </body>
+</html>

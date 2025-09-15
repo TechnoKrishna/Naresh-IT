@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Animation Duration Demo</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+        display: inline-block;
+        color: white;
+        text-align: center;
+        line-height: 100px;
+        font-family: Arial, sans-serif;
+        cursor: pointer;
+        background: steelblue;
+        animation-name: move;
+        animation-iteration-count: infinite;
+      }
+
+      /* Keyframes */
+      @keyframes move {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(150px);
+        }
+      }
+
+      /* 1. 0s (instant, no visible movement) */
+      .box1 {
+        background: blue;
+        animation-duration: 0s;
+      }
+
+      /* 2. Seconds (2s) */
+      .box2 {
+        background: green;
+        animation-duration: 2s;
+      }
+
+      /* 3. Milliseconds (500ms) */
+      .box3 {
+        background: purple;
+        animation-duration: 500ms;
+      }
+
+      /* 4. Multiple durations */
+      .box4 {
+        background: orange;
+        animation-name: move, move;
+        animation-duration: 1s, 3s; /* first animation = 1s, second = 3s */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box box1">0s</div>
+    <div class="box box2">2s</div>
+    <div class="box box3">500ms</div>
+    <div class="box box4">multi</div>
+  </body>
+</html>

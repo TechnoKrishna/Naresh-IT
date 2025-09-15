@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Animation Play State Demo</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+        display: inline-block;
+        color: white;
+        text-align: center;
+        line-height: 100px;
+        font-family: Arial, sans-serif;
+        cursor: pointer;
+        background: steelblue;
+        animation-name: move;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+      }
+
+      /* Keyframes */
+      @keyframes move {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(200px);
+        }
+      }
+
+      /* 1. Running (default) */
+      .box1 {
+        background: red;
+        animation-play-state: running;
+      }
+
+      /* 2. Paused */
+      .box2 {
+        background: green;
+        animation-play-state: paused;
+      }
+
+      /* 3. Multiple play states */
+      .box3 {
+        background: purple;
+        animation-name: move, move;
+        animation-duration: 3s, 3s;
+        animation-play-state: running, paused;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box box1">running</div>
+    <div class="box box2">paused</div>
+    <div class="box box3">multi</div>
+  </body>
+</html>

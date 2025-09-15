@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Animation Delay Demo</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .box {
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+        display: inline-block;
+        color: white;
+        text-align: center;
+        line-height: 100px;
+        font-family: Arial, sans-serif;
+        cursor: pointer;
+        background: steelblue;
+        animation-name: move;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+      }
+
+      /* Keyframes */
+      @keyframes move {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(200px);
+        }
+      }
+
+      /* 1. No delay (default) */
+      .box1 {
+        background: red;
+        animation-delay: 0s;
+      }
+
+      /* 2. Positive delay (2s) */
+      .box2 {
+        background: green;
+        animation-delay: 2s;
+      }
+
+      /* 3. Positive delay in ms */
+      .box3 {
+        background: blue;
+        animation-delay: 500ms;
+      }
+
+      /* 4. Negative delay (-2s) */
+      .box4 {
+        background: purple;
+        animation-delay: -2s;
+      }
+
+      /* 5. Multiple delays */
+      .box5 {
+        background: orange;
+        animation-name: move, move;
+        animation-duration: 3s, 3s;
+        animation-delay: 1s, 3s; /* first animation starts after 1s, second after 3s */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box box1">0s</div>
+    <div class="box box2">2s</div>
+    <div class="box box3">500ms</div>
+    <div class="box box4">-2s</div>
+    <div class="box box5">multi</div>
+  </body>
+</html>

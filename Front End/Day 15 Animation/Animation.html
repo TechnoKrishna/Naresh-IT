@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CSS Animation Shorthand Demo</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .box {
+        width: 120px;
+        height: 120px;
+        margin: 10px;
+        display: inline-block;
+        color: white;
+        text-align: center;
+        line-height: 120px;
+        font-family: Arial, sans-serif;
+        cursor: pointer;
+      }
+
+      /* Keyframes */
+      @keyframes move {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(200px);
+        }
+      }
+
+      /* 1. Only name + duration */
+      .box1 {
+        background: red;
+        animation: move 2s;
+      }
+
+      /* 2. With timing-function */
+      .box2 {
+        background: green;
+        animation: move 3s ease-in;
+      }
+
+      /* 3. With delay */
+      .box3 {
+        background: blue;
+        animation: move 3s linear 2s;
+      }
+
+      /* 4. With iteration-count */
+      .box4 {
+        background: purple;
+        animation: move 2s infinite;
+      }
+
+      /* 5. With direction */
+      .box5 {
+        background: orange;
+        animation: move 2s infinite alternate;
+      }
+
+      /* 6. With fill-mode */
+      .box6 {
+        background: brown;
+        animation: move 2s forwards;
+      }
+
+      /* 7. With play-state (paused initially) */
+      .box7 {
+        background: teal;
+        animation: move 3s infinite paused;
+      }
+
+      /* 8. All combined */
+      .box8 {
+        background: black;
+        animation: move 4s ease-in-out 1s infinite alternate both running;
+      }
+
+      /* 9. Multiple animations */
+      .box9 {
+        background: pink;
+        animation: move 2s infinite alternate, move 4s linear infinite reverse;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box box1">name+duration</div>
+    <div class="box box2">timing</div>
+    <div class="box box3">delay</div>
+    <div class="box box4">infinite</div>
+    <div class="box box5">alternate</div>
+    <div class="box box6">forwards</div>
+    <div class="box box7">paused</div>
+    <div class="box box8">all</div>
+    <div class="box box9">multi</div>
+  </body>
+</html>
