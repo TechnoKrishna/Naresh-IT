@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bootstrap Practice</title>
+    <!-- Bootstrap CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">MySite</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Home</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Container -->
+    <div class="container mt-4">
+      <!-- Alert -->
+      <div class="alert alert-success">
+        This is a success alert with Bootstrap!
+      </div>
+
+      <!-- Grid System -->
+      <h3 class="mb-3">Grid Example</h3>
+      <div class="row">
+        <div class="col-4 bg-primary text-white p-3">Column 1</div>
+        <div class="col-4 bg-success text-white p-3">Column 2</div>
+        <div class="col-4 bg-danger text-white p-3">Column 3</div>
+      </div>
+
+      <!-- Typography & Colors -->
+      <h3 class="mt-4">Typography & Colors</h3>
+      <p class="text-danger">This is red text</p>
+      <p class="bg-warning text-dark p-2">
+        This is yellow background with dark text
+      </p>
+
+      <!-- Buttons -->
+      <h3 class="mt-4">Buttons</h3>
+      <button class="btn btn-primary">Primary</button>
+      <button class="btn btn-success">Success</button>
+      <button class="btn btn-danger">Danger</button>
+      <button class="btn btn-outline-dark">Outline Dark</button>
+
+      <!-- Form -->
+      <h3 class="mt-4">Form Example</h3>
+      <form class="p-3 border rounded">
+        <div class="mb-3">
+          <input type="text" class="form-control" placeholder="Enter Name" />
+        </div>
+        <div class="mb-3">
+          <input type="email" class="form-control" placeholder="Enter Email" />
+        </div>
+        <button class="btn btn-primary w-100">Submit</button>
+      </form>
+
+      <!-- Card -->
+      <h3 class="mt-4">Card Example</h3>
+      <div class="card" style="width: 18rem">
+        <img
+          src="https://imgs.search.brave.com/Ftv-5HXrLzcCbH1wRY4Thzp9pA4vFogGL7mKoMCiT_U/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJzLmNvbS9p/bWFnZXMvZmVhdHVy/ZWQvaW1hZ2VuZXMt/ZGUtcGZwLXBoNnF4/dnoxNHA0dXZqMmou/anBn"
+          class="card-img-top"
+          alt="Placeholder Image"
+        />
+        <div class="card-body">
+          <h5 class="card-title">Card Title</h5>
+          <p class="card-text">
+            This is an example of a Bootstrap card with an image and button.
+          </p>
+          <a href="#" class="btn btn-success">Go Somewhere</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
