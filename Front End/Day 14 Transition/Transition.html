@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Transition Shorthand Demo</title>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      margin: 10px;
+      display: inline-block;
+      color: white;
+      text-align: center;
+      line-height: 100px;
+      font-family: Arial, sans-serif;
+      cursor: pointer;
+    }
+
+    /* 1. Simple (property + duration) */
+    .box1 {
+      background: blue;
+      transition: width 2s;
+    }
+    .box1:hover { width: 200px; }
+
+    /* 2. Property + duration + timing-function */
+    .box2 {
+      background: green;
+      transition: width 2s ease-in;
+    }
+    .box2:hover { width: 200px; }
+
+    /* 3. Property + duration + delay */
+    .box3 {
+      background: purple;
+      transition: width 2s 1s; /* 1s delay */
+    }
+    .box3:hover { width: 200px; }
+
+    /* 4. All properties */
+    .box4 {
+      background: orange;
+      transition: all 2s ease-in-out 1s;
+    }
+    .box4:hover {
+      width: 200px;
+      background: red;
+    }
+
+    /* 5. Multiple transitions */
+    .box5 {
+      background: brown;
+      transition: width 2s linear, background-color 3s ease;
+    }
+    .box5:hover {
+      width: 200px;
+      background: cyan;
+    }
+  </style>
+</head>
+<body>
+  <div class="box box1">basic</div>
+  <div class="box box2">timing</div>
+  <div class="box box3">delay</div>
+  <div class="box box4">all</div>
+  <div class="box box5">multi</div>
+</body>
+</html>

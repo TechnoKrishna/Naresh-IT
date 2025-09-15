@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Transition Property Demo</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+        display: inline-block;
+        color: white;
+        text-align: center;
+        line-height: 100px;
+        font-family: Arial, sans-serif;
+        cursor: pointer;
+      }
+
+      /* transition-property decides which CSS property will change smoothly. */
+
+      /* 1. All */
+      .box1 {
+        background: blue;
+        transition-property: all;
+        transition-duration: 2s;
+      }
+      .box1:hover {
+        width: 200px;
+        background: red;
+      }
+
+      /* 2. None */
+      .box2 {
+        background: green;
+        transition-property: none;
+        transition-duration: 2s;
+      }
+      .box2:hover {
+        width: 200px;
+        background: yellow;
+      }
+
+      /* 3. Width */
+      .box3 {
+        background: purple;
+        transition-property: width;
+        transition-duration: 2s;
+      }
+      .box3:hover {
+        width: 200px;
+        background: orange;
+      }
+
+      /* 4. Background-color */
+      .box4 {
+        background: pink;
+        transition-property: background-color;
+        transition-duration: 2s;
+      }
+      .box4:hover {
+        background: black;
+      }
+
+      /* 5. Multiple Properties */
+      .box5 {
+        background: brown;
+        transition-property: width, background-color, transform;
+        transition-duration: 2s;
+      }
+      .box5:hover {
+        width: 200px;
+        background: cyan;
+        transform: rotate(45deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box box1">all</div>
+    <div class="box box2">none</div>
+    <div class="box box3">width</div>
+    <div class="box box4">bg-color</div>
+    <div class="box box5">multiple</div>
+  </body>
+</html>

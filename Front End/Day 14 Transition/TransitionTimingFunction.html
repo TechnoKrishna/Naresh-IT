@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Transition Timing Function Demo</title>
+    <style>
+      /* it controls the speed curve (how the animation accelerates/decelerates). */
+      .box {
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+        display: inline-block;
+        color: white;
+        text-align: center;
+        line-height: 100px;
+        font-family: Arial, sans-serif;
+        cursor: pointer;
+        background: steelblue;
+        transition-property: width;
+        transition-duration: 3s;
+      }
+
+      /* 1. ease (default) */
+      .box1 {
+        transition-timing-function: ease;
+      }
+      .box1:hover {
+        width: 250px;
+      }
+
+      /* 2. linear */
+      .box2 {
+        transition-timing-function: linear;
+        background: green;
+      }
+      .box2:hover {
+        width: 250px;
+      }
+
+      /* 3. ease-in */
+      .box3 {
+        transition-timing-function: ease-in;
+        background: purple;
+      }
+      .box3:hover {
+        width: 250px;
+      }
+
+      /* 4. ease-out */
+      .box4 {
+        transition-timing-function: ease-out;
+        background: orange;
+      }
+      .box4:hover {
+        width: 250px;
+      }
+
+      /* 5. ease-in-out */
+      .box5 {
+        transition-timing-function: ease-in-out;
+        background: brown;
+      }
+      .box5:hover {
+        width: 250px;
+      }
+
+      /* 6. steps(4) */
+      .box6 {
+        transition-timing-function: steps(4);
+        background: pink;
+      }
+      .box6:hover {
+        width: 250px;
+      }
+
+      /* 7. step-start */
+      .box7 {
+        transition-timing-function: step-start;
+        background: teal;
+      }
+      .box7:hover {
+        width: 250px;
+      }
+
+      /* 8. step-end */
+      .box8 {
+        transition-timing-function: step-end;
+        background: crimson;
+      }
+      .box8:hover {
+        width: 250px;
+      }
+
+      /* 9. cubic-bezier */
+      .box9 {
+        transition-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        background: gold;
+        color: black;
+      }
+      .box9:hover {
+        width: 250px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box box1">ease</div>
+    <div class="box box2">linear</div>
+    <div class="box box3">ease-in</div>
+    <div class="box box4">ease-out</div>
+    <div class="box box5">ease-in-out</div>
+    <div class="box box6">steps(4)</div>
+    <div class="box box7">step-start</div>
+    <div class="box box8">step-end</div>
+    <div class="box box9">cubic</div>
+  </body>
+</html>

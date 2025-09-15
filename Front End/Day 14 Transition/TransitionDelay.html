@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Transition Delay Demo</title>
+    <style>
+      /* transition-delay sets how long to wait before the transition starts. */
+      .box {
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+        display: inline-block;
+        color: white;
+        text-align: center;
+        line-height: 100px;
+        font-family: Arial, sans-serif;
+        cursor: pointer;
+        transition-property: width, background-color;
+        transition-duration: 2s, 2s;
+      }
+
+      /* 1. 0s (default, no delay) */
+      .box1 {
+        background: blue;
+        transition-delay: 0s;
+      }
+      .box1:hover {
+        width: 200px;
+        background: red;
+      }
+
+      /* 2. Positive delay (2s) */
+      .box2 {
+        background: green;
+        transition-delay: 2s;
+      }
+      .box2:hover {
+        width: 200px;
+        background: yellow;
+      }
+
+      /* 3. Milliseconds (500ms) */
+      .box3 {
+        background: purple;
+        transition-delay: 500ms;
+      }
+      .box3:hover {
+        width: 200px;
+        background: orange;
+      }
+
+      /* 4. Negative delay (-1s) */
+      .box4 {
+        background: pink;
+        transition-delay: -1s;
+      }
+      .box4:hover {
+        width: 200px;
+        background: black;
+      }
+
+      /* 5. Multiple delays */
+      .box5 {
+        background: brown;
+        transition-delay: 1s, 3s; /* width = 1s, background = 3s */
+      }
+      .box5:hover {
+        width: 200px;
+        background: cyan;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box box1">0s</div>
+    <div class="box box2">2s</div>
+    <div class="box box3">500ms</div>
+    <div class="box box4">-1s</div>
+    <div class="box box5">multi</div>
+  </body>
+</html>

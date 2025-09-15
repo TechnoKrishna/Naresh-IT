@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Transition Duration Demo</title>
+    <style>
+      /* transition-duration sets how long the transition takes. */
+
+      .box {
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+        display: inline-block;
+        color: white;
+        text-align: center;
+        line-height: 100px;
+        font-family: Arial, sans-serif;
+        cursor: pointer;
+      }
+
+      /* 1. 0s (no animation) */
+      .box1 {
+        background: blue;
+        transition-property: width;
+        transition-duration: 0s;
+      }
+      .box1:hover {
+        width: 200px;
+      }
+
+      /* 2. Seconds (2s) */
+      .box2 {
+        background: green;
+        transition-property: width;
+        transition-duration: 2s;
+      }
+      .box2:hover {
+        width: 200px;
+      }
+
+      /* 3. Milliseconds (500ms) */
+      .box3 {
+        background: purple;
+        transition-property: width;
+        transition-duration: 500ms;
+      }
+      .box3:hover {
+        width: 200px;
+      }
+
+      /* 4. Multiple durations */
+      .box4 {
+        background: orange;
+        transition-property: width, background-color;
+        transition-duration: 1s, 3s; /* width = 1s, background = 3s */
+      }
+      .box4:hover {
+        width: 200px;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box box1">0s</div>
+    <div class="box box2">2s</div>
+    <div class="box box3">500ms</div>
+    <div class="box box4">multi</div>
+  </body>
+</html>
