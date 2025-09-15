@@ -1,107 +1,409 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <title>CSS Selectors Demo</title>
+    <meta charset="utf-8" />
+    <title>CSS Selectors — Detailed Demo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <style>
-      /* 1. Universal Selector */
-      * {
-        font-family: Arial, sans-serif;
+      /* ---------------------------
+     Layout & small helper styles
+     --------------------------- */
+      body {
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+        padding: 20px;
+        line-height: 1.4;
+        color: #222;
       }
-
-      /* 2. Type Selector */
       h1 {
-        color: darkblue;
+        margin-bottom: 0.25rem;
+      }
+      section {
+        border: 1px solid #e4e4e4;
+        padding: 14px;
+        margin: 12px 0;
+        border-radius: 8px;
+        background: #fafafa;
+      }
+      .row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        align-items: flex-start;
+      }
+      .box {
+        padding: 10px 12px;
+        border-radius: 6px;
+        background: #ddd;
+        min-width: 110px;
+        text-align: center;
+      }
+      .small {
+        font-size: 0.85rem;
+        color: #555;
+        margin-top: 6px;
       }
 
-      /* 3. Class Selector */
-      .highlight {
-        background: yellow;
+      /* ---------------------------
+     1) Universal selector
+     * selects every element
+     --------------------------- */
+      * {
+        box-sizing: border-box;
       }
 
-      /* 4. ID Selector */
-      #unique {
-        color: red;
-        font-weight: bold;
+      /* ---------------------------
+     2) Type selector (element selector)
+     * selects by tag name
+     --------------------------- */
+      h2 {
+        color: #0b5cff;
+        margin-top: 0;
       }
 
-      /* 5. Group Selector */
-      h2,
-      p {
-        margin: 5px 0;
+      /* ---------------------------
+     3) Class selector -> .className
+     --------------------------- */
+      .pill {
+        display: inline-block;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: #4f9;
+        color: #023;
       }
 
-      /* 6. Descendant Selector */
-      div p {
-        color: green;
+      /* ---------------------------
+     4) ID selector -> #idName (higher specificity)
+     --------------------------- */
+      #uniqueBox {
+        background: #ff8;
+        color: #512;
+        padding: 12px;
+        border-radius: 6px;
       }
 
-      /* 7. Child Selector */
-      div > span {
-        color: purple;
+      /* ---------------------------
+     5) Group selector
+     * apply same rules to multiple selectors
+     --------------------------- */
+      h3,
+      p.note {
+        margin: 6px 0;
       }
 
-      /* 8. Adjacent Sibling Selector */
-      h2 + p {
-        color: orange;
+      /* ---------------------------
+     6) Descendant vs Child
+     - descendant: parent child
+     - child: parent > child
+     --------------------------- */
+      .card p {
+        color: #074;
+      } /* any p inside .card */
+      .card > .tag {
+        font-weight: 700;
+      } /* only direct children with class .tag */
+
+      /* ---------------------------
+     7) Adjacent (+) and General (~) sibling selectors
+     --------------------------- */
+      h3 + p {
+        color: #b35400;
+      } /* adjacent p immediately after h3 */
+      h3 ~ ul {
+        border-left: 4px solid #ccc;
+        padding-left: 12px;
+      } /* any ul after h3 in the same parent */
+
+      /* ---------------------------
+     8) Attribute selectors
+     --------------------------- */
+      /* element that has data-role attribute (any value) */
+      [data-role] {
+        padding: 8px;
+        background: #eef;
+        border-radius: 6px;
       }
 
-      /* 9. General Sibling Selector */
-      h2 ~ p {
+      /* attribute equals */
+      a[href="https://example.com"]
+      {
+        text-decoration: underline;
+      }
+
+      /* ^= starts-with */
+      a[href^="https"] {
+        color: #0b7;
+      }
+
+      /* $= ends-with */
+      img[src$=".png"] {
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      /* *= contains */
+      [title*="important"] {
+        border: 2px dashed #f66;
+      }
+
+      /* ~= contains word */
+      [class~="tag"] {
+        padding: 4px 6px;
+        background: #f0f3c1;
+      }
+
+      /* |= dash-separated (e.g., lang="en-US") */
+      [lang|="en"] {
         font-style: italic;
       }
 
-      /* 10. Attribute Selector */
-      input[type="text"] {
-        border: 2px solid black;
-      }
-      a[target="_blank"] {
-        color: red;
+      /* ---------------------------
+     9) Pseudo-classes (states)
+     --------------------------- */
+      a.demo:hover {
+        color: #e83;
+      } /* when user hovers link */
+      input[type="text"]:focus {
+        outline: 2px solid #39f;
+      } /* when focused */
+      .list li:first-child {
+        font-weight: 700;
+      } /* first-child */
+      .list li:nth-child(2n) {
+        background: #f9f9f9;
+      } /* every even child */
+      button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
       }
 
-      /* 11. Pseudo-class Selector */
-      a:hover {
-        text-decoration: underline;
-        color: blue;
-      }
-      input:focus {
-        border: 2px solid blue;
+      /* :not() */
+      .buttons button:not(.no-style) {
+        padding: 8px 12px;
       }
 
-      /* 12. Pseudo-element Selector */
-      p::first-letter {
-        font-size: 24px;
-        color: brown;
+      /* :checked (for checkboxes/radios) */
+      input[type="checkbox"]:checked + label {
+        text-decoration: line-through;
+        color: #999;
       }
-      p::after {
-        content: " ✅";
-        color: green;
+
+      /* ---------------------------
+     10) Pseudo-elements
+     - create content or style part of element
+     --------------------------- */
+      .quote::before {
+        content: "“";
+        font-size: 1.4rem;
+        vertical-align: top;
+        color: #999;
+      }
+      .quote::after {
+        content: "”";
+        color: #999;
+        margin-left: 4px;
+      }
+      p.lead::first-letter {
+        font-size: 2rem;
+        font-weight: 700;
+        float: left;
+        margin-right: 6px;
+        color: #b33;
+      }
+      ul.marker-demo li::marker {
+        color: #0b7;
+        font-weight: 700;
+      }
+
+      /* ---------------------------
+     11) Specificity demo
+     - .class rule vs #id rule vs inline style
+     --------------------------- */
+      .spec-demo {
+        color: #0b7;
+      } /* class rule */
+      #specId {
+        color: #b00;
+      } /* ID rule will override class */
+      /* inline style would override both */
+
+      /* ---------------------------
+     12) Example showing multiple selectors / multiple animations
+     --------------------------- */
+      .multi span {
+        transition: transform 0.2s ease;
+        display: inline-block;
+      }
+      .multi span:hover {
+        transform: translateY(-6px);
+      }
+
+      /* small responsive tweak for demo layout */
+      @media (max-width: 640px) {
+        .row {
+          flex-direction: column;
+        }
       }
     </style>
   </head>
   <body>
-    <h1>CSS Selectors Demo</h1>
+    <h1>CSS Selectors — Detailed & Interactive Demo</h1>
+    <p class="small">
+      Open in a browser and interact (hover, focus, check the checkbox) to see
+      the selectors in action.
+    </p>
 
-    <h2>Basic Selectors</h2>
-    <p class="highlight">This paragraph has a class selector.</p>
-    <p id="unique">This paragraph has an ID selector.</p>
+    <section>
+      <h2>1. Basic selectors</h2>
+      <div class="row">
+        <div class="box">Universal (*) & Type (h2)</div>
+        <div class="box pill">Class <code>.pill</code></div>
+        <div id="uniqueBox" class="box">ID <code>#uniqueBox</code></div>
+      </div>
+      <p class="small">
+        <strong>Notes:</strong> Type selectors select elements by tag. Class
+        selectors start with <code>.</code>, ID selectors start with
+        <code>#</code>. ID has higher specificity than class.
+      </p>
+    </section>
 
-    <h2>Combinators</h2>
-    <div>
-      <p>Paragraph inside a div (descendant selector).</p>
-      <span>Direct span child of div (child selector).</span>
-    </div>
-    <h2>Heading for sibling demo</h2>
-    <p>Adjacent sibling (next to h2).</p>
-    <p>General sibling (also styled after h2).</p>
+    <section>
+      <h2>2. Combinators — descendant, child, sibling</h2>
+      <div class="card" style="padding: 10px; width: 320px; border-radius: 6px">
+        <div class="tag">I am .tag (direct child)</div>
+        <p>
+          Paragraph inside .card (descendant selector): this will be green (see
+          CSS).
+        </p>
+        <div>
+          <h3>Heading (sibling demo)</h3>
+          <p>
+            Paragraph immediately after h3 (adjacent sibling
+            <code>h3 + p</code>).
+          </p>
+          <ul class="list">
+            <li>first</li>
+            <li>second (nth-child demo)</li>
+            <li>third</li>
+          </ul>
+        </div>
+      </div>
+      <p class="small">
+        Descendant = <code>ancestor descendant</code>. Child =
+        <code>parent &gt; child</code>. Adjacent sibling = <code>A + B</code>.
+        General sibling = <code>A ~ B</code>.
+      </p>
+    </section>
 
-    <h2>Attribute Selectors</h2>
-    <input type="text" placeholder="Text input" /><br /><br />
-    <a href="https://example.com" target="_blank">External Link</a>
+    <section>
+      <h2>3. Attribute selectors</h2>
+      <div class="row">
+        <a class="box demo" href="https://example.com"
+          >exact-match href=example.com</a
+        >
+        <a class="box demo" href="https://secure.example.com"
+          >starts-with https</a
+        >
+        <img
+          class="box"
+          src="image.png"
+          alt="PNG sample"
+          style="width: 80px; height: 48px; object-fit: cover"
+        />
+        <div class="box" title="very important note">
+          title contains "important" (style via *=)
+        </div>
+      </div>
+      <p class="small">
+        Common operators: <code>[attr]</code>, <code>[attr="value"]</code>,
+        <code>[attr^="start"]</code>, <code>[attr$=".png"]</code>,
+        <code>[attr*="part"]</code>, <code>[attr~="word"]</code>,
+        <code>[lang|="en"]</code>.
+      </p>
+    </section>
 
-    <h2>Pseudo-classes & Pseudo-elements</h2>
-    <p>Hover over links and focus on inputs to see effects.</p>
-    <a href="#">Hover me</a><br /><br />
-    <input type="text" placeholder="Focus me" />
+    <section>
+      <h2>4. Pseudo-classes (states)</h2>
+      <div class="row">
+        <a class="box demo demo-link" href="#" class="demo"
+          >Hover me (a:hover)</a
+        >
+        <input
+          type="text"
+          placeholder="Focus me"
+          class="box"
+          style="min-width: 180px"
+        />
+        <div class="buttons">
+          <button class="box">normal button</button>
+          <button class="box no-style">.no-style (excluded by :not())</button>
+        </div>
+      </div>
+
+      <div style="margin-top: 10px">
+        <label><input type="checkbox" /> <span>Unchecked label</span></label>
+        <br />
+        <label
+          ><input type="checkbox" checked />
+          <span>Checked label (line-through via :checked + label)</span></label
+        >
+        <br /><br />
+        <button class="box" disabled>Disabled button</button>
+      </div>
+
+      <p class="small">
+        Try: hover the link, click into the input, and toggle the checkbox.
+      </p>
+    </section>
+
+    <section>
+      <h2>5. Pseudo-elements</h2>
+      <div class="row">
+        <p class="quote">
+          This text uses <code>::before</code> and <code>::after</code> to add
+          quotation marks.
+        </p>
+        <p class="lead">
+          Leading paragraph that demonstrates
+          <code>::first-letter</code> styling.
+        </p>
+        <ul class="marker-demo">
+          <li>Marker 1</li>
+          <li>Marker 2</li>
+        </ul>
+      </div>
+      <p class="small">
+        <strong>Note:</strong> Pseudo-elements style parts of an element. They
+        require double colon notation (<code>::</code>) per modern CSS
+        (single-colon still supported for some older pseudo-elements).
+      </p>
+    </section>
+
+    <section>
+      <h2>6. Specificity demo (which rule wins?)</h2>
+      <div class="row">
+        <div class="box spec-demo" id="specId" style="">
+          This text color is set by both <code>.spec-demo</code> (green) and
+          <code>#specId</code> (red). The ID wins.
+        </div>
+      </div>
+      <p class="small">
+        Specificity order: inline styles &gt; IDs &gt;
+        classes/attributes/pseudo-classes &gt; element
+        selectors/pseudo-elements. When equal specificity, last declared rule
+        wins.
+      </p>
+    </section>
+
+    <section>
+      <h2>7. Useful combined example (animations & multi-select)</h2>
+      <div class="multi">
+        <span class="box">hover me</span>
+        <span class="box">or me</span>
+        <span class="box">or me</span>
+      </div>
+      <p class="small">
+        This shows a combination: selector chaining, pseudo-class
+        <code>:hover</code>, and chained effects.
+      </p>
+    </section>
   </body>
 </html>
