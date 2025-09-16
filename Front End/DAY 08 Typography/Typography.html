@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Typography Playground</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+
+      .demo {
+        margin-bottom: 40px;
+        padding: 15px;
+        border: 2px dashed gray;
+        background: #f9f9f9;
+      }
+
+      /* 1. Font properties */
+      .font-demo {
+        font-family: "Georgia", serif;
+        font-size: 24px;
+        font-style: italic;
+        font-weight: bold;
+        font-variant: small-caps;
+        font-stretch: expanded;
+        line-height: 2;
+      }
+
+      /* 2. Text properties */
+      .text-demo {
+        text-align: justify;
+        text-align-last: center;
+        text-decoration: underline wavy red 2px;
+        text-indent: 50px;
+        text-overflow: ellipsis;
+        text-shadow: 2px 2px 5px gray;
+        text-transform: uppercase;
+      }
+
+      /* 3. Letter & Word spacing */
+      .spacing-demo {
+        letter-spacing: 5px;
+        word-spacing: 20px;
+      }
+
+      /* 4. Writing & direction */
+      .direction-demo {
+        direction: rtl;
+        unicode-bidi: bidi-override;
+        writing-mode: vertical-rl;
+        text-orientation: upright;
+      }
+
+      /* 5. Vertical alignment */
+      .vertical-demo span {
+        vertical-align: super;
+      }
+
+      /* 6. Extra properties */
+      .extra-demo {
+        overflow-wrap: break-word;
+        hyphens: auto;
+        tab-size: 8;
+        line-break: loose;
+        quotes: "«" "»" "‹" "›";
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Typography Playground 🎨</h1>
+
+    <div class="demo font-demo">
+      <p>Font Properties → Bold, Italic, Small Caps, Expanded, Line Height</p>
+    </div>
+
+    <div class="demo text-demo">
+      <p>Text Properties → Alignment, Decoration, Indent, Shadow, Transform</p>
+    </div>
+
+    <div class="demo spacing-demo">
+      <p>Letter & Word Spacing → Spaced Out Text Example</p>
+    </div>
+
+    <div class="demo direction-demo">
+      <p>Writing & Direction → Vertical RTL Text</p>
+    </div>
+
+    <div class="demo vertical-demo">
+      <p>Vertical Alignment → Normal <span>Super</span> Text</p>
+    </div>
+
+    <div class="demo extra-demo">
+      <p>
+        "Extra Typography Features" with Quotes, Hyphens, and Word
+        Wrappingggggggggggggggggggggggg.
+      </p>
+    </div>
+  </body>
+</html>
