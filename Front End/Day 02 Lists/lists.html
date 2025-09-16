@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS List Properties</title>
+    <style>
+      /* list-style-type examples */
+      .disc {
+        list-style-type: disc;
+      }
+      .circle {
+        list-style-type: circle;
+      }
+      .square {
+        list-style-type: square;
+      }
+      .decimal {
+        list-style-type: decimal;
+      }
+      .roman {
+        list-style-type: upper-roman;
+      }
+      .alpha {
+        list-style-type: lower-alpha;
+      }
+      .none {
+        list-style-type: none;
+      }
+
+      /* list-style-position examples */
+      .inside {
+        list-style-position: inside;
+      }
+      .outside {
+        list-style-position: outside;
+      }
+
+      /* list-style-image */
+      .image-bullet {
+        list-style-image: url("https://via.placeholder.com/15/0000FF/FFFFFF?text=•");
+      }
+
+      /* shorthand example */
+      .shorthand {
+        list-style: square inside
+          url("https://via.placeholder.com/15/FF0000/FFFFFF?text=*");
+      }
+
+      /* marker pseudo-element */
+      .custom-marker li::marker {
+        color: red;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>CSS List Properties Demo</h2>
+
+    <ul class="disc">
+      <li>Disc bullet</li>
+    </ul>
+    <ul class="circle">
+      <li>Circle bullet</li>
+    </ul>
+    <ul class="square">
+      <li>Square bullet</li>
+    </ul>
+    <ul class="decimal">
+      <li>Decimal (1,2,3)</li>
+    </ul>
+    <ul class="roman">
+      <li>Roman (I, II, III)</li>
+    </ul>
+    <ul class="alpha">
+      <li>Alphabet (a, b, c)</li>
+    </ul>
+    <ul class="none">
+      <li>No bullet</li>
+    </ul>
+
+    <h3>List Position</h3>
+    <ul class="inside">
+      <li>Marker inside</li>
+    </ul>
+    <ul class="outside">
+      <li>Marker outside</li>
+    </ul>
+
+    <h3>Image as Marker</h3>
+    <ul class="image-bullet">
+      <li>Custom image marker</li>
+    </ul>
+
+    <h3>Shorthand Example</h3>
+    <ul class="shorthand">
+      <li>Shorthand applied</li>
+    </ul>
+
+    <h3>Custom Marker Styling (::marker)</h3>
+    <ul class="custom-marker">
+      <li>Styled marker</li>
+      <li>Another styled marker</li>
+    </ul>
+  </body>
+</html>
