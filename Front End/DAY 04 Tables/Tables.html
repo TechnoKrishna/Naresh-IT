@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Table Properties</title>
+    <style>
+      table {
+        width: 80%;
+        margin: 20px auto;
+        border: 2px solid black;
+        border-collapse: collapse; /* collapse or separate */
+        table-layout: auto; /* auto or fixed */
+        caption-side: top; /* top or bottom */
+      }
+      caption {
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      th,
+      td {
+        border: 1px solid gray;
+        padding: 10px; /* like cellpadding */
+        text-align: center;
+        vertical-align: middle; /* top, middle, bottom */
+      }
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+      td:empty {
+        background-color: lightyellow;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <caption>
+        Student Marks
+      </caption>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Math</th>
+          <th>Science</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Alice</td>
+          <td>90</td>
+          <td>95</td>
+        </tr>
+        <tr>
+          <td>Bob</td>
+          <td></td>
+          <td>85</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3">End of Table</td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>

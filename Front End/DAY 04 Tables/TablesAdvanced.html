@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Table Properties Demo</title>
+    <style>
+      /* TABLE PROPERTIES */
+      table {
+        width: 80%;
+        margin: 20px auto;
+        border: 2px solid black;
+        border-collapse: separate; /* collapse | separate */
+        border-spacing: 15px; /* works only with separate */
+        table-layout: auto; /* auto | fixed */
+        caption-side: bottom; /* top | bottom */
+        empty-cells: show; /* show | hide */
+        background-color: #f9f9f9;
+      }
+
+      caption {
+        font-weight: bold;
+        font-size: 18px;
+        margin: 5px;
+      }
+
+      /* CELL PROPERTIES */
+      th,
+      td {
+        border: 1px solid gray;
+        padding: 10px; /* like cellpadding */
+        text-align: center; /* left | right | center | justify */
+        vertical-align: middle; /* top | middle | bottom */
+        background-color: #fff;
+      }
+
+      /* EVEN ROW COLOR */
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      /* CUSTOM MARK EMPTY CELLS */
+      td:empty {
+        background-color: lightyellow;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HTML ATTRIBUTES: border, cellpadding, cellspacing, width, align -->
+    <table
+      border="1"
+      cellpadding="5"
+      cellspacing="5"
+      width="80%"
+      align="center"
+    >
+      <caption>
+        📊 All Table Properties
+      </caption>
+
+      <!-- TABLE HEAD -->
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Math</th>
+          <th>Science</th>
+          <th>Remarks</th>
+        </tr>
+      </thead>
+
+      <!-- TABLE BODY -->
+      <tbody>
+        <tr>
+          <td>Alice</td>
+          <td>95</td>
+          <td>88</td>
+          <td>Good</td>
+        </tr>
+        <tr>
+          <td>Bob</td>
+          <td></td>
+          <!-- Empty cell for empty-cells demo -->
+          <td>72</td>
+          <td>Average</td>
+        </tr>
+        <tr>
+          <td>Charlie</td>
+          <td>100</td>
+          <td>92</td>
+          <td>Excellent</td>
+        </tr>
+      </tbody>
+
+      <!-- TABLE FOOT -->
+      <tfoot>
+        <tr>
+          <td colspan="4">End of Table</td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>
