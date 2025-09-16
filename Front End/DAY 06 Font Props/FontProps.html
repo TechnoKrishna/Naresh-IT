@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Font Properties Demo</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        line-height: 1.6;
+      }
+
+      .demo {
+        margin-bottom: 30px;
+        padding: 10px;
+        border: 2px dashed gray;
+        background: #f9f9f9;
+      }
+
+      /* Basic font properties */
+      .basic {
+        font-family: "Georgia", serif;
+        font-size: 20px;
+        font-style: italic;
+        font-weight: bold;
+        font-variant: small-caps;
+        line-height: 2;
+      }
+
+      /* Font stretch */
+      .stretch {
+        font-stretch: expanded;
+        font-size: 18px;
+      }
+
+      /* Kerning */
+      .kerning {
+        font-kerning: none;
+        font-size: 22px;
+      }
+
+      /* Font variant caps */
+      .caps {
+        font-variant-caps: all-small-caps;
+        font-size: 20px;
+      }
+
+      /* Numeric variants */
+      .numeric {
+        font-variant-numeric: oldstyle-nums;
+        font-size: 22px;
+      }
+
+      /* Ligatures */
+      .ligatures {
+        font-variant-ligatures: none;
+        font-size: 22px;
+      }
+
+      /* Alternates */
+      .alternates {
+        font-variant-alternates: historical-forms;
+        font-size: 20px;
+      }
+
+      /* East Asian */
+      .eastasian {
+        font-variant-east-asian: ruby;
+        font-size: 20px;
+      }
+
+      /* Font synthesis */
+      .synthesis {
+        font-synthesis: none;
+        font-size: 20px;
+      }
+
+      /* Feature settings */
+      .features {
+        font-feature-settings: "smcp"; /* small caps */
+        font-size: 20px;
+      }
+
+      /* Variation settings (for variable fonts) */
+      .variation {
+        font-variation-settings: "wght" 700, "wdth" 150;
+        font-size: 22px;
+      }
+
+      /* Size adjust */
+      .size-adjust {
+        font-size-adjust: 0.58;
+        font-size: 20px;
+      }
+
+      /* Optical sizing */
+      .optical {
+        font-optical-sizing: auto;
+        font-size: 22px;
+      }
+
+      /* Language override */
+      .language {
+        font-language-override: "ENG";
+        font-size: 22px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Font Properties Playground 🎨</h1>
+
+    <div class="demo basic">
+      Basic Font → Bold, Italic, Small-Caps, Line Height
+    </div>
+    <div class="demo stretch">Font Stretch → Expanded text</div>
+    <div class="demo kerning">Font Kerning → No kerning applied</div>
+    <div class="demo caps">Font Variant Caps → ALL SMALL CAPS</div>
+    <div class="demo numeric">Font Variant Numeric → 1234567890</div>
+    <div class="demo ligatures">Font Ligatures → ff fi fl</div>
+    <div class="demo alternates">Font Alternates → Historical forms</div>
+    <div class="demo eastasian">東アジア → East Asian Variant</div>
+    <div class="demo synthesis">
+      Font Synthesis Disabled → Bold/Italic not auto generated
+    </div>
+    <div class="demo features">Font Feature Settings → Small Caps applied</div>
+    <div class="demo variation">Font Variation Settings → Heavy & Wide</div>
+    <div class="demo size-adjust">Font Size Adjust → Readability preserved</div>
+    <div class="demo optical">Font Optical Sizing → Auto adjustment</div>
+    <div class="demo language">Font Language Override → ENG</div>
+  </body>
+</html>
