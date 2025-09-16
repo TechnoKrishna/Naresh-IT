@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Box Sizing Example</title>
+    <style>
+      .container {
+        display: flex;
+        gap: 20px;
+      }
+
+      .box {
+        width: 200px;
+        height: 100px;
+        padding: 20px;
+        border: 10px solid red;
+        background: lightblue;
+      }
+
+      .content-box {
+        box-sizing: content-box; /* Default */
+      }
+
+      .border-box {
+        box-sizing: border-box;
+      }
+
+      .label {
+        text-align: center;
+        margin-top: 10px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Box-Sizing Demo</h2>
+    <div class="container">
+      <div>
+        <div class="box content-box">content-box</div>
+        <div class="label">Grows larger than 200px</div>
+      </div>
+
+      <div>
+        <div class="box border-box">border-box</div>
+        <div class="label">Always stays 200px</div>
+      </div>
+    </div>
+  </body>
+</html>

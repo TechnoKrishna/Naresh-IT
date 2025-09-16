@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Box Model Example</title>
+    <style>
+      .box {
+        /* Content area */
+        width: 200px;
+        height: 100px;
+
+        /* Padding (inside spacing) */
+        padding-top: 20px;
+        padding-right: 30px;
+        padding-bottom: 40px;
+        padding-left: 50px;
+        /* shorthand */
+        padding: 20px 30px 40px 50px;
+
+        /* Border (between padding and margin) */
+        border-width: 5px;
+        border-style: solid;
+        border-color: blue;
+        /* shorthand */
+        border: 5px dashed red;
+
+        /* Margin (outside spacing) */
+        margin-top: 10px;
+        margin-right: 20px;
+        margin-bottom: 30px;
+        margin-left: 40px;
+        /* shorthand */
+        margin: 10px 20px 30px 40px;
+
+        /* Box sizing (content-box or border-box) */
+        box-sizing: border-box;
+        background-color: lightyellow;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">CSS Box Model Demo</div>
+  </body>
+</html>
