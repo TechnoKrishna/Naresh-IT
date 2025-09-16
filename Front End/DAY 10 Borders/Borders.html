@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CSS Border Properties Demo</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 20px;
+      }
+
+      /* Common box style */
+      .box {
+        width: 160px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 14px;
+        background: #f9f9f9;
+      }
+
+      /* Border Width */
+      .width-thin {
+        border-width: thin;
+        border-style: solid;
+        border-color: black;
+      }
+      .width-medium {
+        border-width: medium;
+        border-style: solid;
+        border-color: black;
+      }
+      .width-thick {
+        border-width: thick;
+        border-style: solid;
+        border-color: black;
+      }
+      .width-px {
+        border-width: 6px;
+        border-style: solid;
+        border-color: black;
+      }
+
+      /* Border Style */
+      .style-solid {
+        border: 3px solid black;
+      }
+      .style-dashed {
+        border: 3px dashed black;
+      }
+      .style-dotted {
+        border: 3px dotted black;
+      }
+      .style-double {
+        border: 6px double black;
+      }
+      .style-groove {
+        border: 6px groove gray;
+      }
+      .style-ridge {
+        border: 6px ridge gray;
+      }
+      .style-inset {
+        border: 6px inset gray;
+      }
+      .style-outset {
+        border: 6px outset gray;
+      }
+      .style-none {
+        border: none;
+      }
+      .style-hidden {
+        border: hidden;
+      }
+
+      /* Border Color */
+      .color-red {
+        border: 4px solid red;
+      }
+      .color-green {
+        border: 4px solid green;
+      }
+      .color-blue {
+        border: 4px solid blue;
+      }
+      .color-multi {
+        border-top: 4px solid red;
+        border-right: 4px solid green;
+        border-bottom: 4px solid blue;
+        border-left: 4px solid orange;
+      }
+
+      /* Border Radius */
+      .radius-small {
+        border: 4px solid black;
+        border-radius: 5px;
+      }
+      .radius-large {
+        border: 4px solid black;
+        border-radius: 20px;
+      }
+      .radius-round {
+        border: 4px solid black;
+        border-radius: 50%;
+      }
+
+      /* Border Image */
+      .border-img {
+        border: 20px solid transparent;
+        border-image-source: url("https://picsum.photos/200");
+        border-image-slice: 10;
+        border-image-repeat: round;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Border Width -->
+    <div class="box width-thin">thin</div>
+    <div class="box width-medium">medium</div>
+    <div class="box width-thick">thick</div>
+    <div class="box width-px">6px</div>
+
+    <!-- Border Style -->
+    <div class="box style-solid">solid</div>
+    <div class="box style-dashed">dashed</div>
+    <div class="box style-dotted">dotted</div>
+    <div class="box style-double">double</div>
+    <div class="box style-groove">groove</div>
+    <div class="box style-ridge">ridge</div>
+    <div class="box style-inset">inset</div>
+    <div class="box style-outset">outset</div>
+    <div class="box style-none">none</div>
+    <div class="box style-hidden">hidden</div>
+
+    <!-- Border Color -->
+    <div class="box color-red">red</div>
+    <div class="box color-green">green</div>
+    <div class="box color-blue">blue</div>
+    <div class="box color-multi">multi-color</div>
+
+    <!-- Border Radius -->
+    <div class="box radius-small">5px radius</div>
+    <div class="box radius-large">20px radius</div>
+    <div class="box radius-round">circle</div>
+
+    <!-- Border Image -->
+    <div class="box border-img">border-image</div>
+  </body>
+</html>
