@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        height: 100vh;
+        width: 100vw;
+        background-color: rgb(161, 161, 161);
+        overflow-x: hidden;
+      }
+
+      #Container {
+        display: flex;
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: center;
+      }
+
+      .Sub {
+        padding: 5vh;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        margin-top: 4vh;
+        margin-bottom: 4vh;
+        width: 80vw;
+        height: 60vh;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 8px 8px rgb(113, 113, 113);
+      }
+
+      h2 {
+        text-align: center;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        font-size: 4.5vh;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      li {
+        color: white;
+        text-align: left;
+        padding: 1.5vh;
+        border-radius: 10px;
+        font-family: Georgia, "Times New Roman", Times, serif;
+        width: 60vw;
+        font-size: 2.4vh;
+        margin-top: 1vh;
+      }
+
+      li:nth-child(even) {
+        background-color: rgb(1, 156, 19);
+      }
+
+      li:nth-child(odd) {
+        background-color: rgb(0, 102, 192);
+      }
+
+      li:first-child {
+        background-color: rgb(255, 139, 44);
+      }
+      li:last-child {
+        background-color: rgb(255, 0, 0);
+      }
+
+      .Card {
+        width: 60vw;
+        height: 15vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 2px solid black;
+        padding: 2vh;
+        border-style: dashed;
+        margin-top: 2vh;
+        margin-bottom: 2vh;
+      }
+
+      .Card1 {
+      }
+
+      h3 {
+        margin: 1vh;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        font-size: 2.5vh;
+        color: rgb(1, 1, 138);
+      }
+
+      .Card div {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50vw;
+        height: 5vh;
+        color: white;
+        background-color: rgb(0, 191, 255);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="Container">
+      <div class="Sub">
+        <h2>Task : Style List with : nth-child()</h2>
+        <ul>
+          <li>Li : First - Child</li>
+          <li>Even</li>
+          <li>Odd</li>
+          <li>Even</li>
+          <li>Odd</li>
+          <li>Li : Last - Child</li>
+        </ul>
+      </div>
+
+      <div class="Sub">
+        <h2>CSS Box Model Property Task</h2>
+
+        <div class="Card Card1">
+          <h3>Margin Example</h3>
+          <div><p>Box with Margin</p></div>
+        </div>
+        <div class="Card Card2">
+          <h3>Margin Example</h3>
+          <div><p>Box with Margin</p></div>
+        </div>
+        <div class="Card Card3">
+          <h3>Margin Example</h3>
+          <div><p>Box with Margin</p></div>
+        </div>
+        <div class="Card Card4">
+          <h3>Margin Example</h3>
+          <div><p>Box with Margin</p></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HTML Formatting Tags — Visual Demo</title>
+    <style>
+      :root {
+        --bg: #0f172a; /* slate-900 */
+        --card: #111827; /* gray-900 */
+        --muted: #94a3b8; /* slate-400 */
+        --text: #e5e7eb; /* gray-200 */
+        --accent: #22c55e; /* green-500 */
+        --border: #1f2937; /* gray-800 */
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
+          Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji",
+          "Segoe UI Emoji";
+        background: radial-gradient(
+            1200px 600px at 10% -10%,
+            rgba(34, 197, 94, 0.08),
+            transparent 60%
+          ),
+          radial-gradient(
+            900px 500px at 110% 0%,
+            rgba(14, 165, 233, 0.08),
+            transparent 60%
+          ),
+          var(--bg);
+        color: var(--text);
+        padding: 24px;
+      }
+      header {
+        max-width: 1000px;
+        margin: 0 auto 24px;
+        text-align: center;
+      }
+      h1 {
+        font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+        margin: 0 0 6px;
+      }
+      .sub {
+        color: var(--muted);
+        margin: 0 0 18px;
+      }
+      .note {
+        display: inline-block;
+        padding: 8px 12px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: #0b1220aa;
+        font-size: 0.92rem;
+      }
+      .grid {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 16px;
+      }
+      .card {
+        background: linear-gradient(180deg, #0b1220, #0a0f1a);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 14px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25),
+          inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      }
+      .tagline {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        margin-bottom: 10px;
+      }
+      .tag {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+        background: #0a1426;
+        border: 1px solid var(--border);
+        color: #93c5fd;
+        padding: 2px 8px;
+        border-radius: 999px;
+        font-size: 0.85rem;
+      }
+      .label {
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+      .code {
+        border: 1px dashed var(--border);
+        border-radius: 12px;
+        padding: 10px;
+        background: #0b1324;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          monospace;
+        font-size: 0.9rem;
+        overflow-x: auto;
+        white-space: nowrap;
+        margin-bottom: 10px;
+      }
+      .render {
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 10px;
+        min-height: 44px;
+        background: #0b0f1a;
+      }
+      footer {
+        max-width: 1000px;
+        margin: 24px auto;
+        color: var(--muted);
+        text-align: center;
+      }
+      abbr {
+        text-decoration-style: dotted;
+      }
+      mark {
+        padding: 0 0.25em;
+        border-radius: 4px;
+      }
+      kbd {
+        background: #111827;
+        border: 1px solid #1f2937;
+        border-bottom-width: 3px;
+        border-radius: 6px;
+        padding: 2px 6px;
+        font-weight: 600;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      }
+      blockquote {
+        margin: 0;
+        padding-left: 12px;
+        border-left: 4px solid #334155;
+        color: #cbd5e1;
+      }
+      .muted {
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>HTML Formatting & Text Tags — Visual Demo</h1>
+      <p class="sub">
+        See the source <span class="muted">(left box)</span> and the live
+        rendering <span class="muted">(right box)</span>.
+      </p>
+      <p class="note">
+        Tip: Hover the <code>&lt;abbr&gt;</code> example, select text to see
+        <code>&lt;mark&gt;</code>, and notice semantic vs purely visual pairs
+        like <code>&lt;strong&gt;</code> vs <code>&lt;b&gt;</code>,
+        <code>&lt;em&gt;</code> vs <code>&lt;i&gt;</code>.
+      </p>
+    </header>
+
+    <section class="grid">
+      <!-- b -->
+      <article class="card">
+        <div class="tagline">
+          <span class="tag">&lt;b&gt;</span
+          ><span class="label">Bold (visual)</span>
+        </div>
+        <div class="code">&lt;b&gt;Bold text&lt;/b&gt;</div>
+        <div class="render"><b>Bold text</b></div>
+      </article>
+
+      <!-- strong -->
+      <article class="card">
+        <div class="tagline">
+          <span class="tag">&lt;strong&gt;</span
+          ><span class="label">Strong (semantic importance)</span>
+        </div>
+        <div class="code">&lt;strong&gt;Important!&lt;/strong&gt;</div>
+        <div class="render"><strong>Important!</strong></div>
+      </article>
+
+      <!-- i -->
+      <article class="card">
+        <div class="tagline">
+          <span class="tag">&lt;i&gt;</span
+          ><span class="label">Italic (visual)</span>
+        </div>
+        <div class="code">&lt;i&gt;Italic text&lt;/i&gt;</div>
+        <div class="render"><i>Italic text</i></div>
+      </article>
+
+      <!-- em -->
+      <article class="card">
+        <div class="tagline">
+          <span class="tag">&lt;em&gt;</span
+          ><span class="label">Emphasis (semantic)</span>
+        </div>
+        <div class="code">&lt;em&gt;Emphasized meaning&lt;/em&gt;</div>
+        <div class="render"><em>Emphasized meaning</em></div>
+      </article>
+
+      <!-- u -->
+      <article class="card">
+        <div class="tagline">
+          <span class="tag">&lt;u&gt;</span><span class="label">Underline</span>
+        </div>
+        <div class="code">&lt;u&gt;Underlined&lt;/u&gt;</div>
+        <div class="render"><u>Underlined</u></div>
+      </article>
+
+      <!-- mark -->
+      <article class="card">
+        <div class="tagline">
+          <span class="tag">&lt;mark&gt;</span
+          ><span class="label">Highlight</span>
+        </div>
+        <div class="code">A &lt;mark&gt;highlighted&lt;/mark&gt; word</div>
+        <div class="render">A <mark>highlighted</mark> word</div>
+      </article>
+
+      <!-- small -->
+      <article class="card">
+        <div class="tagline">
+          <span class="tag">&lt;small&gt;</span
+          ><span class="label">Small print</span>
+        </div>
+        <div class="code">&lt;small&gt;Terms apply&lt;/small&gt;</div>
+        <div class="render"><small>Terms apply</small></div>
+      </article>
+
+      <!-- del -->
+      <article class="card">
+        <div class="tagline">
+          <span class="tag">&lt;del&gt;</span><span class="label">Deleted</span>
+        </div>
+        <div class="code">&lt;del&gt;₹999&lt;/del&gt;</div>
+        <div class="render"><del>₹999</del></div>
+      </article>
+
+      <!-- ins -->
+      <article class="card">
+        <div class="tagline">
+          <span class="tag">&lt;ins&gt;</span
+          ><span class="label">Inserted</span>
+        </div>
+        <div class="code">&lt;ins&gt;Now ₹799&lt;/ins&gt;</div>
+        <div class="render"><ins>Now ₹799</ins></div>
+      </article>
+
+      <!-- sub -->
+      <article class="card">
+        <div class="tagline">
+          <span class="tag">&lt;sub&gt;</span
+          ><span class="label">Subscript</span>
+        </div>
+        <div class="code">H&lt;sub&gt;2&lt;/sub&gt;O</div>
+        <div class="render">H<sub>2</sub>O</div>
+      </article>
+
+      <!-- sup -->
+      <article class="card">
+        <div class="tagline">
+          <span class="tag">&lt;sup&gt;</span
+          ><span class="label">Superscript</span>
+        </div>
+        <div class="code">x&lt;sup&gt;2&lt;/sup&gt;</div>
+        <div class="render">x<sup>2</sup></div>
+      </article>
+
+      <!-- code -->
+      <article class="card">
+        <div class="tagline">
+          <span class="tag">&lt;code&gt;</span
+          ><span class="label">Inline code</span>
+        </div>
+        <div class="code">&lt;code&gt;printf("Hello");&lt;/code&gt;</div>
+        <div class="render"><code>printf("Hello");</code></div>
+      </article>
+
+      <!-- kbd -->
+      <article class="card">
+        <div class="tagline">
+          <span class="tag">&lt;kbd&gt;</span
+          ><span class="label">Keyboard input</span>
+        </div>
+        <div class="code">
+          Press &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;C&lt;/kbd&gt;
+        </div>
+        <div class="render">Press <kbd>Ctrl</kbd>+<kbd>C</kbd></div>
+      </article>
+
+      <!-- samp -->
+      <article class="card">
+        <div class="tagline">
+          <span class="tag">&lt;samp&gt;</span
+          ><span class="label">Sample output</span>
+        </div>
+        <div class="code">&lt;samp&gt;404 Not Found&lt;/samp&gt;</div>
+        <div class="render"><samp>404 Not Found</samp></div>
+      </article>
+
+      <!-- pre -->
+      <article class="card">
+        <div class="tagline">
+          <span class="tag">&lt;pre&gt;</span
+          ><span class="label">Preformatted</span>
+        </div>
+        <div class="code">&lt;pre&gt;Line 1\n Line 2&lt;/pre&gt;</div>
+        <div class="render">
+          <pre>
+Line 1
+  Line 2</pre
+          >
+        </div>
+      </article>
+
+      <!-- blockquote -->
+      <article class="card">
+        <div class="tagline">
+          <span class="tag">&lt;blockquote&gt;</span
+          ><span class="label">Block quotation</span>
+        </div>
+        <div class="code">
+          &lt;blockquote&gt;Stay curious.&lt;/blockquote&gt;
+        </div>
+        <div class="render"><blockquote>Stay curious.</blockquote></div>
+      </article>
+
+      <!-- q -->
+      <article class="card">
+        <div class="tagline">
+          <span class="tag">&lt;q&gt;</span
+          ><span class="label">Inline quote</span>
+        </div>
+        <div class="code">He said, &lt;q&gt;Hi!&lt;/q&gt;</div>
+        <div class="render">He said, <q>Hi!</q></div>
+      </article>
+
+      <!-- abbr -->
+      <article class="card">
+        <div class="tagline">
+          <span class="tag">&lt;abbr&gt;</span
+          ><span class="label">Abbreviation (hover)</span>
+        </div>
+        <div class="code">
+          &lt;abbr title=&quot;World Health
+          Organization&quot;&gt;WHO&lt;/abbr&gt;
+        </div>
+        <div class="render">
+          <abbr title="World Health Organization">WHO</abbr>
+        </div>
+      </article>
+
+      <!-- address -->
+      <article class="card">
+        <div class="tagline">
+          <span class="tag">&lt;address&gt;</span
+          ><span class="label">Contact info</span>
+        </div>
+        <div class="code">&lt;address&gt;Hyderabad, IN&lt;/address&gt;</div>
+        <div class="render"><address>Hyderabad, IN</address></div>
+      </article>
+
+      <!-- cite -->
+      <article class="card">
+        <div class="tagline">
+          <span class="tag">&lt;cite&gt;</span
+          ><span class="label">Citation</span>
+        </div>
+        <div class="code">
+          &lt;cite&gt;Design of Everyday Things&lt;/cite&gt;
+        </div>
+        <div class="render"><cite>Design of Everyday Things</cite></div>
+      </article>
+
+      <!-- bdi / bdo for directionality (bonus) -->
+      <article class="card">
+        <div class="tagline">
+          <span class="tag">&lt;bdi&gt; / &lt;bdo&gt;</span
+          ><span class="label">Bidirectional text</span>
+        </div>
+        <div class="code">
+          User: &lt;bdi&gt;علي&lt;/bdi&gt; ★ | &lt;bdo
+          dir=&quot;rtl&quot;&gt;abcd&lt;/bdo&gt;
+        </div>
+        <div class="render">
+          User: <bdi>علي</bdi> ★ | <bdo dir="rtl">abcd</bdo>
+        </div>
+      </article>
+
+      <!-- sup+sub combo (math) -->
+      <article class="card">
+        <div class="tagline">
+          <span class="tag">Math</span><span class="label">Combining tags</span>
+        </div>
+        <div class="code">
+          E = mc&lt;sup&gt;2&lt;/sup&gt;, H&lt;sub&gt;2&lt;/sub&gt;O
+        </div>
+        <div class="render">E = mc<sup>2</sup>, H<sub>2</sub>O</div>
+      </article>
+    </section>
+
+    <footer>
+      Made for quick revision. Copy this file and tweak the code boxes to
+      experiment.
+    </footer>
+  </body>
+</html>

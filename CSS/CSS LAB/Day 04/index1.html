@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(90deg, rgb(0, 183, 250), rgb(0, 85, 182));
+      width: 100vw;
+      height: 100vh;
+    }
+
+    div {
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    * {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana;
+    }
+  </style>
+  <body>
+    <header style="background-color: rgb(39, 66, 67); color: rgb(0, 225, 255)">
+      <h1
+        style="
+          text-align: center;
+          padding: 15px;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        "
+      >
+        CSS BACKGROUND & BOX MODEL DEMO
+      </h1>
+    </header>
+
+    <div class="container">
+      <h3 style="text-align: center; margin: 15px">
+        background Properties Examples
+      </h3>
+
+      <div
+        style="
+          background-color: rgb(1, 120, 43);
+          margin-left: 8vw;
+          margin-right: 8vw;
+          border-radius: 5px;
+        "
+      >
+        <p style="text-align: center; padding: 25px; color: white">
+          Background Color
+        </p>
+      </div>
+
+      <div
+        style="
+          background: url(1.jpg);
+          margin-left: 8vw;
+          margin-right: 8vw;
+          border-radius: 5px;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+        "
+      >
+        <p style="text-align: center; padding: 25px; color: rgb(184, 0, 46)">
+          Background Image
+        </p>
+      </div>
+
+      <div
+        style="
+          background: url(1.jpg);
+          margin-left: 8vw;
+          margin-right: 8vw;
+          border-radius: 5px;
+          background-repeat: repeat;
+          background-position: center;
+        "
+      >
+        <p style="text-align: center; padding: 25px; color: rgb(60, 255, 0)">
+          Background Repeat
+        </p>
+      </div>
+
+      <div
+        style="
+          background: linear-gradient(
+            90deg,
+            rgb(210, 210, 210),
+            rgb(57, 57, 57)
+          );
+          margin-left: 8vw;
+          margin-right: 8vw;
+          border-radius: 5px;
+          background-repeat: repeat;
+          background-position: center;
+        "
+      >
+        <p style="text-align: center; padding: 25px; color: rgb(18, 0, 0)">
+          Background Gradient
+        </p>
+      </div>
+
+      <h3 style="text-align: center">Box Model Examples</h3>
+
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <div
+          style="
+            padding: 5px;
+            background-color: white;
+            border: 3px solid green;
+            width: 20vw;
+          "
+        >
+          <p>Small Padding</p>
+          <p>padding: 5px</p>
+          <p>border: solid</p>
+        </div>
+
+        <div
+          style="
+            padding: 20px;
+            background-color: white;
+            border: 3px solid green;
+            border-style: dashed;
+            width: 25vw;
+          "
+        >
+          <p>Dashed Border</p>
+          <p>padding: 20px</p>
+          <p>border: dashed</p>
+        </div>
+
+        <div
+          style="
+            padding: 40px;
+            background-color: white;
+            border: 3px solid green;
+            border-style: dotted;
+            width: 30vw;
+          "
+        >
+          <p>Dotted Border</p>
+          <p>padding: 40px</p>
+          <p>border: Dotted</p>
+        </div>
+
+        <div
+          style="
+            padding: 15px;
+            background-color: white;
+            border: 3px solid green;
+            width: 30vw;
+            margin: 60px;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+          "
+        >
+          <p>Large Margin</p>
+          <p>Margin: 60px</p>
+        </div>
+
+        <div
+          style="
+            padding: 15px;
+            background-color: white;
+            border: 3px solid green;
+            width: 30vw;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+          "
+        >
+          <p>Rounded Border</p>
+          <p>Border-Radius: 20px</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

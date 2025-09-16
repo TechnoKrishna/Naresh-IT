@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      * {
+        margin: 2px;
+      }
+      body {
+        background-color: #ffe9db;
+      }
+      h2 {
+        margin: 15px;
+        color: brown;
+      }
+
+      label,
+      legend {
+        color: rgb(193, 72, 72);
+      }
+
+      fieldset {
+        border: rgb(255, 98, 98) 1px solid;
+      }
+
+      input[type="reset"] {
+        background-color: rgb(193, 72, 72);
+        color: rgb(255, 226, 227);
+      }
+
+      textarea {
+        background-color: rgb(255, 226, 227);
+        border: rgb(193, 72, 72) 1px solid;
+      }
+
+      input[type="submit"] {
+        background-color: rgb(193, 72, 72);
+        color: rgb(255, 226, 227);
+      }
+
+      input {
+        background-color: rgb(255, 226, 227);
+        border: rgb(193, 72, 72) 1px solid;
+      }
+
+      input:hover {
+        background-color: rgb(253, 190, 192);
+      }
+      textarea:hover {
+        background-color: rgb(253, 190, 192);
+      }
+
+      input[list]:hover {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>HTML Forms Demonstration</h2>
+
+    <fieldset>
+      <legend>Student Registration Form</legend>
+      <form action="">
+        <table border="0">
+          <tr>
+            <td>
+              <label for="">Full Name : </label>
+            </td>
+            <td>
+              <input type="text" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="">Email : </label>
+            </td>
+            <td>
+              <input type="text" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="">Password : </label>
+            </td>
+            <td>
+              <input type="text" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="">Date of Birth : </label>
+            </td>
+            <td>
+              <input type="date" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="">Gender : </label>
+            </td>
+            <td>
+              <div>
+                <input type="radio" />Male <input type="radio" />Female
+                <input type="radio" />Other
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="">Course : </label>
+            </td>
+            <td>
+              <input type="text" list="l1" />
+              <datalist id="l1">
+                <option value="B-Tech"></option>
+                <option value="BCA"></option>
+              </datalist>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="">Hobbies : </label>
+            </td>
+            <td>
+              <div>
+                <input type="checkbox" />Reading <input type="checkbox" />Sports
+                <input type="checkbox" />Coding
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="">Address : </label>
+            </td>
+            <td>
+              <div>
+                <textarea cols="30" rows="3" name="" id=""> </textarea>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for=""></label>
+            </td>
+            <td>
+              <div>
+                <input type="submit" value="Register" />
+                <input type="reset" />
+              </div>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </fieldset>
+
+    <fieldset>
+      <legend>Login Form</legend>
+      <table>
+        <tr>
+          <td>
+            <label for="">Full Name : </label>
+          </td>
+          <td>
+            <input type="text" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="">Email : </label>
+          </td>
+          <td>
+            <input type="text" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for=""></label>
+          </td>
+          <td>
+            <input type="submit" value="Login" />
+          </td>
+        </tr>
+      </table>
+    </fieldset>
+
+    <fieldset>
+      <legend>Contact Us Form</legend>
+      <table>
+        <tr>
+          <td>
+            <label for="">Name : </label>
+          </td>
+          <td>
+            <input type="text" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="">Email : </label>
+          </td>
+          <td>
+            <input type="text" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="">Phone : </label>
+          </td>
+          <td>
+            <input type="text" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="">Message : </label>
+          </td>
+          <td>
+            <div>
+              <textarea cols="30" rows="3" name="" id=""> </textarea>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for=""></label>
+          </td>
+          <td>
+            <div>
+              <input type="submit" value="Send Message" />
+            </div>
+          </td>
+        </tr>
+      </table>
+    </fieldset>
+
+    <fieldset>
+      <legend>Job Application Form</legend>
+      <table>
+        <tr>
+          <td>
+            <label for="">Full Name : </label>
+          </td>
+          <td>
+            <input type="text" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="">Email : </label>
+          </td>
+          <td>
+            <input type="text" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="">Phone : </label>
+          </td>
+          <td>
+            <input type="text" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="">Position Applied : </label>
+          </td>
+          <td>
+            <input type="text" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="">resume : </label>
+          </td>
+          <td>
+            <input type="file" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="">Cover Letter : </label>
+          </td>
+          <td>
+            <div>
+              <textarea cols="30" rows="5" name="" id=""> </textarea>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for=""></label>
+          </td>
+          <td>
+            <div>
+              <input type="submit" value="Apply Now" />
+            </div>
+          </td>
+        </tr>
+      </table>
+    </fieldset>
+    <fieldset>
+      <legend>Feedback Form</legend>
+
+      <table>
+        <tr>
+          <td>
+            <label for="">Name : </label>
+          </td>
+          <td>
+            <input type="text" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="">Email : </label>
+          </td>
+          <td>
+            <input type="text" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="">Rate our service : </label>
+          </td>
+          <td>
+            <input type="text" list="l2" />
+            <datalist id="l2">
+              <option value="Excellent"></option>
+              <option value="Good"></option>
+              <option value="Nice"></option>
+              <option value="Bad"></option>
+            </datalist>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="">Comments : </label>
+          </td>
+          <td>
+            <div>
+              <textarea cols="30" rows="3" name="" id=""> </textarea>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <input type="submit" value="Submit Feedback" />
+          </td>
+        </tr>
+      </table>
+    </fieldset>
+  </body>
+</html>

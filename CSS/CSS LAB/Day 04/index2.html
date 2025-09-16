@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: rgb(224, 224, 224);
+        width: 100vw;
+        height: 100vh;
+      }
+
+      .Container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #div1 {
+        background: url(1.jpg);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: right;
+        margin: 15px;
+        background-color: rgb(0, 66, 44);
+        padding: 40px;
+      }
+
+      p {
+        text-align: center;
+        color: white;
+      }
+
+      #div2 {
+        background: url(1.jpg);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: left;
+        margin: 15px;
+        background-color: rgb(0, 66, 44);
+        padding: 40px;
+      }
+      #div3 {
+        background: url(burger.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        margin: 15px;
+        background-color: rgb(0, 66, 44);
+        padding: 40px;
+      }
+      #div4 {
+        background-color: rgb(189, 92, 108);
+        margin: 15px;
+        padding: 40px;
+        background-clip: content-box;
+        border: 5px solid red;
+      }
+
+      .divc {
+        width: 80vw;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="Container">
+      <h2 style="text-align: center; margin: 15px">
+        Background Property Examples
+      </h2>
+      <div id="div1" class="divc">
+        <p>Background Position</p>
+      </div>
+      <div id="div2" class="divc">
+        <p>Background Position</p>
+      </div>
+      <div id="div3" class="divc">
+        <p>Background Position</p>
+      </div>
+      <div id="div4" class="divc">
+        <p>Background Clip (Content-Box)</p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      #Container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(209, 209, 209);
+      }
+
+      #Main {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 15vh 15vh 15vh 15vh;
+        gap: 1.5vw;
+        justify-content: center;
+        align-content: center;
+        border-radius: 20px;
+        height: 80vh;
+        width: 80vw;
+        background-color: white;
+        padding: 2vw;
+      }
+
+      .grid-item {
+        background-color: rgb(4, 124, 222);
+        color: white;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+      }
+
+      .Item1 {
+        grid-column: 1 / 3;
+        grid-row: 1;
+        background-color: rgb(255, 0, 0);
+      }
+
+      .Item2 {
+        grid-column: 3;
+        grid-row: 1;
+      }
+
+      .Item3 {
+        grid-column: 2;
+        grid-row: 2;
+      }
+      .Item4 {
+        grid-column: 3;
+        grid-row: 2;
+      }
+
+      .Item5 {
+        grid-column: 1;
+        grid-row: 2 / 4;
+        background-color: rgb(6, 194, 0);
+      }
+
+      .Item6 {
+        grid-column: 1;
+        grid-row: 4;
+      }
+      
+      .Item8 {
+        grid-column: 3;
+        grid-row: 4;
+      }
+
+      .Item9 {
+        grid-column: 2/ 4;
+        grid-row: 3;
+        background-color: rgb(225, 162, 1);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="Container">
+      <div id="Main">
+        <div class="grid-item Item1">Item 1 (Spans 2 Columns)</div>
+        <div class="grid-item Item2">Item 2</div>
+        <div class="grid-item Item3">Item 3</div>
+        <div class="grid-item Item4">Item 4</div>
+        <div class="grid-item Item5">Item 5 (Spans 2 Rows)</div>
+        <div class="grid-item Item6">Item 6</div>
+        <div class="grid-item Item7">Item 7</div>
+        <div class="grid-item Item8">Item 8</div>
+        <div class="grid-item Item9">Item 9 (Spans 2 columns)</div>
+      </div>
+    </div>
+  </body>
+</html>

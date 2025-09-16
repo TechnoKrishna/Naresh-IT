@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        overflow-x: hidden;
+        background-color: rgb(0, 0, 0);
+        font-style: bold;
+      }
+
+      .Container {
+        height: 100vh;
+        width: 100vw;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .Sub {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60vw;
+        height: 10vh;
+        color: black;
+        background-color: brown;
+        margin: 1vh;
+        border-radius: 35px;
+        box-shadow: 5px 5px 20px rgb(33, 33, 33);
+      }
+
+      #sub1 {
+        background-color: rgb(110, 161, 0);
+      }
+      #sub2 {
+        background-color: rgb(144, 0, 210);
+      }
+      #sub3 {
+        background-color: rgb(255, 0, 102);
+      }
+      #sub4 {
+        background-color: rgb(233, 229, 0);
+      }
+      #sub5 {
+        background-color: rgb(0, 222, 222);
+      }
+
+      #Navbar {
+        position: sticky;
+        top: 0;
+        width: 100vw;
+        height: 10vh;
+        display: flex;
+        justify-content: center;
+      }
+
+      #Navbar ul {
+        display: flex;
+        flex-direction: row;
+        list-style-type: none;
+      }
+
+      #Navbar ul li {
+        color: white;
+        padding: 15px;
+      }
+
+      #Navbar ul li:hover {
+        background-color: white;
+        color: black;
+        cursor: pointer;
+        transition: ease-in;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="Navbar">
+      <ul>
+        <li>Home</li>
+        <li>Store</li>
+        <li>Gallery</li>
+        <li>About</li>
+        <li>Info</li>
+        <li>Contact</li>
+      </ul>
+    </div>
+
+    <div class="Container">
+      <div id="sub1" class="Sub">Div 1</div>
+      <div id="sub2" class="Sub">Div 2</div>
+      <div id="sub3" class="Sub">Div 3</div>
+      <div id="sub4" class="Sub">Div 4</div>
+      <div id="sub5" class="Sub">Div 5</div>
+    </div>
+
+
+    
+  </body>
+</html>

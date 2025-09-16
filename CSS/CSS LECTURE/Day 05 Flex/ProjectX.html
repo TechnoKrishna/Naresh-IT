@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HyderBaddie.com</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: rgb(226, 253, 71);
+        overflow-x: hidden;
+      }
+
+      #Navbar {
+        z-index: 99;
+        position: sticky;
+        top: 0;
+        display: flex;
+        width: 100vw;
+        height: 8vh;
+      }
+
+      #Navbar #Logo {
+        height: 8vh;
+        width: 25vw;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        align-content: center;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        background-color: rgb(0, 0, 0);
+        color: pink;
+      }
+
+      #Navbar #Links {
+        height: 8vh;
+        width: 75vw;
+        display: flex;
+        flex-direction: row-reverse;
+        align-content: center;
+        background-color: rgb(0, 0, 0);
+      }
+
+      #Navbar #Links ul {
+        margin-right: 2vw;
+        display: flex;
+        align-items: center;
+        list-style-type: none;
+      }
+
+      #Navbar #Links ul li {
+        font-size: 2vw;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        padding: 2vh;
+        color: white;
+      }
+
+      #Navbar #Links ul li:hover {
+        background-color: white;
+        color: black;
+      }
+
+      #Container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        height: 92vh;
+        width: 100vw;
+      }
+
+      #Container .Cards {
+        box-shadow: 5px 5px 10px black;
+        margin-top: 5vh;
+        margin-left: 3vw;
+        background-color: beige;
+        width: 29vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 35vh;
+      }
+
+      #Container .Cards img {
+        padding: 2vh;
+        width: 25vw;
+        height: 22vh;
+      }
+
+      #Container .Cards p {
+        padding: 2vh;
+      }
+
+      #Container .Cards:hover {
+        scale: 1.1;
+      }
+
+      /* FOOTER */
+
+      #Footer {
+        background-color: black;
+        height: 40vh;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      #Footer .FootCards {
+        margin: 2vh;
+        padding: 2vw;
+        width: 25vw;
+        height: 10vh;
+        color: white;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      }
+
+      #Footer .FootCards h3 {
+        font-size: 1.9vw;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR  -->
+
+    <div id="Navbar">
+      <div id="Logo"><h2>Hyder-Baddie</h2></div>
+      <div id="Links">
+        <ul>
+          <li>Home</li>
+          <li>Store</li>
+          <li>Contact</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Main -->
+
+    <div id="Container">
+      <div class="Cards" id="Card1">
+        <img
+          src="https://creations.mattel.com/cdn/shop/files/fjjvfzq4mjcoqiuyqfyi.jpg?v=1753907910"
+          alt=""
+        />
+        <p>Price : $25</p>
+      </div>
+      <div class="Cards" id="Card2">
+        <img
+          src="https://creations.mattel.com/cdn/shop/files/HWC_A-Spot_Launch_JCV06_M_640x@2x.jpg?v=1750887812"
+          alt=""
+        />
+        <p>Price : $25</p>
+      </div>
+      <div class="Cards" id="Card3">
+        <img
+          src="https://creations.mattel.com/cdn/shop/files/HWC_DropTile_D_HGK80_Chevy454SS_720x.jpg?v=1656633398"
+          alt=""
+        />
+        <p>Price : $25</p>
+      </div>
+      <div class="Cards" id="Card4">
+        <img
+          src="https://creations.mattel.com/cdn/shop/files/HWC_Tile_Drop_D_HGK73_JPNNissanGTR_720x.jpg?v=1684945234"
+          alt=""
+        />
+        <p>Price : $25</p>
+      </div>
+      <div class="Cards" id="Card5">
+        <img
+          src="https://creations.mattel.com/cdn/shop/files/HWC_DropTile_D_HGW15_HondaS2000_RA_eb9616e3-ff7c-4f64-b1ac-3d4c97fafc2d_720x.jpg?v=1656633500"
+          alt=""
+        />
+        <p>Price : $25</p>
+      </div>
+      <div class="Cards" id="Card6">
+        <img
+          src="https://creations.mattel.com/cdn/shop/files/HWC_Tile_Drop_D_GXJ19_52DodgeWagon_720x.jpg?v=1684944617"
+          alt=""
+        />
+        <p>Price : $25</p>
+      </div>
+    </div>
+
+    <footer>
+      <div id="Footer">
+        <div class="FootCards">
+          <h3>ABOUT</h3>
+        </div>
+        <div class="FootCards">
+          <h3>GROUP COMPANIES</h3>
+        </div>
+        <div class="FootCards">
+          <h3>HELP</h3>
+        </div>
+        <div class="FootCards">
+          <h3>CONSUMER POLICY</h3>
+        </div>
+        <div class="FootCards">
+          <h3>MAIL US</h3>
+        </div>
+        <div class="FootCards">
+          <h3>REGISTER OFFICE ADDRESS</h3>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

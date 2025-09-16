@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.Container {
+  background-color: rgb(237, 237, 237);
+  height: 100vh;
+  width: 100vw;
+}
+
+.Container .Navbar {
+  z-index: 1;
+  position: static;
+  top: 0;
+  background-color: aliceblue;
+  height: 8vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 3px 15px black;
+}
+
+.Container .Navbar div {
+  padding: 2vh;
+}
+
+.Container .Navbar .Logo {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.Container .Navbar .NavLinks ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row-reverse;
+}
+.Container .Navbar .NavLinks ul li {
+  padding: 20px;
+}
+
+.Container .Navbar .NavLinks ul li:hover {
+  background-color: black;
+  color: white;
+}
+
+.Container .Main {
+  display: grid;
+  grid-template-rows: 10vh 1fr;
+  justify-content: center;
+  align-items: center;
+  height: 84vh;
+  width: 100vw;
+}
+
+.Container .Main .Header {
+  justify-self: center;
+  font-weight: bold;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.Container .Main .Cards {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.Container .Main .Cards .Card {
+  height: 40vh;
+  width: 20vh;
+  background-color: bisque;
+}
+
+/* FOOTER */
+
+.Footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 8vh;
+  width: 100vw;
+  background-color: black;
+  color: white;
+}

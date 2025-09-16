@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        overflow: hidden;
+      }
+
+      .Container {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+      }
+
+      .Box {
+        position: absolute;
+        width: 20vh;
+        height: 20vh;
+        margin: 20px;
+      }
+
+      .Box1 {
+        background-color: rgb(0, 0, 0);
+        animation: rotate 4s linear infinite;
+      }
+
+      @keyframes rotate {
+        0% {
+          transform: rotateZ(0deg);
+        }
+        25% {
+          transform: rotateZ(90deg);
+        }
+        50% {
+          transform: rotateZ(180deg);
+        }
+        75% {
+          transform: rotateZ(270deg);
+        }
+        100% {
+          transform: rotateZ(360deg);
+        }
+      }
+
+      .Box1::before {
+        content: "1";
+        padding: 25px;
+        width: 50vh;
+        border-radius: 55px;
+        height: 50vh;
+        background-color: aquamarine;
+      }
+
+      .Box1::after {
+        content: "1";
+        padding: 25px;
+        margin-left: 55px;
+        width: 50vh;
+        border-radius: 55px;
+        height: 50vh;
+        background-color: rgb(0, 255, 21);
+      }
+
+      .Box2 {
+        background-color: rgb(0, 255, 30);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="Container">
+      <div class="Box Box1" style="display: "></div>
+      <!-- <div class="Box Box2"></div> -->
+    </div>
+  </body>
+</html>

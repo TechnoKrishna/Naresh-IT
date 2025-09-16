@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .Container {
+        height: 100vh;
+        width: 100vw;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .Card {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        /* justify-content: center; */
+        /* background-color: bisque; */
+        height: 10vh;
+        width: 60vw;
+        animation: rotate 2s linear infinite;
+      }
+
+      .Back {
+        position: absolute;
+        width: 60vw;
+        border-radius: 10px;
+        height: 5vh;
+        background-color: gray;
+      }
+
+      .Front {
+        position: absolute;
+        width: 0vw;
+        border-radius: 10px;
+        height: 5vh;
+        background-color: rgb(43, 255, 0);
+        animation: move 1s ease-out infinite alternate;
+      }
+
+      @keyframes rotate {
+        from {
+          rotate: 0deg;
+          /* box-shadow: 5px 5px 5px 5px rgb(43, 255, 0); */
+        }
+        to {
+          rotate: 360deg;
+          /* box-shadow: 5px 5px 5px 5px red; */
+        }
+      }
+
+      @keyframes move {
+        from {
+          background-color: red;
+          width: 0vw;
+        }
+        to {
+          background-color: rgb(13, 255, 0);
+          width: 60vw;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="Container">
+      <div class="Card">
+        <div class="Back"></div>
+        <div class="Front"></div>
+      </div>
+    </div>
+  </body>
+</html>

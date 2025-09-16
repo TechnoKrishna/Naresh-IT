@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-columns: 15vw 1fr 20vw;
+        grid-template-rows: 15vh 60vh 15vh;
+        gap: 10px;
+        justify-content: center;
+        align-content: center;
+        height: 100vh;
+        background-color: #ddd;
+        padding: 10px;
+      }
+
+      .grid-item {
+        background-color: steelblue;
+        color: white;
+        font-size: 18px;
+        border-radius: 6px;
+      }
+
+      .header {
+        grid-column: 1 / 4;
+        grid-row: 1;
+        background-color: rgb(0, 115, 192);
+      }
+
+      .header h3 {
+        padding: 3vh;
+      }
+
+      .sidebar {
+        background-color: gray;
+        grid-column: 1;
+        grid-row: 2;
+        display: flex;
+        justify-content: center;
+      }
+
+      .sidebar ul {
+        margin-top: 2vh;
+        list-style-type: none;
+      }
+
+      .sidebar ul li {
+        padding: 1.5vw;
+        background-color: rgb(78, 78, 78);
+        margin: 1vh;
+        width: 13vw;
+        border-radius: 10px;
+      }
+
+      .main {
+        padding: 2vw;
+        grid-column: 2;
+        grid-row: 2;
+        background-color: rgb(83, 174, 174);
+      }
+
+      .aside {
+        grid-column: 3;
+        grid-row: 2;
+        background-color: rgb(94, 94, 94);
+        padding: 2vw;
+      }
+
+      .aside {
+        ul {
+          list-style: none;
+        }
+      }
+
+      .footer {
+        grid-column: 1 / 4;
+        grid-row: 3;
+        background-color: rgb(0, 0, 0);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid-container">
+      <div class="grid-item header">
+        <h3>My Awesome Website</h3>
+      </div>
+      <div class="grid-item sidebar">
+        <nav>
+          <ul>
+            <li>Home</li>
+            <li>About</li>
+            <li>Services</li>
+            <li>Contact</li>
+          </ul>
+        </nav>
+      </div>
+      <div class="grid-item main">
+        <h3>Welcome to Our Page!</h3>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repudiandae,
+          omnis iusto
+        </p>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad cum quo,
+          nam eligendi non ipsa libero. Cum necessitatibus aliquid ipsam?
+        </p>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa
+          asperiores quis, magni vel nulla, possimus velit distinctio
+        </p>
+      </div>
+      <div class="grid-item aside">
+        <h3>Recent Posts</h3>
+        <ul>
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+        </ul>
+        <h3>Recent Posts</h3>
+        <ul>
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+        </ul>
+      </div>
+      <div class="grid-item footer">
+        © 2025 Mt Awesome Website. By - krishna
+      </div>
+    </div>
+  </body>
+</html>
