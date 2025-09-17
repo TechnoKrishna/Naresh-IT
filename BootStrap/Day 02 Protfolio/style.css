@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(110, 144, 255);
+  overflow-x: hidden;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 99 !important;
+}
+
+.bg-custom {
+  background-color: navy;
+}
+
+.navbar-brand {
+  color: tomato;
+}
+
+#navbarNav {
+  display: flex;
+  justify-content: end;
+}
+
+.navbar-nav a {
+  color: white;
+}
+
+.ff-custom {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.imgc {
+  animation: move 1s ease alternate infinite;
+}
+
+@keyframes move {
+  to {
+    transform: translatex(-50px);
+  }
+  from {
+    transform: translatex(50px);
+  }
+}
+
+.contact-card {
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+}
