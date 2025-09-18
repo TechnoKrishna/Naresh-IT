@@ -1,0 +1,134 @@
+Q ) Main() Method : 
+
+In Java, the main() method is the entry point of any standalone program.
+
+When you run a Java program, the JVM looks for this method to start execution.
+
+public static void main(String[] args)
+
+* public → Accessible by JVM from anywhere.
+* static → No object is needed to call it.
+* void → Does not return anything.
+* main → Name recognized by JVM as the starting point.
+* String[] args → Command-line arguments.
+
+Q ) Why each part is required?
+
+1 > public
+
+* JVM calls main() from outside your class.
+* If not public, JVM cannot access it → program won’t start.
+
+2 > static
+
+* JVM doesn’t create an object of your class before calling main().
+
+* If it were not static, JVM would need to instantiate the class first → not possible without main().
+
+3 > void
+
+* JVM doesn’t expect any value back after finishing main().
+* If you change it (e.g., to int), it compiles but runtime error occurs.
+
+4 > main
+
+* The JVM looks for the method named main.
+* If you rename it (e.g., start), program won’t run.
+
+5 > String[] args
+
+* Used for command-line arguments.
+
+* Input : java Test Krishna
+* Output : First arg: Krishna
+
+Q ) Can we write multiple method with the same name?
+
+Yes, we can also write Multiple main() with different parameter 
+
+But 👉 the JVM always looks for the standard main(String[] args) to start the program.
+
+Other versions will not be called automatically, but you can call them manually from inside the standard main.
+
+//
+
+public class Test {
+    public static void main(String[] args) {
+        System.out.println("Hello World 1");
+        main();
+    }
+
+    public static void main() {
+        System.out.println("Hello World 2");
+    }
+}
+
+//
+
+OUTPUT :-
+
+Hello World 1
+Hello World 2
+
+//
+
+Q ) String[] args :- 
+
+* It is an array of Strings.
+
+* Used to store command-line arguments passed when running the program.
+
+* Even if you don’t pass anything, it must be there (or String... args).
+
+✅ In short:
+String[] args = a container for command-line inputs given to your program.
+
+Refer LoginApp.java 
+
+Q ) Why the main method of java accepts String Array as a Parameter ?
+
+String is a collection of alpha-numeric character so it can accept all differt kind of values
+
+The main method accepts String[] args because when you run a Java program, the JVM needs a way to pass command-line arguments (the extra inputs you type after the program name).
+
+String[] → All inputs from the command line are treated as text (strings).
+
+Array → Because you can pass multiple arguments, not just one.
+
+Example:
+
+java Test Krishna 25 India
+
+✅ In short:
+String[] args lets your program receive external input from the user at runtime through the command line.
+
+Q ) Why String[] and not int[] or float[]?
+
+When you run a Java program from the command line, everything you type after the program name is read by the operating system as text (strings).
+
+JVM simply passes those inputs to your program as a String[] array.
+
+Later, if you need numbers, you convert them from String → int, double, etc.
+
+Refer ParseData.java 
+
+Q ) System.out,println() : 
+
+System → A built-in class in Java (java.lang package).
+
+out → A static object of type PrintStream inside System class. It represents the standard output stream (usually the console).
+
+println() → A method of PrintStream that prints the text and then moves the cursor to the next line.
+
+✅ In short:
+System.out.println() = Print something to the console and go to the next line.
+
+q ) Summary of rules:
+
+If String comes first → rest is treated as concatenation.
+
+If only numbers are there (or inside ()), normal arithmetic happens.
+
+Order of evaluation is left to right.
+
+Refer StringConcatenation.java 
