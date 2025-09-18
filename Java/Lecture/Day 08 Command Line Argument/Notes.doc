@@ -1,0 +1,176 @@
+Q ) What is a command line arguments
+
+👉 Command-line arguments in Java are the inputs you give to a program while running it from the terminal/command prompt.
+
+They are stored in the String[] args of the main() method.
+Each argument is separated by a space.
+By default, they come as Strings, even if you type numbers.
+
+class Test {
+    public static void main(String[] args) {
+        System.out.println("First: " + args[0]);
+        System.out.println("Second: " + args[1]);
+    }
+}
+
+--> java Test Krishna 25
+
+Q ) advantages of command-line arguments
+
+1 ) No Hardcoding of Values
+
+You don’t need to write fixed values inside the code.
+Inputs can be given directly while running the program.
+This makes the program reusable.
+
+👉 Example: Instead of writing int a = 5, b = 10;, you can pass 5 and 10 from the command line.
+
+2 ) Flexibility at Runtime
+
+You can run the same program with different inputs without modifying the source code.
+
+👉 Example: java Calculator 10 20 and java Calculator 50 60 both use the same program.
+
+Multiple inputs → You can pass many values at once.
+
+3 ) Support for Multiple Inputs
+
+You can pass many values (e.g., names, numbers, filenames) at once.
+
+They are stored in the String[] args array, so you can access them one by one.
+
+
+Note : Every time we modify .java file (Source code) then we need to re-compile our java program.
+
+public class Command 
+{
+    public static void main(String[] args) 
+    {
+        System.out.println(args[0]);
+    }
+}
+
+javac Command.java
+java Command           [Not passing any value at runtime]
+
+
+The above program is expecting at least one value from the command line argument, If we don't pass any value at runtime then we will get a runtime exception i.e java.lang.ArrayIndexOutOfBoundsException.
+
+
+// WAP to accept all Different kinds of values using CL Arguments
+
+public class DifferentArgs {
+    public static void main(String[] args) {
+        System.out.println(args[0]);
+        System.out.println(args[1]);
+        System.out.println(args[2]);
+    }
+}
+
+java DifferentArgs 78 89.78 krishna 
+
+// WAP to print full name using Command line argument.
+
+public class StringArgs {
+    public static void main(String[] args) {
+        System.out.println(args[0]);
+    }
+}
+
+java StringArgs "krishna Sonawane"
+
+// Note //
+
+Single time compilation and number of times execution.
+
+🔎 Single-time compilation
+
+In Java, the source code (.java file) is compiled once by the Java Compiler (javac).
+
+The compiler converts it into bytecode (.class file).
+
+This .class file is platform-independent (can run on any OS with JVM).
+
+👉 So, compilation happens only one time for a program, unless you change the code.
+
+Number of times execution
+
+The compiled bytecode (.class) can be executed multiple times using the JVM (java ClassName).
+
+Each execution doesn’t require recompilation unless the source code is modified.
+
+👉 So, you can run the same program as many times as you want without compiling again.
+
+// WAP in java to add two numbers by using Command Line Argument :
+
+public class AddArgs {
+    public static void main(String[] args) {
+        System.out.println("The sum is: " + (args[0] + args[1]));
+    }
+}
+
+--> java AddArgs 100 200
+
+--> The sum is: 100200
+
+// Note : Here num is String type of variable hence '+' operator will behave as String concatenation operator.
+
+Q ) How to convert a String value into integer :
+
+There is a predefined class called Integer available in java.lang package.
+This Integer class contains a predefined static method called parseInt(String x), this parseInt() method accept a single parameter 
+variable of type String.
+
+This parseInt(String x) method whose return type is int, will automatically convert the given String into integer type and return the integer value. 
+
+// WAP in java to perform addition of two numbers by using command line argument with arithmetic operator.
+
+public class AddArgs {
+    public static void main(String[] args) {
+        int a = Integer.parseInt(args[0]);
+        int b = Integer.parseInt(args[1]);
+        int c = a + b;
+        System.out.println("The sum is: " + c);
+    }
+}
+
+//WAP to find out the cube of a number by using command line argument.
+
+public class CubeArgs {
+    public static void main(String[] args) {
+        int a = Integer.parseInt(args[0]);
+        int b = a * a * a;
+        System.out.println("The cube is: " + b);
+    }
+}
+
+
+// WAP to find out the area of rectangle by using command line argument :
+
+public class RectangleArgs {
+    public static void main(String[] args) {
+        int l = Integer.parseInt(args[0]);
+        int b = Integer.parseInt(args[1]);
+        int area = l * b;
+        System.out.println("Area of Rectangle is: " + area);
+
+    }
+}
+
+// WAP to find out the area of Circle by using command line argument.
+
+public class CircleArgs {
+    public static void main(String[] args) {
+        Double radius = Double.parseDouble(args[0]);
+        Double area = 3.14 * radius * radius;
+        System.out.println("Area of Circle: " + area);
+    }
+}
+
+// How to find out the length of an array ?
+
+public class ArgsLength {
+    public static void main(String[] args) {
+        System.out.println("Number of arguments: " + args.length);
+    }
+}
