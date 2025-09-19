@@ -1,0 +1,79 @@
+Q ) Flavors of Java
+
+a) Java SE (Java Standard Edition) Standalone/Desktop Apps
+
+    Core Java
+
+b) Java EE (Java Enterprise Edition) Web & Enterprise Apps
+
+    Advanced Java
+
+c) Java ME (Java Micro Edition)    Mobile & Embedded Devices
+
+    Android Java
+
+d) JavaFX (Java FX)  Rich Internet Apps (UI/Graphics)
+
+    JAVA FX (Out dated, By Using java FX we can develop GUI applications like button, radio button and so on)
+
+Q ) History of Java
+
+Name of the Language: Java
+
+First Name: OAK (Tree name) – 1991
+
+Release Date: 23rd Jan 1996
+
+Developed By: James Gosling & his team
+
+Project Name: Green Project
+
+Why Java?: Named after Java Island (Indonesia, famous for coffee)
+
+Q ) What is a function ?
+
+A function is a block of code that performs a specific task, can be reused, and usually takes input (parameters) and may return output (value).
+
+Example (in Java):
+
+int add(int a, int b) {
+    return a + b;   // returns sum
+}
+
+A function is divided into two types :
+
+ 1) Predefined OR Built-in function
+
+    Predefined / Built-in Function
+    Already provided by the programming language.
+    Can be used directly without writing their code.
+
+    Example in Java:
+
+    Math.sqrt(25) → gives square root.
+    System.out.println() → prints output.
+
+ 2) User-defined OR Custom function
+    
+    Created by the programmer to perform specific tasks.
+
+    Example in Java:
+
+    int square(int n) {
+    return n * n;
+    }
+
+Q ) Advantages of Function
+
+Reusability → Write once, use multiple times.
+
+Modularity → Breaks program into smaller parts (easy to manage).
+
+Readability → Code becomes cleaner and easier to understand.
+
+Debugging → Easier to find and fix errors in smaller blocks.
+
+Maintenance → Updating code is simpler when functions are used.
+
+Reduced Redundancy → Avoids writing the same code again and again.
+
