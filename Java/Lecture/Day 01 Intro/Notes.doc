@@ -1,0 +1,56 @@
+Q ) What is a Language?
+
+A language is a medium of communication through which we can express our thoughts and ideas and communicate with others.
+
+Example: English, Marathi, Hindi, Telgu, French, etc.
+
+Q ) What is Programming language ?
+
+A programming language is a medium of communication between a programmer and a computer.
+
+It allows programmers to write instructions that a computer can understand and execute.
+
+Example: C, C++, Java, Python - High-Level Languages
+
+Q ) 2 Level of Security ?
+
+At Compiler Level 📝
+
+The compiler checks syntax errors, type checking, and bytecode verification.
+
+It ensures only valid code is compiled into bytecode.
+
+At Execution Level ⚡
+
+The JVM + Security Manager check code before running.
+
+Protects against unauthorized access (like file access, memory access, or network misuse).
+
+✅ In short:
+
+Compiler level → prevents invalid code.
+
+Execution level → prevents unsafe operations during runtime.
+
+Q ) What is Java ?
+
+Java is a :
+
+   High-level → closer to human language, easy to understand.
+
+   Object-Oriented → everything is treated as an object.
+
+   Secure and Robust → prevents errors and provides strong memory management.
+
+   Platform-Independent → "Write Once, Run Anywhere" (WORA).
+
+   programming language developed by Sun Microsystems (now Oracle).
+
+    By using java language, We can develop various applications like
+
+    a) Stand-alone application [Desktop OR Software]
+    b) Web application [websites]
+    C) Enterprise application
+    d) Gaming application [Multithreading]
+    e) Mobile application
+    f) Distributed application
