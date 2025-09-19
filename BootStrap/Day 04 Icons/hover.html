@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bootstrap Icons Hover Replace</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+    <style>
+      .icon-hover::before {
+        font-family: "bootstrap-icons";
+        content: "\f417"; /* heart (empty) */
+        font-size: 50px;
+        color: crimson;
+        transition: 0.3s;
+        display: inline-block;
+      }
+
+      .icon-hover:hover::before {
+        content: "\f415"; /* heart-fill */
+        color: darkred;
+        transform: scale(1.2);
+      }
+    </style>
+  </head>
+  <body>
+    <span class="icon-hover"></span>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  scroll-behavior: smooth; */
+}
+body {
+  background-color: #f0f0f0;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.Container {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 5vw 95vw;
+  grid-template-rows: 100vh;
+}
+
+.Jar {
+  display: grid;
+  grid-template-columns: 95vw;
+  grid-template-rows: 5vh 95vh;
+}
+
+.Navbar {
+  background-color: blue;
+}
+
+.SearchBar {
+  background-color: red;
+}
+
+.Main {
+  background-color: green;
+}

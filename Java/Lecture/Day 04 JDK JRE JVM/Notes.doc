@@ -1,0 +1,197 @@
+Q )  What is difference between bit code and byte code
+
+1 > Bitcode = machine-specific, works on one computer only.
+
+    What it is : Code made for a specific CPU or machine
+
+    Can it run anywhere : No, only on that machine
+
+    Who runs it : CPU / Hardware
+
+    File type : Machine code (.bin)
+
+Bytecode = platform-independent, works on any computer with JVM.
+
+    What it is : Code made by Java that JVM can run anywhere
+
+    Can it run anywhere : Yes, on any machine with JVM
+
+    Who runs it : JVM (Java Virtual Machine)
+
+    File type : Java class file (.class)
+
+JVM is going to convert this byte code into appropriate machine understandable format.
+
+Q ) What is the difference between JDK, JRE, JVM
+
+1 > JVM (Java Virtual Machine)
+
+What it is: Software that runs Java bytecode(.Class File).
+
+Role: Converts bytecode into machine code and executes it.
+
+Platform: Each OS has its own JVM.
+
+Example: Windows JVM, Linux JVM.
+
+In short: JVM = “Runs Java programs on your computer.”
+
+JVM takes .class file and convert the class file into Operating System understandable format.
+
+JVM is platform dependent, It provides various features like Class loading, class verification, allocating the memory for all the data members, Garbage collection, Security Manager and so on.
+
+2 > JRE (Java Runtime Environment)
+
+What it is: Package that includes JVM + Java class libraries needed to run Java programs.
+
+Role: Lets you run Java programs but cannot compile them.
+
+In short: JRE = “Java player” (just runs programs).
+
+3 > JDK (Java Development Kit)
+
+What it is: Package that includes JRE + Development tools (like compiler).
+
+Role: Lets you write, compile, and run Java programs.
+
+In short: JDK = “Java toolbox” (write & run programs).
+
+1️⃣ JVM (Java Virtual Machine)
+
+Easy meaning: The engine that runs Java programs.
+
+Real-life example: Think of JVM as a worker in a factory who executes tasks.
+
+Role: Converts bytecode into machine code so the computer can run it.
+
+2️⃣ JRE (Java Runtime Environment)
+
+Easy meaning: The package that lets you run Java programs.
+
+Real-life example: JRE = the factory with workers and tools to run the task.
+
+Role: Contains JVM + libraries needed for execution.
+
+3️⃣ JDK (Java Development Kit)
+
+Easy meaning: The full package to write, compile, and run Java programs.
+
+Real-life example: JDK = the whole workshop → includes materials to make the product, tools to build it, and workers to run it.
+
+Role: Contains JRE + compiler + other tools for development.
+
+Simple Analogy Table
+Part	Meaning	Real-life Example
+JVM	Runs Java bytecode	Worker executing tasks
+JRE	Runs Java programs	Factory with workers & tools
+JDK	Write + compile + run programs	Complete workshop for building & running products
+
+Q ) Execution Flow
+
+1 > Write Java Program
+
+You write code in a .java file using a text editor or IDE.
+
+public class Test {
+    public static void main(String[] args) {
+        System.out.println("Hello Java");
+    }
+}
+
+2 > Compile Java Program (JDK)
+
+The JDK compiler (javac) converts .java file into bytecode (.class file).
+
+Example: javac Test.java → Test.class
+
+3 > Load Bytecode (JVM)
+
+JVM loads the bytecode into memory.
+
+The class loader loads classes needed for execution.
+
+4 > Bytecode Verification
+
+JVM verifies bytecode for security & correctness.
+
+5 > Execution
+
+JIT compiler inside JVM converts bytecode into machine code for faster execution.
+
+CPU executes the machine code.
+
+6 > Program Output
+
+Program runs and prints output on the console.
+
+Q ) What is the difference Compiler and Interpreter :
+
+1 >  Compiler
+
+Definition : Translates entire source code into machine code at once
+
+Execution Speed : Faster execution (code already compiled)
+ 
+Error Detection : Shows all errors at once after compilation
+
+Output : Produces a separate executable file
+
+Example : javac (Java Compiler)
+
+Scans the entire program once.
+
+Will convert the S/C into byte code.
+
+byte code is generated so, It needs a separate memory.
+
+It displays all the errors and warnings at a time so, debugging is slow
+
+After successful compilation, execution is fast.
+
+After successful compilation, We can delete the source code.
+
+2 >  Interpreter
+
+Definition : Translates line by line and executes immediately
+
+Execution Speed : Slower execution (translation happens at runtime)
+ 
+Error Detection : Shows errors line by line while running
+
+Output : No separate file; executes directly
+
+Example : python, JavaScript Interpreter
+
+Scans line by line.
+
+Will convert the byte code into O.S format.
+
+Read the byte code line by line and generate the output concurrently.
+
+It will display only one runtime error at a time so, debugging is fast
+
+Execution is slow because If we make a mistake at line number 5 then after resolving the issue It will again start from line number 1
+
+We cannot delete the byte code due to line by line execution
+
+✅ In short:
+
+Compiler = translate whole program first → then run (fast).
+
+Interpreter = translate & run line by line (slower, immediate feedback).
+
+1️⃣ Compiler
+
+Easy meaning: Checks the whole program first, then runs it.
+
+Real-life example: Writing a book, checking the whole manuscript for errors, then printing it.
+
+Java Example: javac Test.java → creates .class file → JVM runs it.
+
+2️⃣ Interpreter
+
+Easy meaning: Reads and runs code line by line, stops if it finds an error.
+
+Real-life example: Cooking with a recipe step by step. If you make a mistake in step 2, you stop immediately.
+
+Example languages: Python, JavaScript.
