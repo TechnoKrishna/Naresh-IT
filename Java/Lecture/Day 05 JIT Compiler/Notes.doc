@@ -1,0 +1,142 @@
+Q ) what is JIT Compiler
+
+Full form: Just-In-Time Compiler
+
+improve the performance of java program at runtime
+
+Where it is: Part of the JVM
+
+What it does: Converts Java bytecode into machine code at runtime to make the program run faster.
+
+Why needed:
+
+Internally JVM uses an interpreter, which executes bytecode line by line hence execution slow.
+
+To overcome this limitation, JVM uses JIT Compiler.
+
+When the JVM finds some methods or instructions that are repeated frequently (called hotspots), Instead of interpreting them line by line again and again, JIT compiler compiles those bytecode instructions into native machine code.
+
+At the time of execution, JIT compiler directly provides these native machine code to JVM for fast execution.
+
+Q ) What is a Variable
+
+A variable is a name given for the memory location that stores data which can change during program execution.
+
+Think of it as a box with a name where you can keep values.
+
+int age = 25;      // 'age' is a variable storing 25
+String name = "Krishna"; // 'name' stores "Krishna"
+
+Q ) What is data type in java ?
+
+A data type specifies the type of data a variable can store.
+
+It tells the compiler what kind of values the variable can hold (numbers, text, true/false, etc.)
+
+A data type in Java not only tells the kind of value a variable can hold, but also:
+
+1 > Size → How much memory it uses in RAM.
+
+    Example: int → 4 bytes, byte → 1 byte
+
+2 > Range → The minimum and maximum values it can store.
+
+    Example: byte → -128 to 127, int → -2,147,483,648 to 2,147,483,647
+
+3 > Operations → What actions you can perform on it.
+
+    Example: Numbers → addition, subtraction
+
+    Characters → comparison
+
+    Boolean → logical operations (true/false)
+
+Q ) How many data types in java ?
+
+Java data types are mainly divided into two categories:
+
+1) Primitive Data type
+
+Basic building blocks of data.
+Store single values like numbers, characters, or true/false.
+Example: int, float, char, boolean, byte, short, long, double
+
+byte : 1 byte
+short : 2 bytes
+int : 4 bytes
+long : 8 bytes
+float : 4 bytes
+double : 8 bytes
+char : 2 bytes
+boolean : 1 bit
+
+2) Reference Data type
+
+Store reference (address) of objects in memory.
+Can access methods and properties of objects.
+Example: String, Arrays, Objects, Classes
+
+Note: WE HAVE TOTAL 8 PRIMITIVE DATA TYPES IN JAVA, AMONG THESE 8 DATA TYPES 6 DATA TYPES ARE REPRESENTING NUMBER ie byte, short, int, long, float, double.
+
+Q ) What is the difference between statically typed and dynamically typed language ?
+
+1 > Statically typed language :
+
+The languages where data type is compulsory before initialization of a variable are called Statically typed language.
+
+In these languages, once we define the type of the variable then it will hold same kind of value till the end of the program.
+
+Less flexible
+
+Example of statically typed languages :
+C,C++, JSE, C# and so on
+
+2 > Dynamically typed language :
+
+The languages where Data type is not compulsory, It is optional to initialize the variable are called Dynamically Typed Language.
+
+In these languages we can provide all different kinds of values to the variable during the execution of the program.
+
+More flexible
+
+Example of dynamically typed languages :
+Visual Basic, Javascript, Python and so on
+
+////////////////////////////////////////
+
+1 > Statically typed → Like filling a labeled box: “This box can only hold books.” You must know the type before putting anything.
+
+2 > Dynamically typed → Like a magic box: You can put anything inside, and it figures out the type automatically.
+
+Q ) What is comment in java ?
+
+A comment is a line in the code that is ignored by the compiler.
+
+Used to explain the code for humans, make it readable, or temporarily disable code.
+
+Types of Comments in Java :-
+
+1 > Single-line comment
+
+// This is a single-line comment
+int x = 10; // variable x stores 10
+
+2 > Multi-line comment
+
+/*
+ This is a multi-line comment
+ It can span multiple lines
+*/
+int y = 20;
+
+3 > Documentation comment
+
+/**
+ This method adds two numbers
+ @param a first number
+ @param b second number
+ @return sum of a and b
+ */
+int add(int a, int b) {
+    return a + b;
+}
