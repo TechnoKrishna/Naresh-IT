@@ -1,0 +1,92 @@
+Q ) Why we pass parameter to a function ?
+
+We pass parameters to a function so that it can work with different input values without rewriting the code.
+
+👉 Parameters act like variables that carry data from outside into the function.
+
+int add(int a, int b) {   // a, b are parameters
+    return a + b;
+}
+
+public static void main(String[] args) {
+    System.out.println(add(5, 10)); // 15
+    System.out.println(add(20, 30)); // 50
+}
+
+✅ In short: We pass parameters to make functions flexible, reusable, and dynamic.
+
+Q ) difference between Parameters and Arguments in short
+
+ 1 > Parameter
+    
+    Definition : A variable in the function definition that receives a value.
+
+    Where used? : Inside function declaration.
+
+    Example : int add(int a, int b) → a and b are parameters.
+
+    Purpose : Acts as a placeholder.
+
+ 2 > Argument
+
+    Definition : The actual value passed to the function when calling it.
+
+    Where used? : Inside function call.
+
+    Example : add(5, 10) → 5 and 10 are arguments.
+
+    Purpose : Provides real data.
+
+Q ) Why functions are called Method in java ?
+
+in C++ language, there is a facility to write a function inside the class as well outside of the class by using scope resolution operator (::) but in java we can write a function inside the class only, we can't define a function outside of the class, that is reason functions are called Method in java.
+
+In Java, functions are called methods because:
+
+1 ) Belong to a Class/Objects → In Java, everything exists inside a class. Functions cannot exist independently, they must be written inside a class.
+
+2 ) Object-Oriented Nature → Since Java is object-oriented, these functions operate on objects → so they are called methods of the class.
+
+3 ) Terminology Difference → In procedural languages (like C), they are called functions, but in object-oriented Java, they are called methods.
+
+✅ In short: Functions in Java are called methods because they are always defined inside classes and work with objects.
+
+Q ) What is platform independency in java ?
+
+C and C++ programs are platform dependent programs that means the .exe file created on one machine will not be executed on the another machine if the system configuration is different.
+
+That is the reason C and C++ programs are not suitable for website development.
+
+👉 A Java program can run on any operating system (Windows, Linux, Mac, etc.) without modification.
+
+This is possible because:
+
+Java code is compiled into bytecode (.class file).
+
+The JVM (Java Virtual Machine) executes this bytecode.
+
+Since every OS has its own JVM, the same program runs everywhere.
+
+Example
+
+Write code in Windows → compile → get bytecode.
+
+Run the same bytecode on Linux/Mac → works without changes.
+
+✅ In short: Java is platform-independent because it uses bytecode + JVM, enabling “Write Once, Run Anywhere” (WORA).
+
+Q ) The role of java compiler :
+
+It converts Java source code (.java file) into bytecode (.class file).
+
+This bytecode is not machine-specific → it can run on any system with a JVM.
+
+The compiler also checks for syntax errors during compilation.
+
+Here JVM plays a major role because It converts the .class file into appropriate machine code instruction (Operating System format) so java becomes platform independent language and it is highly suitable for website development.
+
+✅ In short: The Java compiler translates source code into bytecode, making Java platform-independent.
+
+Note :- Each OS (Windows, Linux, Mac) has its own JVM implementation that means JVM is platform dependent technology where as Java is platform Independent technology.
+
+JVM internally contains an interpreter so it executes the code line by line. It is written in 'C' langugae hance platform dependent.
