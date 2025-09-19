@@ -1,0 +1,99 @@
+// WAP in java to display welcome message :
+
+public class Welcome {
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
+    }
+}
+
+Q ) Can we Compile a java program without main method ?
+
+Yes 👍 A Java program can be compiled without a main() method, but it cannot be executed.
+
+Compile: javac MyClass.java → Works fine (checks only syntax).
+
+Run: java MyClass → JVM looks for public static void main(String[] args) and gives error if missing.
+
+👉 In short:
+
+Compilation without main → possible.
+
+Execution without main → not possible.
+
+Q ) Description of main() method :
+
+Entry point of every Java standalone application.
+
+Signature: public static void main(String[] args)
+
+public → It is an access modifier in java which defines the accessibility level of main method. Our main method must be declared as public otherwise JVM can't access our main  method so the execution of the program will not be started.
+
+If we don't declare our main method with public access modifier then code will compile but it will not be executed by JVM.
+
+static -> Runs without creating an object.
+
+As of now, we have 2 types of methods in java :
+
+ 1) static method (OBJECT IS NOT REQUIRED)
+ 2) non static method (OBJECT IS REQUIRED)
+
+✅ Why static?
+
+JVM calls main() without creating an object of the class.
+
+If it were not static, JVM would first need to create an object → but to create an object, program must already start → infinite loop problem.
+
+That’s why main() must be static as an entry point.
+
+✖️ Non-static main()
+
+This will compile, but JVM will not treat it as the starting point.
+
+JVM specifically looks for public static void main(String[] args).
+
+The non-static version can only be called manually from another method.
+
+Case 1 : If a static method declared in the same class where main method is available then we can directly call the static method from main method as shown in the Program.
+
+public class StaticTest {
+    public static void main(String[] args) {
+        System.out.println("Static main running...");
+        main();
+    }
+
+    // non-static main
+    public static void main() {
+        System.out.println("Hello Everyone!!!");
+    }
+}
+
+Case 2 : If a static method is available in another class (Where main method is not available) then to call the static method CLASS
+
+class Welcome {
+    public static void main() {
+        System.out.println("Hello Batch 40");
+    }
+}
+
+public class DiffClassStatic {
+    public static void main(String[] args) {
+        System.out.println("Static main running...");
+        Welcome.main();
+    }
+}
+
+Our main method must be declared with static keyword so, JVM can invoke main method with the help of class name.
+
+If we don't declare our main method as static keyword then code will compile (It is a non static method) but it will not be executed by JVM.
+
+Void -> Does not return anything.
+
+It is a keyword in java. We should write void before the name of the method so that particular method will not return any kind of value.
+
+In the case of main(), JVM doesn’t expect anything back once the program finishes → so the return type is void.
+
+If we don't write void or any other kind of return type before the main method then code WILL NOT compile because java compiler has provided syntax rule that every method must contain return type.
+
+Note : If main method is not declared with void then program will NOT BE executed.
+
+Note : Without return type we can't define a method in java [Syntax Rule]
