@@ -13,4 +13,4 @@ public class ArrayLengthCalculation {
             System.out.println("Sum is :" + sum);
         }
     }
-}
+} 

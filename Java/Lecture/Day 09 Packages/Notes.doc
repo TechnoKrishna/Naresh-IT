@@ -170,7 +170,7 @@ Platform Independent – Write once, run anywhere (because of bytecode & JVM).
 
 Secure – Has built-in security features (no pointer, JVM sandbox).
 
-Robust – Strong in memory management and error handling.
+Robust – Strong in memory management and error handling. 
 
 Portable – Can run on any machine without change.
 
