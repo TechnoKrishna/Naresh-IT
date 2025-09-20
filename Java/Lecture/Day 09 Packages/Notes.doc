@@ -1,0 +1,183 @@
+When we arrange Java classes into packages (folders), we get:
+
+Fast Searching → Classes are organized neatly in groups, so it’s easy to find and manage them.
+
+Name Reusability → Two classes can have the same name if they are in different packages, avoiding conflicts.
+
+✅ Example:
+
+com.school.Student
+
+com.college.Student
+
+Both have Student class, but no conflict because they are in different packages.
+
+// File: com/school/Student.java
+
+package com.school;
+public class Student {
+    public void display() {
+        System.out.println("I am a School Student");
+    }
+}
+
+// File: com/college/Student.java
+
+package com.college;
+public class Student {
+    public void display() {
+        System.out.println("I am a College Student");
+    }
+}
+
+// File: MainApp.java
+
+import com.school.Student;   // Import school Student
+import com.college.Student;  // Import college Student (conflict here!)
+public class MainApp {
+    public static void main(String[] args) {
+        // To avoid confusion, we use full package name
+        com.school.Student schoolStudent = new com.school.Student();
+        com.college.Student collegeStudent = new com.college.Student();
+
+        schoolStudent.display();
+        collegeStudent.display();
+    }
+}
+
+javac -d . com/school/Student.java com/college/Student.java MainApp.java
+
+java MainApp
+
+Output
+I am a School Student
+I am a College Student
+
+// Types of Packages :
+
+1 > Built-in Packages (Predefined Packages)
+
+    These are provided by Java itself.
+
+    Examples:
+    java.lang → basic classes (String, Math, Object, etc.)
+    java.util → collections, date, time, etc.
+    java.io → input-output classes
+    java.sql → database handling
+    javax.swing → GUI components
+
+2 > User-defined Packages
+
+    Created by programmers for organizing their own classes and interfaces.
+
+    Example:
+
+    package myPackage;  
+    public class MyClass {  
+        public void show() {  
+            System.out.println("Hello from my package");  
+        }  
+    }
+
+// WAP to find out the square of the number by using Command Line Argument.
+
+    public class FindSquare
+    {
+        public static void main(String[] args)
+        {        
+            int num = Integer.parseInt(args[0]);  
+            System.out.println("Square of "+num+" is :"+(num*num));
+        }
+    }
+
+// WAP to find out the area of rectangle :
+
+    public class AreaOfRectangle {
+
+        public static void main(String[] args)
+        {
+            int length = Integer.parseInt(args[0]);
+            int breadth = Integer.parseInt(args[1]);
+       
+            int areaOfRect = length * breadth;
+            System.out.println("Area of Rectangle is :"+areaOfRect);
+        }
+
+    }
+
+// How to convert String value into float and double :
+
+1) String to float :
+---------------------
+ float x =  Float.parseFloat(String str);
+ 
+2) String to double :
+---------------------
+ double y =   Double.parseDouble(String str);
+
+// WAP to find out the area of Circle by using command Line Arg:
+-------------------------------------------------------------
+
+    public class AreaOfCircle {
+
+        public static void main(String[] args)
+        {
+            final double PI = 3.14;          
+            double radius = Double.parseDouble(args[0]);
+       
+            double areaOfCircle = PI * radius * radius;
+       
+            System.out.println("Area of Circle is :"+areaOfCircle);
+        }
+    }
+
+// WAP in java to pass some value from command line argument based on the following criteria :
+
+If the array length is 0 : It should print length is 0
+If the array length is 1 : It should find the cube of the number
+if the array length is 2 : It should print sum of the number
+ 
+    public class ArrayLengthCalculation {
+
+        public static void main(String[] args)
+        {
+            if(args.length ==0)
+            {
+            System.err.println("Array Length is 0");
+            }
+            else if(args.length == 1)
+            {
+                int num = Integer.parseInt(args[0]);
+                System.out.println("Cube of "+num+" is :"+(num*num*num));
+            }
+            else if(args.length == 2)
+            {
+                int x = Integer.parseInt(args[0]);
+                int y = Integer.parseInt(args[1]);
+                int sum = x + y;
+                System.out.println("Sum is :"+sum);
+            }    
+        }
+    }
+
+//  java feature
+
+Simple – Easy to learn and use.
+
+Object-Oriented – Everything is treated as objects (like real-world things).
+
+Platform Independent – Write once, run anywhere (because of bytecode & JVM).
+
+Secure – Has built-in security features (no pointer, JVM sandbox).
+
+Robust – Strong in memory management and error handling.
+
+Portable – Can run on any machine without change.
+
+Multithreaded – Can do many tasks at the same time.
+
+High Performance – Uses Just-In-Time (JIT) compiler for faster execution.
+
+Distributed – Can work with internet and networks easily.
+
+Dynamic – Can adapt to new classes, libraries, and changes at runtime.
