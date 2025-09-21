@@ -1,0 +1,254 @@
+// How to Fetch / Retrieve A Character From the string ? 
+
+String s1 = "java";
+
+0  1  2  3
+j  a  v  a 
+
+the charAt() method is used to get a single character from a string at a given index.
+
+char ch = str.charAt(index);
+
+str → the string
+index → position of the character (starts from 0)
+Returns → the character at that position
+
+👉 Example:
+
+String name = "Krishna";
+char ch = name.charAt(2);  // 'i' (because index starts from 0)
+System.out.println(ch);
+
+// 
+
+public class RetrieveCharacter {
+    public static void main(String[] args) {
+        String s1 = "java";
+        char ch = s1.charAt(0);
+        System.out.println("ch value is :" + ch);
+    }
+}
+
+// How to retrieve a character from command line argument :
+
+public class CharacterThroughCommand {
+    public static void main(String[] args) {
+        char ch = args[0].charAt(0);
+        System.out.println("ch value is :" + ch);
+    }
+}
+
+// WAP which describes how Integer.parseInt() works internally ?
+
+class Calculater // Integer
+{
+    public static int dosum(int x, int y) {
+        return x + y;
+    }
+}
+
+public class ParseIntWorking {
+    public static void main(String[] args) {
+        int sum = Calculater.dosum(12, 24);
+        System.out.println("Sum is :" + sum);
+    }
+}
+
+// Nameing Convention OR Coding Standard in java
+
+    Naming convention provides two important characteristics :
+
+    a) Standard Code (Industry accepted code)
+    b) Readability of the code will enhance.
+
+    Naming conventions are important because they make code standardized and easy to read.
+
+    ✅ Java Coding Standards:
+
+    1 ) Class Names
+
+    Convention: PascalCase (Each word starts with a capital letter, no spaces)
+
+    Represents: Noun
+
+    Examples:
+
+    System
+    String
+    Integer
+    CommandAddition
+    ArrayIndexOutOfBoundsException
+    DataInputStream
+
+    2 ) Method Names
+
+    Convention: camelCase (first word small, next words start with capital letter)
+
+    Represents: Verb
+
+    Examples:
+
+    read()
+    readLine()
+    parseInt()
+    charAt()
+    toUpperCase()
+
+    3) Variable / Field Names
+    
+    Convention: camelCase (like methods, but no ())
+
+    Represents: Data (nouns)
+
+    Examples:
+
+    rollNumber
+    customerName
+    customerBill
+    studentName
+    playerName
+
+    4) Final & Static Constants
+
+    Convention: SNAKE_CASE (all caps, words separated by _)
+
+    Represents: Constant values
+
+    Examples:
+
+    Integer.MIN_VALUE
+    Integer.MAX_VALUE
+    PI
+    MAX_SPEED
+
+    5) Packages
+
+    Convention: lowercase only
+
+    Usually: Reverse of company domain name
+
+    Examples:
+
+    com.nit.basic
+    com.tcs.introduction
+    com.wipro.shopping
+
+
+// Tokens in java :
+
+👉 A token is the smallest unit of a Java program recognized by the compiler.
+
+👉 Without tokens, we cannot form statements or expressions.
+
+    Types of Tokens in Java:
+
+    1 > Keyword
+    2 > Identifier
+    3 > Literal
+    4 > Punctuators (Separators)
+    5 > Operator
+
+    1 > Keyword
+
+    A keyword is a predefined word whose meaning is already defined by the compiler.
+
+    In java all the keywords must be in lowercase only.
+
+    A keyword we Cannot be used as variable, class, or method names.
+
+    true, false and null look like keywords but actually they are literals.
+
+    As of now, we have 67+ keywords in java.
+
+    Examples:
+
+    class, public, static, void, if, else, while, return
+
+    2 > Identifiers:
+
+    Name used for variables, methods, classes, etc are considered as identifiers.
+
+    Assigned to variable, method, classes to uniquely identify them.
+
+    We can't use keyword as an identifier.
+
+    Ex:-
+
+    class Fan
+    {
+        int coil; // "coil" is identifier
+        void switchOn // "switchOn" is identifier
+        {
+
+        }
+    }
+
+    Here Fan(Name of the class), coil (Name of the field) and switchOn(Name of the Method) are identifiers.
+
+    ✅ Rules for defining an identifier :
+    
+    1) Can contain letters (A–Z, a–z), digits (0–9), $, _
+    2) Must begin with a letter, $, or _ (not a digit)
+    3) Case-sensitive (Age ≠ age)
+    4) Cannot be a keyword
+    5) No limitation of length
+
+    3 > Literals :
+
+    Any constant which we are assiging to field/variable is called Literal.
+
+    In java we have 5 types of Literals :
+
+    1) Integral Literal → Whole numbers (no decimal)
+    
+        Data types: byte, short, int, long
+        Example: 78, 12, 90
+
+    2) Floating Point Literal → Numbers with decimal
+
+        Data types: float, double
+        Example: 12.5f, 45.67
+
+    3) Boolean Literal → true or false
+
+    4) Character Literal → Single character inside ' '
+    
+        Example: 'a', 'Z', '9'
+
+    5) String Literal → Sequence of characters inside " "
+        
+        Example: "Hello", "Java"
+
+    👉 Note: null is also a literal
+
+    4 > Punctuators (Separators)
+
+    Symbols used to separate or structure code.
+
+    Examples:
+
+    ; (statement terminator)
+    , (separator in variables)
+    { } (block)
+    ( ) (method/constructor)
+    [ ] (array)
+    . (member access operator)
+
+    5 > Operators
+
+    Special symbols that perform operations on variables/values.
+
+    Examples:
+
+    Arithmetic → + - * / %
+    Relational → > < >= <= == !=
+    Logical → && || !
+    Assignment → = += -= *= /=
+
+    ✅ Quick Summary:
+
+    Keywords → Reserved words
+    Identifiers → Names we give (class, variable, method)
+    Literals → Constant values (5 types)
+    Punctuators → Symbols like ; , { } ( )
+    Operators → Symbols for operations (+, -, *, /, etc.)
