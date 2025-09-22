@@ -1,0 +1,322 @@
+    Integral Literals in Java
+
+    An integral literal is any numeric constant without a decimal point or fraction.
+
+    👉 Example: 12, 90, 34, 78
+
+    Java provides 4 data types to store integral literals:
+
+    a) byte → 8 bits
+    b) short → 16 bits
+    c) int → 32 bits (default type)
+    d) long → 64 bits
+
+    Forms of Integral Literals
+
+    We can represent integral literals in 4 different number systems:
+
+    a) Decimal Literal (Base 10 → digits 0–9)
+    b) Octal Literal (Base 8 → digits 0–7)
+    c) Hexadecimal Literal (Base 16 → digits 0–9, A–F or a–f)
+    d) Binary Literal (Base 2 → digits 0 and 1, available from JDK 1.7)
+
+    1. Decimal Literall :
+
+    By default, numbers are considered decimal literals.
+    Base is 10 → accepts digits 0–9.
+
+    Example :
+    int x = 20;
+    int y = 123;
+    int z = 234;
+
+    2. Octal Literal :
+
+    If a number starts with 0, it is treated as an octal literal.
+    Base is 8 → accepts digits 0–7.
+
+    Example :
+
+    int a = 0777;  // Valid (octal for 511 in decimal)
+    int b = 0123;  // Valid (octal for 83 in decimal)
+
+    int c = 018; // Invalid → '8' is not allowed in octal
+
+    3. Hexadecimal Literal :
+
+   If a number starts with 0x or 0X, it is treated as a hexadecimal literal.
+   
+   Base is 16 → accepts digits 0–9 and A–F (case-insensitive).
+
+    Example :
+
+    int x = 0x12;    // Valid (decimal 18)
+    int y = 0xAdd;   // Valid (decimal 2781)
+    int z = 0xFace;  // Valid (decimal 64206)
+    int a = 0xage; // Invalid → 'g' is not allowed in hexadecimal
+
+
+    4. Binary Literal :
+
+    If a number starts with 0b or 0B, it is treated as a binary literal.
+    Base is 2 → accepts digits 0 and 1.
+    Introduced in JDK 1.7.
+
+    Example :
+    int x = 0B101;  // Valid (decimal 5)
+    int y = 0b111;  // Valid (decimal 7)
+
+    int z = 0B112; // Invalid → '2' is not allowed in binary
+
+    Key Point
+
+    Even though we can write literals in decimal, octal, hexadecimal, or binary,
+    👉 The JVM always converts them into decimal internally when executing the program.
+
+    // Conversion : 
+
+    2  1  0
+    |  |  |
+    5  2  3
+
+    5 x 10^2 + 2 x 10^1 + 3 x 10^0
+
+    public class OctalLiteral
+    {
+        public static void main(String[] args)
+        {
+            int x = 015;
+            System.out.printin(x);
+        }
+    }
+
+    015 -> Here 0 describes that It is an octal literal.
+
+    (15) = (?)
+        8    10
+
+
+    1 x 8^1 + 5 x 8^0
+
+    1 X 8 + 5
+
+    8 + 5 = 13
+
+    //Hexadecimal Example :
+
+    public class HexadecimalDemo
+    {
+        public static void main(String[] args)
+        {
+            int x = 0Xadd
+            System.out.printin(x);
+        }
+    }
+
+    OXadd -> Here OX represents It is a hexadecimal number.
+
+    2  1  0
+    |  |  |
+   (a  d  d) = (?)
+           16     10
+
+    A = 10
+    B = 11
+    C = 12
+    D = 13
+    E = 14
+    F = 15
+
+    a X 16^2 + d X 16^1 + d x 16^0
+
+    10 X 256 + 13 X 16 + 13 X 1
+
+    => 2560 + 208 + 13
+    => 2781
+
+    //Example of Binary
+
+    public class BinaryLiteral
+    {
+        public static void main(String[] args)
+        {
+            int x = 0B101;
+            System.out.printin(x);
+        }
+    }
+
+    How we are representing intergal literal in memory :
+
+    byte a = 5; -> 00000101 [8 bits representation]
+    short b = 5; -> 00000000 00000101 [16 bits representation]
+    int c = 5; -> 00000000 00000000 00000000 00000101 [32 bits representation]
+    long d = 5; -> 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000101 [64 bits representation]
+
+    Default Type of Integral Literals in Java.
+    By default, every integral literal in Java is of type int (32-bit).
+    If we assign an integral literal to byte or short, the compiler automatically converts it — but only if the value is within the valid range:
+    byte range: -128 to 127
+    short range: -32768 to 32767
+
+    1. Assigning int literals to byte and short
+
+    When we assign an int literal to byte or short, the compiler internally performs type conversion:
+
+    byte b = 12;    // Compiler converts int(12) → byte
+    short s = 1200; // Compiler converts int(1200) → short
+
+    Internally, the compiler does something like this:
+
+    byte b = (byte) 12;
+    short s = (short) 1200;
+
+    ✅ Valid Example:
+
+    byte b = 100;  // Within byte range (-128 to 127)
+    short s = 3000; // Within short range (-32768 to 32767)
+
+    ❌ Invalid Example (Out of Range):
+
+    byte b = 200;   // Error: 200 is not in byte range
+
+    2. Representing Long Literals
+
+    To represent a long literal explicitly, we must add a suffix:
+        L or l → both work, but L (capital) is recommended.
+        Reason: lowercase l looks like the digit 1, which is confusing.
+
+    ✅ Example:
+
+    long x = 123456789L; // Correct
+
+
+    ❌ Wrong Example (will be treated as int, may cause error if too big):
+
+    long x = 123456789;  // Error if number exceeds int range
+
+
+    // Different Cases :
+
+    Integral Literals – Cases & Explanations
+
+Case 1: Assigning int literal to byte
+
+    byte b = 12; // Compiler will convert int → byte
+
+    Default type of 12 is int.
+
+    Since 12 is within byte range (-128 to 127), compiler implicitly converts it. ✅ No error.
+
+Case 2: Assigning int literal to short
+
+    short s = 25; // Compiler will convert int → short
+
+    Default type of 25 is int.
+
+    Since 25 is within short range (-32768 to 32767), compiler converts it safely. ✅ No error.
+
+Case 3: Byte range exceeded
+
+    byte b = 128; // Compilation error
+
+    128 is outside byte range (-128 to 127).
+    ❌ Error: possible lossy conversion from int to byte.
+
+Case 4: Short range exceeded
+
+    short s = 32768; // Compilation error
+
+    32768 is outside short range (-32768 to 32767).
+    ❌ Error: possible lossy conversion from int to short.
+
+Case 5: int to int
+
+    int x = 12; // int → int (32-bit to 32-bit)
+
+    No conversion needed.
+    ✅ No error.
+
+Case 6: int to long
+
+    long y = 90; // int → long (32-bit to 64-bit)
+    90 is int by default.
+
+    Since long can hold int values, compiler implicitly promotes it.
+    ✅ No error.
+
+Case 7: Large number without L suffix
+
+    long mob = 9812345678; // Error
+    
+    By default, 9812345678 is int.
+    But int max range is 2,147,483,647.
+    Since 9812345678 > int range → compiler error:
+    ❌ integer number too large.
+
+Case 8: Large number with L suffix
+
+    long mob = 9812345678L; // long → long
+
+    Adding L makes it a long literal.
+    Fits in long range.
+    ✅ No error.
+
+Case 9: Method parameter with byte
+    public static void main(String[] args) 
+    {
+    accept(1);
+    }
+
+    public static void accept(byte b) 
+    {
+    }
+
+    1 is an int literal by default.
+
+    Java does implicit narrowing for method calls only if the value fits in byte range.
+
+    Since 1 is within byte range (-128 to 127), compiler converts int → byte.
+    ✅ Works fine.
+
+Case 10: int literal passed to byte parameter
+
+    public class Test {
+        public static void main(String[] args) {
+            accept(10);  // Passing int literal
+        }
+
+        public static void accept(byte b) {
+            System.out.println("Byte value: " + b);
+        }
+    }
+
+    10 is an int literal by default.
+
+    Since 10 is within byte range (-128 to 127) → compiler allows implicit conversion.
+
+Case 11: int literal out of byte range
+
+    public class Test {
+        public static void main(String[] args) {
+            accept(200);  // Error
+        
+
+        public static void accept(byte b) {
+            System.out.println("Byte value: " + b);
+        }
+    }
+
+    200 is an int literal, but it is out of byte range.
+
+    Compiler does not allow implicit conversion here.
+
+    👉 Compilation error:
+
+    error: incompatible types: possible lossy conversion from int to byte
+
+    Key Takeaways
+
+    1 > Default integral literal = int.
+    2 > Byte and short can take int literals only if they’re within range.
+    3 > Use L suffix for long values exceeding int range.
+    4 > Method calls allow int to byte/short conversion if value fits in range.
