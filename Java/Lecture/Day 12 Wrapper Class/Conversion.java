@@ -9,4 +9,4 @@ public class Conversion {
         int z = 7;
         System.out.println("Decimal " + z + " in Binary: " + Integer.toBinaryString(z));
     }
-}
+} 

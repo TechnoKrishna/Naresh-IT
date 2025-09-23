@@ -8,4 +8,4 @@ public class Widening {
         int y = x; // ✅ Widening (short → int)
         System.out.println(y);
     }
-}
+} 

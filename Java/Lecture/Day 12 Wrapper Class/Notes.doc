@@ -190,7 +190,7 @@ Output:
 
 // Program to find out the range and size of Integral Data types
 
-public class Test9 {
+public class Test9 { 
     public static void main(String[] args) {
         System.out.println("\nByte range:");
         System.out.println(" min: " + Byte.MIN_VALUE);

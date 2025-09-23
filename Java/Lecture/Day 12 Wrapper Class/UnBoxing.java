@@ -5,4 +5,4 @@ public class UnBoxing {
         int b = num; // compiler converts Integer → int
         System.out.println("Primitive: " + b);
     }
-}
+} 

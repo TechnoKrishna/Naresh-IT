@@ -9,4 +9,4 @@ public class ExplicitCasting {
         int y = (int) 1L; // long → int (needs cast, but safe here)
         System.out.println("y value = " + y);
     }
-}
+} 

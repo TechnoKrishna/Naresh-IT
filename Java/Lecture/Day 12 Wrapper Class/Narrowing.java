@@ -4,4 +4,4 @@ public class Narrowing {
         byte b = (byte) s; // ✅ Explicit narrowing
         System.out.println(b);
     }
-}
+} 

@@ -7,3 +7,4 @@ public class AutoBoxing {
         System.out.println("Object: " + obj);
     }
 }
+ 
