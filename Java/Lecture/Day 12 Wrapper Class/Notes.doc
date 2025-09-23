@@ -1,0 +1,391 @@
+// 1. By Default Every Integral Literal is of type int only
+
+public class Test4 {
+    public static void main (String[] args) {
+        byte b = 128;     // ❌ Error: 128 is out of byte range (-128 to 127)
+        System.out.println(b);
+
+        short s = 32768;  // ❌ Error: 32768 is out of short range (-32768 to 32767)
+        System.out.println(s);
+
+        short x = 1;
+        byte bb = x;      // ❌ Error: Cannot assign short to byte without casting
+        System.out.println(bb);
+    }
+}
+
+💡 Explanation :
+
+- 128 is by default an int, but it doesn’t fit into byte.
+- 32768 doesn’t fit into short.
+- Even if x = 1 is in range, assigning short → byte requires explicit casting.
+
+// 2. Widening (Smaller → Bigger)
+
+public class Test5 {
+    public static void main (String[] args) {
+        byte b = 125;
+        short s = b;   // ✅ Widening (byte → short)
+        System.out.println(s);
+
+        short x = 345;
+        int y = x;     // ✅ Widening (short → int)
+        System.out.println(y);
+    }
+}
+
+💡 Explanation:
+
+- Widening = Automatic type conversion (safe, no data loss).
+- byte → short → int → long → float → double.
+
+// 3. Narrowing (Bigger → Smaller)
+
+public class Test6 {
+    public static void main(String[] args) {
+        short s = 127;
+        byte b = (byte) s;  // ✅ Explicit narrowing
+        System.out.println(b);
+    }
+}
+
+💡 Explanation:
+
+- Narrowing = Explicit cast required.
+- Possible data loss if value doesn’t fit.
+
+// 4. Explicit Casting Examples
+
+public class Test7 {
+    public static void main(String[] args) {
+        byte x = (byte) 18L;   // long → byte
+        System.out.println("x value = " + x);
+
+        long l = 29L;          // ✅ valid long
+        System.out.println("l value = " + l);
+
+        int y = (int) 1L;       // long → int (needs cast, but safe here)
+        System.out.println("y value = " + y);
+    }
+}
+
+Key Notes
+
+Default integral literal = int
+    Example: 100 is int by default.
+
+Widening (small → big) = automatic
+    Example: byte → short → int → long → float → double.
+
+Narrowing (big → small) = explicit cast
+    Example: long → int → short → byte.
+
+Data Loss Possible in Narrowing
+    Example: (byte) 200 → -56 because it overflows byte range.
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+Q ) Is Java a Pure Object-Oriented Programming Language?
+
+👉 Answer: No, Java is not a pure object-oriented language.
+
+Here’s why:
+
+1. Primitive Data Types
+
+    Java supports 8 primitive data types which are not objects:
+    - byte, short, int, long, float, double, char, boolean
+
+    In a pure object-oriented language (like Ruby or Smalltalk), everything is an object.
+
+    Since Java allows primitives, it breaks the "pure" object-oriented rule.
+
+2. Objects Everywhere Else
+
+    Apart from these 8 primitives, everything in Java is an object.
+    - Example: Strings, Arrays, Classes, Interfaces, etc.
+
+3. Wrapper Classes
+
+    In networking and collections, Java only works with objects, not primitives.
+    - To solve this, Java provides Wrapper Classes for each primitive type:
+
+    | Primitive Type | Wrapper Class |
+    | -------------- | ------------- |
+    | `byte`         | `Byte`        |
+    | `short`        | `Short`       |
+    | `int`          | `Integer`     |
+    | `long`         | `Long`        |
+    | `float`        | `Float`       |
+    | `double`       | `Double`      |
+    | `char`         | `Character`   |
+    | `boolean`      | `Boolean`     |
+
+4. Autoboxing and Unboxing (from JDK 1.5 onwards)
+
+- Autoboxing → Automatic conversion of primitive → wrapper object.
+
+- Unboxing → Automatic conversion of wrapper object → primitive.
+
+public class WrapperDemo {
+    public static void main(String[] args) {
+        // Autoboxing (primitive → object)
+        int a = 10;
+        Integer obj = a;  // compiler converts int → Integer
+
+        // Unboxing (object → primitive)
+        Integer num = 20;
+        int b = num;  // compiler converts Integer → int
+
+        System.out.println("Object: " + obj);
+        System.out.println("Primitive: " + b);
+    }
+}
+
+✅ Final Conclusion
+
+- Java is not a pure object-oriented programming language because of primitive data types.
+- But, using Wrapper classes + Autoboxing/Unboxing, primitives can also behave like objects.
+
+// Program to show the use of Wrapper Classes
+public class Test8 {
+    public static void main(String[] args) {
+        // Autoboxing: int → Integer
+        Integer x = 24;
+        Integer y = 24;
+
+        // Here x and y are Integer objects, but Java does unboxing (Integer → int) to perform addition
+        Integer z = x + y; // result autoboxed back into Integer
+        System.out.println("The sum is : " + z);
+
+        // Wrapper for boolean
+        Boolean b = true;
+        System.out.println("Boolean value: " + b);
+
+        // Wrapper for double
+        Double d = 90.90;
+        System.out.println("Double value: " + d);
+
+        // Wrapper for char
+        Character c = 'A';
+        System.out.println("Character value: " + c);
+    }
+}
+
+📌 Explanation
+
+- Integer x = 24; → Autoboxing (primitive int 24 → Integer object).
+- z = x + y;
+- Behind the scenes: Unboxing (Integer → int) → addition performed → Autoboxing back into Integer.
+
+- Same applies for Boolean, Double, and Character.
+
+Output:
+
+    The sum is : 48
+    Boolean value: true
+    Double value: 90.9
+    Character value: A
+
+
+// Program to find out the range and size of Integral Data types
+
+public class Test9 {
+    public static void main(String[] args) {
+        System.out.println("\nByte range:");
+        System.out.println(" min: " + Byte.MIN_VALUE);
+        System.out.println(" max: " + Byte.MAX_VALUE);
+        System.out.println(" size: " + Byte.SIZE + " bits");
+
+        System.out.println("\nShort range:");
+        System.out.println(" min: " + Short.MIN_VALUE);
+        System.out.println(" max: " + Short.MAX_VALUE);
+        System.out.println(" size: " + Short.SIZE + " bits");
+
+        System.out.println("\nInteger range:");
+        System.out.println(" min: " + Integer.MIN_VALUE);
+        System.out.println(" max: " + Integer.MAX_VALUE);
+        System.out.println(" size: " + Integer.SIZE + " bits");
+
+        System.out.println("\nLong range:");
+        System.out.println(" min: " + Long.MIN_VALUE);
+        System.out.println(" max: " + Long.MAX_VALUE);
+        System.out.println(" size: " + Long.SIZE + " bits");
+    }
+}
+
+✨ Explanation
+
+Every Wrapper class (Byte, Short, Integer, Long) contains:
+
+    - MIN_VALUE → Smallest value the type can hold
+    - MAX_VALUE → Largest value the type can hold
+    - SIZE → Number of bits used to store the type
+
+For example:
+
+    - Byte.MIN_VALUE → -128
+    - Byte.MAX_VALUE → 127
+    - Byte.SIZE → 8 bits
+
+// Providing _ (underscore) in integeral Literal :
+
+- Underscore (_) in numeric literals (introduced in Java 7)
+- Compile-time constant assignment (when assigning final variables)
+
+1️⃣ Underscore in Numeric Literals (JDK 1.7+)
+
+👉 Purpose: To improve readability of large numbers.
+
+✅ Allowed:
+
+- Between digits (e.g., 1_000_000)
+- Between groups of digits (e.g., 9_876_543_210L)
+
+❌ Not allowed:
+
+- At the beginning or end of a number (_123, 123_)
+- Next to decimal point (3._14, 3_.14)
+- Before suffix (123_L)
+
+public class Test10 {
+    public static void main(String[] args) {
+        long mobile = 98_1234_5678L; // using _ for readability
+        System.out.println("Mobile Number is : " + mobile);
+    }
+}
+
+👉 Output:
+
+- Mobile Number is : 9812345678
+
+2️⃣ Final variable & byte assignment
+
+- In Java, a final int with a constant value can be implicitly cast into a smaller type (like byte) if the value is within the range of that type.
+
+public class Test11 {
+    public static void main(String[] args) {
+        final int x = 127; // final + value within byte range (-128 to 127)
+        byte b = x;        // allowed at compile time
+        System.out.println(b);
+    }
+}
+
+👉 Output:
+
+- 127
+
+But if you try:
+
+- final int y = 200;
+- byte b2 = y;   // ❌ Compilation Error (out of byte range)
+
+✅ Summary:
+
+- Use _ inside numeric literals (Java 7+) for readability.
+- final int can be assigned to a smaller type (like byte) if the value fits in the range.
+
+// How to convert decimal to another number system like octal, hexadecimal and binary :
+
+✅ Explanation of Methods
+
+1 > Integer.toHexString(int x)
+
+- Converts decimal to Hexadecimal
+- Hex digits → 0–9 and a–f
+- Example: 2781 → ad5
+
+2 > Integer.toOctalString(int x)
+
+- Converts decimal to Octal
+- Octal digits → 0–7
+- Example: 17 → 21
+
+3 > Integer.toBinaryString(int x)
+
+- Converts decimal to Binary
+- Binary digits → 0 and 1
+- Example: 7 → 111
+
+⚡ Correct Program
+
+public class Test12 {
+    public static void main(String[] args) {
+        int x = 2781;
+        System.out.println("Decimal " + x + " in Hexadecimal: " + Integer.toHexString(x));
+
+        int y = 17;
+        System.out.println("Decimal " + y + " in Octal: " + Integer.toOctalString(y));
+
+        int z = 7;
+        System.out.println("Decimal " + z + " in Binary: " + Integer.toBinaryString(z));
+    }
+}
+
+🖥️ Output
+
+- Decimal 2781 in Hexadecimal: ad5
+- Decimal 17 in Octal: 21
+- Decimal 7 in Binary: 111
+
+✅ Key Note:
+
+- Return type of all these methods is String.
+- Useful when you need to display numbers in different number systems.
+
+✅ Key Points about var in Java
+
+1 > Introduced in Java 10
+
+    - Used for local variable type inference.
+    - The compiler decides the type at compile time, based on the value you assign.
+
+2 > Initialization is mandatory
+
+    - var x = 12; // compiler infers int
+
+3 > Once inferred, type is fixed
+
+    - var a = 12;  // int
+    - a = true;   // ❌ error (cannot assign boolean to int)
+
+4 > Can be used only for local variables
+
+    - Not allowed for class fields, method parameters, or return types.
+
+5 > Still strongly typed
+
+    - var is not like var in JavaScript.
+    - It’s just a shorthand for writing type explicitly.
+
+⚡ Example Program
+
+// var keyword [Introduced from Java 10]
+
+public class Test13 {
+    public static void main(String[] args) {
+        var x = 12; // x is int
+        System.out.println(x);
+
+        x = 90; // valid, still int
+        System.out.println(x);
+
+        // x = 90.89; // ❌ Invalid, x is int not double
+
+        var name = "Krishna"; // name is String
+        System.out.println(name);
+
+        var pi = 3.14159; // pi is double
+        System.out.println(pi);
+
+        var flag = true; // flag is boolean
+        System.out.println(flag);
+    }
+}
+
+🖥️ Output
+- 12
+- 90
+- Krishna
+- 3.14159
+- true
