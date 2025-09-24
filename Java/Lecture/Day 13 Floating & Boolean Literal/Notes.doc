@@ -1,0 +1,308 @@
+✅ Floating Literals in Java
+
+1. Definition
+
+If a numeric literal contains a decimal point (.) or a fraction, it is called a floating-point literal.
+
+👉 Examples:
+12.90, 89.67, 0.123, 45.0
+
+2. Floating-point Data Types
+
+a ) float → 32 bits (single precision)
+b ) double → 64 bits (double precision)
+
+3. Default Type
+
+By default, every floating literal is of type double.
+So, this will give error:
+
+float f1 = 1.0; // ❌ Error: incompatible types
+
+4. Ways to declare float
+
+We must tell the compiler explicitly, either by casting or using f/F suffix:
+
+float f1 = (float) 1.0;  // ✅ Explicit cast
+float f2 = 1.0f;         // ✅ Using 'f'
+float f3 = 12.90F;       // ✅ Using 'F'
+
+5. Declaring double
+
+Even though double is the default, we can explicitly use d/D suffix for clarity:
+
+double d1 = 34d;  // ✅ Using 'd'
+double d2 = 56D;  // ✅ Using 'D'
+
+6. Exponential / Scientific Notation
+
+We can represent floating literals in exponent form using e or E:
+
+double d = 15e2;     // 15 × 10^2 = 1500.0
+double d1 = 15e-3;  // 15 × 10^-3 = 0.015
+
+7. Important Rules
+
+Integral literal → can be assigned to float/double
+
+    int x = 100;
+    double d = x;   // ✅ allowed (widening)
+    float f = x;    // ✅ allowed (widening)
+
+Floating literal → cannot be assigned directly to int/long
+
+    double d = 10.5;
+    int i = d;    // ❌ Error (needs explicit cast)
+    int i2 = (int) d; // ✅ Explicit narrowing
+
+A floating-point literal (i.e., a number with decimal point or fraction) can be represented only in decimal form.
+
+Examples:
+
+double d1 = 12.34;   // decimal form
+float f1 = 45.67f;   // decimal form with f suffix
+
+❌ You cannot write floating literals in octal, hex, or binary form.
+
+For example:
+
+double d2 = 0x12.34;  // ❌ Invalid in Java
+float f2 = 0b101.1f;  // ❌ Invalid in Java
+
+⚡ Example Program
+
+public class FloatingLiteralDemo {
+    public static void main(String[] args) {
+        // float examples
+        float f1 = (float) 1.0;
+        float f2 = 0.0f;
+        float f3 = 12.90F;
+
+        System.out.println("Float values: " + f1 + ", " + f2 + ", " + f3);
+
+        // double examples
+        double d1 = 34d;
+        double d2 = 56D;
+        double d3 = 5e2;     // 500.0
+        double d4 = 15e-3;   // 0.015
+
+        System.out.println("Double values: " + d1 + ", " + d2 + ", " + d3 + ", " + d4);
+
+        // assigning int to float/double
+        int x = 100;
+        float f = x;   // widening
+        double d = x;  // widening
+        System.out.println("Int to float: " + f);
+        System.out.println("Int to double: " + d);
+
+        // assigning double to int (needs cast)
+        double d5 = 45.78;
+        int i = (int) d5; // explicit narrowing
+        System.out.println("Double to int (with cast): " + i);
+    }
+}
+
+🖥️ Output
+Float values: 1.0, 0.0, 12.9
+Double values: 34.0, 56.0, 500.0, 0.015
+Int to float: 100.0
+Int to double: 100.0
+Double to int (with cast): 45
+
+//Programs:
+
+public class Test {
+    public static void main(String[] args) {
+        float f = 0.0f; // ✅ Must use f/F, otherwise compiler treats 0.0 as double
+        System.out.println(f);
+    }
+}
+
+Error fixed → By default, 0.0 is double, so you must cast or use f.
+
+public class Test1 {
+    public static void main(String[] args) {
+        float b = 15.29F;       // ✅ valid
+        float c = 15.25f;       // ✅ valid
+        float d = (float) 15.30; // ✅ casting needed
+        System.out.println(b + ":" + c + ":" + d);
+    }
+}
+
+public class Test2 {
+    public static void main(String[] args) {
+        double d = 15.15; // default double
+        double e = 15d;   // explicitly double
+        double f = 90D;   // explicitly double
+        System.out.println(d + ", " + e + ", " + f);
+    }
+}
+
+public class Test3 {
+    public static void main(String[] args) {
+        double x = 0.12989; // ✅ decimal literal
+        double y = 0167;    // ✅ octal literal → decimal 119
+        // double z = 0178; // ❌ Error: 8 not allowed in octal
+        System.out.println(x + "," + y);
+    }
+}
+
+🔹 Octal literals (0...) allow only 0–7. So 0178 is invalid.
+
+class Test4 {
+    public static void main(String[] args) {
+        double x = 0X29;     // ✅ hex integral literal → decimal 41
+        // double y = 0x91.5; // ❌ Error: floating hex not allowed in Java
+        System.out.println(x);
+    }
+}
+
+🔹 Java does not support floating-point hex literals like 0x91.5.
+
+public class Test5 {
+    public static void main(String[] args) {
+        double d1 = 15e-3; // 15 × 10^-3 = 0.015
+        System.out.println("d1 value is: " + d1);
+
+        double d2 = 15e3; // 15 × 10^3 = 15000.0
+        System.out.println("d2 value is :" + d2);
+    }
+}
+
+public class Test6 {
+    public static void main(String[] args) {
+        // double a = 0791;   // ❌ Error: 9 not valid in octal
+        // double b = 0791.0; // ❌ Error: 9 not valid in octal
+        double c = 0777;      // ✅ octal → decimal 511
+        double d = 0Xdead;    // ✅ hex → decimal 57005
+        // double e = 0Xdead.0; // ❌ Error: hex floating-point not allowed
+        System.out.println(c + ", " + d);
+    }
+}
+
+public class Test7 {
+    public static void main(String[] args) {
+        double a = 1.5e3;  // ✅ 1500.0
+        // float b = 1.5e3; // ❌ Error (default double → needs cast or F)
+        float c = 1.5e3F;  // ✅ 1500.0
+        double d = 10;     // ✅ int → double widening
+        // int e = 10.5;    // ❌ double → int (needs cast)
+        // long f = 10D;    // ❌ double → long (needs cast)
+        // int g = 10F;     // ❌ float → int (needs cast)
+        // long i = 12.78F; // ❌ float → long (needs cast)
+        System.out.println(a + ", " + c + ", " + d);
+    }
+}
+
+public class Test8 {
+    public static void main(String[] args) {
+        System.out.println("\n Float range:");
+        System.out.println(" min: " + Float.MIN_VALUE);
+        System.out.println(" max: " + Float.MAX_VALUE);
+        System.out.println(" size: " + Float.SIZE);
+
+        System.out.println("\n Double range:");
+        System.out.println(" min: " + Double.MIN_VALUE);
+        System.out.println(" max: " + Double.MAX_VALUE);
+        System.out.println(" size: " + Double.SIZE);
+    }
+}
+
+🖥️ Expected Output Highlights
+
+    Float range:
+        min: 1.4E-45
+        max: 3.4028235E38
+        size: 32
+
+    Double range:
+        min: 4.9E-324
+        max: 1.7976931348623157E308
+        size: 64
+
+✅ So the key learning from your examples:
+    Floats must use f/F suffix or cast.
+    Doubles can use d/D suffix (optional).
+    Octal (0...) and Hex (0x...) allowed only for integral literals, not floating.
+    Floating literals allowed only in decimal form (with optional exponent).
+
+✅ Boolean Literals in Java
+
+A Boolean literal in Java has only two possible values: true or false
+
+It can only be stored in a variable of type boolean.
+
+Unlike C / C++, where 0 means false and any non-zero (like 1) means true, in Java you cannot use 0 or 1 as boolean values.
+
+You also cannot use "true" (a string) — it must be the literal true (without quotes).
+
+✅ Valid:
+
+boolean isValid = true;
+boolean isEmpty = false;
+
+❌ Invalid in Java (but valid in C/C++):
+
+boolean x = 0;   // Error
+boolean y = 1;   // Error
+
+❌ Invalid (string assignment not allowed):
+
+boolean b = "true";  // Error
+
+📌 Programs :
+
+public class Test1 {
+    public static void main(String[] args) {
+        boolean isValid = true; 
+        boolean isEmpty = false;
+
+        System.out.println(isValid);  // prints true
+        System.out.println(isEmpty);  // prints false
+    }
+}
+
+public class Test2 {
+    public static void main(String[] args) {
+        boolean c = 0; // error
+        boolean d = 1; // error
+        System.out.println(c);
+        System.out.println(d);
+    }
+}
+
+ava compiler will throw an error like this:
+
+Test2.java:4: error: incompatible types: int cannot be converted to boolean
+        boolean c = 0;
+                    ^
+Test2.java:5: error: incompatible types: int cannot be converted to boolean
+        boolean d = 1;
+                    ^
+2 errors
+
+👉 This means:
+
+0 and 1 are treated as int literals in Java.
+Java does not auto-convert integers to booleans.
+
+
+public class Test3 {
+    public static void main(String[] args) {
+        boolean x = "true";   // ❌ ERROR: String cannot be assigned to boolean
+        boolean y = "false";  // ❌ ERROR
+        System.out.println(x);
+        System.out.println(y);
+    }
+}
+
+👉 If you run this, it will not compile.
+Instead, you should write:
+
+boolean x = true;  
+boolean y = false;
+
+✅ Correct Output Example
+
+true
+false
