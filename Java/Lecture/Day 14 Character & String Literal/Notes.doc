@@ -1,0 +1,461 @@
+📘 Character Literal in Java
+
+🔹 Data type :
+
+- char
+- Size: 16 bits (2 bytes) → because Java uses Unicode, not ASCII.
+- Range: 0 to 65535 (i.e., \u0000 to \uffff)
+
+✅ Ways to Represent Character Literal
+
+(a) Single character, digit, or symbol in single quotes
+
+char c1 = 'A';
+char c2 = '9';
+char c3 = '$';
+System.out.println(c1 + " " + c2 + " " + c3);
+
+(b) Using Unicode value (0-65535)
+
+Unlike C/C++ (ASCII → 0-255), Java supports Unicode (0-65535).
+
+char c1 = 65535;   // valid
+System.out.println(c1);
+
+👉 Prints a Unicode character for that code (invisible sometimes, because its the last value).
+
+(c) 4-digit Unicode Hexadecimal Format \uXXXX
+
+Must be 4 hex digits.
+Example: 'A' → Decimal = 65 → Hex = 41 → \u004
+
+char c1 = '\u0041';  // represents 'A'
+char c2 = '\u03A9';  // represents Ω (Omega symbol)
+System.out.println(c1 + " " + c2);
+
+⚠️ Invalid example:
+char c = '\u041';  // ❌ Error (only 3 digits, must be 4)
+
+(d) Assigning char to int (to get ASCII/Unicode value)
+
+int code = 'a';
+System.out.println(code);
+
+👉 Output: 97
+
+(e) Escape sequences as char
+
+Java supports escape sequences like:
+
+'\n' → newline
+'\t' → tab
+'\\' → backslash
+'\'' → single quote
+'\"' → double quote
+
+char newline = '\n';
+char tab = '\t';
+System.out.println("Hello" + newline + "World");
+System.out.println("Hi" + tab + "There");
+
+🚀 Quick Program with All Cases
+
+public class CharLiteralDemo {
+    public static void main(String[] args) {
+        char a = 'A';           // single character
+        char digit = '9';       // digit as char
+        char symbol = '#';      // special symbol
+        char unicode1 = 65535;  // max unicode value
+        char unicode2 = '\u0041'; // Unicode for 'A'
+        int ascii = 'a';        // stores ASCII/Unicode of 'a'
+        char escape = '\n';     // newline as char
+
+        System.out.println("a = " + a);
+        System.out.println("digit = " + digit);
+        System.out.println("symbol = " + symbol);
+        System.out.println("unicode1 = " + unicode1);
+        System.out.println("unicode2 = " + unicode2);
+        System.out.println("ascii of 'a' = " + ascii);
+        System.out.println("escape (newline) works ↓");
+        System.out.println("Hello" + escape + "World");
+    }
+}
+
+✅ Program
+
+// Test1 – Basic char literals
+
+public class Test1 {
+    public static void main(String[] args) {
+        char ch1 = 'a';
+        System.out.println("ch1 value is: " + ch1);
+
+        char ch2 = '5';
+        System.out.println("ch2 value is: " + ch2);
+
+        char ch3 = '@';
+        System.out.println("ch3 value is: " + ch3);
+    }
+}
+
+✔ Prints characters directly.
+
+// Test2 – char vs int
+
+public class Test2 {
+    public static void main(String[] args) {
+        int ch = 'A';      // stores ASCII/Unicode value
+        System.out.println("ch value is: " + ch); // 65
+
+        char ch1 = 'A';    // stores 'A'
+        System.out.println("ch1 value is: " + ch1);
+    }
+}
+
+👉 Output:
+
+ch value is: 65
+ch1 value is: A
+
+// Test3 – Numeric values as char
+
+public class Test3 {
+    public static void main(String[] args) {
+        char ch1 = 63;  
+        System.out.println("ch1 value is: " + ch1); // ?
+
+        char ch2 = 64;  
+        System.out.println("ch2 value is: " + ch2); // @
+
+        char ch3 = 65;  
+        System.out.println("ch3 value is: " + ch3); // A
+
+        char ch4 = 1;  
+        System.out.println("ch4 value is: " + ch4); // SOH (invisible control char)
+    }
+}
+
+// Test4 – Unicode text (multilingual)
+
+public class Test4 {
+    public static void main(String[] args) {
+        String hindi = "\u0928\u092E\u0938\u094D\u0924\u0947"; 
+        System.out.println(hindi); // नमस्ते
+
+        String telugu = "\u0C28\u0C2E\u0C38\u0C4D\u0C24\u0C47";
+        System.out.println("\n" + telugu); // నమస్తే
+
+        String urdu = "\u0633\u0644\u0627\u0645"; 
+        System.out.println("\n" + urdu); // سلام
+    }
+}
+
+✔ Demonstrates Unicode support for Indian languages & Arabic.
+
+// Test5 – Addition of chars
+
+public class Test5 {
+    public static void main(String txt[]) {
+        int x = 'A'; 
+        int y = 'B';
+
+        System.out.println(x + y);        // 65 + 66 = 131
+        System.out.println('a' + 'a');    // 97 + 97 = 194
+        System.out.println("a" + "a");    // String concatenation = aa
+    }
+}
+
+// Test6 – Unicode range
+
+public class Test6 {
+    public static void main(String[] args) {
+        char ch1 = 65535; 
+        System.out.println("ch1 value is: " + ch1);
+
+        // char ch2 = 65536; ❌ Error (out of range)
+    }
+}
+
+// Test7 – Unicode hex representation
+
+public class Test7 {
+    public static void main(String[] args) {
+        int ch1 = '\u0000';  // 0
+        System.out.println(ch1);
+
+        int ch2 = '\uffff';  // 65535
+        System.out.println(ch2);
+
+        char ch3 = '\u0041'; // A
+        System.out.println(ch3);
+
+        char ch4 = '\u0061'; // a
+        System.out.println(ch4);
+    }
+}
+
+// Test8 – Same char in different forms
+
+public class Test8 {
+    public static void main(String[] args) {
+        char c1 = 'A';
+        char c2 = 65;
+        char c3 = '\u0041';
+
+        System.out.println("c1 = " + c1 + ", c2 = " + c2 + ", c3 = " + c3);
+    }
+}
+
+👉 Output:
+
+c1 = A, c2 = A, c3 = A
+
+// Test9 – char → int comparison
+
+public class Test9 {
+    public static void main(String[] args) {
+        int x = 'A';       // 65
+        int y = '\u0041';  // 65
+        System.out.println("x = " + x + " y = " + y);
+    }
+}
+
+// Test10 – Escape sequence as char
+
+public class Test10 {
+    public static void main(String[] args) {
+        char ch = '\n';
+        System.out.println("Hello");
+        System.out.println(ch);   // prints a blank line
+        System.out.println("World");
+    }
+}
+
+// Test11 – Char MIN/MAX values
+
+public class Test11 {
+    public static void main(String[] args) {
+        System.out.println("Min Value: " + (int) Character.MIN_VALUE); 
+        System.out.println("Max Value: " + (int) Character.MAX_VALUE); 
+        System.out.println("Size is: " + Character.SIZE);
+
+        int min = '\u0000';
+        int max = '\uffff';
+
+        System.out.println("Min Value: " + min);
+        System.out.println("Max Value: " + max);
+    }
+}
+
+👉 Output:
+
+Min Value: 0
+Max Value: 65535
+Size is: 16
+Min Value: 0
+Max Value: 65535
+
+✅ So overall:
+
+ - Java char uses Unicode → 16 bits → range 0 to 65535.
+ - Characters can be written as literals ('A'), decimal (65), or hex Unicode (\u0041).
+ - Escape sequences are also valid char literals.
+
+
+📘 String Literal in Java
+
+✅ What is String?
+
+ - String is a predefined class in java.lang package.
+ - String is a sequence of characters enclosed in double quotes (" ").
+ - Characters may be letters, digits, symbols, or special characters.
+
+1 > Ways to create a String
+
+    Java provides 3 ways:
+
+    (a) Using String Literal
+    
+    String str1 = "India";
+
+👉 Stored in String Constant Pool (SCP) for memory efficiency. 
+
+    (b) Using new keyword
+
+    String str2 = new String("Hyderabad");
+
+👉 Stored in Heap memory (not SCP).
+
+    (c) Using Character Array
+
+    char ch[] = {'R', 'A', 'J'};
+    String str3 = new String(ch);
+
+Program: 3 Ways to Create String
+
+public class StringTest1 {
+    public static void main(String[] args) {
+        String s1 = "Hello World";   // String Literal
+        System.out.println(s1);
+
+        String s2 = new String("Ravi");   // Using new keyword
+        System.out.println(s2);
+
+        char s3[] = {'H', 'E', 'L', 'L', 'O'};  // Character Array
+        System.out.println(s3);
+    }
+}
+
+
+2 > Strings are alphanumeric
+
+public class StringTest2 {
+    public static void main(String[] args) {
+        String x = "B-61 Hyderabad";  // Letters + Numbers + Symbol
+        System.out.println(x);
+
+        String y = "123";             // Only numbers, still String
+        System.out.println(y);
+
+        String z = "67.90";           // Decimal number, still String
+        System.out.println(z);
+
+        String p = "A";               // Single character, but still String
+        System.out.println(p);
+    }
+}
+
+
+3 >  IQ - String concatenation
+public class StringTest3 {
+    public static void main(String []args) {
+        String s = 15 + 29 + "Ravi" + 40 + 40;
+        System.out.println(s);
+    }
+}
+
+👉 Execution flow:
+
+15 + 29 = 44 (int + int = int)
+44 + "Ravi" = "44Ravi" (int + String = String)
+"44Ravi" + 40 = "44Ravi40" (String + int = String)
+"44Ravi40" + 40 = "44Ravi4040"
+
+📌 Output: 44Ravi4040
+
+📘 Local Variables in Java
+
+✅ Definition:
+
+ - Variables declared inside a method, block, or constructor are called local variables.
+ - They exist only inside that method/block → destroyed after method finishes.
+ - Also called temporary variables / stack variables.
+
+public void accept(int x) {   // parameter variable
+    int y = 200;             // local variable
+    System.out.println(y);
+}
+
+✅ Rules for Local Variables:
+
+    1 > Must be initialized before use (Java doesnt assign default values to them).
+
+        System.out.println(x);  // ❌ Error
+        int x = 90;
+
+    2 > Cannot have modifiers (public, private, static etc.) except final.
+
+    3 > Stored in stack memory inside a stack frame when a method is called.
+
+✅ Example: Stack frames
+
+class Test {
+    public static void main(String[] args) {
+        m1();
+    }
+    public static void m1() {
+        m2();  // new stack frame created for m2
+    }
+    public static void m2() {
+        System.out.println("Inside m2");
+    }
+}
+
+📌 Every time you call a method:
+
+ - A stack frame is created.
+ - When method ends → frame is destroyed.
+
+⚡ Quick Revision
+
+    String: "India" → collection of characters inside " ".
+
+    3 Ways to create String: Literal, new, char array.
+
+    Concatenation: Numbers first add, then if String appears → all further results become String.
+
+    Local Variable: Declared inside method/block, must be initialized, stored in stack memory.
+
+// How Local Variables Work in Stack Memory
+
+When a Java program runs:
+
+    1 > main() method starts first → JVM creates a stack frame for it.
+    2 > When main() calls another method (m1()), a new stack frame is created on top of main()'s frame.
+    3 > If m1() calls m2(), then again a new stack frame is created for m2().
+    4 > Each methods local variables are stored inside its own stack frame.
+    5 > When the method ends, its stack frame is deleted, so its local variables are also destroyed.
+
+class StackMemoryExample {
+    public static void main(String[] args) {
+        System.out.println("Main started");
+        m1();
+        System.out.println("Main ended");
+    }
+
+    public static void m1() {
+        int a = 10; // local variable in m1()
+        System.out.println("In m1(), a = " + a);
+        m2();
+    }
+
+    public static void m2() {
+        int b = 20; // local variable in m2()
+        System.out.println("In m2(), b = " + b);
+    }
+}
+
+
+  Stack Memory Representation
+------------------------------
+|  m2() Stack Frame          |
+|  int b = 20                |
+------------------------------
+|  m1() Stack Frame          |
+|  int a = 10                |
+------------------------------
+|  main() Stack Frame        |
+|  args[], etc.              |
+------------------------------
+        Stack Memory
+
+Execution Flow
+
+    main() starts → stack frame for main.
+    m1() is called → new stack frame created for m1, local var a lives there.
+    m2() is called → new stack frame created for m2, local var b lives there.
+    When m2() finishes → its stack frame is deleted, variable b is gone.
+    Then m1() finishes → its stack frame is deleted, variable a is gone.
+    Finally, main() finishes → program ends, its stack frame is deleted.
+
+Key Rule
+
+👉 Local variables cannot be used outside their method because they live only inside their stack frame.
+
+
+
+
+
+
+
+
