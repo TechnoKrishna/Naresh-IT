@@ -1,0 +1,413 @@
+Limitation of Command Line Argument
+
+    Using Command Line Argument (CLA), we can pass some value while starting the program (at runtime).
+
+    These values are stored in a String array (args).
+
+    Then only the execution of the program will be started.
+
+⚠️ Limitation:
+
+    We cannot ask the user to enter values during program execution. The values must be given at the time of running the program.
+
+Example Program : 
+
+public class ReadCharacter {
+    public static void main(String[] args) {
+        System.out.println("Enter your gender [M/F]");
+
+        char ch = args[0].charAt(0);  
+        // take 1st argument, 1st character
+
+        System.out.println("Your gender is: " + ch);
+    }
+}
+
+How it works:
+
+Suppose we run the program from the command line like this:
+
+    java ReadCharacter M
+
+📌 Execution Flow :
+
+    1 > The program first prints:
+
+        Enter your gender [M/F]
+
+        (This is just a message, not asking input.)
+
+    2 > 
+
+        args[0] = "M"
+        charAt(0) → 'M'
+
+    3 > Output becomes:
+
+        Your gender is: M
+
+Problem (Limitation)
+
+    Even though the program prints a message asking input, it does not wait for the user to type.
+
+    👉 The value must be passed as a command line argument (M in the above case).
+
+    This is why command line argument is not recommended when we want interactive input from the user.
+
+Important Note 📝
+
+    charAt(int indexPosition) → This is a predefined, non-static method of the String class.
+
+    It is used to get a character from a string based on its index.
+
+    Example:
+
+    String str = "Hello";
+    char c = str.charAt(1); // 'e' (because index starts from 0)
+    System.out.println(c);
+
+    ✅ So, Command Line Argument is good for testing small inputs quickly, but not suitable when you want the end-user to type values while program is running.
+
+Q > How to take the input from the user?
+
+    In Java, if we want to take values directly from the end user during program execution (instead of Command Line Arguments), we can use different input techniques.
+
+    Different Ways to Take Input:
+
+    A ) Using java.io.DataInputStream (Old Approach)
+
+    One of the earliest ways to read input in Java.
+    Mostly deprecated now (not recommended).
+
+    B ) Using java.io.BufferedReader
+
+    More efficient than DataInputStream.
+    Reads input as String, but we need to convert manually if we want int, float, etc.
+
+    C ) Using System.in.read()
+
+    Reads only one character at a time.
+    Returns the ASCII value of the entered character.
+
+    D ) Using java.io.Console
+
+    Useful when we want to read passwords securely (input is hidden).
+    Works only in the terminal (not in IDEs like Eclipse/IntelliJ).
+
+    E ) Using java.util.Scanner (Recommended)
+
+    Introduced in Java 1.5 (modern and easy).
+    Can read different data types directly.
+    Widely used in programs and competitive coding.
+
+Q > How to read the client data using Scanner class?
+
+    👉 Scanner is a predefined class in the java.util package (introduced in JDK 1.5).
+
+    👉 It is the most common and user-friendly way to read input from the user at runtime.
+
+    👉 It allows us to read different types of values: String, int, float, double, boolean, etc.
+
+Q > Static Fields of System class
+
+    In Java, the System class (from java.lang package) provides some useful static fields to handle input and output operations. These fields are:
+
+    1 ) System.out
+
+    Used to print normal messages on the console.
+    It prints in black color (default console text color).
+
+    ✅ Example:
+
+    public class TestSystemOut 
+    {
+        public static void main(String[] args) 
+        {
+            System.out.println("This is a normal message");
+        }   
+    }
+
+    Output:
+
+    This is a normal message
+
+    2 ) System.err
+
+    Used to print error messages on the console.
+    Usually printed in red color (depends on IDE/console).
+
+    ✅ Example:
+
+    public class TestSystemErr 
+    {
+        public static void main(String[] args) 
+        {
+            System.err.println("This is an error message!");
+        }
+    }
+
+    Output (Red color in console):
+
+    This is an error message!
+
+    3 ) System.in
+
+    Used to take input from the user (keyboard).
+    It is an InputStream object, meaning it reads bytes.
+    Normally, we wrap it using Scanner or BufferedReader for easy input handling.
+
+    ✅ Example with Scanner:
+
+    import java.util.Scanner;
+
+    public class TestSystemIn {
+        public static void main(String[] args) {
+            Scanner sc = new Scanner(System.in);  // System.in used here
+            System.out.print("Enter your name: ");
+            String name = sc.nextLine();
+            System.out.println("Hello, " + name);
+        }
+    }
+
+    Output:
+
+    Enter your name: Krishna
+    Hello, Krishna
+
+📌 Summary:
+
+    System.out → prints normal messages.
+    System.err → prints error messages.
+    System.in → takes input from the keyboard (source).
+
+Q > How to create an object for Scanner class
+
+    The Scanner class is available in the java.util package.
+
+    It provides many non-static methods (like nextInt(), nextLine(), nextDouble(), etc.) to read input.
+
+    Since these are non-static methods, we first need to create an object of the Scanner class.
+
+    ✅ Syntax to create Scanner object:
+    
+    Scanner sc = new Scanner(System.in);
+
+    Scanner → class name
+
+    sc → reference variable (object name, can be anything)
+
+    new → keyword to create object
+
+    Scanner(System.in) → constructor which takes input from keyboard
+
+Q > Non-static methods of Scanner class
+
+    The Scanner class provides different methods to read different types of data from the user.
+
+    1) public String next(): Used to read a single word. 
+
+    2) public String nextLine(): Used to read multiple words or complete line.
+
+    3) public byte nextByte(): Used to read byte value. 
+
+    4) public short nextShort(): Used to read short value.. 
+
+    5) public int nextInt(): Used to read Int value. 
+
+    6) public long nextLong(): Used to read long value. 
+
+    7) public float nextFloat(): Used to read float value. 
+
+    8) public double nextDouble(): Used to read double value. 
+
+    9) public boolean nextBoolean(): Used to read boolean value. 
+
+    10) public char next().charAt(0): Will read a single character.
+
+// WAP to read your name from the end user
+
+// Import Scanner class from java.util package
+import java.util.Scanner;
+
+public class ReadName {
+    public static void main(String[] args) {
+        
+        // Create Scanner object to read input from user
+        Scanner sc = new Scanner(System.in);
+        
+        // Ask the user to enter their name
+        System.out.print("Enter your Name: ");
+        
+        // Read full line (name may contain spaces)
+        String name = sc.nextLine();
+        
+        // Print the entered name
+        System.out.println("Your Name is: " + name);
+        
+        // Close the Scanner object
+        sc.close();
+    }
+}
+
+✅ Key Points
+
+    java.util is not a default package, so we must import it to use Scanner.
+
+    java.lang is a default package, so classes like String, System, etc., do not require import.
+
+    nextLine() is used to read the full line, so names with spaces are captured correctly.
+
+    Always close the Scanner object to avoid resource leak: sc.close();
+
+// WAP Read a Character (Gender) from User
+
+import java.util.Scanner;
+
+public class ReadCharacter {
+    public static void main(String[] args) {
+
+        // Create Scanner object to read input from user
+        Scanner sc = new Scanner(System.in);
+
+        // Ask the user to enter their gender
+        System.out.print("Enter your Gender [M/F] : ");
+
+        // Read the first character entered by the user
+        char gender = sc.next().charAt(0);
+
+        // Print the entered gender
+        System.out.println("Your Gender is: " + gender);
+
+        // Close the Scanner object
+        sc.close();
+    }
+}
+
+✅ Key Points
+
+    Scanner sc = new Scanner(System.in); – Correct syntax to create Scanner object.
+
+    sc.next().charAt(0); – Reads the first character of the input string.
+
+    System.out.print() – Prints the message without moving to a new line.
+
+    sc.close(); – Always close the Scanner to free resources.
+
+// WAP Read Student Data from User
+
+import java.util.Scanner;
+
+public class ReadStudentData {
+    public static void main(String[] args) {
+
+        // Create Scanner object to read input from user
+        Scanner sc = new Scanner(System.in);
+
+        // Read roll number (integer)
+        System.out.print("Enter your roll: "); 
+        int roll = Integer.parseInt(sc.nextLine()); // Converts String to int
+
+        // Read name (String)
+        System.out.print("Enter your Name: "); 
+        String name = sc.nextLine();
+
+        // Read fees (double)
+        System.out.print("Enter your fees: "); 
+        double fees = Double.parseDouble(sc.nextLine()); // Converts String to double
+
+        // Display the student data
+        System.out.println("\n--- Student Details ---");
+        System.out.println("Roll number: " + roll);
+        System.out.println("Name: " + name);
+        System.out.println("Fees: " + fees);
+
+        // Close the Scanner object
+        sc.close();
+    }
+}
+
+✅ Key Points
+
+    Scanner sc = new Scanner(System.in); – Correct syntax for creating Scanner object.
+
+    Integer.parseInt(sc.nextLine()) – Converts String input to int.
+
+    Double.parseDouble(sc.nextLine()) – Converts String input to double.
+
+    nextLine() – Always use nextLine() when reading after parseInt() or parseDouble() to avoid skipping input.
+
+    sc.close(); – Closes the Scanner to free resources.
+
+4) Punctuators (Separators) in Java
+
+Definition:
+
+    Punctuators, also called separators, are symbols that tell the compiler how code elements are grouped. They help organize the program structure and separate different parts of the code.
+
+Common Punctuators in Java
+
+Punctuator	Usage / Meaning
+
+() -> Used in methods, constructors, and expressions to group parameters or control order of operations.
+
+Example: int sum(int a, int b)
+
+{} -> Braces define a block of code like class body, method body, or loops.
+
+Example: { System.out.println("Hello"); }
+
+[] -> Used for arrays to define type or access elements.
+
+Example: int arr[] = new int[5]; arr[0] = 10;
+
+; -> Semicolon marks the end of a statement.
+
+Example: int x = 10;
+
+, -> Comma separates multiple variables or parameters.
+
+Example: int a = 5, b = 10, c = 15;
+
+. -> Dot operator accesses members of a class or object.
+
+Example: System.out.println("Hello");
+
+@ -> Annotation marker used to provide metadata to classes, methods, or variables.
+
+Example: @Override
+
+5) Operators
+
+It is a symbol which describes that how a calculation will be performed on operands.
+
+Types Of Operators:
+
+Operators               Precedence
+
+postfix                 exprt+ expr--
+
+unary           ++expr --expr +expr -expr ~ !
+
+multiplicative              * / % 
+
+additive                      + -
+
+shift                       << >> >>>
+
+relational          < > <= ›= instanceof
+
+equality                    == !=
+
+bitwise AND                     &
+
+bitwise exclusive OR            ^
+
+bitwise inclusive OR            |
+
+logical AND                     & &
+
+logical OR                      ||
+
+ternary                         ? "
+
+assignment           = += -= *= /= %= &= ^= |= <<= >>= >>>=
