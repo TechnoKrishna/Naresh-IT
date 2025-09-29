@@ -1,0 +1,476 @@
+🔹 Binary Conversion Rule (Decimal → Binary)
+
+To convert a decimal number into binary, follow these steps:
+
+1 > Divide the number by 2.
+2 > Write down the remainder (0 if even, 1 if odd).
+3 > Update the quotient (ignore the remainder).
+4 > Repeat until quotient becomes 0.
+5 > Read the remainders from bottom to top → that’s your binary.
+
+Example: Convert 47 into Binary
+
+Step	Number ÷ 2	Quotient	Remainder
+1	47 ÷ 2	23	1
+2	23 ÷ 2	11	1
+3	11 ÷ 2	5	1
+4	5 ÷ 2	2	1
+5	2 ÷ 2	1	0
+6	1 ÷ 2	0	1
+
+👉 Now read remainders from bottom to top:
+47 (decimal) = 101111 (binary)
+
+✅ Shortcut Rule:
+
+Even number → binary ends with 0.
+Odd number → binary ends with 1.
+
+----------------------------------------------------------------
+
+public class Test {
+    public static void main(String[] args) {
+        int x = 15;
+        int y = x++; 
+        System.out.println(x + ":" + y);
+    }
+}
+
+x++ → post-increment (first assign, then increment).
+So, y = 15, then x = 16.
+
+👉 Output:  16 : 15
+
+----------------------------------------------------------------
+
+public class Test {
+    public static void main(String[] args) {
+        int x = 15;
+        int y = --x;
+        System.out.println(x + ":" + y);
+    }
+}
+
+--x → pre-decrement (first decrement, then assign).
+So, x = 14, then y = 14.
+
+👉 Output:  14 : 14
+
+----------------------------------------------------------------
+
+public class Test {
+    public static void main(String[] args) {
+        int x = 20;
+        int y = ++20; // error
+        System.out.println(x + ":" + y);
+    }
+}
+
+You cannot apply increment/decrement on a constant value (like 20).
+Only variables can be incremented/decremented.
+
+👉 Error:
+
+unexpected type
+required: variable
+found: value
+
+----------------------------------------------------------------
+
+public class Test {
+    public static void main(String[] args) {
+        int x = 20;
+        int y = ++(++x);
+        System.out.println(x + ":" + y);
+    }
+}
+
+Step by step:
+
+++x → x = 21
+Then again ++(21) → x = 22
+Assign: y = 22
+
+👉 Output:  22 : 22
+
+----------------------------------------------------------------
+
+public class Test {
+    public static void main(String[] args) {
+        char ch = 'A';
+        ch++;
+        System.out.println(ch);
+    }
+}
+
+'A' has ASCII/Unicode value 65.
+After increment → 66 → which is 'B'.
+
+👉 Output:  B
+
+----------------------------------------------------------------
+
+public class Test {
+    public static void main(String[] args) {
+        double d1 = 12.89;
+        d1++;
+        System.out.println(d1);
+    }
+}
+
+d1++ → works because increment/decrement works on all numeric types.
+12.89 + 1 = 13.89
+
+👉 Output: 13.89
+
+----------------------------------------------------------------
+
+🔑 Rule:
+
+Increment (++) and Decrement (--) operators can be applied on all numeric primitive data types (byte, short, int, long, float, double, char).
+👉 But they cannot be applied on boolean.
+
+----------------------------------------------------------------
+
+1. While loop with false
+
+public class Test {
+    public static void main(String[] args) { 
+        while(false) { 
+            System.out.println("Hello"); 
+        }
+        System.out.println("World");
+    }
+}
+
+✅ Error: Compilation error → Unreachable statement
+Because while(false) means the loop body will never run, the compiler detects that "Hello" can never be executed, so it marks it as unreachable code.
+
+----------------------------------------------------------------
+
+2. While loop with a boolean variable
+
+public class Test {
+    public static void main(String[] args) { 
+        boolean b = false;
+        while(b) {
+            System.out.println("Hello");
+        }
+        System.out.println("World");
+    }
+}
+
+✅ Output:  World
+
+Here, while(b) is allowed because b is a variable. At compile-time, the compiler cannot guarantee that b is always false (it could be modified later). So no error. Loop won’t run since b is false.
+
+----------------------------------------------------------------
+
+3. While loop with final values
+
+public class Test {
+    public static void main(String[] args) {
+        final int x = 10;
+        final int y = 20;
+        while(x > y) {
+            System.out.println("x is Greater than y");
+        } 
+        System.out.println("Hello World");
+    }
+}
+
+✅ Error: Unreachable code
+Since x and y are final, their values are known at compile-time (10 > 20 is always false). So the compiler knows the loop body will never execute. → unreachable code.
+
+----------------------------------------------------------------
+
+4. Do-while with variable inside
+
+public class Test {
+    public static void main(String[] args) {
+        do {
+            int x = 1;
+            System.out.println("Hello");
+            x++;
+        } while (x<=10);
+    }
+}
+
+❌ Error: x cannot be resolved to a variable
+Because x is declared inside the do block, it has block scope. When the compiler checks while(x<=10), x is out of scope.
+
+----------------------------------------------------------------
+
+5. Do-while with if and assignment
+
+public class Test {
+    public static void main(String[] args) {
+        int x = 1;
+        do { 
+            System.out.println("Hello");
+            x++; 
+            boolean b = true;
+            if(b = false)   // assignment, not comparison
+                break;  
+        } while (x<=10);
+    }
+}
+
+✅ Behavior:
+
+First "Hello" prints.
+Inside if(b = false), assignment happens → b becomes false.
+Since if(false) → the break doesn’t run.
+Loop continues until x > 10.
+Output:
+
+Hello
+Hello
+Hello
+Hello
+Hello
+Hello
+Hello
+Hello
+Hello
+Hello
+
+(10 times)
+
+⚠️ Note: if(b = false) is allowed because assignment gives a boolean result (false here). But usually, we should use == for comparison.
+
+----------------------------------------------------------------
+
+🔹 Rule: Numeric Promotion
+
+In Java, when you use arithmetic operators (+, -, *, /, %) or unary minus (-),
+
+👉 operands smaller than int (byte, short, char) are promoted to int before calculation.
+
+This is why minimum 32 bits (int) are used to store results.
+
+To prevent data loss, Java forces promotion.
+
+1. Unary minus with int
+public class Test {
+    public static void main(String[] args) {
+        int x = 15; 
+        System.out.println(-x);
+    }
+}
+
+✅ Output:  -15
+No issue here because x is already int.
+
+----------------------------------------------------------------
+
+2. Multiplication with byte and short
+
+public class Test {
+    public static void main(String[] args) {
+        byte b = 1; 
+        short s = 2;
+        short t = b * s; // error
+        System.out.println(t);
+    }
+}
+
+❌ Error: Type mismatch: cannot convert from int to short
+
+b * s → both promoted to int.
+Result is int.
+Cannot assign directly to short without cast.
+
+✅ Fix: short t = (short)(b * s);
+
+----------------------------------------------------------------
+
+3. Unary minus with byte
+
+public class Test {
+    public static void main(String[] args) {
+        byte b = 1; 
+        byte c = -b; // error
+        System.out.println(c);
+    }
+}
+
+❌ Error: Type mismatch: cannot convert from int to byte
+-b → promoted to int.
+Assignment to byte needs explicit cast.
+
+✅ Fix: byte c = (byte)(-b);
+
+----------------------------------------------------------------
+
+4. Addition of two bytes
+
+public class Test {
+    public static void main(String[] args) { 
+        byte b = 120;
+        byte c = 40;
+        //int d = b + c;
+        //System.out.println(d); // 160
+
+        byte d = (byte) (b + c);
+        System.out.println(d);
+    }
+}
+
+✅ Output:  -96
+
+
+Why?
+b + c → promoted to int → result = 160.
+
+Casting back to byte:
+Byte range = -128 to 127.
+160 overflows → wraps around → -96.
+
+----------------------------------------------------------------
+
+5. Short-hand operator (+=)
+
+public class Test {
+    public static void main(String[] args) {
+        /*
+        byte b = 1;
+        b = b + 2; // error
+        */
+
+        byte b = 2;
+        b += 8; // valid
+        System.out.println(b);
+    }
+}
+
+
+✅ Output:  10
+
+⚡ Key Point:
+
+b = b + 2; → error, because b + 2 becomes int.
+
+b += 8; → compiler automatically casts the result back to byte.
+So it works safely.
+
+✅ Summary of Numeric Promotion Rules:
+
+1 > byte, short, char → always promoted to int in arithmetic.
+
+2 > Result of expression → at least int.
+
+3 > If you want smaller type result, you must cast manually.
+
+4 > Shorthand operators (+=, -=, *=) handle casting automatically.
+
+----------------------------------------------------------------
+
+🔹 1. Logical vs Bitwise Operators
+
+Logical operators (&&, ||) → work only with boolean values.
+
+System.out.println(5 && 6); // ❌ Error (because 5 and 6 are not boolean)
+
+Bitwise operators (&, |, ^) → work with:
+1 > Numbers (int, long, byte, short, char)
+2 > Booleans
+
+----------------------------------------------------------------
+
+🔹 2. Example with || (Logical OR) vs | (Bitwise OR with boolean)
+
+int z = 5;
+if(++z > 5 || ++z > 6) { // Logical OR
+    z++;
+}
+System.out.println(z); // 7
+
+✅ Explanation:
+
+First ++z → z = 6.
+Condition: 6 > 5 || ++z > 6 → Left side true.
+Short-circuit: right side not checked.
+
+So z = 6, then z++ → 7.
+
+z = 5;
+if(++z > 5 | ++z > 6) { // Bitwise OR with boolean
+    z++;
+}
+System.out.println(z); // 8
+✅ Explanation:
+
+First ++z → z = 6.
+Condition: 6 > 5 | ++z > 6
+Left side true, but since it’s | (not short-circuit), right side is also checked.
+Right side → ++z = 7 > 6 → true.
+Condition true, so inside if: z++ → 8.
+Working with Bitwise AND(&), Bitwise OR(|) and Bitwise X-OR (^):
+
+----------------------------------------------------------------
+
+🔹 3. Example with & (Bitwise AND with boolean)
+
+int z = 5;
+if(++z > 6 & ++z > 6) {
+    System.out.println("Inside If");
+    z++;
+}
+System.out.println(z);
+
+✅ Execution:
+
+First ++z → z = 6.
+Condition: 6 > 6 & ++z > 6
+Left side = false, but since & is not short-circuit, right side is checked.
+Right side: ++z = 7 > 6 → true.
+Condition = false & true = false.
+No if block.
+Output: 7.
+
+----------------------------------------------------------------
+
+🔹 4. Bitwise XOR (^)
+System.out.println(true ^ true);  // false
+System.out.println(true ^ false); // true
+
+✅ Rule: XOR gives true if operands are different, else false.
+
+----------------------------------------------------------------
+
+🔹 5. Bitwise operators on numbers
+System.out.println(5 & 6); // 4
+System.out.println(5 | 6); // 7
+System.out.println(5 ^ 6); // 3
+
+Binary calculation:
+
+5 → 101
+6 → 110
+
+Operation	Result(binary)	Decimal
+5 & 6	        100      	    4
+5 | 6	        111      	    7
+5 ^ 6	        011     	    3
+
+🔹 6. Bitwise Complement (~)
+
+Works only with numbers, not booleans.
+
+System.out.println(~true); // ❌ Error
+System.out.println(~4);    // -5
+System.out.println(~-3);   // 2
+
+
+✅ Explanation:
+
+~n = -(n+1) (Two’s complement rule).
+~4 = -(4+1) = -5
+~-3 = -(-3+1) = -(-2) = 2
+
+✅ Final Notes:
+
+&&, || → short-circuit (skip second condition if first decides result).
+&, |, ^ → always check both sides, works for numbers & booleans.
+~ → bitwise NOT, flips every bit, works only with numbers.
