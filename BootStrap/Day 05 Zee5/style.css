@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#logo {
+  height: 50px;
+  padding: 9px;
+}
+
+.navbar {
+  background-color: black;
+}
