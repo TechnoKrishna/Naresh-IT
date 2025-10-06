@@ -1,0 +1,193 @@
+Q ) What is BLC and ELC class?
+
+👉 BLC — Business Logic Class
+
+    BLC is the class where we write the main logic or calculations of our program.
+
+    It doesn’t have a main() method because it’s not used to run the program directly.
+
+    Instead, it just contains methods that do some work (like add numbers, find area, etc.).
+
+    These methods can be used again (reused) from another class.
+
+💡 Real-Life Example:
+
+    Think of BLC like a kitchen 🍳 — where you prepare food (logic).
+
+    But customers don’t come to the kitchen directly; they come to the restaurant front counter (ELC) to place the order.
+
+    So, kitchen = BLC, where work happens, and counter = ELC, where the program actually starts.
+
+Example of BLC :- 
+
+    public class Calculate {
+        public static void doSum(int x, int y) {
+            System.out.println("Sum is :" + (x + y));
+        }
+    }
+
+This class has a method doSum() which adds two numbers.
+There’s no main() method, so this class cannot run directly.
+It’s a BLC class because it only does work (sum), no execution start.
+
+💡 Real-Life Example:
+
+    Think of this as a calculator machine inside a factory 🔢 — it just knows how to add two numbers.
+
+    Someone else (ELC) will press the button to use it.
+
+👉 What is ELC — Executable Logic Class?
+
+    It must contain main method because the execution of the program starts from ELC class.
+
+    ELC is the class that contains the main() method — the starting point of your Java program.
+
+    From here, you call the methods of your BLC classes.
+
+💡 Real-Life Example:
+
+    If BLC is the kitchen 👨‍🍳, then ELC is the person taking the order.
+
+    They start the process by calling the kitchen to prepare the food.
+
+Example of ELC :-
+
+    public class ELC {
+        public static void main(String[] args) {
+            Calculate.doSum(12, 24);
+        }
+    }
+
+    Here, the main method is present, so the program starts from here.
+
+    It calls the BLC class Calculate to do the sum.
+
+💡 Real-Life Example:
+
+    This is like pressing the "start" button on a washing machine 🧺 — the motor (BLC) starts doing its job, but the button (ELC) starts it.
+
+Q ) How to reuse a class in Java?
+
+    The slogan of Java is “WORA” — Write Once, Run Anywhere.
+
+    A public class created in one package can be reused from different packages using import.
+
+    You can write your logic once in a class (like Calculate.java)
+
+    And use it anywhere by importing it into another package (like ELC.java).
+
+So, you don’t need to write the same logic again and again.
+
+💡 Real-Life Example:
+
+    If you build one electric motor, you can use it in fan, mixer, and washing machine — no need to make a new one every time ⚙️
+
+    That’s how reusability works in Java.
+
+Q )  One public class per file rule
+
+    In a single .java file, we can declare only one public class...
+    Non-public classes can be used only within the same package.
+
+    You can only have one public class in a file, and that file’s name must match the class name.
+
+    Example: public class Test → file name must be Test.java
+
+    If you write other classes inside it (without public), they can be used only in that same package.
+
+    💡 Real-Life Example:
+
+    Like you can have one official passport per person (public class = main identity).
+
+    But you can keep multiple ID cards (non-public) that work only inside your home country (package).
+
+Q ) .class file creation
+
+    For one public class → 1 .class file
+
+    For one public + n non-public classes → n+1 .class files
+
+    When Java compiles a file, it makes separate .class files for each class — public or not.
+
+    public class Test 
+    {
+        class A { }
+        class B { }
+    }
+
+    → Output files: Test.class, A.class, B.class
+
+💡 Real-Life Example:
+
+    Like printing ID cards for everyone in a group — each person (class) gets one card (.class file), even if they’re not the main leader (public).
+
+Q ) Working with Static Method (Different Return Type)
+
+    There is a predefined class called DecimalFormat... It is used to format decimal numbers.
+
+    DecimalFormat is a built-in Java class to round or format numbers.
+
+    Example: 3.14159 → “3.14”
+
+    It has a non-static method format() that takes a double and returns a String.
+
+    DecimalFormat df = new DecimalFormat("00.00");
+
+    String result = df.format(3.14159);
+
+    💡 Real-Life Example:
+
+    Like setting a display format on a calculator — it shows 2 digits after decimal instead of full long number.
+
+Q ) Circle.java (BLC)
+
+    package com.ravi.blc;
+    import java.text.DecimalFormat;
+
+    public class Circle {
+        public static void getAreaOfCircle(double radius) {
+            double area = Math.PI * radius * radius;
+            DecimalFormat df = new DecimalFormat("00.00");
+            String areaOfCircle = df.format(area);
+            System.out.println("Area of circle is :" + areaOfCircle);
+        }
+    }
+
+    This class calculates the area of a circle.
+    It formats the result to 2 decimal places.
+    There’s no main(), so it’s a BLC class.
+
+💡 Real-Life Example:
+
+    This is like a circle area calculator app that just does the math — you still need someone to run it (ELC).
+
+Q ) GetCircleArea.java (ELC)
+
+    package com.ravi.elc;
+    import java.util.Scanner;
+    import com.ravi.blc.Circle;
+
+    public class GetCircleArea {
+        public static void main(String[] args) {
+            Scanner sc = new Scanner(System.in);
+            System.out.print("Enter the radius :");
+            double rad = Double.parseDouble(sc.nextLine());
+            Circle.getAreaOfCircle(rad);
+            sc.close();
+        }
+    }
+
+    This class has the main() method.
+    It takes input from user (radius).
+    Calls BLC’s method to find and print area.
+
+    💡 Real-Life Example:
+
+    Imagine you open an app 📱, enter the radius, and press "Find Area" —
+    The app (ELC) takes your input and asks its backend (BLC) to calculate it.
+    
+
+| Term | Meaning                | Has main()? | Purpose                     | Real-Life Example       |
+| ---- | ---------------------- | ----------- | --------------------------- | ----------------------- |
+| BLC  | Business Logic Class   | ❌ No        | Contains logic/calculations | Kitchen 👨‍🍳           |
+| ELC  | Executable Logic Class | ✅ Yes       | Starts program, calls BLC   | Waiter taking order 🍽️ |
