@@ -1,0 +1,461 @@
+💡 What is a Number Data Type?
+
+A Number data type is used to store numeric values — like whole numbers and decimal numbers.
+
+👉 Example:
+
+    let age = 18;         // whole number
+    let price = 99.99;    // decimal number
+    let temperature = -5; // negative number
+
+So basically, anything that you can count, measure, or calculate — goes in the Number type.
+
+🧠 Important Points:
+
+1 > JavaScript has only one type for all numbers —
+    it doesn’t matter if it’s 10, 10.5, or -10.
+
+2 > You can also do math operations with numbers:
+
+    let a = 10;
+    let b = 5;
+    console.log(a + b); // 15
+    console.log(a - b); // 5
+    console.log(a * b); // 50
+    console.log(a / b); // 2
+
+3 > Special numeric values in JavaScript:
+
+    Infinity → something larger than any number
+    -Infinity → smaller than any number
+    NaN → Not a Number (when you do something invalid like "abc" / 2)
+
+🏠 Real-Life Example:
+
+Think of it like your calculator.
+
+When you type:
+
+    10 + 20 → it gives 30
+    100 / 0 → it gives Infinity
+    “apple” * 3 → your calculator says error (NaN)
+
+Just like that, JavaScript’s Number type helps your program do math operations and handle numeric data.
+
+//////////////////////////////////////////////////////////////////////
+
+💡 What is a String Data Type?
+
+A String is used to store text — anything written inside quotes (" ", ' ', or ` `).
+
+👉 Example:
+
+    let name = "Krishna";
+    let city = 'Pune';
+    let message = `Hello, how are you?`;
+
+All these are strings because they store text, not numbers.
+
+🧠 Important Points:
+
+1 > Quotes matter:
+
+    You can use single (' '), double (" "), or backticks (` `).
+
+    All are fine, but backticks are special (used for combining values easily).
+
+2 > You can combine strings using the + operator (this is called concatenation):
+
+    let firstName = "Krishna";
+    let lastName = "Sonawane";
+    let fullName = firstName + " " + lastName;
+    console.log(fullName); // Krishna Sonawane
+
+3 > Backticks (Template Literals) make it easier to join text:
+
+    let name = "Krishna";
+    let age = 18;
+    console.log(`My name is ${name} and I am ${age} years old.`);
+
+Output → My name is Krishna and I am 18 years old.
+
+🏠 Real-Life Example:
+
+Think of a String like a label on a jar.
+
+If you have a jar 🫙 that says “Sugar”, that label is text, not a number.
+
+You use strings when you want to display or store words, like:
+
+    Your name
+    City name
+    Messages
+    Sentences in chat or website text
+
+For example:
+
+    let welcomeMessage = "Welcome to our website!";
+
+⚠️ Tip:
+
+    Even if you put a number inside quotes, it becomes a string, not a number:
+
+    let num1 = 10;      // number
+    let num2 = "10";    // string
+    console.log(num1 + num2); // "1010" (joins as text, not math)
+
+//////////////////////////////////////////////////////////////////////
+
+💡 What is a Boolean Data Type?
+
+A Boolean data type has only two possible values:
+
+    true
+    false
+
+That’s it!
+It’s used to check conditions — like yes or no, on or off, right or wrong.
+
+let isStudent = true;
+let isLoggedIn = false;
+
+🧠 When Do We Use Boolean?
+
+    We use Booleans in situations where we only need a Yes/No type answer.
+
+For example:
+
+    let age = 18;
+    let canVote = age >= 18; // true
+
+Here,
+
+    The condition age >= 18 is true,
+    So canVote stores the value true.
+
+⚙️ Example with Conditions:
+
+let isRaining = false;
+
+if (isRaining) {
+  console.log("Take an umbrella ☔");
+} else {
+  console.log("Enjoy the sunshine ☀️");
+}
+
+Output → Enjoy the sunshine ☀️
+Because isRaining is false.
+
+🏠 Real-Life Example:
+
+Think of Boolean like a light switch:
+    Switch ON → true
+    Switch OFF → false
+
+You can’t have half-on or half-off. It’s always one of the two.
+
+Another example:
+
+    Is the door locked? → true
+    Is the TV on? → false
+
+These are all yes/no situations, just like Booleans in programming.
+
+⚠️ Tip:
+
+Booleans are very useful in decisions, like:
+
+if (loggedIn) {
+  showHomePage();
+} else {
+  showLoginPage();
+}
+
+They help your code make choices — like a brain that decides what to do next.
+
+//////////////////////////////////////////////////////////////////////
+
+💡 What is Undefined in JavaScript?
+
+When you create a variable but don’t give it a value,
+JavaScript automatically sets its value to undefined.
+
+👉 Example:
+
+    let name;
+    console.log(name); // Output: undefined
+
+Here, we created the variable name,
+but we didn’t assign any value — so JavaScript says:
+➡️ “I don’t know yet what’s inside — it’s undefined.”
+
+🧠 In Simple Words:
+
+undefined means:
+    “The variable exists, but it doesn’t have any value right now.”
+
+⚙️ Another Example:
+    let age;
+    age = 18;
+    console.log(age); // 18
+
+    let city;
+    console.log(city); // undefined
+
+At first, city has no value,
+so JavaScript marks it as undefined.
+
+🏠 Real-Life Example:
+
+Imagine you have an empty jar 🫙 labeled “Cookies” 🍪
+
+    You have the jar (variable exists)
+    But there are no cookies inside yet (no value assigned)
+
+That’s exactly what undefined means in JavaScript —
+👉 “The container is there, but it’s empty for now.”
+
+⚠️ Common Mistake:
+
+Sometimes beginners confuse undefined and null,
+but they’re different 👇
+
+Term        undefined  
+Meaning	 Variable exists but no value assigned
+Example        let x;
+
+Term        null  
+Meaning	 Variable has an empty value on purpose
+Example        let x = null;
+
+
+✅ Key Point:
+
+undefined helps you know that a variable was created,
+but you forgot to assign something to it yet.
+
+
+//////////////////////////////////////////////////////////////////////
+
+💡 What is Null in JavaScript?
+
+Null is a value that means:
+
+    “This variable is intentionally empty.”
+
+Unlike undefined, here you assign it empty on purpose.
+
+👉 Example:
+
+    let car = null;
+    console.log(car); // Output: null
+
+Here, we created the variable car and gave it a value of null,
+which means: “I don’t have a car right now, but I might get one later.”
+
+🧠 Easy Explanation:
+
+    Undefined → You forgot to give a value
+    Null → You intentionally made it empty
+
+⚙️ Example:
+    let house = null;    // We don’t have a house yet
+    let name;            // We forgot to give a name
+
+    console.log(house);  // null
+    console.log(name);   // undefined
+
+    house is empty on purpose → null
+    name is empty by mistake → undefined
+
+🏠 Real-Life Example:
+
+Think of it like a jar 🫙:
+
+    Undefined jar → You have a jar but forgot to put anything inside
+    Null jar → You have a jar and decided to leave it empty for now
+
+Another example:
+
+    You have a parking spot reserved → it’s empty (null)
+    You have a spot but forgot to assign a car → it’s undefined
+
+✅ Key Point:
+    Use null when you want to show something is empty intentionally.
+    Use undefined when a variable exists but hasn’t been set yet.
+
+//////////////////////////////////////////////////////////////////////
+
+💡 What is an Object in JavaScript?
+
+An Object is like a box that can store multiple related things together.
+Each thing inside has a name (key) and a value.
+
+👉 Example:
+
+let person = {
+  name: "Krishna",
+  age: 18,
+  city: "Pune"
+};
+
+console.log(person.name); // Krishna
+console.log(person.age);  // 18
+
+Here:
+
+    person → object name
+    name, age, city → keys (like labels)
+    "Krishna", 18, "Pune" → values
+
+So an object groups related data together.
+
+🧠 Easy Explanation:
+
+    Think of an object like a folder 📂
+    Inside the folder, you have papers with labels
+    Each label (key) tells you what the paper is about, and the paper (value) contains the actual information.
+
+⚙️ Another Example:
+let car = {
+  brand: "Toyota",
+  model: "Corolla",
+  year: 2020,
+  isElectric: false
+};
+
+console.log(car.model);      // Corolla
+console.log(car.isElectric); // false
+
+    car stores all information about the car in one place.
+    You can easily access any detail using the key name.
+
+🏠 Real-Life Example:
+
+Think of it like a student ID card 🎓:
+
+Key (Label)	        Value (Information)
+Name	            Krishna
+Roll Number	        18
+Class	            12th
+School	            XYZ High School
+
+Just like the ID card keeps all details together,
+an object keeps all related information together in code.
+
+✅ Key Point:
+Use objects when you want to store multiple pieces of related data together.
+
+//////////////////////////////////////////////////////////////////////
+
+💡 What is an Array in JavaScript?
+
+An Array is a special type of object that can store multiple values in a single variable.
+All values are stored in order, and each value has a position (index) starting from 0.
+
+👉 Example:
+
+let fruits = ["Apple", "Banana", "Mango"];
+console.log(fruits[0]); // Apple
+console.log(fruits[2]); // Mango
+
+Here:
+
+    fruits → array name
+    "Apple", "Banana", "Mango" → values
+    [0], [1], [2] → positions (index) of values
+
+🧠 Easy Explanation:
+
+    Think of an array like a fruit basket 🍎🍌🥭
+    Each fruit has a position in the basket: first, second, third…
+    You can easily pick any fruit by its position.
+
+⚙️ Example with Changing Values:
+
+    let colors = ["Red", "Green", "Blue"];
+    console.log(colors[1]); // Green
+
+    colors[1] = "Yellow"; // change value
+    console.log(colors);   // ["Red", "Yellow", "Blue"]
+
+    colors.push("Purple"); // add new value at the end
+    console.log(colors);   // ["Red", "Yellow", "Blue", "Purple"]
+
+colors[1] = "Yellow" → we replaced Green with Yellow
+push() → we added a new color at the end
+
+🏠 Real-Life Example:
+
+Imagine a school class 🏫 with students sitting in a row:
+
+Position (Index)	Student Name
+0	                Krishna
+1	                Rahul
+2	                Priya
+
+    The row of students is like an array
+    Each student has a position (index) so you can find them easily.
+
+✅ Key Point:
+Use arrays when you want to store multiple related values in one place and access them by position.
+
+//////////////////////////////////////////////////////////////////////
+
+💡 What is a Function in JavaScript?
+
+A Function is a block of code that performs a specific task.
+You can call it whenever you need it, instead of writing the same code again and again.
+
+👉 Example:
+
+function greet() {
+  console.log("Hello, Krishna!");
+}
+
+greet(); // Calling the function → Output: Hello, Krishna!
+
+Here:
+
+    function greet() → defines the function
+    console.log("Hello, Krishna!") → task it performs
+    greet() → we call the function to run the task
+
+🧠 Easy Explanation:
+
+    Think of a function like a machine 🧺
+    You press a button, it does a job for you, and gives output
+    You don’t have to manually do the task each time
+
+⚙️ Example with Input and Output:
+function add(a, b) {
+  return a + b;
+}
+
+let sum = add(5, 3); 
+console.log(sum); // 8
+
+    a and b → inputs (like ingredients for a recipe)
+    return a + b → the machine gives the result
+    add(5, 3) → we use the function to calculate the sum
+
+🏠 Real-Life Example:
+
+Think of a coffee machine ☕:
+
+    You give ingredients (water + coffee powder) → inputs
+    You press a button → function runs
+    You get coffee → output
+
+Similarly, a function:
+
+    Takes inputs
+    Performs a task
+    Gives output
+
+Another example:
+
+    Washing machine, blender, or calculator — all are functions in real life
+
+✅ Key Point:
+Use functions when you want to repeat tasks, avoid rewriting code, and organize your program neatly.
