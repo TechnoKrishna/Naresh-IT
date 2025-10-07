@@ -1,0 +1,23 @@
+😊 Constants
+
+In JavaScript, a constant is a variable whose value cannot be changed once it is given.
+
+We create a constant using the keyword const.
+
+So once you give a value to a constant, you cannot reassign or change it later in the program.
+
+🧩 Syntax:
+
+const PI = 3.14;
+
+Here:
+    const → means it’s a constant.
+    PI → name of the constant.
+    3.14 → value that cannot change.
+
+⚠️ Example (what you cannot do):
+
+const PI = 3.14;
+PI = 3.1415; // ❌ Error! You can’t change the value of a constant.
+
+This will give an error because constants are read-only once created.
