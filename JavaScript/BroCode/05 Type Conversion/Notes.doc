@@ -1,0 +1,197 @@
+# Type Conversion
+
+In JavaScript, Type Conversion means changing one data type into another — like changing a number into a string, or a string into a number.
+
+There are two types of type conversion:
+    Implicit Conversion → done automatically by JavaScript.
+    Explicit Conversion → done manually by the programmer.
+
+🧩 1. Implicit Conversion (Automatic)
+
+JavaScript automatically changes the data type when needed.
+
+👉 Example:
+
+    let result = '5' + 10;
+    console.log(result);  // Output: '510'
+
+🧠 Explanation:
+
+    Here '5' is a string and 10 is a number.
+
+    JavaScript sees a string and a number — it automatically converts the number 10 into a string and joins them.
+
+    So '5' + 10 becomes '510'.
+
+🧩 2. Explicit Conversion (Manual)
+
+You can manually convert data types using functions like:
+
+    Number()
+    String()
+    Boolean()
+    parseInt() 
+    parseFloat()
+
+👉 Example:
+
+let num = '20';
+let convertedNum = Number(num);
+console.log(convertedNum + 10);  // Output: 30
+
+🧠 Explanation:
+Here '20' (a string) is converted to a number using Number().
+Now 20 + 10 = 30.
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+💻 Examples:
+
+➤ Example 1: Convert String to Number
+let str = "100";
+let num = Number(str);
+console.log(num + 50); // Output: 150
+
+🧠 Explanation:
+We used Number() to manually change the string "100" into the number 100.
+
+
+➤ Example 2: Convert Number to String
+let num = 25;
+let str = String(num);
+console.log(str + " years"); // Output: "25 years"
+
+🧠 Explanation:
+We used String() to manually change 25 into "25".
+
+
+➤ Example 3: Convert to Boolean
+let value = 0;
+let isTrue = Boolean(value);
+console.log(isTrue); // Output: false
+
+🧠 Explanation:
+We used Boolean() to convert 0 into false.
+(0 → false, any non-zero number → true)
+
+
+🧠 1️⃣ parseInt() — Converts a string to an Integer (whole number)
+💡 Meaning:
+
+parseInt() is used to change a string into a whole number (no decimal part).
+
+💻 Example:
+let value = "25.8";
+let result = parseInt(value);
+console.log(result);  // Output: 25
+
+🧠 Explanation:
+parseInt() looks at the string "25.8" and takes only the integer part → 25.
+It removes everything after the decimal.
+
+⚙️ Another Example:
+let value = "100px";
+let result = parseInt(value);
+console.log(result);  // Output: 100
+
+🧠 Explanation:
+Even though "100px" has letters,
+parseInt() reads from left to right and takes the number until it hits a non-number.
+So it gives 100.
+
+🧠 2️⃣ parseFloat() — Converts a string to a Decimal Number
+💡 Meaning:
+
+parseFloat() is used to change a string into a number that can have decimals.
+
+💻 Example:
+let value = "25.8";
+let result = parseFloat(value);
+console.log(result);  // Output: 25.8
+
+🧠 Explanation:
+Unlike parseInt(), this keeps the decimal part.
+So "25.8" becomes 25.8, not 25.
+
+⚙️ Another Example:
+let value = "99.99%";
+let result = parseFloat(value);
+console.log(result);  // Output: 99.99
+
+🧠 Explanation:
+It reads numbers (including the decimal) until a non-number (like %) appears.
+
+
+Q ) difference between number and parseInt
+
+Both Number() and parseInt() are used to convert strings into numbers,
+but they work a little differently.
+
+⚙️ 1️⃣ Number()
+💡 Meaning:
+
+Number() converts the whole string into a number.
+If the string is not a valid full number, it gives NaN (Not a Number).
+
+💻 Example:
+let a = "10.5";
+let b = Number(a);
+console.log(b); // Output: 10.5
+
+🧠 Explanation:
+Number() converts the whole string into a number (including decimal).
+
+⚠️ If string has extra characters:
+let a = "10px";
+let b = Number(a);
+console.log(b); // Output: NaN
+
+🧠 Explanation:
+Number() tries to convert the entire string, but since "10px" isn’t a pure number,
+it returns NaN (Not a Number) ❌.
+
+⚙️ 2️⃣ parseInt()
+💡 Meaning:
+
+parseInt() reads the string from left to right,
+and takes numbers until it finds something that’s not a number.
+
+💻 Example:
+let a = "10.5";
+let b = parseInt(a);
+console.log(b); // Output: 10
+
+🧠 Explanation:
+parseInt() only takes the integer part and ignores the decimal.
+
+⚙️ Another Example:
+let a = "10px";
+let b = parseInt(a);
+console.log(b); // Output: 10
+
+🧠 Explanation:
+parseInt() reads "10px" and stops when it sees "p",
+so it gives 10 ✅
+
+1️⃣ Using Number()
+let value = "100px32";
+let result = Number(value);
+console.log(result); // Output: NaN
+
+🧠 Explanation:
+
+Number() tries to convert the whole string into a number.
+"100px32" has letters "px" in between → not a valid number.
+So it returns NaN (Not a Number). ❌
+
+2️⃣ Using parseInt()
+
+let value = "100px32";
+let result = parseInt(value);
+console.log(result); // Output: 100
+🧠 Explanation:
+
+parseInt() reads the string from left to right.
+It starts at "100" → valid number ✅
+When it sees "px" → stops reading ❌
+Ignores the rest "32" → final result is 100
