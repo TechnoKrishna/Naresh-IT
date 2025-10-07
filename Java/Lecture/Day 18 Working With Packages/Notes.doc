@@ -1,0 +1,313 @@
+🌟 Topic: Method with Return Type and Parameter
+
+In Java, a method can either return something or return nothing.
+
+If a method returns nothing, its return type is void.
+
+If a method returns some value, its return type is non-void (like int, String, double, etc.).
+
+💡 Rule:
+
+When you write something inside
+
+System.out.println( ... );
+
+the thing inside the brackets must give some value (because println() needs something to print).
+
+If you try to call a void method inside it, Java will give an error, because a void method doesn’t return any value to print.
+
+❌ Example (Error Case)
+
+public class Test {
+    public static void main(String[] args) {
+        System.out.println(m1()); // ❌ Error: m1() has void return type
+    }
+
+    public static void m1() {
+        System.out.println("Hello");
+    }
+}
+
+➡️ Here, m1() doesn’t return anything — it only prints “Hello”.
+So, when we write System.out.println(m1());, Java says:
+
+“What should I print? m1() didn’t give me any value!”
+
+✅ Correct Example
+
+If your method returns a value, then it’s fine.
+
+public class Test {
+    public static void main(String[] args) {
+        System.out.println(m1()); // ✅ Works fine
+    }
+
+    public static String m1() {
+        return "Hello World!";
+    }
+}
+
+Output:
+
+Hello World!
+
+Program 1: Find Area of Square
+Square.java
+package com.ravi.blc;
+
+public class Square {
+    public static int getAreaOfSquare(int side) {
+        return side * side;
+    }
+}
+
+FindSquare.java
+package com.ravi.elc;
+
+import java.util.Scanner;
+import com.ravi.blc.Square;
+
+public class FindSquare {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the side of the Square: ");
+        int num = Integer.parseInt(sc.nextLine());
+
+        System.out.println("Area of Square is: " + Square.getAreaOfSquare(num));
+        sc.close();
+    }
+}
+
+Program 2: Find Square or Cube
+
+Criteria:
+
+If number is 0 or Negative → return -1
+If number is even → return square
+If number is odd → return cube
+
+SquareAndCube.java
+package com.ravi.blc;
+
+public class SquareAndCube {
+    public static int findSquareAndCube(int num) {
+        if (num <= 0) {
+            return -1;
+        } else if (num % 2 == 0) {
+            return num * num;
+        } else {
+            return num * num * num;
+        }
+    }
+}
+
+FindSquareAndCube.java
+package com.ravi.elc;
+
+import java.util.Scanner;
+import com.ravi.blc.SquareAndCube;
+
+public class FindSquareAndCube {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int num = Integer.parseInt(sc.nextLine());
+
+        System.out.println("The result is: " + SquareAndCube.findSquareAndCube(num));
+        sc.close();
+    }
+}
+
+Program 3: Area of Circle
+
+Condition:
+If radius is 0 or negative → return -1
+
+Circle.java
+package com.ravi.blc;
+
+public class Circle {
+    public static String getAreaOfCircle(double radius) {
+        if (radius <= 0) {
+            return "" + (-1);
+        } else {
+            final double PI = 3.14;
+            double area = PI * radius * radius;
+            return "" + area;
+        }
+    }
+}
+
+FindAreaOfCircle.java
+package com.ravi.elc;
+
+import java.util.Scanner;
+import com.ravi.blc.Circle;
+
+public class FindAreaOfCircle {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the radius: ");
+        double radius = Double.parseDouble(sc.nextLine());
+
+        String areaOfCircle = Circle.getAreaOfCircle(radius);
+        System.out.println("Area of circle without format: " + areaOfCircle);
+
+        double area = Double.parseDouble(areaOfCircle);
+        System.out.printf("Area is %.2f", area);
+
+        sc.close();
+    }
+}
+
+Program 4: Student Details
+
+Output format:
+[Student name is Ravi, roll is 101, fees is 1200.90]
+
+Student.java
+package com.ravi.blc;
+
+public class Student {
+    public static String getDetails(int roll, String name, double fees) {
+        return "[Student name is " + name + ", roll is: " + roll + ", fees is: " + fees + "]";
+    }
+}
+
+GetStudentDetails.java
+package com.ravi.elc;
+
+import com.ravi.blc.Student;
+
+public class GetStudentDetails {
+    public static void main(String[] args) {
+        System.out.println(Student.getDetails(101, "Ravi", 2300));
+    }
+}
+
+Program 5: Print Table of Given Number
+Table.java
+package com.ravi.blc;
+
+public class Table {
+    public static void printTable(int num) {
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " X " + i + " = " + (num * i));
+        }
+        System.out.println("................................");
+    }
+}
+
+PrintTable.java
+package com.ravi.elc;
+
+import com.ravi.blc.Table;
+
+public class PrintTable {
+    public static void main(String[] args) {
+        for (int i = 1; i <= 15; i++) {
+            Table.printTable(i);
+        }
+    }
+}
+
+Types of Variables in Java
+
+In Java, a variable is like a container where we store some data.
+Based on the type of data, there are two main types of variables:
+
+1 > Primitive Variable      2 > Reference Variable
+
+1️⃣ Primitive Variable
+
+These are variables that store simple, basic values like numbers, true/false, or a single character.
+
+Examples of primitive types:
+byte, short, int, long, float, double, char, boolean
+
+Example:
+
+int x = 90;        // stores number 90
+boolean isValid = true;  // stores true/false
+char grade = 'A';  // stores a single character
+
+❌ Invalid Examples:
+
+int x = null;  // ❌ Cannot assign null to primitive
+x.m1();        // ❌ Cannot call methods on primitive
+
+Easy way to remember:
+Primitive variables are like small boxes with fixed types of items (number, letter, true/false).
+You cannot put anything else in that box.
+
+2️⃣ Reference Variable
+
+These are variables that store the address/reference of objects, not the actual value directly.
+
+Examples of reference types:
+class, array, interface, record, enum, String, Scanner
+
+Example:
+
+Scanner sc;   // reference variable for Scanner object
+Student s;    // reference variable for Student object
+String str;   // reference variable for String object
+
+✅ Special properties of reference variables:
+
+You can assign null to them (means no object is assigned yet).
+
+Student s = null;
+
+You can call static and non-static methods using the reference variable (usually non-static methods).
+
+Easy way to remember:
+Reference variables are like pointers to houses. The variable doesn’t store the house itself, it just points to the house. You can go to the house and use whatever is inside (call methods, read values).
+
+
+🌟 Real-life Examples
+
+Primitive Variable Example:
+
+    You have a piggy bank that can only store coins (number).
+    You cannot put a toy or paper inside, only coins.
+
+Reference Variable Example:
+
+    You have a mailbox key (reference).
+    The key doesn’t have the letter itself, but it points to the mailbox.
+    You can open the mailbox and see or use what’s inside (methods, data).
+
+1️⃣ Class Variable (Static Field)
+
+    Declared with static keyword at class level. There is only one copy shared by all objects of the class.
+
+    Imagine a school name for all students. No matter how many students there are, the school name is the same for everyone.
+
+2️⃣ Instance Variable (Non-Static Field)
+
+    Declared at class level without static. Each object has its own copy.
+
+    Think of student’s roll number. Each student has a different roll number.
+
+3️⃣ Local / Stack / Temporary / Automatic Variable
+
+    Declared inside a method. Only exists while the method is running.
+
+    Like a shopping list you write while shopping — once done, you throw it away.
+
+4️⃣ Parameter Variable
+
+    Declared inside the method’s parentheses. Used to pass values into a method.
+
+    Like giving a recipe ingredient to a chef. The chef uses it to cook, then it’s gone.
+
+🔹 Summary in Simple Words
+
+    Class/Static Variable → Shared by all objects.
+
+    Instance Variable → Each object has its own copy.
+
+    Local Variable → Exists only inside the method.
+
+    Parameter Variable → Temporary input given to a method.
