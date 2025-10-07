@@ -1,0 +1,27 @@
+In JavaScript, if you want to take input from the user using an input box (like name, age, etc.) and do something when the Submit button is clicked, you can do it like this:
+
+You create an input box in HTML where the user types something.
+
+You create a button that says “Submit”.
+
+You write JavaScript code that runs when the button is clicked — this code will get the value from the input box and do something with it (like show it on the screen or in the console).
+
+<!-- Input box -->
+  <input type="text" id="userName" placeholder="Type your name here">
+
+  <!-- Submit button -->
+  <button onclick="showName()">Submit</button>
+
+  <!-- To display result -->
+  <p id="result"></p>
+
+  <script>
+    function showName() {
+      // Get input value
+      let name = document.getElementById("userName").value;
+
+      // Show it on the page
+      document.getElementById("result").innerText = "Hello, " + name + "!";
+    }
+  </script>
+
