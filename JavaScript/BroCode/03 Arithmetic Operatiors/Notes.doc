@@ -1,0 +1,109 @@
+😊 Arithmetic operators
+
+Arithmetic operators in JavaScript are symbols used to do math operations — like adding, subtracting, multiplying, etc.
+
+📘 Here are the main arithmetic operators :
+
+| Operator | Meaning                 | Example           | Output  |
+| -------- | ----------------------- | ----------------- | ------- |
+| `+`      | Addition                | `5 + 3`           | `8`     |
+| `-`      | Subtraction             | `5 - 3`           | `2`     |
+| `*`      | Multiplication          | `5 * 3`           | `15`    |
+| `/`      | Division                | `6 / 3`           | `2`     |
+| `%`      | Modulus (Remainder)     | `5 % 2`           | `1`     |
+| `++`     | Increment (adds 1)      | `let a = 5; a++;` | `a = 6` |
+| `--`     | Decrement (subtracts 1) | `let a = 5; a--;` | `a = 4` |
+| `**`     | Exponentiation (power)  | `2 ** 3`          | `8`     |
+
+Q ) ++ (increment) and -- (decrement)
+
+🧠 Basic Idea
+
+    ++ → adds 1 to a number.
+    -- → subtracts 1 from a number.
+
+But... there are two types of each:
+
+Pre-increment / Pre-decrement
+Post-increment / Post-decrement
+
+💡 1️⃣ Pre-Increment (++a)
+
+The value increases first, then it is used.
+
+👉 Example:
+
+    let a = 5;
+    let b = ++a;
+
+    Step-by-step:
+
+    a becomes 6 (incremented first)
+    Then b gets the value of a → so b = 6
+
+✅ Result:
+
+    a = 6
+    b = 6
+
+💡 2️⃣ Post-Increment (a++)
+
+The value is used first, then it increases.
+
+👉 Example:
+
+    let a = 5;
+    let b = a++;
+
+    Step-by-step:
+
+    b gets the current value of a → b = 5
+    Then a becomes 6 (after assigning)
+
+✅ Result:
+
+    a = 6
+    b = 5
+
+💡 3️⃣ Pre-Decrement (--a)
+
+Decreases first, then uses the new value.
+
+👉 Example:
+
+    let a = 5;
+    let b = --a;
+
+✅ Result:
+
+    a = 4
+    b = 4
+
+💡 4️⃣ Post-Decrement (a--)
+
+Uses the value first, then decreases it.
+
+👉 Example:
+
+    let a = 5;
+    let b = a--;
+
+✅ Result:
+
+    a = 4
+    b = 5
+
+Operator Precedence Order (from highest to lowest)
+
+1️⃣	()	Parentheses
+2️⃣	++, --	Increment / Decrement
+3️⃣	**	Exponent (power)
+4️⃣	*, /, %	Multiply, Divide, Remainder
+5️⃣	+, -	Add, Subtract
+6️⃣	<, >, <=, >=	Comparison
+7️⃣	==, !=, ===, !==	Equality
+8️⃣	&&	Logical AND
+9️⃣	`
+🔟 =    Assignment
+
+
