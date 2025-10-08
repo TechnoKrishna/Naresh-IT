@@ -1,0 +1,46 @@
+🧠 What is Math Object in JavaScript?
+
+The Math object in JavaScript is a built-in object that helps you do mathematical calculations easily — like addition, subtraction, finding square roots, random numbers, powers, etc.
+
+👉 You don’t need to create it (no new Math() required).
+You can use it directly like:
+
+Math.methodName(value);
+
+Math.round(x)
+Rounds number to nearest integer
+Math.round(4.6) → 5
+
+Math.floor(x)
+Rounds number down
+Math.floor(4.9) → 4
+
+Math.ceil(x)
+Rounds number up
+Math.ceil(4.1) → 5
+
+Math.pow(x, y)
+Gives x raised to power y
+Math.pow(2, 3) → 8
+
+Math.sqrt(x)
+Gives square root
+Math.sqrt(16) → 4
+
+Math.abs(x)
+Gives absolute value (no negative sign)
+Math.abs(-9) → 9
+
+Math.max(a,b,c...)
+Gives largest number
+Math.max(3,9,7) → 9
+
+Math.min(a,b,c...)
+Gives smallest number
+Math.min(3,9,7) → 3
+
+Math.random()
+Gives a random number between 0 and 1
+Example → 0.35
+
+Math.pow(2, 7)
