@@ -1,0 +1,332 @@
+🌟 Program 1: Primitive Variables
+
+This program shows 4 types of primitive variables in Java:
+
+    1️⃣ Class Variable (Static Field) → Declared using static keyword inside class, shared by all objects.
+
+    2️⃣ Instance Variable (Non-static Field) → Declared inside class but outside method, belongs to each object separately.
+
+    3️⃣ Parameter Variable → Declared inside method parentheses, used to take input value when the method is called.
+
+    4️⃣ Local Variable → Declared inside a method or block, and used only inside that method.
+
+🔍 Code Working:
+class Test {
+    static int a = 100; // class variable
+    int b = 200;        // instance variable
+
+    public void accept(int c) {  // parameter variable
+        int d = 400;             // local variable
+        System.out.println("Class Variable : " + a);
+        System.out.println("Instance Variable : " + b);
+        System.out.println("Parameter Variable : " + c);
+        System.out.println("Local Variable : " + d);
+    }
+}
+
+public class PrimitiveVariables {
+    public static void main(String[] args) {
+        Test t1 = new Test();    // creating object
+        t1.accept(300);          // calling method with 300 as parameter
+    }
+}
+
+🏡 Real-Life Example:
+
+Think of a school classroom:
+
+| Type               | Real Life Example       | Meaning                                  |
+| ------------------ | ----------------------- | ---------------------------------------- |
+| Class Variable     | School Name             | Same for all students                    |
+| Instance Variable  | Student Name            | Different for each student               |
+| Parameter Variable | Marks given during exam | Provided temporarily for one exam        |
+| Local Variable     | Pen used during test    | Used only during that test and then gone |
+
+So, in the same way:
+
+    a = school name (shared by everyone)
+    b = student name (different for each object)
+    c = marks entered temporarily
+    d = pen used only inside the test (method)
+
+🌟 Program 2: Reference Variables
+
+    This program shows reference variables — variables that store the address (reference) of an object, not the actual data.
+
+There are 4 types here too:
+
+    1️⃣ Static Reference Variable → Declared with static, shared by all objects.
+
+    2️⃣ Non-static Reference Variable → Belongs to each object.
+
+    3️⃣ Parameter Reference Variable → Passed as argument to methods.
+
+    4️⃣ Local Reference Variable → Created inside a method.
+
+🔍 Code Working:
+class Customer {
+    static Scanner sc;  // static reference variable (shared)
+    Customer c;         // non-static reference variable
+
+    public void accept(Customer cust) {  // parameter variable
+        Customer c1 = new Customer();    // local variable
+    }
+}
+
+Customer class contains:
+
+    static Scanner sc — shared reference for input.
+    Customer c — reference to another customer (inside same object).
+    cust — parameter passed from outside.
+    c1 — new local object created inside the method.
+
+🏪 Real-Life Example:
+
+Think of a Bank System:
+
+| Type                          | Real Life Example                                 |
+| ----------------------------- | ------------------------------------------------- |
+| Static Reference Variable     | Bank rules book (same for all customers)          |
+| Non-static Reference Variable | Each customer has a nominee (their own reference) |
+| Parameter Reference Variable  | Customer form passed to clerk for verification    |
+| Local Reference Variable      | Temporary account form created during processing  |
+
+So:
+
+    static Scanner sc → same scanner for all customers
+    Customer c → each customer can have another customer linked
+    cust → customer object passed to method temporarily
+    c1 → new customer created inside method (used locally)
+
+🌟 Object Oriented Programming (OOPs)
+
+1️⃣ What is an Object?
+
+    An object is something that exists in real life.
+    Example: Pen, Fan, Car, Laptop.
+
+Every object has three things:
+    
+    1 > Identification (Name) → How we recognize it.
+        Example: A student’s name “Raj”.
+
+    2 > State (Properties / Attributes / Non-static fields) → Details about it.
+        Example: Raj’s roll number, height, marks.
+
+    3 > Behavior (Function / Method) → What it can do.
+        Example: Raj can talk() and writeExam().
+
+2️⃣ How to create an object in Java
+
+    Student raj = new Student();
+
+    Student → Class name (blueprint)
+    raj → Reference variable (the name we give to object)
+    new Student() → Creates the object in memory
+
+Real-life example:
+
+    Class = Cake recipe
+    Object = A real cake made using the recipe
+
+3️⃣ What is Object Oriented Programming (OOP)?
+
+    Writing programs using real-life objects is called OOP.
+    We focus on objects rather than just functions.
+    Person writing it → Object-Oriented Programmer.
+
+Example:
+    Instead of writing separate functions like calculateMarks() or printReport(), you create a Student object that has marks (state) and printReport() (behavior).
+
+4️⃣ Advantages of OOP
+
+| Advantage   | Meaning in Easy Words              | Real-life Example                              |
+| ----------- | ---------------------------------- | ---------------------------------------------- |
+| Modularity  | Break big task into small parts    | Making a car in parts: engine, wheels, seats   |
+| Reusability | Use the same thing again and again | Same engine design used in multiple cars       |
+| Flexibility | Easy to maintain or change         | Changing the engine without changing whole car |
+
+5️⃣ Features of OOP
+
+    Class → Blueprint to make objects
+    Object → Real-world thing created from class
+    Abstraction → Showing only essential details
+    Encapsulation → Hiding internal details
+    Inheritance → Child class gets properties of parent
+    Polymorphism → Same action, different ways
+
+6️⃣ What is a Class?
+
+    A class is a blueprint or template to create objects.
+
+It contains:
+
+    Properties (Non-static fields) → Data
+    Behavior (Non-static methods) → Actions
+
+Example:
+
+public class Car {
+    String color;       // Property
+    void start() {      // Behavior
+        System.out.println("Car is starting");
+    }
+}
+
+Real-life analogy:
+
+    Class = Cake recipe
+    Object = Actual cake you make using recipe
+
+7️⃣ Story Example to Understand Class vs Object
+
+    Hammer Example:
+
+    Blacksmith makes hammer from raw iron → takes long time for many hammers
+
+    Engineer first makes blueprint (class) → then can make many hammers faster using blueprint
+
+Moral: Class = blueprint, Object = real thing made from blueprint
+
+8️⃣ Student.java Example Diagram
+
+| Object | Properties (State)               | Behavior (Methods)  |
+| ------ | -------------------------------- | ------------------- |
+| RAJ    | roll=101, name=Raj, height=5.9   | talk(), writeExam() |
+| PRIYA  | roll=201, name=Priya, height=5.7 | talk(), writeExam() |
+
+Easy Words:
+
+    RAJ and PRIYA are objects
+    roll, name, height are their state
+    talk() and writeExam() are what they can do
+
+package com.example.oop.blc;
+
+public class Student
+{
+    int rollNumber; //Non-static field
+    String name;    //Non-static field
+    double height;  //Non-static field
+
+    public void talk()
+    {
+        System.out.println("Hello learner, I am"+ name);
+        System.out.println("My roll number is " + rollNumber);
+        System.out.println("My height is " + height);
+    }
+
+    public void writeExam()
+    {
+        System.out.println("I am "+name+" every saturday I am writing exam!!!");
+    }
+}
+
+package com.example.oop.elc;
+import com.example.oop.blc.Student;
+
+public class StudentDemo {
+    public static void main(String[] args) {
+        Student raj = new Student();   //Initializing the object properties (NSF) through object reference
+
+        raj.rollNumber = 101;
+        raj.name = "Raj Gourav";
+        raj.height = 5.9;
+
+        //Calling the behavior
+        raj.talk();
+        raj.writeExam();
+
+        System.out.println("------------------------------------------------------------");
+
+        Student priya = new Student();  //Initializing the object properties (NSF) through object reference
+        priya.rollNumber = 201;
+        priya.name = "Priya";
+        priya.height = 5.7;
+
+        //Calling the behavior
+
+        priya.talk();
+        priya.writeExam();
+    }
+}
+
+🌟 Steps for Creating Object Oriented Program (Single Package)
+
+Step 1: Create the Object
+
+    What to do: Make an object from your BLC class in the ELC class (main method).
+
+Java Example:
+
+    Student raj = new Student();
+
+Real-life example:
+
+    Class = Cake recipe
+    Object = Making a real cake using the recipe
+    raj = The cake you made
+
+Step 2: Define Properties and Behavior in BLC Class
+
+    What to do: In your BLC class, think about the data and actions your object should have.
+
+Example:
+
+    int rollNumber;  // Property
+    String name;     // Property
+    void talk(){}    // Behavior
+    void writeExam(){} // Behavior
+
+Real-life example:
+
+    A student has a name, roll number, height
+    A student can talk and write exams
+
+Step 3: Initialize Object Properties
+
+    What to do: Give real values to your object using its reference variable.
+
+Example:
+
+    raj.rollNumber = 101;
+    raj.name = "Raj Gourav";
+    raj.height = 5.9;
+
+Real-life example:
+
+    Raj = Student
+    Roll number = 101
+    Height = 5.9
+    Name = Raj Gourav
+
+Step 4: Call the Behavior (Methods)
+
+    What to do: Ask the object to do its actions using its methods.
+
+Example:
+
+    raj.talk();
+    raj.writeExam();
+
+Real-life example:
+
+    Ask Raj to introduce himself → talk()
+    Ask Raj about his routine → writeExam()
+
+Important Note:
+
+Only class-level variables (static and non-static fields) have default values if you don’t set them.
+
+Example:
+
+    int → 0
+    double → 0.0
+    String → null
+
+| Step                  | Real-life Example                                     |
+| --------------------- | ----------------------------------------------------- |
+| Step 1: Create Object | Make a student Raj                                    |
+| Step 2: Define BLC    | Decide student has name, roll number, talk, writeExam |
+| Step 3: Initialize    | Raj’s name = “Raj Gourav”, roll = 101, height = 5.9   |
+| Step 4: Call Behavior | Raj introduces himself and writes exam                |
