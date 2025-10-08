@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+#Container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+body {
+  background-color: cadetblue;
+}
+
+#Count {
+  margin-bottom: 10px;
+  color: rgb(0, 0, 0);
+}
+
+#mid {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+#Generate {
+  background-color: burlywood;
+  padding: 5px;
+}
+
+#names {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#inputs {
+  margin: 5px;
+}
+
+#Min {
+  text-align: center;
+}
+#Max {
+  text-align: center;
+}

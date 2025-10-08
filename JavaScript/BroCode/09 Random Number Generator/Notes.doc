@@ -1,0 +1,38 @@
+In JavaScript, to generate a random number, we use:
+
+Math.random()
+
+This function gives a random decimal number between 0 (included) and 1 (excluded) —
+that means something like 0.25, 0.78, 0.999, etc.
+
+⚙️ Example:
+let randomNum = Math.random();
+console.log(randomNum);
+
+This will print a random number like 0.345678 every time you run it.
+
+🎯 If you want a random number between 1 and 10:
+
+We can multiply and round it.
+
+let randomNum = Math.floor(Math.random() * 10) + 1;
+console.log(randomNum);
+
+👉 Math.floor() removes decimal points
+👉 *10 makes range 0–9
+👉 +1 makes range 1–10
+
+So you’ll get random numbers like: 3, 8, 5, 1, etc.
+
+🌍 Real-Life Example:
+
+Imagine you’re rolling a dice 🎲.
+Each time you roll it, you get a random number between 1 and 6.
+
+You can create that in JavaScript like this:
+
+let dice = Math.floor(Math.random() * 6) + 1;
+console.log("You got: " + dice);
+
+Every time you run it, you get a new random result like
+“You got: 4” or “You got: 2”.
