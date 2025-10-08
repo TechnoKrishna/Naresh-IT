@@ -1,0 +1,90 @@
+An if statement in JavaScript is used to check a condition.
+If the condition is true, then the code inside the if block runs.
+If it’s false, then the code is skipped.
+
+🧩 Syntax:
+if (condition) {
+  // code to run if condition is true
+}
+
+✅ Example:
+let age = 20;
+
+if (age >= 18) {
+  console.log("You can vote!");
+}
+
+Explanation:
+
+    The condition age >= 18 is checked.
+    Since age is 20, the condition is true.
+    So the message "You can vote!" is printed on the screen.
+
+🌍 Real-Life Example:
+
+Think of it like this —
+When you go to a movie theater 🎬:
+
+If your age is 18 or above, you are allowed to watch an “A-rated” movie.
+If not, you can’t watch it.
+The “if” is like the guard checking your age at the entry.
+
+🟢 1️⃣ if...else Statement
+
+The if...else statement is used when you want to do one thing if the condition is true, and another thing if it’s false.
+
+🧩 Syntax:
+if (condition) {
+  // runs if condition is true
+} else {
+  // runs if condition is false
+}
+
+✅ Example:
+let age = 16;
+
+if (age >= 18) {
+  console.log("You can vote!");
+} else {
+  console.log("You cannot vote yet.");
+}
+
+Explanation:
+
+The condition age >= 18 is false because age = 16.
+So, the code inside else runs → it prints "You cannot vote yet."
+
+🟠 2️⃣ if...else if...else Statement
+
+This is used when you have multiple conditions to check — not just true or false.
+You test them one by one until one of them becomes true.
+
+🧩 Syntax:
+if (condition1) {
+  // runs if condition1 is true
+} else if (condition2) {
+  // runs if condition2 is true
+} else {
+  // runs if none of the above conditions are true
+}
+
+✅ Example:
+let marks = 75;
+
+if (marks >= 90) {
+  console.log("Grade A+");
+} else if (marks >= 75) {
+  console.log("Grade A");
+} else if (marks >= 60) {
+  console.log("Grade B");
+} else {
+  console.log("Fail");
+}
+
+
+Explanation:
+
+The first condition (marks >= 90) → false
+
+The second condition (marks >= 75) → true
+✅ So it prints “Grade A” and stops checking further.
