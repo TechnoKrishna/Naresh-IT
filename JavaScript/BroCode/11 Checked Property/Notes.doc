@@ -1,0 +1,64 @@
+🧠 What is Checked Property?
+
+In JavaScript, the checked property is used to check whether a checkbox or radio button is selected or not.
+
+It tells us:
+
+    ✅ true → if it is checked
+
+    ❌ false → if it is not checked
+
+🧩 Simple Syntax
+
+    document.getElementById("myCheckbox").checked
+
+    This line will return true if the checkbox is checked.
+    It will return false if the checkbox is not checked.
+
+💡 Real-life Example
+
+Imagine you are filling out an online form that asks:
+
+    “Do you agree to the terms and conditions?” 
+    (and there’s a checkbox beside it)
+
+When you click the Submit button, the website checks if you have ticked that box or not.
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<label>
+  <input type="checkbox" id="agreeBox"> I agree to the terms and conditions
+</label>
+<br><br>
+
+<button onclick="checkAgreement()">Submit</button>
+
+<script>
+function checkAgreement() {
+  let isChecked = document.getElementById("agreeBox").checked;
+
+  if (isChecked) {
+    alert("✅ You agreed to the terms!");
+  } else {
+    alert("❌ Please agree to the terms before continuing!");
+  }
+}
+</script>
+
+</body>
+</html>
+
+🧾 Explanation in Simple Words
+
+    When you click the “Submit” button, the function checkAgreement() runs.
+    It checks if the checkbox (agreeBox) is ticked or not using .checked.
+    Based on that, it shows an alert message.
+
+🚗 Real-Life Example
+
+    Think of it like a car key switch:
+    When the key is turned ON → the car starts (checked = true)
+    When the key is OFF → the car doesn’t start (checked = false)
+    Similarly, .checked tells us whether the switch (checkbox) is ON or OFF ✅❌
