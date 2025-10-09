@@ -1,0 +1,58 @@
+🧠 switch statement
+
+A switch statement is used when you have many possible conditions to check for one value.
+It’s like an alternative to using many if...else if...else statements.
+
+👉 It checks a value and compares it with multiple cases.
+If it matches one case, that block of code runs.
+
+🧩 Syntax:
+switch (expression) {
+  case value1:
+    // code to run if expression === value1
+    break;
+
+  case value2:
+    // code to run if expression === value2
+    break;
+
+  default:
+    // code to run if no case matches
+}
+
+The break keyword stops the switch after finding the matching case.
+The default case runs when nothing matches.
+
+💡 Real-Life Example:
+
+Imagine you run a juice shop, and a customer orders a drink.
+You want to make the juice based on what they choose.
+
+let order = "mango";
+
+switch (order) {
+  case "apple":
+    console.log("You ordered Apple Juice 🍎");
+    break;
+
+  case "mango":
+    console.log("You ordered Mango Juice 🥭");
+    break;
+
+  case "orange":
+    console.log("You ordered Orange Juice 🍊");
+    break;
+
+  default:
+    console.log("Sorry, we don’t have that juice 😞");
+}
+
+🧾 Output:
+You ordered Mango Juice 🥭
+
+Because the value of order is "mango", it matches the second case, so that block runs.
+
+⚙️ Without break (for understanding):
+
+If you forget to write break, it will continue running the next cases too —
+This is called fall-through behavior.
