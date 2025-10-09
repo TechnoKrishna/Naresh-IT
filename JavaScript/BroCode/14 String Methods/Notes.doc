@@ -1,0 +1,125 @@
+🧠 What is a String?
+
+A string is a sequence of characters — like text, words, or sentences.
+
+Example:
+
+let name = "Krishna";
+
+Here, "Krishna" is a string.
+
+💡 Common String Methods in JavaScript
+
+1️⃣ length
+
+👉 Finds how many characters are in a string.
+
+let name = "Krishna";
+console.log(name.length);  // Output: 7
+
+2️⃣ toUpperCase()
+
+👉 Converts all letters to capital letters.
+
+let name = "krishna";
+console.log(name.toUpperCase()); // Output: KRISHNA
+
+3️⃣ toLowerCase()
+
+👉 Converts all letters to small letters.
+
+let city = "PUNE";
+console.log(city.toLowerCase()); // Output: pune
+
+4️⃣ trim()
+
+👉 Removes extra spaces from both sides of a string.
+
+let name = "   Krishna   ";
+console.log(name.trim()); // Output: "Krishna"
+
+5️⃣ slice(start, end)
+
+👉 Cuts a part (portion) of a string.
+
+let name = "Krishna";
+console.log(name.slice(0, 3)); // Output: "Kri"
+
+6️⃣ replace(oldText, newText)
+
+👉 Changes part of the string with something else.
+
+let message = "Hello World";
+console.log(message.replace("World", "Krishna")); // Output: Hello Krishna
+
+7️⃣ concat()
+
+👉 Joins two or more strings together.
+
+let first = "Hello";
+let second = "World";
+console.log(first.concat(" ", second)); // Output: Hello World
+
+8️⃣ charAt(index)
+
+👉 Finds the character at a specific position.
+
+let name = "Krishna";
+console.log(name.charAt(0)); // Output: K
+
+9️⃣ indexOf("text")
+
+👉 Tells the position (index) of a specific word or letter.
+
+let city = "Pune City";
+console.log(city.indexOf("City")); // Output: 5
+
+🔟 includes("text")
+
+👉 Checks if a word or letter is present or not.
+
+let sentence = "I love JavaScript";
+console.log(sentence.includes("love")); // true
+
+🌟 Bonus: split()
+
+👉 Splits a string into parts and makes an array.
+
+let fruits = "apple,banana,grape";
+console.log(fruits.split(",")); // Output: ["apple", "banana", "grape"]
+
+11 > toString()
+
+👉 Converts object to string format.
+
+(123).toString(); // "123"
+
+12 > includes(text)
+
+👉 Checks if a text exists (true/false).
+
+"Hello".includes("He") // true
+
+13 > repeat(n)
+
+👉 Repeats string n times.
+
+"Hi ".repeat(3) // "Hi Hi Hi "
+
+14 > startsWith(text)
+
+👉 Checks if string starts with given text.
+
+"Hello".startsWith("He") // true
+
+15 > endsWith(text)
+
+👉 Checks if string ends with given text.
+
+"Hello".endsWith("lo") // true
+
+16 > replaceAll(oldText, newText)
+
+👉 Replaces all matches of a word.
+
+"apple apple".replaceAll("apple", "banana") // "banana banana"
