@@ -1,0 +1,26 @@
+🧠 Ternary Operator
+
+The ternary operator is a short way to write an if...else statement.
+
+👉 It has three parts (that’s why it’s called ternary):
+
+    condition ? value_if_true : value_if_false
+
+    If the condition is true → it runs value_if_true
+    If the condition is false → it runs value_if_false
+
+💻 Example in JavaScript:
+
+    let age = 20;
+    let result = (age >= 18) ? "You can vote" : "You cannot vote";
+    console.log(result);
+
+Explanation:
+
+    age >= 18 → this is the condition
+    If true → it gives "You can vote"
+    If false → it gives "You cannot vote"
+
+Here, age is 20, which is greater than 18 → so output will be:
+
+    You can vote
