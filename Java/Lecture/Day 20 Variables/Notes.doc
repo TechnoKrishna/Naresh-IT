@@ -1,0 +1,228 @@
+🧩 Instance Variable (Non-Static Field)
+
+🔹 Definition:
+
+    An instance variable (also called a non-static field) is a variable declared at the class level, without the static keyword.
+
+    Since it is declared inside a class but outside any method, it automatically gets a default value.
+
+🔹 Key Points:
+
+    1 > The lifecycle of a non-static field begins when an object is created.
+        → We cannot use it without creating an object.
+
+    2 > Non-static fields are used to represent object properties.
+
+    3 > The life (not scope) of a non-static field ends when the object is destroyed — then the memory is released automatically.
+
+
+💻 Example 1: Non-Static Field
+
+    public class Demo {
+        int x = 100; // Non-static field
+
+        public static void main(String[] args) {
+            System.out.println("x value is :" + x); 
+            // ❌ Error: Cannot access non-static field directly from static context
+        }
+    }
+
+🔹 Explanation:
+
+    You must create an object to access x, like:
+
+    Demo d = new Demo();
+    System.out.println("x value is :" + d.x);
+
+🔐 Accessibility of Non-Static Fields:
+
+    They are accessible within the same class, and
+
+    Their accessibility in other classes depends on the access modifier applied (public, private, protected, or default).
+
+
+
+🧠 Initializing Object Properties (Non-Static Fields)
+
+    If we create our BLC and ELC classes into two different packages then from another package we cannot access our non static field directly, We need to declare the non static field with public access modifier (Strongly not recommended)
+
+    ❌ Wrong Way:
+
+    Directly making fields public to access from another package (not recommended).
+
+    ✅ Correct Way:
+
+    Use public methods (setters & getters) to initialize and access object properties.
+
+💻 Example 2: Initialize via Method (Without Parameters)
+
+1 ) Employee.java (BLC)
+
+package com.example.blc;
+
+import java.util.Scanner;
+
+public class Employee {
+    int employeeNumber;
+    String employeeName;
+    double employeeSalary;
+
+    public void setEmployeeData() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter employee Number: ");
+        employeeNumber = Integer.parseInt(sc.nextLine());
+
+        System.out.print("Enter employee Name: ");
+        employeeName = sc.nextLine();
+
+        System.out.print("Enter employee Salary: ");
+        employeeSalary = Double.parseDouble(sc.nextLine());
+
+        sc.close();
+    }
+
+    public void getEmployeeData() {
+        System.out.println("Employee Number is: " + employeeNumber);
+        System.out.println("Employee Name is: " + employeeName);
+        System.out.println("Employee Salary is: " + employeeSalary);
+    }
+}
+
+2 ) EmployeeDemo.java (ELC)
+
+package com.ravi.elc;
+import com.ravi.blc.Employee;
+
+package com.example.elc;
+
+import com.example.blc.Employee;
+
+public class EmployeeDemo {
+    public static void main(String[] args) {
+        Employee scott = new Employee();
+        scott.setEmployeeData();
+        scott.getEmployeeData();
+    }
+}
+
+💻 Example 3: Initialize via Method (With Parameters)
+
+1 ) Customer.java (BLC)
+
+package com.example.blc;
+
+public class Customer {
+    int customerId;
+    String customerName;
+
+    public void setCustomerData(int cid, String cname) {
+        customerId = cid;
+        customerName = cname;
+    }
+
+    public void getCustomerData() {
+        System.out.println("Customer ID is: " + customerId);
+        System.out.println("Customer Name is: " + customerName);
+    }
+}
+
+2 ) CustomerDemo.java (ELC)
+
+package com.example.elc;
+
+import com.example.blc.Customer;
+
+public class CustomerDemo {
+    public static void main(String[] args) {
+        Customer raj = new Customer();
+        raj.setCustomerData(101, "Raj");
+        raj.getCustomerData();
+
+        System.out.println("..............................");
+
+        Customer priya = new Customer();
+        priya.setCustomerData(102, "Priya");
+        priya.getCustomerData();
+    }
+}
+
+🧾 Summary: Ways to Initialize Object Properties
+
+| No  | Method                          | Example                    |
+| --- | ------------------------------- | -------------------------- |
+| 1️⃣ | Using Object Reference          | `raj.rollNumber = 122;`    |
+| 2️⃣ | Using Method without Parameters | Using `Scanner`            |
+| 3️⃣ | Using Method with Parameters    | Passing data via arguments |
+
+
+🏗 Introduction to Constructor
+
+🔹 Definition:
+
+    If the name of the class and the name of the method are the same, and it does not have any return type, then it is called a Constructor.
+
+    public class Student {
+        public Student() { // Constructor
+        
+        }
+    }
+
+🔹 Default Constructor:
+
+    In Java, if no constructor is written in a class,
+    the Java compiler automatically adds a default no-argument constructor.
+
+Example:
+
+    public class Player {
+        // No constructor written
+    }
+
+    After compilation (javac Player.java), the compiler adds:
+
+    public class Player 
+    {
+        public Player() 
+        { 
+            // Default no-argument constructor added by compiler
+        }
+    }
+
+🔹 Important Points:
+
+    1 > Every Java class must have at least one constructor, either:
+
+        Implicitly added by the compiler, 
+        or
+        Explicitly written by the developer.
+
+    2 > The access modifier of the default constructor matches the class:
+
+        If the class is public, constructor is also public.
+        If the class has default access, constructor also has default access.
+
+
+🧩 Example Output:
+
+    If Class is public:
+
+    javap Player.class
+
+    Compiled from "Player.java"
+
+        public class Player 
+        {
+            public Player();
+        }
+
+    If Class is not public:
+
+    javap Player.class
+
+    Compiled from "Player.java"
+
+        class Player 
+        {
+        Player();
+        }
