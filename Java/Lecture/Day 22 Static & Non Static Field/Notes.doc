@@ -1,0 +1,317 @@
+🧩 Role of Non-Static and Static Fields in Java
+
+🌱 1. Role of Non-Static Field in Object Creation
+
+💡 What it means:
+
+Whenever you create an object in Java, that object gets its own separate copy of all non-static fields (also known as instance variables).
+
+So, if you create 2 objects, each object has its own copy of those variables.
+
+📘 Example Program:
+
+class Test {
+    int x = 10;  // non-static field
+}
+
+public class NonStaticField {
+    public static void main(String[] args) {
+        Test t1 = new Test();
+        Test t2 = new Test();
+
+        ++t1.x;   // increases t1’s x (10 → 11)
+        --t2.x;   // decreases t2’s x (10 → 9)
+
+        System.out.println(t1.x); // 11
+        System.out.println(t2.x); // 9
+    }
+}
+
+🔍 Explanation:
+
+| Object | Address | Value of `x` | After Operation |
+| ------ | ------- | ------------ | --------------- |
+| t1     | 1000x   | 10           | 11              |
+| t2     | 2000x   | 10           | 9               |
+
+Each object has its own copy of x.
+So, changing t1.x does not affect t2.x.
+
+🎯 Real-life Example:
+
+Think of a Student class.
+
+Each student has:
+
+Their own name
+Their own roll number
+
+These details are different for each student, just like non-static fields are different for each object.
+
+⚙️ 2. Static Field OR Class Level Variable
+
+💡 What it means:
+
+A static field belongs to the class, not to any single object.
+
+It means only one copy of a static variable is created in JVM memory, and all objects share it.
+
+📘 Example Program:
+class Test {
+    static int x = 10; // static field
+}
+
+public class StaticField {
+    public static void main(String[] args) {
+        Test t1 = new Test();
+        Test t2 = new Test();
+
+        ++t1.x;  // increases shared x
+        ++t2.x;  // increases same shared x again
+
+        System.out.println(t1.x); // 12
+        System.out.println(t2.x); // 12
+    }
+}
+
+t1 --> Test object (2000x)
+            |
+            | ++t1.x;
+            |
+            ^
+        Method Area  x = 10 --> 11 --> 12
+            ^
+            | ++t2.x;
+            |
+t2 --> Test object (1000x)
+
+Here, x is created once in JVM memory (Method Area).
+Both t1 and t2 share the same x.
+So, when one changes it, the other sees the change too.
+
+🎯 Real-life Example:
+
+Think of a college:
+
+    All students share the same college name (like "NIT").
+    But each student has their own roll number and address.
+
+So,
+
+College name → Static field (common for all students)
+Roll number, name, address → Non-static fields (different for each student)
+
+
+⚖️ 3. When to Use Non-Static vs Static Fields
+
+| **Field Type**       | **When to Use**                    | **Example**                          |
+| -------------------- | ---------------------------------- | ------------------------------------ |
+| **Non-Static Field** | When value changes for each object | Student’s roll number, name, address |
+| **Static Field**     | When value is same for all objects | College name, Course name            |
+
+📘 Example 1:
+class Student {
+    int rollNumber;
+    String name;
+    String address;
+    static String collegeName = "NIT";
+    static String courseName = "Java";
+}
+
+📘 Example 2:
+class BankCustomer { 
+    int custId;
+    long accountNumber;
+    String address;
+    long mobileNumber;
+    static String IFSCCode = "SBIHYD000123";
+    static String branchLocation = "Hyderabad";
+}
+
+🧮 4. WAP to Describe Static and Non-Static Fields
+
+Package: com.ravi.oop
+
+🧱 BLC (Business Logic Class)
+package com.ravi.oop;
+
+public class Student {
+
+    int rollNumber;
+    String studentName;
+    String studentAddress;
+    static String collegeName = "NIT";
+    static String courseName = "Adv. Java";
+
+    public void setStudentData(int roll, String name, String address) {
+        rollNumber = roll;
+        studentName = name;
+        studentAddress = address;
+    }
+
+    public void getStudentData() {
+        System.out.println("Student Roll number is: " + rollNumber);
+        System.out.println("Student Name is: " + studentName);
+        System.out.println("Student Address is: " + studentAddress);
+        System.out.println("College Name is: " + collegeName);
+        System.out.println("Course Name is: " + courseName);
+    }
+}
+
+🧩 ELC (Execution Logic Class)
+package com.ravi.oop;
+
+public class StudentDemo {
+
+    public static void main(String[] args) {
+        Student raj = new Student();
+        raj.setStudentData(101, "Raj", "Ameerpet");
+        raj.getStudentData();
+
+        System.out.println("...........");
+
+        Student priya = new Student();
+        priya.setStudentData(102, "Priya", "S R Nagar");
+        priya.getStudentData();
+    }
+}
+
+Real-life Example:
+
+Raj and Priya are two students (two objects).
+Both study in same college (static field → "NIT").
+But both have different roll numbers and addresses (non-static fields).
+
+🔒 5. Data Hiding
+💡 What is it:
+
+Data Hiding means protecting data (fields) from direct access outside the class.
+
+We use the private keyword to hide data, and provide access through public methods.
+This allows us to validate the input before updating data.
+
+📘 Example Program:
+package com.ravi.oop;
+
+public class Customer {
+
+    private double balance = 10000; // Data hiding
+
+    public void deposit(double amount) {
+        // Validation
+        if (amount <= 0) {
+            System.err.println("Invalid amount"); 
+            System.exit(0); // Stop the program
+        }
+        balance = balance + amount;
+        System.out.println("Balance after deposit: " + balance);
+    } 
+
+    public void withdraw(double amount) {
+        if (amount > balance) {
+            System.err.println("Insufficient Balance");
+            System.exit(0);
+        }
+        balance = balance - amount;
+        System.out.println("Balance after withdraw: " + balance);
+    }
+
+    public double checkBalance() {
+        return balance;
+    }
+}
+
+Bank Application
+package com.ravi.oop;
+
+public class BankApplication {
+
+    public static void main(String[] args) {
+        Customer raj = new Customer();
+
+        System.out.println("Current Balance is: " + raj.checkBalance());
+        raj.deposit(1000);
+        System.out.println("Current Balance is: " + raj.checkBalance());
+        raj.withdraw(5000);
+        System.out.println("Current Balance is: " + raj.checkBalance());
+    }
+}
+
+🎯 Real-life Example:
+
+Think of your bank account:
+
+You cannot directly change your balance in the database.
+
+You must deposit or withdraw using official methods.
+
+Bank validates the action (e.g., you can’t withdraw more than your balance).
+That’s exactly what Data Hiding does.
+
+🧠 6. Ways to Initialize Object Properties
+
+There are 4 ways to set object data in Java:
+
+| **Method**                            | **Example**                                   | **Explanation**                             |
+| ------------------------------------- | --------------------------------------------- | ------------------------------------------- |
+| **1. Using object reference**         | `raj.rollNumber = 111;`                       | Directly assigns value to object’s variable |
+| **2. Using method without parameter** | Using `Scanner` to take input                 | Sets data without passing arguments         |
+| **3. Using method with parameter**    | `raj.setStudentData(101, "Raj", "Ameerpet");` | Data passed through method parameters       |
+| **4. At the time of declaration**     | `int rollNumber = 101;`                       | Value is fixed when variable is declared    |
+
+🎯 Real-life Example:
+
+When you fill a college admission form:
+
+You can fill your name directly (object reference).
+Clerk can enter it using input form (method without parameter).
+You can give your details verbally (method with parameter).
+Some fields like “College Name = NIT” are already filled (initialization at declaration).
+
+🧠 Difference Between Static and Non-Static Fields
+
+| **Feature**           | **Static Field (Class Level)**                                              | **Non-Static Field (Instance Level)**                                |
+| --------------------- | --------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| **Declaration**       | Declared using the `static` keyword                                         | Declared **without** using `static`                                  |
+| **Memory Allocation** | Only **one copy** is created in **Method Area** (shared by all objects)     | **Separate copy** created for **each object** in the **Heap Memory** |
+| **Access Type**       | Can be accessed directly using **class name** (e.g., `Student.collegeName`) | Accessed using **object reference** (e.g., `raj.rollNumber`)         |
+| **Lifetime**          | Exists from **class loading to unloading** in JVM memory                    | Exists from **object creation to object destruction**                |
+| **Value**             | **Common for all objects**                                                  | **Different for each object**                                        |
+| **Memory Efficiency** | Saves memory because one copy is shared                                     | Uses more memory (each object stores its own copy)                   |
+| **When to Use**       | When data is **shared among all objects**                                   | When data is **unique per object**                                   |
+| **Example**           | `static String collegeName = "NIT";`                                        | `int rollNumber = 101;`                                              |
+| **Example Output**    | Changes made by one object affect others                                    | Changes made by one object do **not** affect others                  |
+
+🧩 Memory Representation Diagram
+
+class Student {
+    int rollNumber;          // Non-static field
+    static String collegeName = "NIT"; // Static field
+}
+
+        ┌────────────────────────────────────────┐
+        │             JVM MEMORY                 │
+        ├────────────────────────────────────────┤
+        │        Method Area (Static Memory)     │
+        │────────────────────────────────────────│
+        │ collegeName = "NIT"  ← shared by all   │
+        └────────────────────────────────────────┘
+                    ▲
+                    │
+      ┌─────────────┼─────────────┐
+      │                           │
+┌──────────────┐           ┌──────────────┐
+│  Heap Memory │           │  Heap Memory │
+│ (Object t1)  │           │ (Object t2)  │
+│--------------│           │--------------│
+│ rollNumber=1 │           │ rollNumber=2 │
+│--------------│           │--------------│
+│ Uses shared  │           │ Uses shared  │
+│ collegeName  │           │ collegeName  │
+└──────────────┘           └──────────────┘
+
+➡ Explanation:
+
+Both t1 and t2 objects have their own rollNumber, but
+
+They share the same collegeName stored in the Method Area.
