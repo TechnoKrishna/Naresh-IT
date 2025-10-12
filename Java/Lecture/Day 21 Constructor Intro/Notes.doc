@@ -1,0 +1,163 @@
+Why Compiler Automatically Provides Default No-Argument Constructor
+
+Example:
+
+public class Student {
+
+    int roll;
+    String name;
+
+    // Default no-argument constructor
+    public Student() {
+    }
+
+    public void show() {
+        System.out.print(roll + ":" + name);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student raj = new Student();
+    }
+}
+
+Student Object (Memory Representation)
+
+Object: raj (at memory location 1000x)
+
+Properties:
+Field	Default Value
+roll	0
+name	null
+Behavior:
+Method	Description
+show()	Prints roll:name
+
+Work of new keyword:
+
+The new keyword performs two main tasks:
+
+    1 ) Instantiation Process
+        It allocates memory for all non-static members (fields and methods) of a class.
+
+    2 ) Initialization Process
+        It initializes all non-static fields with default values using the Java compiler.
+
+Explanation:
+
+    Only class-level (non-static) variables have default values in Java.
+    The new keyword ensures that these non-static fields get their default values before the program runs.
+
+Default Values in Java
+
+| Data Type | Default Value                     |
+| --------- | --------------------------------- |
+| byte      | 0                                 |
+| short     | 0                                 |
+| int       | 0                                 |
+| long      | 0L                                |
+| float     | 0.0F                              |
+| double    | 0.0D                              |
+| char      | (space) `'\u0000'`                |
+| boolean   | false                             |
+| String    | null                              |
+| Object    | null (for any reference variable) |
+
+Program Demonstrating new Keyword Providing Default Values
+
+File: Student.java
+
+package com.ravi.blc;
+
+public class Student {
+
+    int roll;
+    String name;
+    double fees;
+    char grade;
+
+    public void show() {
+        System.out.println(roll);
+        System.out.println(name);
+        System.out.println(fees);
+        System.out.println(grade);
+    }
+}
+
+File: Main.java
+package com.ravi.elc;
+
+import com.ravi.blc.Student;
+
+public class Main {
+    public static void main(String[] args) {
+        Student raj = new Student();
+        raj.show();
+    }
+}
+
+Initializing Non-Static Fields Using Parameter Variables
+File: Employee.java
+package com.ravi.blc;
+
+public class Employee {
+
+    int employeeId;
+    String employeeName;
+    double employeeSalary;
+    char employeeGrade;
+
+    public void setEmployeeData(int id, String name, double salary) {
+        employeeId = id;
+        employeeName = name;
+        employeeSalary = salary;
+    }
+
+    public void getEmployeeData() {
+        System.out.println("Employee Id: " + employeeId);
+        System.out.println("Employee Name: " + employeeName);
+        System.out.println("Employee Salary: " + employeeSalary);
+        System.out.println("Employee Grade: " + employeeGrade);
+    }
+
+    public void calculateGrade() {
+        if (employeeSalary >= 75000) {
+            employeeGrade = 'A';
+        } else if (employeeSalary >= 50000) {
+            employeeGrade = 'B';
+        } else if (employeeSalary >= 40000) {
+            employeeGrade = 'C';
+        } else {
+            employeeGrade = 'D';
+        }
+    }
+}
+
+File: EmployeeDemo.java
+package com.ravi.elc;
+
+import com.ravi.blc.Employee;
+
+public class EmployeeDemo {
+    public static void main(String[] args) {
+
+        Employee scott = new Employee();
+        scott.setEmployeeData(101, "Scott", 90000);
+        scott.calculateGrade();
+        scott.getEmployeeData();
+
+        System.out.println(".........");
+
+        Employee smith = new Employee();
+        smith.setEmployeeData(102, "Smith", 55000);
+        smith.calculateGrade();
+        smith.getEmployeeData();
+    }
+}
+
+✅ Summary
+
+Default Constructor: Provided automatically by the compiler if no other constructor exists.
+new Keyword: Allocates memory and assigns default values to non-static variables.
+Custom Initialization: Achieved by using methods (like setEmployeeData()) or parameterized constructors.
