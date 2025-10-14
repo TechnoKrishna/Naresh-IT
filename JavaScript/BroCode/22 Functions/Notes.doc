@@ -1,0 +1,73 @@
+🧠 What is a Function?
+
+A function in JavaScript is like a machine or recipe that performs a specific task whenever you call it.
+
+👉 You write it once and use (call) it many times.
+It helps you avoid writing the same code again and again.
+
+🧩 Basic Syntax
+function functionName() {
+  // code to run
+}
+
+
+To use (or run) the function:
+
+functionName();
+
+🧃 Example 1: Simple Function (No parameters)
+
+function greet() {
+  console.log("Hello, welcome to JavaScript!");
+}
+
+greet(); // calling the function
+
+🍔 Example 2: Function with Parameters (Input Values)
+
+function greetUser(name) {
+  console.log("Hello " + name + ", have a great day!");
+}
+
+greetUser("Krishna");
+greetUser("Aman");
+
+🧮 Example 3: Function with Return Value
+function add(a, b) {
+  return a + b;
+}
+
+let result = add(10, 5);
+console.log("Sum is:", result);
+
+🎂 Example 4: Anonymous Function (Function without a name)
+let sayHi = function() {
+  console.log("Hi there!");
+};
+
+sayHi();
+
+🚗 Example 5: Arrow Function (Short form of function)
+let multiply = (x, y) => x * y;
+
+console.log(multiply(4, 5));
+
+📦 Example 6: Function with Default Parameters
+function greetUser(name = "Guest") {
+  console.log("Hello " + name);
+}
+
+greetUser("Krishna");
+greetUser(); // uses default "Guest"
+
+🔁 Example 7: Function Calling Another Function
+function add(a, b) {
+  return a + b;
+}
+
+function showResult() {
+  let result = add(3, 4);
+  console.log("The result is", result);
+}
+
+showResult();
