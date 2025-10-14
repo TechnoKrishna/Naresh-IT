@@ -1,0 +1,45 @@
+Variable Scope means where your variable can be accessed (used) in your code.
+
+In JavaScript, there are three main types of scope:
+
+a > Global Scope – Accessible anywhere in the program.
+b > Function Scope – Accessible only inside the function where it is declared.
+c > Block Scope – Accessible only inside the block {} where it is declared (like inside if, for, or while).
+
+💡 Example Code:
+let globalVar = "I am Global"; // Global Scope
+
+function myFunction() {
+  let functionVar = "I am inside the function"; // Function Scope
+
+  if (true) {
+    let blockVar = "I am inside a block"; // Block Scope
+    console.log(blockVar); // ✅ works here
+  }
+
+  console.log(functionVar); // ✅ works here
+  // console.log(blockVar); ❌ error, blockVar not accessible here
+}
+
+myFunction();
+
+console.log(globalVar); // ✅ works anywhere
+// console.log(functionVar); ❌ error, not accessible outside function
+
+🏠 Real-Life Example:
+
+Imagine your school as a JavaScript program.
+
+The school playground is like the Global Scope — everyone in the school can go there.
+
+The classroom is like a Function Scope — only students of that class can enter.
+
+The desk drawer inside the classroom is like a Block Scope — only the student sitting at that desk can open it.
+
+So:
+
+Playground (Global) = accessible by everyone.
+
+Classroom (Function) = accessible only by students inside.
+
+Desk Drawer (Block) = accessible only by that one student.
