@@ -1,0 +1,43 @@
+A while loop is used to repeat a block of code as long as a certain condition is true.
+
+Syntax:
+
+while (condition) {
+    // code to execute
+}
+
+The condition is checked before each iteration.
+If the condition is true → code runs.
+If the condition is false → loop stops.
+
+Real-Life Example
+
+Imagine you are eating slices of pizza.
+
+You have 5 slices.
+
+You decide: “I will eat one slice at a time while slices are remaining.”
+
+Code Example:
+
+let slices = 5;
+
+while (slices > 0) {
+    console.log("I ate a slice of pizza. Slices left: " + slices);
+    slices--; // eat one slice
+}
+
+console.log("No pizza left! 🍕");
+
+I ate a slice of pizza. Slices left: 5
+I ate a slice of pizza. Slices left: 4
+I ate a slice of pizza. Slices left: 3
+I ate a slice of pizza. Slices left: 2
+I ate a slice of pizza. Slices left: 1
+No pizza left! 🍕
+
+Explanation of Code:
+
+slices > 0 is the condition.
+slices-- reduces one slice each time.
+Loop stops when slices becomes 0.
