@@ -1,0 +1,67 @@
+🧩 1️⃣ = → Assignment Operator
+
+    It is used to assign a value to a variable.
+    It does not compare, it just stores the value.
+
+Example:
+    let x = 5;  // assigns 5 to x
+
+    🧠 Means: “Hey JavaScript, keep 5 inside the box named x.”
+
+💡 Real-life Example:
+
+    Like putting ₹5 in a piggy bank 🐷 —
+    You’re storing money inside, not checking anything.
+
+🧩 2️⃣ == → Loose Equality (Normal Equality)
+
+    It compares values only, not types.
+    If the types are different, JavaScript will try to convert them before comparing.
+
+Example:
+    console.log(5 == "5");   // true (same value after conversion)
+    console.log(true == 1);  // true (true becomes 1)
+
+💡 Real-life Example:
+
+    Like comparing “5 rupees coin” and “₹5 note” —
+    Different form, but same value. So JavaScript says “Okay, true!”
+
+🧩 3️⃣ === → Strict Equality
+
+    It checks both value and type.
+    If either one is different → false.
+
+Example:
+    console.log(5 === "5");   // false (number vs string)
+    console.log(5 === 5);     // true
+
+💡 Real-life Example:
+
+    Like checking your original key vs a photo of your key.
+    Looks same, but not same type — can’t open the door!
+
+🧩 4️⃣ != → Loose Inequality
+
+    It checks if values are not equal (after type conversion).
+
+Example:
+    console.log(5 != "5");  // false (same value after conversion)
+    console.log(5 != 6);    // true
+
+💡 Real-life Example:
+
+    Comparing two ₹5 coins — same value, so not unequal (false).
+
+🧩 5️⃣ !== → Strict Inequality
+
+    It checks if value or type are not equal (without conversion).
+
+Example:
+    console.log(5 !== "5");  // true (different type)
+    console.log(5 !== 5);    // false (same value and type)
+
+💡 Real-life Example:
+
+    Like comparing metal key and photo key again —
+    They are not same type, so “not equal” (true).
