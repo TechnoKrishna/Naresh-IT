@@ -1,0 +1,325 @@
+Refer :- https://chatgpt.com/share/68ee44a0-599c-8004-a204-2772bc0307e8
+
+🧩 1. Variable Shadow in Java
+
+Meaning :- 
+
+When two variables have the same name, one at the class level and one inside a method,
+then the method-level variable hides (shadows) the class-level variable inside that method.
+
+👉 This situation is called Variable Shadowing.
+
+📘 Example 1
+
+class Student {
+    private int roll = 101;
+    private String name = "Scott";
+    public static String course = "Java";
+
+    public void accept(int roll) {
+        String name = "Raj";
+        String course = "HTML";
+
+        System.out.println("Roll number is: " + roll);
+        System.out.println("Name is: " + name);
+        System.out.println("Course is: " + course);
+    }
+}
+
+public class VariableShadow {
+    public static void main(String[] args) {
+        Student s1 = new Student();
+        s1.accept(999);
+    }
+}
+
+🧾 Output:
+
+Roll number is: 999  
+Name is: Raj  
+Course is: HTML
+
+💡 Explanation:
+
+Inside the method:
+
+roll → refers to the parameter variable (999)
+name → refers to the local variable (“Raj”)
+course → refers to the local variable (“HTML”)
+
+All class-level variables are hidden (shadowed) inside this method.
+
+💬 Real-life Example:
+
+Imagine you are in a company.
+At company level, there is a policy variable salary = 50000.
+But in your team, your manager declares another salary = 60000 (bonus added).
+
+Now, when you talk about salary inside the team (method), it will refer to team salary (60000),
+not company’s salary (50000).
+→ The team’s variable hides (shadows) the company’s variable.
+
+📘 Example 2 (Using this and Class name)
+
+class Student {
+    private int roll = 101;
+    private String name = "Scott";
+    public static String course = "Java";
+
+    public void accept(int roll) {
+        String name = "Raj";
+        String course = "HTML";
+
+        System.out.println("Roll number is: " + this.roll);
+        System.out.println("Name is: " + this.name);
+        System.out.println("Course is: " + Student.course);
+    }
+}
+
+public class VariableShadow {
+    public static void main(String[] args) {
+        Student s1 = new Student();
+        s1.accept(999);
+    }
+}
+
+🧾 Output:
+Roll number is: 101  
+Name is: Scott  
+Course is: Java
+
+💡 Explanation:
+
+this.roll → accesses class-level variable roll = 101
+
+this.name → accesses class-level variable name = Scott
+
+Student.course → accesses static class variable course = Java
+
+👉 this keyword refers to current object.
+👉 ClassName.variable refers to static variable.
+
+⚙️ Summary of Variable Shadow
+| Variable Type    | How to Access It            |
+| ---------------- | --------------------------- |
+| Non-static field | `this.variableName`         |
+| Static field     | `ClassName.variableName`    |
+| Local variable   | Direct name (inside method) |
+
+🧮 2. Method Local Search Algorithm
+🔹 Meaning
+
+When a variable is used inside a method, block, or constructor,
+Java follows a search order to find it.
+
+🔍 Search Order (Algorithm)
+
+First, search inside the method (local variables).
+
+If not found, search inside the class variables (non-static & static).
+
+📘 Example
+class Demo {
+    static int a = 100;   // static variable
+    int b = 200;          // instance variable
+
+    public void accept(int c) {   // parameter variable
+        int d = 400;              // local variable
+
+        System.out.println("Class Variable : " + Demo.a);
+        System.out.println("Instance Variable : " + this.b);
+        System.out.println("Parameter Variable : " + c);
+        System.out.println("Local Variable : " + d);
+    }
+}
+
+public class MethodLocalSearchAlgo {
+    public static void main(String[] args) {
+        Demo d1 = new Demo();
+        d1.accept(300);
+    }
+}
+
+🧾 Output:
+Class Variable : 100  
+Instance Variable : 200  
+Parameter Variable : 300  
+Local Variable : 400
+
+💡 Explanation (Memory-wise)
+
+| Variable | Value | Stored In                              |
+| -------- | ----- | -------------------------------------- |
+| a        | 100   | **Method Area** (because static)       |
+| b        | 200   | **Heap Area** (because object field)   |
+| c        | 300   | **Stack Area** (method parameter)      |
+| d        | 400   | **Stack Area** (method local variable) |
+
+💬 Real-life Example:
+
+Think of your office again.
+When you search for a pen:
+
+You first check on your desk (method-level variable).
+
+If not there, you check in your office drawer (class-level variable).
+
+If still not found, you may check in company storage (static variable).
+
+This is how Java searches for variables!
+
+💠 3. this Keyword in Java
+🔹 Meaning
+
+this keyword refers to the current object (the object that called the method).
+
+You use it when:
+
+You want to access object properties (non-static fields).
+
+You want to avoid variable shadowing (when parameter name = field name).
+
+You want to pass current object as argument to another method or constructor.
+
+📘 Example
+public class Customer {
+    private int id;
+    private String name;
+    private double salary;
+
+    public void setCustomerData(int id, String name, double salary) {
+        this.id = id;
+        this.name = name;
+        this.salary = salary;
+    }
+
+    public void getCustomerDetails() {
+        System.out.println("Id is: " + this.id);
+        System.out.println("Name is: " + this.name);
+        System.out.println("Salary is: " + this.salary);
+    }
+}
+
+public class CustomerDemo {
+    public static void main(String[] args) {
+        Customer c1 = new Customer();
+        c1.setCustomerData(101, "Raj", 80000);
+        c1.getCustomerDetails();
+    }
+}
+
+🧾 Output:
+Id is: 101  
+Name is: Raj  
+Salary is: 80000.0
+
+💡 Explanation
+
+Here,
+
+this.id means → use object’s field id
+
+id (without this) means → use method parameter
+
+So, by using this, we tell Java —
+“I am talking about the object’s variable, not the local one.”
+
+💬 Real-life Example:
+
+Suppose you are filling an online form:
+
+The form asks: “Enter your name”
+
+You write your name in a text box.
+
+Here, “your name” means the current person filling the form.
+Similarly, in Java, this means the current object calling the method.
+
+⚙️ Important Notes about this
+
+this always refers to the current object.
+
+It is non-static, so cannot be used inside static methods.
+
+Compiler internally adds this as a hidden parameter to every non-static method or constructor.
+
+📘 Example (Hidden this)
+public class Test {
+    int x, y;
+
+    public void setData(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+}
+
+
+Internally compiler treats it like this 👇
+
+public void setData(final Test this, int x, int y) {
+    this.x = x;
+    this.y = y;
+}
+
+💬 Real-life Example (Memory)
+
+When you say:
+
+Test t1 = new Test();
+t1.setData(100, 200);
+
+
+t1 and this both refer to the same object memory (say address 1000x).
+So:
+
+this.x → means t1.x
+
+this.y → means t1.y
+
+⚙️ Where this cannot be used:
+
+❌ Inside static methods
+❌ Inside static blocks
+❌ Inside nested static classes
+
+Because this only exists when an object exists.
+
+✅ Final Summary Table
+
+| Concept             | Meaning                              | Key Usage                              | Example Keyword                  |
+| ------------------- | ------------------------------------ | -------------------------------------- | -------------------------------- |
+| Variable Shadow     | Method variable hides class variable | Access class variable                  | `this.field` / `ClassName.field` |
+| Method Local Search | Search order of variable             | Method → Class                         | —                                |
+| this Keyword        | Refers to current object             | Access current object’s fields/methods | `this`                           |
+
+🌍 Real-Life Combined Example
+
+Imagine you are Krishna working in an IT company.
+
+class Employee {
+    String name = "CompanyEmployee";  // class level
+    static String department = "IT";  // static field
+
+    public void setDetails(String name) {  // method variable shadows class variable
+        String department = "HR";  // local variable shadows static variable
+        System.out.println("Name: " + name);           // local variable
+        System.out.println("Department: " + department); // local variable
+        System.out.println("Original Name: " + this.name); // class variable
+        System.out.println("Original Department: " + Employee.department); // static variable
+    }
+}
+
+
+🧾 Output:
+
+Name: Krishna
+Department: HR
+Original Name: CompanyEmployee
+Original Department: IT
+
+
+This shows clearly:
+
+Local variables shadow class variables.
+
+Use this or class name to access original ones.
