@@ -1,0 +1,109 @@
+A for loop is used when you want to repeat a block of code a specific number of times.
+
+It has 3 parts:
+
+    for (start; condition; update) {
+        // code to repeat
+    }
+
+    start → runs once before the loop starts (usually sets a counter, like let i = 1)
+
+    condition → checked before every loop (if true, the code runs)
+
+    update → changes the counter (like i++ increases by 1 every time)
+
+💻 Example:
+
+for (let i = 1; i <= 5; i++) {
+  console.log("Hello!");
+}
+
+🟢 Output:
+
+Hello!
+Hello!
+Hello!
+Hello!
+Hello!
+
+The loop prints “Hello!” 5 times because i starts at 1 and stops when it becomes greater than 5.
+
+🧩 1. break Statement
+
+break is used to stop the loop immediately, even if the condition is still true.
+
+It’s like saying,
+
+“Okay, stop here! Don’t continue the loop anymore.”
+
+💻 Example:
+for (let i = 1; i <= 5; i++) {
+  if (i === 3) {
+    break;
+  }
+  console.log(i);
+}
+
+🟢 Output:
+
+1
+2
+
+When i becomes 3, the break statement runs — and the loop stops completely.
+
+🌍 Real-Life Example:
+
+Imagine you are looking through boxes labeled 1 to 5 to find your lost phone.
+You start opening them one by one:
+
+Box 1 → empty
+
+Box 2 → empty
+
+Box 3 → found the phone!
+
+Now, you stop searching — you don’t open box 4 or 5.
+
+That’s exactly what break does — stops the loop when you find what you need.
+
+🧩 2. continue Statement
+
+continue is used to skip one loop turn but keep the loop running.
+
+It’s like saying,
+
+“Skip this one, go to the next.”
+
+💻 Example:
+for (let i = 1; i <= 5; i++) {
+  if (i === 3) {
+    continue;
+  }
+  console.log(i);
+}
+
+🟢 Output:
+
+1
+2
+4
+5
+
+When i becomes 3, continue skips it — it doesn’t print 3 but continues the loop for 4 and 5.
+
+🌍 Real-Life Example:
+
+Imagine you’re giving candies to 5 kids standing in a line,
+but the 3rd kid already has candy, so you skip them.
+
+Kid 1 → ✅
+
+Kid 2 → ✅
+
+Kid 3 → ❌ (skip)
+
+Kid 4 → ✅
+
+Kid 5 → ✅
+
+You continue giving candies to others — just skipped one.
