@@ -1,0 +1,81 @@
+🧠 What are Logical Operators?
+
+Logical operators are used to combine two or more conditions and return either true or false based on the result.
+
+There are 3 main logical operators in JavaScript 👇
+
+🧩 1. Logical AND (&&)
+
+    ✅ Condition: Returns true if both statements are true.
+    ❌ If even one is false, result is false.
+
+Example in code:
+
+    let age = 20;
+    let hasID = true;
+
+    if (age >= 18 && hasID) {
+      console.log("You are allowed to enter the club.");
+    } else {
+      console.log("Entry denied.");
+    }
+
+Explanation:
+
+    Both conditions (age >= 18 and hasID == true) must be true.
+    If you’re 20 and have your ID, you can enter.
+    If you forget your ID or are underage, entry is denied.
+
+🎯 Real-life example:
+
+    Imagine a club bouncer — you can enter only if you are an adult AND you have your ID.
+
+🧩 2. Logical OR (||)
+
+    ✅ Condition: Returns true if at least one condition is true.
+    ❌ Returns false only if both are false.
+
+Example in code:
+
+    let hasTicket = false;
+    let isGuest = true;
+
+    if (hasTicket || isGuest) {
+      console.log("You can enter the show.");
+    } else {
+      console.log("You cannot enter.");
+    }
+
+Explanation:
+
+    If you have a ticket or you are a guest, you can enter.
+    If you have neither, you can’t.
+
+🎯 Real-life example:
+    You can enter a movie either if you buy a ticket OR you are on the VIP guest list.
+
+🧩 3. Logical NOT (!)
+
+    ✅ Condition: It simply reverses the result.
+    If condition is true → becomes false
+    If condition is false → becomes true
+
+Example in code:
+
+    let isRaining = false;
+
+    if (!isRaining) {
+      console.log("Let’s go for a walk!");
+    } else {
+      console.log("Stay home, it's raining.");
+    }
+
+Explanation:
+
+    !isRaining becomes !false → which is true.
+    So it prints “Let’s go for a walk!”
+
+🎯 Real-life example:
+
+    You want to go outside only if it’s not raining.
+    So you check the opposite condition — “NOT raining”.
