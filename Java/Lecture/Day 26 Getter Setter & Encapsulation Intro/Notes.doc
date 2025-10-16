@@ -1,0 +1,467 @@
+🧠 Topic: Ways to Initialize Object Properties
+
+In Java, we can give (initialize) values to an object’s properties (variables) in 6 different ways.
+
+1) By using Object Reference
+
+✅ You can assign values directly using the object name and dot (.) operator.
+
+Product p = new Product();
+p.id = 101;
+p.name = "Laptop";
+p.price = 55000;
+
+🟢 Explanation:
+Here we are using the object reference p to access each property and give it a value.
+
+2) By using Method without Parameter
+
+✅ Create a method that sets some default values.
+
+public void setData() {
+    id = 101;
+    name = "Laptop";
+    price = 55000;
+}
+
+Then call it using the object:
+
+p.setData();
+
+🟢 Explanation:
+No parameters are passed — the method itself decides the default values.
+
+3) By using Method with Parameter
+
+✅ Create a method that accepts parameters to set the values.
+
+public void setData(int id, String name, double price) {
+    this.id = id;
+    this.name = name;
+    this.price = price;
+}
+
+Then call:
+
+p.setData(101, "Laptop", 55000);
+
+🟢 Explanation:
+You can pass values while calling the method — flexible and reusable.
+
+4) At the Time of Variable Declaration
+
+✅ Give values directly when declaring the variables.
+
+private int id = 101;
+private String name = "Laptop";
+private double price = 55000;
+
+🟢 Explanation:
+When the object is created, it automatically gets these default values.
+
+5) Using No-Argument Constructor
+
+✅ Constructor without any parameters gives default values.
+
+public Product() {
+    id = 101;
+    name = "Laptop";
+    price = 55000;
+}
+
+🟢 Explanation:
+It’s automatically called when you create an object using new Product().
+
+) Using Parameterized Constructor
+
+✅ Constructor that takes parameters to assign values.
+
+public Product(int id, String name, double price) {
+    this.id = id;
+    this.name = name;
+    this.price = price;
+}
+
+🟢 Explanation:
+When you create the object, you can pass all the values together.
+Example:
+
+Product p1 = new Product(100, "Laptop", 80000);
+
+🧩 Program: Parameterized Constructor with Data Validation
+
+File 1: Product.java
+
+package com.blc;
+
+public class Product {
+
+    private int id;
+    private String name;
+    private double price;
+
+    public Product(int id, String name, double price) {
+        if (id < 0 || name == null || name.isBlank() || price < 0) {
+            System.err.println("Invalid Data");
+            System.exit(0);
+        }
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Product [id=" + id + ", name=" + name + ", price=" + price + "]";
+    }
+}
+
+File 2: ProductDemo.java
+
+package com.elc;
+
+import com.blc.Product;
+
+public class ProductDemo {
+
+    public static void main(String[] args) {
+
+        Product p1 = new Product(100, "Laptop", 80000);
+        System.out.println(p1);
+    }
+}
+
+🧠 Topic: How to Write Setter and Getter for Non-Static Fields
+
+📘 Step 1: Class and Field
+
+public class Customer {
+
+    private double customerBill;  // non-static field
+}
+
+✅ Explanation:
+
+Here, customerBill is a non-static field.
+It is declared as private, so it cannot be accessed directly from outside the class.
+That’s why we need Setter and Getter methods.
+
+📘 Step 2: Parameterized Constructor (for Initialization)
+
+public Customer(double customerBill) {
+    this.customerBill = customerBill;
+}
+
+✅ Explanation:
+
+This is a parameterized constructor.
+It helps to initialize the value of customerBill when you create the object.
+
+Example:
+
+Customer c1 = new Customer(1000);
+
+👉 Now, customerBill = 1000 for object c1.
+
+📘 Step 3: Setter Method (for Modification)
+public void setCustomerBill(double customerBill) {
+    this.customerBill = customerBill;
+}
+
+✅ Explanation:
+
+Purpose: To modify the existing data (only one property at a time).
+
+Return Type: Always void because it does not return anything.
+
+Usage:
+
+c1.setCustomerBill(1500);
+
+This changes the customerBill value from 1000 → 1500.
+
+📘 Step 4: Getter Method (for Reading Data)
+
+public double getCustomerBill() {
+    return this.customerBill;
+}
+
+✅ Explanation:
+
+Purpose: To read or get the value of a private field.
+
+Return Type: Non-void (depends on field type → here it’s double).
+
+Usage:
+
+System.out.println(c1.getCustomerBill());
+
+This prints the current bill value.
+
+📘 Step 5: toString() Method (for Printing All Properties)
+
+@Override
+public String toString() {
+    return "Customer [customerBill=" + customerBill + "]";
+}
+
+✅ Explanation:
+
+When you print the object (System.out.println(c1);), this method is automatically called.
+It shows the field values in a readable format.
+
+✅ Complete Program
+public class Customer {
+
+    private double customerBill;  // non-static field
+
+    // Parameterized constructor
+    public Customer(double customerBill) {
+        this.customerBill = customerBill;
+    }
+
+    // Setter — used to modify data
+    public void setCustomerBill(double customerBill) {
+        this.customerBill = customerBill;
+    }
+
+    // Getter — used to read data
+    public double getCustomerBill() {
+        return this.customerBill;
+    }
+
+    // toString() — used to print object details
+    @Override
+    public String toString() {
+        return "Customer [customerBill=" + customerBill + "]";
+    }
+
+    // Main method for testing
+    public static void main(String[] args) {
+
+        // Create object using parameterized constructor
+        Customer c1 = new Customer(1000);
+        System.out.println(c1);  // prints: Customer [customerBill=1000.0]
+
+        // Modify data using setter
+        c1.setCustomerBill(1500);
+
+        // Read data using getter
+        System.out.println("Updated Bill: " + c1.getCustomerBill());
+    }
+}
+
+🧾 Output:
+Customer [customerBill=1000.0]
+Updated Bill: 1500.0
+
+💡 Important Points About Setter and Getter
+
+| Feature        | Setter                      | Getter                           |
+| -------------- | --------------------------- | -------------------------------- |
+| Purpose        | Modify existing object data | Read private data                |
+| Return Type    | Always `void`               | Non-void (depends on field type) |
+| Operation Type | Writing                     | Reading                          |
+| Works On       | Non-static fields only      | Non-static fields only           |
+| Example        | `c1.setCustomerBill(1500);` | `c1.getCustomerBill();`          |
+
+🔚 Final Conclusion
+
+| Concept                       | Use                          | Type              |
+| ----------------------------- | ---------------------------- | ----------------- |
+| **Parameterized Constructor** | Initialize object properties | One-time setup    |
+| **Setter**                    | Modify existing data (write) | Writing operation |
+| **Getter**                    | Read private data (read)     | Reading operation |
+| **toString()**                | Print all field values       | Display operation |
+
+
+🧠 What is Encapsulation?
+
+Encapsulation means wrapping (binding) data (fields) and code (methods) together in a single unit — usually a class — and protecting data from direct access by using private variables and public methods (getters/setters).
+
+🧩 Short Explanation:
+
+Accessing private data through public methods (like setters and getters) is called Encapsulation.
+
+So instead of accessing the variable directly, we use a method to read or modify it safely.
+
+💊 Capsule Example (Medical Term)
+
+Just like a medical capsule contains medicine inside it safely —
+Encapsulation in Java keeps data (fields) and methods together in one unit (class).
+
+👉
+Capsule = Field + Method
+Encapsulation = Data + Functionality
+
+🔐 Why Encapsulation is Important
+
+| Benefit                  | Description                                                     |
+| ------------------------ | --------------------------------------------------------------- |
+| **1. Data Hiding**       | Prevents direct access to data — makes it secure.               |
+| **2. Control Over Data** | We can control what values can be set (using validation).       |
+| **3. Easy Maintenance**  | If we change logic inside methods, the outer code remains safe. |
+| **4. Code Reusability**  | Encapsulated class can be reused easily in other programs.      |
+| **5. Flexibility**       | Only selected data is visible outside the class.                |
+
+🧱 How to Achieve Encapsulation (Steps)
+
+1️⃣ Declare all fields as private
+→ This hides the data from direct access.
+
+2️⃣ Write public setter and getter methods
+→ Used to perform write (set) and read (get) operations.
+
+📘 Example Structure:
+| Step | What You Do              | Why                                 |
+| ---- | ------------------------ | ----------------------------------- |
+| 1    | Make variables `private` | Data hiding                         |
+| 2    | Use `public setter()`    | To modify data safely               |
+| 3    | Use `public getter()`    | To read data safely                 |
+| 4    | Add validation in setter | To ensure only valid data is stored |
+
+⚙️ Types of Encapsulation
+
+| Type                           | Description                             |
+| ------------------------------ | --------------------------------------- |
+| **Tightly Encapsulated Class** | All fields are declared as `private`. ✅ |
+| **Loosely Encapsulated Class** | Some fields are not private. ❌          |
+
+
+💬 Example:
+public class Customer {
+
+    // Step 1: Make fields private (Data Hiding)
+    private String name;
+    private double balance;
+
+    // Step 2: Use constructor to initialize data
+    public Customer(String name, double balance) {
+        this.name = name;
+        this.balance = balance;
+    }
+
+    // Step 3: Public Setter - to modify data safely
+    public void setBalance(double balance) {
+        if (balance >= 0) { // validation
+            this.balance = balance;
+        } else {
+            System.out.println("Invalid balance!");
+        }
+    }
+
+    // Step 4: Public Getter - to read data
+    public double getBalance() {
+        return balance;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    // Step 5: toString() for displaying info
+    @Override
+    public String toString() {
+        return "Customer [name=" + name + ", balance=" + balance + "]";
+    }
+}
+
+💻 Main Program:
+public class CustomerDemo {
+
+    public static void main(String[] args) {
+        Customer c1 = new Customer("Ravi", 1000);
+
+        // Access private data via public methods
+        System.out.println("Initial Balance: " + c1.getBalance());
+
+        c1.setBalance(2000); // update using setter
+        System.out.println("Updated Balance: " + c1.getBalance());
+
+        c1.setBalance(-500); // invalid value
+    }
+}
+
+🧾 Output:
+Initial Balance: 1000.0
+Updated Balance: 2000.0
+Invalid balance!
+
+
+
+
+
+
+Program on Encapsulation
+
+package com.ravi.encapsulation;
+
+public class Employee {
+
+    private String name;
+    private double salary;
+
+    public Employee(String name, double salary) {
+        super();
+        this.name = name;
+        this.salary = salary;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee [name=" + name + ", salary=" + salary + "]";
+    }
+
+    // getter
+    public String getName() {
+        return name;
+    }
+
+    // setter
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // getter
+    public double getSalary() {
+        return salary;
+    }
+
+    // setter
+    public void setSalary(double salary) {
+        if (salary < this.salary) {
+            System.err.println("Invalid Data");
+            System.exit(0);
+        }
+        this.salary = salary;
+    }
+}
+
+package com.ravi.encapsulation;
+
+import java.util.Scanner;
+
+public class EmployeeDemo {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Employee Name: ");
+        String name = sc.nextLine();
+
+        System.out.print("Enter Employee Salary: ");
+        double salary = Double.parseDouble(sc.nextLine());
+
+        Employee emp = new Employee(name, salary);
+        System.out.println(emp);
+
+        System.out.print("Enter your increment amount: ");
+        double increment = Double.parseDouble(sc.nextLine());
+
+        emp.setSalary(emp.getSalary() + increment);
+        System.out.println(emp);
+
+        sc.close();
+    }
+}
