@@ -1,0 +1,158 @@
+🧩 Topic 1: Various Possible Combinations for Return Type of a Method
+
+In Java, every method must have a return type — this tells the program what kind of data the method will give back after finishing its task.
+
+There are 3 main types of return values:
+
+1 > void → returns nothing
+2 > Primitive data type → returns basic types like int, float, double, etc.
+3 > Reference data type → returns objects (like class or interface type)
+
+🧠 Case 1 :
+
+public int accept() {
+    return 12.90; // ❌ Error
+}
+
+The method return type is int, but you’re returning a double (12.90).
+int and double are not compatible.
+
+Return type and return value must be of the same or compatible data type.
+
+
+🧠 Case 2:
+public int accept() {
+    return 12; // ✅ Works fine
+}
+
+Here, return type is int, and you’re returning 12 which is also an int.
+✔️ So, compatible return type.
+
+
+🧠 Case 3:
+public class Test {
+    public Test accept() {
+        return new Test();
+    }
+}
+
+Here, the return type is the class name itself (Test).
+And you are returning a new object of Test class.
+
+✔️ So, compatible again.
+
+
+🧠 Case 4:
+public class Test {
+    public Test accept() {
+        return this; // returns current object
+    }
+}
+
+this refers to the current object of the class.
+So here, we’re returning the object which is already in use.
+
+
+🧠 Case 5:
+public class Demo {
+    int x;
+    public Demo(int x) {
+        this.x = x;
+    }
+    public Demo accept() {
+        return new Demo(9);
+    }
+}
+
+Here, method returns a new Demo object when called.
+
+🧍‍♂️ Real-life Example:
+Think of a coffee machine.
+Every time you press the button, it returns a new cup of coffee (new object).
+
+
+☕ What is a Factory Method in Java?
+
+A Factory Method is a method that returns an object (class or interface type).
+
+It can be:
+
+static → called using class name
+
+non-static → called using object
+
+🧠 Purpose:
+To create and return an object (instead of creating it directly using new keyword).
+
+🧩 Example 1: Book Class
+public static Book getBookObject() {
+    return new Book("Java", "James Gosling");
+}
+
+✔️ Here, getBookObject() is a factory method because it returns a Book object.
+
+🧩 Example 2: Product Class
+
+public static Product getProductObject(int id, String name, double price) {
+    return new Product(id, name, price);
+}
+
+Here, the user inputs product details, and the factory method creates and returns a new Product object.
+
+🧍‍♂️ Real-life Example:
+You go to a pizza shop and say:
+
+“I want a pizza with ID=1, name=Cheese Burst, price=399.”
+
+The chef (factory method) returns a Pizza object (Product) with those details.
+
+🧩 What is Shallow Copy and Deep Copy?
+
+🧠 Shallow Copy:
+
+When you assign one object reference to another, both variables point to the same memory location (same object).
+
+Example :
+
+Laptop lap1 = new Laptop("HP", 90000);
+Laptop lap2 = lap1; // both point to same object
+lap2.setBrand("Dell");
+
+Now both lap1 and lap2 show Dell as brand.
+
+🧍‍♂️ Real-life Example:
+You and your friend share the same Google Doc.
+If your friend changes the text, you’ll also see that change — because both are editing the same document (same object).
+
+🧩 Output:
+
+After modification:
+Laptop [brand=Dell, price=95000]
+Laptop [brand=Dell, price=95000]
+
+
+🧠 Deep Copy (for comparison):
+
+In Deep Copy, a new object is created with the same values as the original one.
+So if you modify one, the other stays unchanged.
+
+🧍‍♂️ Real-life Example:
+You make a photocopy of your mark sheet.
+If you write on the photocopy, your original mark sheet remains safe — they are different objects.
+
+🧭 Quick Summary
+
+| Concept              | Meaning                                 | Real-Life Example                            |
+| -------------------- | --------------------------------------- | -------------------------------------------- |
+| Return Type          | Data type of value returned by method   | ATM gives cash (return value)                |
+| void                 | Returns nothing                         | Print a message on screen                    |
+| Primitive return     | Returns simple value (int, float, etc.) | Return your age                              |
+| Reference return     | Returns object                          | Return a Car, Book, or Product object        |
+| Factory Method       | Method that returns an object           | Pizza order system creates and gives a pizza |
+| Shallow Copy         | Same object shared by many references   | Shared Google Doc                            |
+| Deep Copy            | Completely new object copy              | Photocopy of a file                          |
+
+
+
+
+
