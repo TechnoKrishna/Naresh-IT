@@ -1,0 +1,148 @@
+🧠 Basic Idea:
+
+In Java, Garbage Collector (GC) automatically deletes objects that no longer have any reference pointing to them.
+Think of it like removing unused items from memory to save space.
+
+💡 There are 3 ways to make an object eligible for Garbage Collection:
+
+1️⃣ Assigning null to a reference variable
+
+Employee emp = new Employee(111, "Scott");
+emp = null;
+
+🪄 Explanation:
+
+emp was pointing to the Employee object in memory (say address 1000x).
+After we write emp = null;, it no longer points to that object.
+So the object at 1000x is now unreachable → eligible for GC.
+
+🏠 Real-life example:
+
+Imagine you had a friend’s phone number saved in your contact list.
+If you delete that contact, you can’t reach your friend anymore (but the friend still exists).
+Similarly, the object still exists in memory, but since no one points to it, it can be cleaned by GC.
+
+2️⃣ Creating an object inside a method
+
+public void createObject() {
+    Employee e2 = new Employee();
+}
+
+🪄 Explanation:
+
+e2 is a local variable — it lives only while the method runs.
+When the method ends, the stack frame is deleted, and e2 disappears.
+Now, the Employee object e2 was pointing to becomes unreachable → eligible for GC.
+
+🏠 Real-life example:
+Think of borrowing a pen inside a meeting.
+When the meeting ends, you return the pen, and your reference to it is gone.
+Now no one in that meeting has it — it can be cleaned up (GC can remove it).
+
+3️⃣ Assigning a new object to the same reference
+
+Product p1 = new Product(999, "Camera");
+p1 = new Product(333, "Mobile");
+
+🪄 Explanation:
+
+First, p1 points to the “Camera” object (say memory 3000x).
+Then we assign it a new object “Mobile” (memory 4000x).
+Now no one points to the “Camera” object → eligible for GC.
+
+🏠 Real-life example:
+You first buy a camera, then sell it and buy a mobile.
+Now you don’t own the camera anymore → it’s like GC can remove it from your list of belongings.
+
+🧩 Memory in Java
+
+1) Method Area OR Class Area
+
+All the static fields and static members are available in the Method Area.
+Static data (class-level variables)
+
+Example : Company rules shared by all employees
+
+2) HEAP Area
+
+All the non-static fields and non-static methods are available in the HEAP Area.
+Objects (non-static data)
+
+Example : Each employee’s personal data
+
+3) STACK Area
+
+All the local and parameter variables are available in the Stack Area.
+Local variables and method calls
+
+Example : Temporary work notes while doing a task
+
+All these variables are stored in the Stack Frame.
+Once method execution is over, the Stack Frame is deleted, and automatically the local and parameter variables are also deleted.
+
+Whether it is a static or non-static method, methods are always executed from the STACK Area.
+
+🪄 When a method finishes running, its stack memory is cleared — but heap memory objects stay until GC removes them.
+
+class Customer {
+    private String name;
+    private int id;
+
+    public Customer(String name, int id) {
+        this.name = name;
+        this.id = id;
+    }
+
+    public void setId(int id) { this.id = id; }
+    public int getId() { return this.id; }
+}
+
+public class CustomerDemo {
+    public static void main(String[] args) {
+        int val = 100;
+        Customer c = new Customer("Ravi", 2);
+        m1(c);
+        System.out.println(c.getId());
+    }
+
+    public static void m1(Customer cust) {
+        cust.setId(5);
+        cust = new Customer("Rahul", 7);
+        cust.setId(9);
+        System.out.println(cust.getId());
+    }
+}
+
+
+🪄 Step-by-Step Explanation:
+
+1 > In main(),
+    Customer c = new Customer("Ravi", 2);
+    → creates a Customer object (say memory 1000x) with id = 2, name = Ravi.
+
+2 > Then we call m1(c);
+    → The reference cust (inside m1) points to the same object (1000x).
+
+3 > Inside m1:
+    cust.setId(5); → changes id of same object (now id = 5).
+    So both cust and c point to same Customer (id=5).
+
+4 > Then we do:
+    cust = new Customer("Rahul", 7);
+    → now cust points to a new object (say 3000x).
+    The old one (1000x) is still pointed by c, so it’s safe.
+
+5 > cust.setId(9); → modifies the new object (Rahul, id=9).
+
+6 > System.out.println(cust.getId()); → prints 9 (Rahul’s id).
+
+7 > When m1() ends, cust (the local variable) is deleted.
+    The object Rahul (3000x) now has no reference → eligible for GC.
+
+8 > Back in main(), c.getId() prints 5 (Ravi’s id).
+
+
+✅ Final Output:
+                    9
+                    5
+
