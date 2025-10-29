@@ -1,3 +1,5 @@
+link :- https://chatgpt.com/share/69025312-de18-8004-b6df-4e65f65e86ba
+
 🧠 Basic Idea:
 
 In Java, Garbage Collector (GC) automatically deletes objects that no longer have any reference pointing to them.
