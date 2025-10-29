@@ -1,0 +1,223 @@
+🧩 1. Deep Copy
+
+In deep copy, two separate objects are created in memory.
+If you change one object’s data, the other object will not change because both have their own copies of data.
+
+So, in deep copy → both objects are independent of each other.
+
+Program on Deep Copy
+
+class Product {
+    private double price;
+
+    public Product() {
+    }
+
+    public Product(double price) {
+        super();
+        this.price = price;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Product [price=" + price + "]";
+    }
+}
+
+public class ProductDemo {
+    public static void main(String[] args) {
+        Product p1 = new Product();
+        Product p2 = new Product(5000);
+
+        System.out.println(p1 + " : " + p2);
+
+        // Copy the content of p2 to initialize the p1 data
+        p1.setPrice(p2.getPrice());
+
+        System.out.println("After copy");
+        System.out.println(p1 + " : " + p2);
+
+        p2.setPrice(9000);
+        System.out.println("After Modification in p2");
+        System.out.println(p1 + " : " + p2);
+    }
+}
+
+Now, if we change p2.setPrice(9000);,
+then p1 will still have 5000 because both are different objects.
+
+🚗 Real-Life Example:
+
+Imagine you have two cars — both look the same but are parked in different garages.
+If one car’s tire gets punctured, the other car remains fine.
+That’s exactly how deep copy works — they are separate and independent.
+
+
+💡 2. Pass By Value
+
+1 > Java does not support pointers, so Java only works with pass by value.
+2 > In Java, when we pass data to a method, Java sends a copy of that data — not the original one.
+3 > So if the method changes the data, it only changes the copy, not the original (unless the original object’s properties are changed through the copy’s reference).
+
+
+Diagram for PassByValueDemo1.java
+
+cust, c1  ==>  Customer object (1000x)  ==>  bill = 12000  ==>  18000
+
+
+class Customer {
+    private double bill;
+
+    public Customer(double bill) {
+        super();
+        this.bill = bill;
+    }
+
+    public double getBill() {
+        return bill;
+    }
+
+    public void setBill(double bill) {
+        this.bill = bill;
+    }
+}
+
+public class PassByValueDemo1 {
+    public static void main(String[] args) {
+        Customer cust = new Customer(12000);
+        System.out.println(cust.getBill()); // 12000
+
+        accept(cust);
+        System.out.println(cust.getBill()); // 18000
+    }
+
+    public static void accept(Customer c1) {
+        c1.setBill(18000);
+    }
+}
+
+→ The bill inside cust also becomes 18000, because we used the same object reference to change its data.
+
+But if we create a new object inside the method:
+
+→ It doesn’t affect the original object, because we changed only the copy of the reference
+
+Diagram for PassByValueDemo2.java
+
+e1, emp  ==>  Employee Object (2000x)  ==>  salary = 75000
+emp      ==>  Employee Object (3000x)  ==>  salary = 75000  ==>  90000
+
+
+package com.ravi.pass_by_value;
+
+class Employee {
+    private double salary = 75000;
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+}
+
+public class PassByValueDemo2 {
+    public static void main(String[] args) {
+        Employee e1 = new Employee();
+        System.out.println(e1.getSalary()); // 75000
+
+        accept(e1);
+        System.out.println(e1.getSalary()); // 75000
+    }
+
+    public static void accept(Employee emp) {
+        emp = new Employee();
+        emp.setSalary(90000);
+    }
+}
+
+🚶 Real-Life Example:
+
+Think of photocopying a paper.
+If you write on the original paper, the photocopy doesn’t change.
+If you write on the photocopy, the original remains clean.
+That’s what “Pass by Value” means — Java passes a copy, not the original.
+
+🧱 3. Immutable Objects
+
+Immutable means cannot be changed once created.
+In Java, Strings and Wrapper classes (like Integer, Double, etc.) are immutable.
+That means if you try to modify a string, a new string is created — the old one stays unchanged.
+
+
+package com.ravi.pass_by_value;
+
+public class PassByValueDemo3 {
+    public static void main(String[] args) {
+        String str = new String("Java");
+        System.out.println(str);
+
+        accept(str);
+        System.out.println(str);
+    }
+
+    public static void accept(String s1) {
+        s1 = "Advanced Java"; // Strings are immutable (Un-changed)
+    }
+}
+
+→ This doesn’t change the original string.
+str still remains "Java".
+
+🚪 Real-Life Example:
+
+Think of a sealed bottle of water.
+You can’t add sugar directly into that bottle; you must pour it into another bottle to change it.
+Similarly, immutable objects can’t be modified — you must create a new one.
+
+
+🗑️ 4. Garbage Collector
+
+HEAP MEMORY  ==>  new, OutOfMemoryError, Garbage Collector, daemon thread, System.gc();
+
+In Java, memory for objects is created in the heap area using new.
+
+It is an automatic memory management technique in Java.
+
+In C++, a programmer is responsible to allocate as well as de-allocate memory, otherwise we get OutOfMemoryError.
+
+In Java, the programmer is only responsible to allocate memory — de-allocation is done automatically by the Garbage Collector.
+
+Garbage Collector is a daemon thread responsible for deleting unused objects from the heap memory.
+It scans the heap memory to identify which objects are eligible for garbage collection.
+(Objects that do not contain any references are eligible for GC.)
+
+It internally uses an algorithm called Mark and Sweep Algorithm to delete unused objects.
+
+We can also explicitly call the Garbage Collector using the following code:
+
+System.gc();
+
+🚗 Real-Life Example:
+
+Think of your smartphone’s storage.
+When you uninstall an app, the system automatically removes its data from storage.
+You don’t go and delete every file manually — the system does it for you.
+That’s what the Garbage Collector does in Java — it cleans up unused objects automatically.
+
+
+| Concept               | Meaning                                                             | Real-Life Example                            |
+| --------------------- | ------------------------------------------------------------------- | -------------------------------------------- |
+| **Deep Copy**         | Creates two separate objects; changing one doesn’t affect the other | Two similar cars parked in different garages |
+| **Pass By Value**     | Java sends a copy of data, not the original                         | Photocopy of a document                      |
+| **Immutable Objects** | Once created, they cannot be changed                                | Sealed water bottle (need new one to modify) |
+| **Garbage Collector** | Deletes unused objects automatically                                | Phone cleaning old/uninstalled app data      |
