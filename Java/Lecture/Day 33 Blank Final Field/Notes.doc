@@ -1,0 +1,256 @@
+🧠 Blank Final Field
+
+🔹 What is it?
+
+Normally, when you write final, it means the variable’s value can’t be changed once it is assigned.
+
+But in Java, sometimes you want to assign that value later — not immediately when you declare it.
+
+So, a Blank Final Field is a final variable that is declared but not given a value at the time of declaration.
+
+You must give it a value later, but only once — either in a constructor or a non-static block.
+
+🔹 Example
+
+public class LIC {
+    private final double installment; // Blank final field
+}
+
+🔹 Program Example
+
+class LIC {
+    final double installment;
+}
+
+public class BlankFinalField {
+    public static void main(String[] args) {
+        LIC lic = new LIC();
+        System.out.println(lic.installment);
+    }
+}
+
+⚠️ Note
+
+A blank final field cannot be initialized inside a method body.
+
+❌ Example
+
+class LIC {
+    final double installment;
+
+    public void setInstallment(double installment) {
+        this.installment = installment; // Error
+    }
+}
+
+public class BlankFinalField {
+    public static void main(String[] args) {
+        LIC lic = new LIC();
+        lic.setInstallment(23890.90);
+        System.out.println(lic.installment);
+    }
+}
+
+✅ A Blank Final Field Must Be Initialized:
+
+A blank final field must be initialized by the developer before the constructor body execution (during object creation).
+
+It can be initialized in:
+
+1 > Non-static block, or
+2 > Inside constructor body
+
+Both are valid, but you must assign before the object is created completely.
+
+⚠️ Not Allowed
+
+You cannot assign it inside a normal method (like setInstallment()), because that would mean you are changing its value after object creation, which breaks the rule of final.
+
+Example:
+
+class LIC {
+    final double installment;
+    {
+        this.installment = 23890.90; // Initialized in non-static block
+    }
+
+    public LIC() {
+        // this.installment = 23890.90; // Can also be initialized here
+    }
+}
+
+public class BlankFinalField {
+    public static void main(String[] args) {
+        LIC lic = new LIC();
+        System.out.println(lic.installment);
+    }
+}
+
+🧩 Purpose
+
+The main purpose of a blank final field is to force the developer to initialize the non-static field with a user-defined value only once — before the constructor finishes executing.
+
+🧠 Why Do We Need Blank Final Fields?
+
+They are useful when:
+You want to make a variable unchangeable (final),
+But its value depends on user input or constructor arguments.
+
+🚗 Example with Composition
+
+Every car has an Engine — once the car is made, you cannot change its engine.
+
+Engine.java
+
+package com.example.blc;
+
+public class Engine {
+    private String type;
+    private int horsePower;
+
+    public Engine(String type, int horsePower) {
+        super();
+        this.type = type;
+        this.horsePower = horsePower;
+    }
+
+    @Override
+    public String toString() {
+        return "Engine [type=" + type + ", horsePower=" + horsePower + "]";
+    }
+}
+
+🧩 Explanation:
+
+engine is declared as final because once the car is built, the engine cannot be changed.
+You didn’t give it a value at declaration, so it’s blank.
+You gave it a value inside the constructor when the car was created.
+This ensures each car object gets exactly one engine, and it can’t be replaced later.
+
+
+Car.java
+
+package com.example.blc;
+
+public class Car {
+    private String name;
+    private int model;
+    private final Engine engine; // Blank final field
+
+    public Car(String name, int model) {
+        super();
+        this.name = name;
+        this.model = model;
+        this.engine = new Engine("Petrol", 1000);
+    }
+
+    @Override
+    public String toString() {
+        return "Car [name=" + name + ", model=" + model + ", engine=" + engine + "]";
+    }
+}
+
+CarDemo.java
+
+package com.example.elc;
+
+public class CarDemo {
+    public static void main(String[] args) {
+        Car car = new Car("Wagnor", 2025);
+        System.out.println(car);
+    }
+}
+
+💡 Important Note
+
+A blank final field also has a default value provided by the new keyword.
+All class-level fields (whether static or non-static) have default values, even if the field is final.
+
+Example:
+
+class Hello {
+    final int x;
+    {
+        print();
+        x = 100;
+    }
+
+    public void print() {
+        System.out.println("Default value: " + x);
+    }
+}
+
+public class BlankFinalField2 {
+    public static void main(String[] args) {
+        Hello h1 = new Hello();
+        System.out.println("User Value: " + h1.x);
+    }
+}
+
+👨‍🎓 Example — Initializing in All Constructors
+
+A blank final field must be initialized in all constructors of the class.
+
+class Student {
+    private final String name; // Blank final field
+
+    public Student() {
+        name = "Scott";
+    }
+
+    public Student(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+}
+
+public class BlankFinalFieldDemo3 {
+    public static void main(String[] args) {
+        Student s1 = new Student();
+        System.out.println(s1.getName());
+
+        Student s2 = new Student("Smith");
+        System.out.println(s2.getName());
+    }
+}
+
+⚙️ Example — Initializing Inside Non-Static Block
+
+class Student {
+    private final String name; // Blank final field
+
+    {
+        name = "Raj"; // Initialized in non-static block
+    }
+
+    public Student() {}
+
+    public Student(String name) {}
+
+    public String getName() {
+        return this.name;
+    }
+}
+
+public class BlankFinalFieldDemo3 {
+    public static void main(String[] args) {
+        Student s1 = new Student();
+        System.out.println(s1.getName());
+
+        Student s2 = new Student("Smith");
+        System.out.println(s2.getName());
+    }
+}
+
+✅ Summary
+
+A Blank Final Field is a final variable not initialized during declaration.
+It must be initialized either in a constructor or non-static block.
+It cannot be assigned inside a method.
+Ensures each object gets its own constant value assigned exactly once.
+
+
+
