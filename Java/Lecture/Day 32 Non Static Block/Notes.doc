@@ -1,0 +1,358 @@
+🧠 1. Modifiers Applicable for Constructors
+
+👉 What it means:
+
+We can use some access modifiers with constructors to control who can create an object of the class.
+
+✅ Allowed modifiers:
+
+public → anyone can create an object.
+protected → only classes in the same package or child classes can create an object.
+default (no modifier) → only classes in the same package can create an object.
+private → only the same class can create its object.
+
+🚫 Not allowed:
+
+You cannot declare a constructor as:
+
+final
+static
+abstract
+synchronized
+
+💡 Real-life Example:
+
+Imagine a car manufacturing company.
+
+The factory (inside the company) can create cars (objects).
+
+Customers can’t directly create cars — only factory workers (same class) can do it.
+That’s like using a private constructor (used in Singleton or Factory design pattern).
+
+
+⚙️ 2. Non-Static Block (Instance Initializer Block)
+
+A non-static block is a piece of code inside { } (not inside any method or constructor) that automatically runs whenever an object is created.
+
+Example:
+
+public class Student {
+    private int roll;
+    private String name;
+    {
+        // non-static block
+    }
+}
+
+Example 1: Basic Non-Static Block
+
+class Test {
+    private int x;
+    {
+        System.out.println("Non static block demo");
+    }
+}
+
+public class NonStaticBlockDemo1 {
+    public static void main(String[] args) {
+        Test t1 = new Test();
+        Test t2 = new Test(); 
+        Test t3 = new Test();
+    }
+}
+
+💡 Real-life Example:
+
+Imagine whenever a new student joins a school, the school automatically gives them a welcome message and ID card — this is like a non-static block executing before the constructor.
+
+🧩 Constructor and Non-Static Block Relationship
+
+Key points:
+
+1️⃣ The first line of any constructor is always super() (to call parent class constructor) or this() (to call another constructor in the same class).
+
+2️⃣ If the developer forgets, Java adds super() automatically.
+
+3️⃣ The non-static block runs just before the constructor body (after super()).
+
+🧱 Case 1:
+Source Code
+
+public class Demo {
+    private int x;
+
+    public Demo() {
+        System.out.println("No Arg Cons");
+    }
+
+    {
+        System.out.println("NSB");
+    }
+}
+
+After Compilation (javac output)
+
+public class Demo {
+    private int x;
+
+    public Demo() {
+        super(); // added by javac
+        {
+            System.out.println("NSB"); // placed by javac
+        }
+    }
+}
+
+
+🧱 Case 2:
+Source Code
+public class Demo {
+    public Demo() { 
+        this(5); 
+        System.out.println("NAC");
+    }
+
+    public Demo(int x) {
+        System.out.println("PC");
+    }
+
+    { 
+        System.out.println("NSB"); 
+    }
+}
+
+After Compilation (javac output)
+
+public class Demo {
+    public Demo() {
+        this(5); 
+        System.out.println("NAC");
+    }
+
+    public Demo(int x) {
+        super(); // added by javac 
+        {
+            System.out.println("NSB"); // placed by javac 
+        } 
+    }
+}
+
+📘 Note:
+Non-static block will be automatically placed inside the constructor which contains super() as the first statement.
+
+
+🧾 Example – NonStaticBlockDemo2
+
+class Demo {
+    public Demo() {
+        System.out.println("No Argument constructor");
+    }
+
+    public Demo(int x) {
+        System.out.println("Parameterized constructor");
+    }
+
+    { 
+        System.out.println("Non static block");
+    }
+}
+
+public class NonStaticBlockDemo2 {
+    public static void main(String[] args) {
+        Demo d1 = new Demo();
+        Demo d2 = new Demo(100);
+    }
+}
+
+🟡 Note: Non-static block will be executed two times because two objects are created.
+
+🧩 Example – NonStaticBlockDemo2 (with this())
+
+class Demo {
+    public Demo() {
+        this(10);
+        System.out.println("No Argument constructor");
+    }
+
+    public Demo(int x) { 
+        System.out.println("Parameterized constructor");
+    }
+
+    { 
+        System.out.println("Non static block");
+    }
+}
+
+public class NonStaticBlockDemo2 {
+    public static void main(String[] args) {
+        Demo d1 = new Demo();
+    }
+}
+
+🧠 Explanation:
+The non-static block will be executed before constructor body execution.
+
+🧮 Example – NonStaticBlockDemo3
+
+class Sample {
+    public Sample() { 
+        System.out.println("No Argument Constructor"); 
+    }
+
+    { 
+        System.out.println("Non static block");
+    }
+}
+
+public class NonStaticBlockDemo3 {
+    public static void main(String[] args) {
+        Sample s1 = new Sample();
+        System.out.println(".............");
+        Sample s2 = new Sample();
+    }
+}
+
+🧮 6. Purpose of Non-Static Block
+
+Used to initialize non-static fields.
+Also known as Instance Initializer.
+Can be used to provide common messages or logic for all objects.
+
+💡 Real-life Example:
+
+Every time a new student joins a school, the school prints:
+
+Welcome Student! Admission is in progress.
+
+That’s the non-static block working — it happens for every new student automatically.
+
+🧪 Example – NonStaticBlockDemo4
+
+class Foo {
+    int x;
+    {
+        System.out.println("Object creation is in progress!!!");
+        x = 100;
+    }
+}
+
+public class NonStaticBlockDemo4 {
+    public static void main(String[] args) {
+        Foo f1 = new Foo(); 
+        System.out.println(f1.x);
+
+        System.out.println("............");
+
+        Foo f2 = new Foo();
+        System.out.println(f2.x);
+    }
+}
+
+🧰 Multiple Non-Static Blocks
+
+If a class contains multiple non-static blocks, they will be executed from top to bottom.
+
+class Instance {
+    private int x;
+
+    public Instance() {
+        x = 100;
+        System.out.println("x value is: " + x);
+    }
+
+    {
+        x = 200;
+        System.out.println("x value is: " + x);
+    }
+
+    {
+        x = 300;
+        System.out.println("x value is: " + x);
+    }
+
+    {
+        x = 400;
+        System.out.println("x value is: " + x);
+    }
+}
+
+public class NonStaticBlokcDemo5 {
+    public static void main(String[] args) {
+        Instance i = new Instance();
+    }
+}
+
+🚫 Return Statement Not Allowed in Non-Static Block
+
+You cannot write any return statement inside a non-static block because it must execute normally.
+
+class Instance {
+    private int x;
+
+    public Instance() {
+        x = 100;
+        System.out.println("x value is: " + x);
+        return; // ✅ allowed here
+    }
+
+    {
+        System.out.println("NSB");
+        return; // ❌ not allowed
+    }
+}
+
+public class NonStaticBlokcDemo5 {
+    public static void main(String[] args) {
+        Instance i = new Instance();
+    }
+}
+
+⚙️ Non-Static Field Initialization Order
+
+When an object is created, Java initializes variables in this order:
+
+1️⃣ Default value → All variables get default (like 0 or null).
+2️⃣ At declaration → If initialized inline (int x = 100;).
+3️⃣ Non-static block → If present, it updates the variable.
+4️⃣ Constructor → Final custom initialization.
+5️⃣ Method body → Only if you call it later (not during creation).
+
+📘 Priority Summary:
+
+Default Value (new keyword)
+    ↓
+At the time of Declaration
+    ↓
+Non-Static Block (Priority Basis)
+    ↓
+Constructor Body
+    ↓
+Method Body (Not Recommended)
+
+🧾 Example – NonStaticFieldInitializationOrder
+
+class Test {
+    public Test() {
+        x = 300;
+    }
+
+    int x = 100;
+
+    {
+        x = 200;
+    }
+}
+
+public class NonStaticFieldInitializationOrder {
+    public static void main(String[] args) {
+        Test t1 = new Test();
+        System.out.println(t1.x);
+    }
+}
+
+Explanation:
+
+Default → x = 0
+Declaration → x = 100
+Non-static block → x = 200
+Constructor → x = 300
