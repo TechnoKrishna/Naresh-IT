@@ -1,0 +1,218 @@
+Link :- https://chatgpt.com/g/g-p-68e3f3ac73888191964b70b5ff48ed7b-java-nareshit/shared/c/690254eb-113c-8324-9f31-b9459ca86ac6?owner_user_id=user-tWzV4PlSJRCZGsmBvJra0KDC
+
+HEAP and STACK Diagram for Sample.java
+
+HEAP MEMORY
+
+| Address | Object        | Value      |
+| ------- | ------------- | ---------- |
+| 1000x   | SampleObject  | i1 → 2000x |
+| 2000x   | IntegerObject | 900        |
+| 3000x   | SampleObject  | i1 → 4000x |
+| 4000x   | IntegerObject | 9          |
+| 5000x   | SampleObject  | i1 → 6000x |
+| 6000x   | IntegerObject | 20         |
+
+STACK MEMORY
+
+Before modification:
+
+main stack
+s1: 4000x → null
+s2: 3000x
+s3: null
+
+After modification:
+
+modify stack
+s1: 3000x
+s2: 5000x
+s3: null
+
+public class Sample {
+    private Integer i1 = 900;
+
+    public static void main(String[] args) {
+        Sample s1 = new Sample();
+        Sample s2 = new Sample();
+        Sample s3 = modify(s2);
+
+        s1 = null; // GC eligible: 1000x, 2000x, 5000x, 6000x
+
+        System.out.println(s2.i1);
+    }
+
+    public static Sample modify(Sample s) {
+        s.i1 = 9;
+        s = new Sample();
+        s.i1 = 20;
+
+        System.out.println(s.i1);
+        s = null;
+        return s;
+    }
+}
+
+Output:
+
+20
+9
+
+
+HEAP and STACK Diagram for Test.java
+
+HEAP MEMORY
+
+| Address | Object     | Value               |
+| ------- | ---------- | ------------------- |
+| 1000x   | TestObject | t → 3000x, val: 100 |
+| 2000x   | TestObject | t → 3000x, val: 200 |
+| 3000x   | TestObject | t → 4000x, val: 300 |
+| 4000x   | TestObject | t → 2000x, val: 400 |
+
+References updates:
+
+t2.t = t3 → 3000x
+t3.t = t4 → 4000x
+t1.t = t2.t → 3000x
+t2.t = t4.t → 2000x
+
+Output Values:
+
+System.out.println(t1.t.val); //300
+System.out.println(t2.t.val); //200
+System.out.println(t3.t.val); //400
+System.out.println(t4.t.val); //200
+
+STACK MEMORY
+
+main stack
+ti: 1000x
+t2: 2000x
+t3: 3000x
+14: 4000x
+
+//Program
+
+public class Test {
+    Test t;
+    int val;
+
+    public Test(int val) {
+        this.val = val;
+    }
+
+    public Test(int val, Test t) {
+        this.val = val;
+        this.t = t;
+    }
+
+    public static void main(String[] args) {
+        Test t1 = new Test(100);
+        Test t2 = new Test(200, t1);
+        Test t3 = new Test(300, t1);
+        Test t4 = new Test(400, t2);
+
+        t2.t = t3;
+        t3.t = t4;
+        t1.t = t2.t;
+        t2.t = t4.t;
+
+        System.out.println(t1.t.val);
+        System.out.println(t2.t.val);
+        System.out.println(t3.t.val);
+        System.out.println(t4.t.val);
+    }
+}
+
+Copying Objects Using Copy Constructor
+
+How to copy the content of one object to another object [Copy Constructor]
+
+If we pass an object reference to the constructor then we can copy the content of one object to another object.
+
+Case 1: Copy Employee object to Manager object
+
+el, emp ==> Employee Object (1000x) ==> employeeId 111, employeeName = Scott
+
+public class Employee {
+    private int employeeId;
+    private String employeeName;
+
+    public Employee(int employeeId, String employeeName) {
+        this.employeeId = employeeId;
+        this.employeeName = employeeName;
+    }
+
+    // Getters and Setters
+    public int getEmployeeId() { return employeeId; }
+    public void setEmployeeId(int employeeId) { this.employeeId = employeeId; }
+    public String getEmployeeName() { return employeeName; }
+    public void setEmployeeName(String employeeName) { this.employeeName = employeeName; }
+
+    @Override
+    public String toString() {
+        return "Employee [employeeId=" + employeeId + ", employeeName=" + employeeName + "]";
+    }
+}
+
+public class Manager {
+    private int managerId;
+    private String managerName;
+
+    public Manager(Employee emp) {
+        this.managerId = emp.getEmployeeId();
+        this.managerName = emp.getEmployeeName();
+    }
+
+    @Override
+    public String toString() {
+        return "Manager [managerId=" + managerId + ", managerName=" + managerName + "]";
+    }
+}
+
+public class CopyConstructorDemo1 {
+    public static void main(String[] args) {
+        Employee e1 = new Employee(111, "Scott");
+        System.out.println(e1);
+
+        Manager m1 = new Manager(e1);
+        System.out.println(m1);
+    }
+}
+
+
+Case 2: Copy the same type of object
+
+We can also copy the content of same object
+
+class Doll {
+    private String name;
+    private double height;
+
+    public Doll(String name, double height) {
+        this.name = name;
+        this.height = height;
+    }
+
+    // Copy constructor
+    public Doll(Doll doll) {
+        this.name = doll.name;
+        this.height = doll.height;
+    }
+
+    @Override
+    public String toString() {
+        return "Doll [name=" + name + ", height=" + height + "]";
+    }
+}
+
+public class CopyConstructorDemo2 {
+    public static void main(String[] args) {
+        Doll d1 = new Doll("Pari", 2.5);
+        Doll d2 = new Doll(d1);
+
+        System.out.println(d1);
+        System.out.println(d2);
+    }
+}
