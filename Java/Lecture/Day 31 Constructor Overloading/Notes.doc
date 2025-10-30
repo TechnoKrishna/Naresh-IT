@@ -1,0 +1,269 @@
+🧠 Scenario-Based Program on Passing Object Reference & Factory Method
+
+🔹 Class 1: Customer
+
+package com.example.blc;
+
+public class Customer {
+    private String customerName;
+    private int creditPoints;
+
+    public Customer(String customerName, int creditPoints) {
+        super();
+        this.customerName = customerName;
+        this.creditPoints = creditPoints;
+    }
+
+    public int getCreditPoints() {
+        return this.creditPoints;
+    }
+
+    @Override
+    public String toString() {
+        return this.customerName;
+    }
+}
+
+🔹 Class 2: CardType
+
+package com.example.blc;
+
+public class CardType {
+
+    private Customer customer;
+    private String cardType;
+
+    public CardType(Customer customer, String cardType) {
+        super();
+        this.customer = customer;
+        this.cardType = cardType;
+    }
+
+    @Override
+    public String toString() {
+        return "The Customer '" + this.customer + "' Is Eligible For '" + this.cardType + "' Card.";
+    }
+}
+
+🔹 Class 3: CardOnOffer (Factory Method Class)
+
+package com.example.blc;
+
+public class CardOnOffer {
+
+    public static CardType getOfferedCard(Customer obj) {
+        int creditPoint = obj.getCreditPoints();
+
+        if (creditPoint >= 100 && creditPoint <= 500) {
+            return new CardType(obj, "Silver");
+        } else if (creditPoint > 500 && creditPoint <= 1000) {
+            return new CardType(obj, "Gold");
+        } else if (creditPoint > 1000) {
+            return new CardType(obj, "Platinum");
+        } else {
+            return new CardType(obj, "EMI");
+        }
+    }
+}
+
+🔹 Class 4: CreditCardApp (ELC Class)
+
+package com.example.elc;
+
+import com.example.blc.CardOnOffer;
+import com.example.blc.CardType;
+import com.example.blc.Customer;
+
+import java.util.Scanner;
+
+public class CreditCardApp {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Customer Name: ");
+        String name = sc.nextLine();
+
+        System.out.print("Enter Customer Credit Points: ");
+        int creditPoint = Integer.parseInt(sc.nextLine());
+
+        Customer c1 = new Customer(name, creditPoint);
+        CardType offeredCard = CardOnOffer.getOfferedCard(c1);
+
+        System.out.println(offeredCard);
+        sc.close();
+    }
+}
+
+🧠 Concept 1: What’s Happening in This Program?
+
+This program decides which type of Credit Card (Silver, Gold, Platinum, or EMI) a Customer should get based on their credit points.
+
+It uses the concept of :
+
+1 > Passing Object Reference → Giving the same customer object to another class/method.
+
+2 > Factory Method → A method that creates and returns an object (like a small factory).
+
+
+⚙️ What is Constructor Overloading?
+
+When a class has multiple constructors with different parameter lists, it is called constructor overloading.
+
+In other words, the same class can have many ways to create an object — depending on how much information you pass while creating it.
+
+✅ Example from Code:
+public class Demo {
+    public Demo(float x) { }
+    public Demo(double y) { }
+    public Demo(int x) { }
+    public Demo(int x, int y) { }
+    public Demo(int x, long y) { }
+    public Demo(long x, int y) { }
+}
+
+🧩 Here:
+
+All methods are constructors (same name as class).
+Each one has a different parameter list.
+That’s why — it’s constructor overloading.
+
+💡 Why Do We Need It?
+
+Sometimes you may want to create an object in different ways — depending on the data you have.
+
+💳 Real-Life Example:
+
+Think of creating a bank account 🏦
+You can open it in multiple ways:
+
+| Case                 | Input                       | Constructor Called |
+| -------------------- | --------------------------- | ------------------ |
+| Only your name       | `Account("Ravi")`           | 1st constructor    |
+| Name + Age           | `Account("Ravi", 25)`       | 2nd constructor    |
+| Name + Age + Balance | `Account("Ravi", 25, 1000)` | 3rd constructor    |
+
+All are different constructors inside the same class Account.
+
+So, constructor overloading = Different ways to create an object.
+
+🧩 Constructor Rules
+
+💡 Rule 1:
+
+👉 The first line of any constructor is always reserved to call:
+    either another constructor of the same class using this()
+    or a constructor of the parent class using super()
+
+If you don’t write either this() or super(),
+then the Java compiler automatically adds super() as the first line.
+
+🧱 Example 1 (Case 1)
+
+public class Demo {
+    public Demo() { }
+}
+
+➡️ After compilation, Java automatically adds super():
+
+public class Demo extends Object {
+    public Demo() {
+        super();  // compiler adds this line
+    }
+}
+
+🧠 Every class in Java automatically extends the Object class (the topmost parent).
+So, super() calls the constructor of Object class.
+
+🧱 Example 2 (Case 2)
+
+public class Demo { }
+
+➡️ Even if you don’t write any constructor,
+the compiler creates a default constructor for you:
+
+public class Demo extends Object {
+    public Demo() {
+        super();
+    }
+}
+
+✅ So, every class will always have at least one constructor.
+
+🧱 Example 3 (Case 3)
+
+public class Demo {
+    public Demo(int x) { }
+
+    public Demo() {
+        this(5); // calls another constructor in the same class
+    }
+}
+
+➡️ After compilation:
+
+public class Demo extends Object {
+    public Demo(int x) {
+        super(); // added automatically
+    }
+
+    public Demo() {
+        this(5); // compiler won't add super() here
+    }
+}
+
+🧠 Key points:
+
+When we use this(5) → It calls the other constructor in the same class.
+this() must always be the first line in the constructor.
+The compiler won’t add super() automatically if this() is used.
+
+
+🔄 Constructor Chaining
+
+When one constructor calls another constructor inside the same class,
+it’s called constructor chaining.
+
+It helps to reuse code instead of writing repeated lines in every constructor.
+
+✅ Simple Example:
+class Addition {
+
+    public Addition(int x, int y) {
+        super();
+        System.out.println("Sum of two integers: " + (x + y));
+    }
+
+    public Addition(String x, String y) {
+        this(12, 20); // calling another constructor
+        System.out.println("Concatenation of two strings: " + (x + y));
+    }
+
+    public Addition(double x, double y) {
+        this("Batch", " 51"); // calling another constructor
+        System.out.println("Sum of two doubles: " + (x + y));
+    }
+}
+
+When you call:  new Addition(2.3, 6.7);
+
+👉 The flow goes like this:
+
+1 > Addition(double, double) runs → calls this("Batch", " 51")
+
+2 > Addition(String, String) runs → calls this(12, 20)
+
+3 > Addition(int, int) runs → prints “Sum of two integers: 32”
+
+4 > Then it comes back and prints:
+
+    “Concatenation of two strings: Batch 51”
+    “Sum of two doubles: 9.0”
+
+✅ Output
+
+Sum of two integers: 32
+Concatenation of two strings: Batch 51
+Sum of two doubles: 9.0
+
+super() :- Calls parent class constructor
+this() :- Calls another constructor in the same class
