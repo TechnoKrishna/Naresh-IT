@@ -1,0 +1,54 @@
+🧠 Variable
+
+A variable is a name given to a memory location that stores a single value at a time.
+👉 Example: int a = 10;
+
+If you want to store multiple values, you must use an array.
+
+Drawback:
+
+A normal variable can hold only one value at a time.
+
+-------------------------------------------------------------------------------------
+
+📦 Array
+
+An array is a collection of elements (mostly of the same type) stored in continuous memory locations.
+
+👉 Example: int arr[] = {1, 2, 3, 4};
+
+Arrays are stored in heap memory (since they are objects in Java).
+
+✨ Characteristics of Array
+
+1 > Homogeneous – all elements have the same data type.
+
+2 > Fixed Size – once created, the size of the array cannot change.
+
+3 > Indexed-based – you can access elements using an index.
+👉 Example: arr[0] gives first element.
+
+4 > Stored in continuous memory – makes access faster.
+
+5 > Stored in heap memory – array is an object.
+
+6 > Default values – if created using new, uninitialized elements get default values (e.g., 0 for int).
+
+7 > Easy to retrieve – can easily get any element using index.
+
+⚠️ Drawbacks of Array
+
+1 > Fixed in size (can’t grow or shrink).
+2 > Inserting or deleting in middle is slow (O(n)).
+3 > No built-in methods for adding/removing elements.
+
+
+🧩 Types of Arrays
+
+1 > Primitive Type Arrays – store primitive data types.
+👉 Example: int[], float[], char[], boolean[], etc.
+
+
+2 > Reference Type Arrays – store objects or references.
+👉 Example: arrays of class, abstract class, interface, or Object type.
+(These are used more in polymorphism, discussed later.)

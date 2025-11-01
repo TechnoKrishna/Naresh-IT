@@ -1,0 +1,51 @@
+🧩 Types of Array
+
+1D Array (One-Dimensional Array)
+2D Array / Multidimensional Array / Jagged Array
+
+📘 1D Array
+
+A 1D array is a simple list of elements (same or different type) stored in continuous memory locations.
+
+Think of it as a single row of boxes, each box holding one value.
+
+👉 Example:
+
+int arr[] = {10, 20, 30, 40, 50};
+
+
+🛠️ Ways to Create Array Objects
+
+
+1 > Using new keyword
+
+👉 Example:
+
+    int arr[] = new int[5];   // creates array of size 5
+
+2 > Using literal array (with values)
+
+👉 Example:
+
+    int arr[] = new int[]{1, 2, 3, 4};
+    (Combination of new + values)
+
+3 > Using anonymous array
+
+👉 Example
+
+    int arr[] = {1, 2, 3, 4};
+    (Simpler and most commonly used)
+
+🧠 Note
+
+When you create an array, JVM internally creates a class to represent that array (based on its type, called a type signature).
+
+Example: For int[], JVM internally gives a name like [I.
+
+
+💡 In Simple Words
+
+A 1D array is like a train with many compartments (elements) of the same type.
+
+You can create it in three ways — using new, using values directly, or anonymous array.

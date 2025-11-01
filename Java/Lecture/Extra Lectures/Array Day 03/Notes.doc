@@ -1,0 +1,79 @@
+🧩 Utility Classes for Arrays (in Java)
+
+❓ Why Utility Classes?
+
+Normally, arrays in Java don’t have built-in methods (like sorting, copying, etc.), so Java provides two helper classes:
+
+1️⃣ Array class (from java.lang.reflect)
+2️⃣ Arrays class (from java.util)
+
+🧠 1. Array Class
+
+Found in: java.lang.reflect.Array
+Final class → cannot be extended.
+Private constructor → cannot create object directly.
+Has static methods to get, set, or create array elements.
+
+✨ Common Methods:
+
+get(Object array, int index) → gets value at index
+set(Object array, int index, Object value) → sets value at index
+getLength(Object array) → returns array length
+newInstance(Class<?> type, int... size) → creates a new array dynamically
+
+🧩 Examples:
+// 1D array
+Integer[] arr1 = (Integer[]) Array.newInstance(Integer.class, 5);
+
+// 2D array
+Integer[][] arr2 = (Integer[][]) Array.newInstance(Integer.class, 3, 3);
+
+🧠 2. Arrays Class
+
+Found in: java.util.Arrays
+Public class, but constructor is private (cannot create object).
+Contains many static methods for working with arrays.
+
+✅ Commonly Used Methods:
+Method	Purpose
+sort()	Sorts array in ascending order
+binarySearch()	Searches an element in sorted array
+copyOf() / copyOfRange()	Copies array or part of it
+equals()	Compares two arrays
+fill()	Fills array with given value
+toString()	Converts array to readable string
+asList()	Converts array to fixed-size list
+
+🔁 Arrays.sort()
+
+Used to sort arrays in ascending order.
+
+📌 Rules:
+
+Works for all primitive types (except boolean).
+Works for homogeneous object arrays (same type of elements).
+Doesn’t work for heterogeneous arrays (different types).
+Can’t sort user-defined class objects unless they implement Comparable or Comparator.
+
+⚙️ Sorting Algorithms:
+
+Primitive arrays → Dual-Pivot QuickSort
+Object arrays → MergeSort (uses Comparable)
+
+🧾 Examples:
+int[] a = {5,3,1,2,4};
+Arrays.sort(a);  // ✅ sorts numbers
+
+String[] s = {"abc","xyz","bac"};
+Arrays.sort(s);  // ✅ sorts alphabetically
+
+Boolean[] b = {true,false};
+Arrays.sort(b);  // ❌ invalid
+
+Object[] o = {1,2,3,"Java"};
+Arrays.sort(o);  // ❌ invalid (different types)
+
+🪄 Simple Meaning
+
+Array class → helps to create or modify arrays using reflection.
+Arrays class → helps to work easily with arrays (sorting, searching, comparing, etc.).
