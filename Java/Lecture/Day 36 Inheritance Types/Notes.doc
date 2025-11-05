@@ -1,0 +1,346 @@
+link :- https://chatgpt.com/g/g-p-68e3f3ac73888191964b70b5ff48ed7b-java-nareshit/shared/c/690b93a5-c038-8324-8b93-e9d3c6c5bc2a?owner_user_id=user-tWzV4PlSJRCZGsmBvJra0KDC
+
+🧠 Types of Inheritance in Java
+
+👉 Inheritance means one class (child) getting properties and methods from another class (parent).
+
+Example:
+If you (child) inherit your father’s property (parent), that’s inheritance!
+
+1️⃣ Single Level Inheritance
+
+📘 Meaning:
+Only one class inherits another class (1 parent → 1 child).
+
+A → B
+🧩 Example:
+
+Vehicle is parent class
+Car is child class
+
+Car inherits features (like engine) from Vehicle.
+
+Real Life Example:
+A Car is a Vehicle — it gets the ability to start, stop, etc., from Vehicle class.
+
+2️⃣ Multi-Level Inheritance
+
+📘 Meaning:
+A class inherits from another class which is already a subclass.
+(Parent → Child → Grandchild)
+
+2️⃣ Multi-Level Inheritance
+
+📘 Meaning:
+A class inherits from another class which is already a subclass.
+(Parent → Child → Grandchild)
+
+A → B → C
+
+
+🧩 Example:
+
+Vehicle → Car → ElectricCar
+
+Real Life Example:
+Your Grandfather’s house (A) → goes to Father (B) → then to You (C).
+That’s multi-level inheritance.
+
+3️⃣ Hierarchical Inheritance
+
+📘 Meaning:
+One parent class has multiple child classes.
+
+        A
+       / \
+      B   C
+
+
+🧩 Example:
+
+Vehicle is parent
+
+Car and Bike are children.
+
+Real Life Example:
+A Teacher teaches many Students — Teacher is the parent, students are children.
+
+4️⃣ Multiple Inheritance
+
+📘 Meaning:
+A class inherits from two classes.
+
+A     B
+ \   /
+   C
+
+
+🧩 Example:
+If class C tries to get features from both A and B.
+
+⚠️ Not supported using classes in Java (because of ambiguity problem).
+
+Real Life Example:
+If two teachers teach you the same subject differently — confusion arises!
+That’s why Java avoids it for classes.
+
+5️⃣ Hybrid Inheritance
+
+📘 Meaning:
+It’s a combination of two or more types of inheritance.
+
+       A
+       |
+       B
+      / \
+     C   D
+
+
+Real Life Example:
+Your Grandfather gives something to your Father,
+and then your father gives it to You and your Brother — combination of multi-level and hierarchical.
+
+🧾 Extra Notes
+
+Every class in Java indirectly inherits from the Object class.
+
+Every class follows single-level inheritance by default.
+
+💻 Program Example (Single Level Inheritance)
+class Vehicle {
+    protected int numberOfEngine = 1;
+
+    public void startVehicle() {
+        System.out.println("Vehicle started");
+    }
+}
+
+class Car extends Vehicle {
+    protected String engineType = "Battery";
+
+    public void carInfo() {
+        System.out.println("Number of engine is: " + numberOfEngine);
+        System.out.println("Engine Type is: " + engineType);
+    }
+}
+
+public class InheritanceDemo1 {
+    public static void main(String[] args) {
+        Car car = new Car();
+        car.startVehicle();
+        car.carInfo();
+    }
+}
+
+
+Explanation in simple words:
+Car gets all features of Vehicle, so it can use startVehicle() method without writing it again.
+
+Real Life Example:
+You got a “start button” feature from your father’s car model (inherited feature).
+
+💻 Program Example (Multi-Level Inheritance)
+class Parent {
+    private int x;
+    private int y;
+
+    public void setData(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public int getX() { return x; }
+    public int getY() { return y; }
+}
+
+class Child extends Parent {
+    public void showData() {
+        System.out.println("x value is: " + getX());
+        System.out.println("y value is: " + getY());
+    }
+}
+
+public class InheritanceDemo2 {
+    public static void main(String[] args) {
+        Child child = new Child();
+        child.setData(100, 200);
+        child.showData();
+    }
+}
+
+
+Explanation:
+Child class gets setData() and getX()/getY() methods from Parent.
+
+Real Life Example:
+A son can access all the properties (like house, money) given by his father.
+
+❓ Can We Inherit Constructors in Subclasses?
+
+Answer: ❌ No.
+Constructors are not inherited because the constructor name must be same as class name.
+Parent’s constructor has a different name than the child’s class.
+
+Real Life Example:
+You can inherit your father’s property, but not his birth date.
+Similarly, a class can inherit data, not its constructor.
+
+💻 Example
+class A {
+    public A() {
+        System.out.println("A class Constructor");
+    }
+}
+
+class B extends A {
+    public B() {
+        System.out.println("B class Constructor");
+    }
+}
+
+public class ConstructorDemo {
+    public static void main(String[] args) {
+        B b1 = new B();
+    }
+}
+
+
+Output:
+
+A class Constructor
+B class Constructor
+
+
+Explanation:
+Whenever you create an object of B, first A’s constructor runs automatically,
+then B’s constructor executes.
+
+🔑 super Keyword in Java
+
+📘 Meaning:
+super is used to access parent class members (variables, methods, or constructor).
+
+You can use super:
+
+To access parent variable
+
+To access parent method
+
+To call parent constructor
+
+Note: You can’t use super inside static methods.
+
+Real Life Example:
+If you call your father “Dad,” you’re accessing your parent directly — that’s what super does.
+
+🧩 1) Access Super Class Variable (Variable Hiding)
+class Employee {
+    protected double salary = 700000;
+}
+
+class Developer extends Employee {
+    protected double salary = 900000; // Variable Hiding
+
+    public void getSalaryInfo() {
+        System.out.println("Employee Salary is: " + super.salary);
+        System.out.println("Developer Salary is: " + this.salary);
+    }
+}
+
+public class VariableHiding {
+    public static void main(String[] args) {
+        Developer developer = new Developer();
+        developer.getSalaryInfo();
+    }
+}
+
+
+Output:
+
+Employee Salary is: 700000.0
+Developer Salary is: 900000.0
+
+
+Explanation:
+
+super.salary → accesses parent class variable
+
+this.salary → accesses child class variable
+
+Real Life Example:
+If your father earns ₹7 lakh and you earn ₹9 lakh — you can refer to both incomes separately.
+
+🧱 Constructor Chaining Flow
+class Object {
+    public Object() {  // Step 3
+    }
+}
+
+class Employee extends Object {
+    Employee() {
+        super();        // Step 2
+    }
+}
+
+class Developer extends Employee {
+    Developer() {
+        super();        // Step 1
+    }
+}
+
+Developer developer = new Developer();
+
+
+Explanation:
+When you create a Developer object —
+first Object constructor runs, then Employee, then Developer.
+
+Real Life Example:
+When a baby is born (Developer), the grandparents (Object) and parents (Employee) already exist —
+they are created first in the chain.
+
+🧩 2) Access Super Class Method (Method Overriding)
+class Alpha {
+    public void show() {
+        System.out.println("Alpha class show method");
+    }
+}
+
+class Beta extends Alpha {
+    public void show() {
+        super.show();
+        System.out.println("Beta class show method");
+    }
+}
+
+public class MethodOverridingDemo {
+    public static void main(String[] args) {
+        Beta beta = new Beta();
+        beta.show();
+    }
+}
+
+
+Output:
+
+Alpha class show method
+Beta class show method
+
+
+Explanation:
+
+super.show() → calls parent’s method
+
+then child’s method executes
+
+Real Life Example:
+If your father gives a speech (super.show())
+and you continue after him with your own (child’s show()), both speeches are heard — one after another.
+
+✅ Summary
+
+| Usage of `super` | Purpose                 |
+| ---------------- | ----------------------- |
+| `super.variable` | Access parent variable  |
+| `super.method()` | Call parent method      |
+| `super()`        | Call parent constructor |
