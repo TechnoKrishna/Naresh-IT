@@ -1,0 +1,95 @@
+1️⃣ What is DBMS?
+
+DBMS (Database Management System) is software used to store, organize, and manage data easily.
+
+It helps users to add, update, delete, and retrieve data efficiently without worrying about how it’s stored internally.
+
+🔹 Real-life Example:
+
+Think of a library.
+
+    The bookshelves are like tables.
+    Each book is like a record.
+    The librarian is like the DBMS — she helps you find, add, or remove a book without you going through every shelf yourself.
+
+So, DBMS acts like a smart librarian for your data!
+
+2️⃣ Models of DBMS
+
+These are the different ways data can be stored and connected inside a database.
+
+1) Hierarchical Database Model
+
+In this model, data is stored in a tree-like structure (like a family tree).
+
+Each parent record can have many child records, but each child can have only one parent.
+
+🔹 Real-life Example:
+
+Think about a company structure:
+
+    The CEO is at the top (root).
+    Below are managers (child nodes).
+    Under each manager, there are employees (sub-children).
+
+It’s like a tree of hierarchy — one parent can have many children, but each child has only one parent.
+
+2) Network Database Model
+
+In this model, data is stored in a network form where one record can have multiple parents and multiple children.
+
+It’s more flexible than the hierarchical model.
+
+🔹 Real-life Example:
+
+Imagine a college system:
+
+    A student can enroll in multiple courses, and
+    Each course can have many students.
+
+So, there’s a many-to-many relationship — this is what the network model supports.
+
+3) Relational Database Management System (RDBMS)
+
+In this model, data is stored in tables (rows and columns).
+
+Each table represents an entity (like Students, Employees, Products, etc.), and we can link tables using keys.
+
+🔹 Real-life Example:
+
+Think about a bank database:
+
+    One table stores Customer details (Customer ID, Name, Address).
+    Another table stores Account details (Account No, Balance, Customer ID).
+
+Here, Customer ID acts as a link (key) between both tables.
+This makes it easy to find which account belongs to which customer.
+
+🔸 (i) ORDBMS – Object-Relational DBMS
+
+It’s a combination of Object-Oriented and Relational models.
+
+It allows us to store objects (like images, videos, or complex data) along with relational data (tables).
+
+🔹 Real-life Example:
+
+In a social media app,
+
+    You can store user info (name, email) in a table (relational part).
+    You can also store profile picture or videos (object part).
+
+So, ORDBMS = RDBMS + Object features.
+
+🔸 (ii) OODBMS – Object-Oriented DBMS
+
+In this model, data is stored in the form of objects, just like in object-oriented programming (OOP).
+
+Objects contain both data and methods (functions that work on data).
+
+🔹 Real-life Example:
+
+Think of a video game:
+
+Each character is an object having properties like name, health, power, and methods like attack() or jump().
+
+In an OODBMS, you can directly store these objects without converting them into tables.
