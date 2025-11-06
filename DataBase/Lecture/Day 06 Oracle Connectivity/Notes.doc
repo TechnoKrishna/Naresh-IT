@@ -1,0 +1,72 @@
+1 > Client-Server Architecture
+
+| **Component**     | **Description**                                                                                                          |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| **Client**        | The system or application where the user runs queries or commands (example: SQL*Plus, application software).             |
+| **Server**        | The system where the Oracle Database is installed and stored. It processes the client’s requests and sends results back. |
+| **Communication** | The client sends a request (SQL query) to the server → the server executes it → and sends the result back to the client. |
+
+🧠 In Simple Words:
+
+    Client = person who asks a question.
+    Server = the one who gives the answer after searching in the database.
+
+💡 Real-life Example:
+
+Think of an online food ordering app:
+
+    You (user) → Client
+    Swiggy’s main system (that stores all restaurant data) → Server
+    You request “Show pizza restaurants” → Server finds and returns results.
+
+
+2 > Working with Oracle Database Server
+
+When you want to work with an Oracle Database, you must follow two main steps:
+
+    1️⃣ Connect
+
+    Establish a connection between your client (SQL*Plus or application) and the Oracle database server.
+
+    2️⃣ Communicate
+
+    Once connected, you can send SQL commands (like SELECT, INSERT, UPDATE, DELETE) and get results from the server.
+
+💡 Example:
+
+    SQL> CONNECT system/password;
+    SQL> SELECT * FROM employees;
+
+Here:
+
+    First line = connect
+    Second line = communicate
+
+3 > Difference Between SQL*Plus and SQL (Tabular Format)
+
+| **Basis**        | **SQL**                                                                           | **SQL*Plus**                                                                   |
+| ---------------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| **Definition**   | SQL (Structured Query Language) is used to query and manage data in the database. | SQL*Plus is a command-line tool used to interact with the Oracle database.     |
+| **Type**         | It’s a **language**.                                                              | It’s a **tool / interface**.                                                   |
+| **Purpose**      | To perform operations like SELECT, INSERT, UPDATE, DELETE, CREATE, etc.           | To connect, execute SQL commands, create scripts, and control the environment. |
+| **Output**       | Returns data or messages after executing SQL commands.                            | Displays SQL results and allows formatting, scripting, and saving outputs.     |
+| **Example**      | `SELECT * FROM STUDENTS;`                                                         | `SQL> SELECT * FROM STUDENTS;` (inside SQL*Plus environment)                   |
+| **Availability** | Used in many tools (Oracle, MySQL, SQL Server).                                   | Specific to Oracle Database.                                                   |
+
+In Short:
+
+    SQL → Language
+    SQL*Plus → Tool to use that language in Oracle.
+
+4 > How to Connect to Oracle Server
+
+Using Username and Password
+
+    SQL> CONNECT username/password;
+
+💡 Example:
+
+    SQL> CONNECT system/oracle;
+
+    system → username
+    oracle → password
