@@ -1,0 +1,280 @@
+🧠 What is Constructor Chaining?
+
+Constructor chaining means calling one constructor from another — either of
+    ✅ same class (using this()) or
+    ✅ parent/super class (using super()).
+
+🧩 Why Constructor Chaining?
+
+    When one class extends another (Inheritance),
+    we want to initialize the parent first, then the child.
+
+    ➡️ That’s why Java automatically adds super() to the first line of every constructor —
+    so the parent’s constructor runs first.
+
+3) Calling the Constructor of Superclass (Constructor Chaining)
+
+    Whenever we write a class in Java and don’t define any constructor,
+    ➡️ The Java compiler automatically adds a default no-argument constructor to that class.
+
+🔸 Important Rule:
+
+    The first line of any constructor is reserved for either:
+
+    super();  // Calls superclass constructor
+    this();   // Calls another constructor in the same class
+
+    If we don’t specify either super() or this(),
+    ➡️ The Java compiler automatically adds super() as the first line.
+
+    The purpose of this default super() is to call the no-argument constructor of the superclass.
+
+⚙️ There are Four Cases to Call Constructors
+
+🧩 Case 1: Using super() – Calls Parent’s Default Constructor
+
+    Automatically added by Java compiler (if not specified)
+    Used to call default no-argument constructor of the superclass
+
+✅ Example 1:
+
+class A {
+    public A() {
+        System.out.println("A class constructor");
+    }
+}
+
+class B extends A {
+    public B() {
+        System.out.println("B class constructor");
+    }
+}
+
+public class ConstructorChainingDemo1 {
+    public static void main(String[] args) {
+        B b1 = new B();
+    }
+}
+
+Output:
+
+A class constructor
+B class constructor
+
+
+✅ Example 2:
+
+package com.ravi.constructor_chaining;
+
+class A {
+    public A() {
+        System.out.println("A class constructor");
+    }
+}
+
+class B extends A { }
+
+class C extends B {
+    public C() {
+        System.out.println("C class constructor");
+    }
+}
+
+public class ConstructorChainingDemo1 {
+    public static void main(String[] args) {
+        C c1 = new C();
+    }
+}
+
+
+Output:
+
+A class constructor
+C class constructor
+
+
+🧩 Case 2: Using super("NIT")
+
+    Must be written explicitly by the developer
+    Used to call a parameterized constructor of the superclass
+
+package com.ravi.constructor_chaining;
+
+class Super {
+    public Super(String str) {
+        super();
+        System.out.println("Institute Name is: " + str);
+    }
+}
+
+class Sub extends Super {
+    public Sub(String name) {
+        super(name);
+    }
+}
+
+public class ConstructorChainingDemo2 {
+    public static void main(String[] args) {
+        Sub s1 = new Sub("NIT");
+    }
+}
+
+✅ Example:
+
+package com.ravi.constructor_chaining;
+
+class Super {
+    public Super(String str) {
+        super();
+        System.out.println("Institute Name is: " + str);
+    }
+}
+
+class Sub extends Super {
+    public Sub(String name) {
+        super(name);
+    }
+}
+
+public class ConstructorChainingDemo2 {
+    public static void main(String[] args) {
+        Sub s1 = new Sub("NIT");
+    }
+}
+
+Output:
+
+Institute Name is: NIT
+
+🧩 Case 3: Using this()
+
+    Must be written in the first line of a constructor
+    Used to call another no-argument constructor in the same class
+
+✅ Example:
+
+package com.ravi.constructor_chaining;
+
+class Alpha {
+    public Alpha() {
+        System.out.println("No Argument Constructor of Alpha class..");
+    }
+
+    public Alpha(int x) {
+        this();
+        System.out.println("Parameterized Constructor of Alpha class: " + x);
+    }
+}
+
+class Beta extends Alpha {
+    public Beta() {
+        super(10);
+        System.out.println("No Argument Constructor of Beta class..");
+    }
+}
+
+public class ConstructorChainingDemo3 {
+    public static void main(String[] args) {
+        Beta b = new Beta();
+    }
+}
+
+Output:
+
+No Argument Constructor of Alpha class..
+Parameterized Constructor of Alpha class: 10
+No Argument Constructor of Beta class..
+
+🧩 Case 4: Using this(15)
+
+    Must be written in the first line of a constructor
+    Used to call a parameterized constructor of the same class
+
+✅ Example:
+
+package com.ravi.constructor_chaining;
+
+class Base {
+    public Base() {
+        this(15);
+        System.out.println("No Argument Constructor of Base class");
+    }
+
+    public Base(int x) {
+        System.out.println("Parameterized Constructor of Base class : " + x);
+    }
+}
+
+class Derived extends Base {
+    public Derived() {
+        System.out.println("No Argument Constructor of Derived class");
+    }
+}
+
+public class ConstructorChainingDemo4 {
+    public static void main(String[] args) {
+        new Derived();
+    }
+}
+
+Output:
+
+Parameterized Constructor of Base class : 15
+No Argument Constructor of Base class
+No Argument Constructor of Derived class
+
+⚠️ Important Rule
+
+    You cannot call non-static methods or variables before the superclass constructor executes.
+
+    That means you can’t use this or call any normal method before the parent constructor runs —
+    because the object is not fully created yet.
+
+🚫 Example (Invalid Code):
+
+class Super {
+    public Super(String str) {
+        System.out.println(str);
+    }
+}
+
+class Sub extends Super {
+    Sub() {
+        super(getValue()); // ❌ Error
+    }
+
+    public String getValue() {
+        return "Hello";
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        new Sub();
+    }
+}
+
+Error Reason:
+Non-static methods (like getValue()) cannot be called before the superclass constructor has executed.
+
+| Case | Keyword Used  | Calls Constructor Of | Purpose                                       |
+| ---- | ------------- | -------------------- | --------------------------------------------- |
+| 1    | `super()`     | Superclass           | Calls default constructor                     |
+| 2    | `super(args)` | Superclass           | Calls parameterized constructor               |
+| 3    | `this()`      | Same class           | Calls default constructor of same class       |
+| 4    | `this(args)`  | Same class           | Calls parameterized constructor of same class |
+
+
+👉 super() → Call parent constructor
+👉 this() → Call same class constructor
+👉 Only one (either super() or this()) can appear in first line
+👉 Used for constructor chaining — calling one constructor from another to reuse code and maintain order.
+
+
+
+
+
+
+
+
+
