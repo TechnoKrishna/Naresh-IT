@@ -1,0 +1,244 @@
+🧠 Java Inheritance & Object Initialization Notes
+
+❓ Why Java Does Not Support Multiple Inheritance Using Classes
+
+class A {
+    A() {
+        System.out.println("Constructor of A");
+    }
+}
+
+class B {
+    B() {
+        System.out.println("Constructor of B");
+    }
+}
+
+class C extends A, B {   // ❌ Invalid — not allowed in Java
+    C() {
+        super(); // Ambiguity here
+    }
+}
+
+⚠️ Reason: Diamond Problem
+
+Definition : Multiple Inheritance occurs when a subclass wants to inherit properties and behavior from two or more superclasses.
+
+🔸 Problem Explanation
+
+In Java, every constructor implicitly or explicitly calls a super() or this() statement as the first line.
+
+If a subclass inherits from two classes (A and B), then when the compiler inserts super() automatically,
+it becomes ambiguous — the compiler doesn’t know which parent class constructor (A or B) to call.
+
+🔸 Illustration (Diamond Shape)
+
+        A
+       / \
+      /   \
+     B     C
+      \   /
+        D
+
+In the above structure:
+
+    Class D tries to inherit from both B and C.
+    But both B and C already inherit from A.
+    Now, when D calls super(), Java faces a conflict:
+        Should it call B’s constructor? 
+        Or C’s constructor?
+    This ambiguity is known as the Diamond Problem.
+
+🧩 Final Conclusion
+
+    Java does not allow multiple inheritance using classes to avoid ambiguity and ensure simplicity in the inheritance hierarchy.
+
+    ✅ However, multiple inheritance is possible using interfaces,
+    because interfaces do not contain constructors, so the ambiguity of calling super() does not exist.
+
+✅ Example Using Interface
+
+interface A {
+    void display();
+}
+
+interface B {
+    void display();
+}
+
+class C implements A, B {
+    @Override
+    public void display() {
+        System.out.println("Multiple inheritance achieved using interfaces");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        C obj = new C();
+        obj.display();
+    }
+}
+
+Output:
+
+Multiple inheritance achieved using interfaces
+
+
+🧩 Ways to Initialize Object Properties (Non-Static Fields)
+
+1️⃣ At the Time of Declaration
+
+public class Test {
+    int x = 10;
+    int y = 20;
+}
+
+Test t1 = new Test();  // x = 10, y = 20
+Test t2 = new Test();  // x = 10, y = 20
+
+🔹 Drawback: All objects are initialized with the same values.
+
+2️⃣ Using Object Reference
+
+public class Test {
+    int x, y;
+}
+
+Test t1 = new Test();
+t1.x = 10;
+t1.y = 20;
+
+Test t2 = new Test();
+t2.x = 30;
+t2.y = 40;
+
+🔹 Advantage: Each object can have different values.
+🔹 Drawback: Code becomes more complex.
+
+3️⃣ Using Methods
+
+🔸 (A) Method without Parameters
+
+public class Test {
+    int x, y;
+
+    public void setData() {
+        x = 100;
+        y = 200;
+    }
+}
+
+Test t1 = new Test();
+t1.setData(); // x = 100, y = 200
+
+Test t2 = new Test();
+t2.setData(); // x = 100, y = 200
+
+🔹 Drawback: Same values for all objects.
+
+🔸 (B) Method with Parameters
+
+public class Test {
+    int x, y;
+
+    public void setData(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+}
+
+Test t1 = new Test();
+t1.setData(12, 78);
+
+Test t2 = new Test();
+t2.setData(15, 29);
+
+🔹 Drawback: Initialization and reinitialization happen in different lines.
+✅ Solution: Use constructors.
+
+4️⃣ Using Constructors
+🔸 (A) No-Argument Constructor
+
+public class Test {
+    int x, y;
+
+    public Test() {
+        x = 0;
+        y = 0;
+    }
+}
+
+Test t1 = new Test();  // x = 0, y = 0
+Test t2 = new Test();  // x = 0, y = 0
+
+🔹 Same values for all objects.
+
+🔸 (B) Parameterized Constructor
+
+public class Test {
+    int x, y;
+
+    public Test(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+}
+
+Test t1 = new Test(12, 78);
+Test t2 = new Test(15, 29);
+
+✅ Best Way:
+
+Initialization and re-initialization done in one line.
+Different values for each object.
+
+🔸 (C) Copy Constructor
+
+public class Manager {
+    private int managerId;
+    private String managerName;
+
+    public Manager(Employee emp) {
+        this.managerId = emp.getEmployeeId();
+        this.managerName = emp.getEmployeeName();
+    }
+}
+
+📘 Meaning: Object of one class initializes another object’s data.
+(Example of Copy Constructor)
+
+🔸 (D) Instance Initializer Block
+
+public class Test {
+    int x, y;
+
+    {
+        x = 100;
+        y = 200;
+    }
+
+    public Test() {
+        System.out.println(x); // 100
+        System.out.println(y); // 200
+    }
+}
+
+5️⃣ Using super Keyword
+
+class Super {
+    int x, y;
+
+    public Super(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+}
+
+class Sub extends Super {
+    Sub() {
+        super(100, 200); // Initializing superclass properties
+    }
+}
+
+new Sub();
