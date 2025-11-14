@@ -1,0 +1,270 @@
+✅ JVM Architecture – Class Loader Subsystem
+
+The JVM (Java Virtual Machine) has 3 main parts:
+
+1 > Class Loader Subsystem – Loads .class files into memory
+2 > Runtime Data Areas – Memory where program data is stored
+3 > Execution Engine – Executes your bytecode
+
+Here, we focus on Class Loader Subsystem.
+
+------------------------------------------------------------
+
+🎯 What is Class Loader Subsystem?
+
+It is the part of JVM responsible for:
+
+✔ Loading .class files into JVM
+✔ Linking them
+✔ Initializing them so they are ready for execution
+
+Example of .class file:
+
+If you compile A.java, you get A.class → this must be loaded by Class Loader.
+
+------------------------------------------------------------
+
+🧩 Why do we need a Class Loader?
+
+Because Java does dynamic loading, meaning:
+
+👉 Class is loaded only when needed, not at program start.
+
+So JVM does not load everything at once.
+
+------------------------------------------------------------
+
+🚦 The Class Loader Subsystem Works in 3 Phases
+
+1️⃣ Loading
+
+Loads the .class file into memory using 3 loaders:
+
+a) Bootstrap Class Loader (Highest Priority)
+
+Loads all core Java classes
+Example: java.lang.String, java.lang.Object, java.util.*
+Comes from JDK → lib → jrt-fs.jar
+This loader is written in native code (C, C++)
+It is the parent of Platform Class Loader
+
+b) Platform Class Loader (Earlier called Extension Class Loader)
+
+Before Java 9:
+
+Loaded .jar files from JDK/lib/ext (extension folder)
+
+Example:
+ojdbc14.jar → used for Oracle database connectivity
+
+From Java 9 onwards:
+
+Loads from JPMS (Java Platform Module System)
+Example modules:
+
+    java.base
+    java.sql
+    java.compiler
+
+c) Application Class Loader (Lowest Priority)
+
+Loads user-defined classes
+
+Looks in
+
+    CLASSPATH
+    Environment variable CLASS_PATH
+    Directory where your program is saved
+
+Example:
+MyClass.class, Student.class, etc.
+
+If this loader cannot find your class →
+🚨 java.lang.ClassNotFoundException happens.
+
+2️⃣ Linking
+
+Linking has three steps:
+
+a) Verification
+
+Checks whether the bytecode is legal or corrupted.
+
+Example:
+Checks if the code breaks JVM rules.
+
+b) Preparation
+
+Allocates memory for static variables and assigns default values.
+
+Example : static int count = 10;
+
+Memory allocated → default value set to 0 → final value set later during initialization.
+
+c) Resolution
+
+Replaces symbolic references with actual memory addresses.
+
+Example:
+Replace "java/lang/String" with the actual memory address of String class.
+
+3️⃣ Initialization
+
+Executes static blocks
+Assigns final values to static variables
+Class becomes ready to use
+
+Example:
+
+static {
+    System.out.println("Class loaded!");
+}
+
+------------------------------------------------------------
+
+🏗 Delegation Hierarchy Algorithm 
+
+This is the rule JVM follows when loading any class.
+
+Flow:
+
+JVM → Application Loader → Platform Loader → Bootstrap Loader
+
+Each loader delegates the request to its parent first.
+
+Why delegation?
+
+✔ To avoid loading the same class twice
+✔ To protect Java core classes from being overridden
+(for example, to prevent someone from creating fake java.lang.String)
+
+🔁 Simple Real-Life Example of Delegation
+
+Imagine a school:
+
+Principal (Bootstrap Loader)
+Vice Principal (Platform Loader)
+Class Teacher (Application Loader)
+
+A student asks : "Can I get permission to go home early?"
+
+Flow:
+
+Student asks Class Teacher
+Teacher forwards request to Vice Principal
+VP forwards to Principal
+Principal gives decision
+VP passes it back
+Teacher passes it back to student
+
+------------------------------------------------------------
+
+🌳 Delegation Hierarchy Diagram
+
+Same happens in JVM class loading.
+
+JVM
+  ↓
+Application Class Loader (User classes)
+  ↓
+Platform Class Loader (Modules, ext)
+  ↓
+Bootstrap Class Loader (Core Java)
+
+Bootstrap Loader loads first, then goes upwards.
+
+------------------------------------------------------------
+
+🔥 Important Note
+
+✔ java.lang.Object is ALWAYS the first class loaded Because all classes extend Object class.
+
+------------------------------------------------------------
+
+⚠️ If All Loaders Fail?
+
+You get:
+
+❌ java.lang.ClassNotFoundException
+
+This happens when class is not found in:
+
+Bootstrap path
+Module path/ext folder
+Classpath
+
+------------------------------------------------------------
+
+📝 ADDITIONAL IMPORTANT POINTS (Extra Knowledge)
+
+✔ Class loaders are arranged in parent-child relationship
+
+Application → child
+Platform → parent
+Bootstrap → grandparent
+
+✔ Class loaders are Java objects
+Except Bootstrap Loader (native)
+
+✔ You can create your own custom class loader
+
+Used in frameworks like:
+
+Tomcat
+Spring
+Hibernate
+
+------------------------------------------------------------
+
+🎁 Real-Life Example to Understand Class Loaders
+
+Imagine a library system:
+
+1️⃣ Government Library → Bootstrap Loader
+
+Contains all fundamental books
+Highest authority
+Standard books used everywhere
+
+2️⃣ City Library → Platform Loader
+
+Contains special books or add-ons
+Like modules / extra jar files
+
+3️⃣ School Library → Application Loader
+
+Contains books created by your school
+Your own notes / user-written classes
+
+If a student wants a book:
+
+First check School Library
+If not available → City Library
+If not available → Government Library
+
+This keeps the system organized and avoids duplicates.
+
+------------------------------------------------------------
+
+🎯 FINAL SUMMARY
+
+The Class Loader Subsystem:
+
+Loads .class files
+
+Checks them
+
+Prepares memory
+
+Initializes them
+
+Uses a delegation hierarchy
+
+Has 3 loaders:
+✔ Bootstrap
+✔ Platform
+✔ Application
+
+If file not found → ClassNotFoundException
+
+------------------------------------------------------------
