@@ -1,0 +1,222 @@
+------------------------------------------------------------
+
+⭐ PART–1: Method Chaining in Java
+
+Method Chaining means calling multiple methods one after another in a single line, where the next method always depends on the return value of the previous method.
+
+Imagine you go to a shop and say in one sentence:
+
+"Give me a burger → add cheese → pack it → bill it."
+
+You didn’t stop after each step.
+You gave a CHAIN of commands in one sentence.
+
+This is exactly what happens in method chaining:
+
+str.concat(" is great").toLowerCase().charAt(1);
+
+concat() returns a String
+On that String we call toLowerCase() which again returns a String
+On that returned String we call charAt(1) which returns a char
+So each method returns a value that allows the next method to be called.
+
+⭐ Example:
+
+String str = "INDIA";
+char ch = str.concat(" is great ").toLowerCase().charAt(1);
+System.out.println(ch);
+
+✔ str.concat() → gives "INDIA is great"
+✔ .toLowerCase() → "india is great"
+✔ .charAt(1) → 'n'
+
+------------------------------------------------------------
+
+⭐ PART–2: Why Method Chaining Works?
+
+Because return type of current method becomes the caller for the next method.
+
+Example:
+
+| Method        | Return Type |
+| ------------- | ----------- |
+| concat()      | String      |
+| toLowerCase() | String      |
+| charAt()      | char        |
+
+Since the last return type is char, the final variable must be char.
+
+------------------------------------------------------------
+
+⭐ Real-Life Example for Method Chaining
+
+📞 Mobile Example
+You pick up your phone and do:
+
+Open WhatsApp
+Open a chat
+Type message
+Send message
+
+If you automate it:
+
+openWhatsapp().openChat().typeMessage().send();
+
+This represents method chaining.
+
+------------------------------------------------------------
+
+⭐ PART–3: What is Class Loading in Java?
+
+When a .class file (compiled Java file) is needed, JVM must bring it into memory.
+This job is done by Class Loaders.
+
+When any class gets loaded into JVM:
+
+✔ It is stored inside a special memory area → Method Area
+✔ JVM automatically creates an object of java.lang.Class
+
+Example : Class cls = Employee.class;
+
+Here, Employee.class loads the class into JVM → returns a Class object.
+
+------------------------------------------------------------
+
+⭐ PART–4: java.lang.Class Object
+
+✔ Important Points:
+
+Every time a class is loaded, JVM creates one Class object.
+This object represents the metadata of the class.
+It is stored in Method Area.
+Using this Class object, we can:
+    get the class name
+    find its class loader
+    know fields / methods / constructors (Reflection)
+
+------------------------------------------------------------
+
+⭐ getName()
+
+Returns fully qualified class name:
+packageName.className
+
+Example : System.out.println(cls.getName());
+
+If Employee is in package com.ravi, output : com.ravi.Employee
+
+------------------------------------------------------------
+
+⭐ PART–5: Types of Class Loaders in Java
+
+Java defines 3 class loaders:
+
+| Class Loader             | Loads                        |
+| ------------------------ | ---------------------------- |
+| Bootstrap Class Loader   | Core Java classes (`java.*`) |
+| Platform Class Loader    | JDK module classes           |
+| Application Class Loader | User-defined classes         |
+
+------------------------------------------------------------
+
+⭐ PART–6: Application Class Loader Example
+
+Class cls = Test.class;
+System.out.println(cls.getClassLoader());
+
+Output something like:
+jdk.internal.loader.ClassLoaders$AppClassLoader@<hash>
+
+This proves Application Class Loader loads user .class files.
+
+------------------------------------------------------------
+
+⭐ PART–7: Platform Class Loader (Parent of App Class Loader)
+
+Foo.class.getClassLoader().getParent();
+
+Foo.class.getClassLoader() → Application CL
+.getParent() → Platform CL
+
+------------------------------------------------------------
+
+⭐ PART–8: Bootstrap Class Loader
+
+Sample.class.getClassLoader().getParent().getParent();
+System.out.println(String.class.getClassLoader());
+
+Bootstrap Cls Loader returns null
+because it is implemented in native code (C/C++), not in Java.
+
+So JVM returns : null
+
+------------------------------------------------------------
+
+⭐ Easy Real-Life Example of Class Loaders
+
+Think of a 3-level school system:
+
+1️⃣ Bootstrap CL → Principal
+Loads the most important classes (rules, books)
+    No one is above him (so parent = null)
+
+2️⃣ Platform CL → Teachers
+Loads important JDK-level classes.
+
+3️⃣ Application CL → Students
+Loads your program (.class files)
+
+The hierarchy:
+
+Principal (Bootstrap)
+      ↑
+Teachers (Platform)
+      ↑
+Students (Application)
+
+------------------------------------------------------------
+
+⭐ PART–9: Why Class Loader Hierarchy?
+
+✔ Security
+✔ Avoid duplicate classes
+✔ Organized loading
+✔ Faster access
+
+Example:
+
+If you write a class named String, JVM should not load your class instead of Java’s String class.
+
+So Bootstrap loader loads core classes first.
+
+------------------------------------------------------------
+
+⭐ PART–10: Summary
+
+🧵 METHOD CHAINING
+
+Call multiple methods in one statement
+Each method returns something → next method uses it
+Last method return decides final type
+
+📚 CLASS LOADING
+
+JVM loads classes into Method Area
+
+For every loaded class, JVM creates a java.lang.Class object
+
+This object contains class metadata
+
+🔥 CLASS LOADERS
+
+Bootstrap Loader → loads Java core classes
+Platform Loader → loads JDK modules
+Application Loader → loads your classes
+
+💡Key methods:
+
+getName() → fully qualified class name
+getClassLoader() → which loader loaded the class
+getParent() → parent class loader
+
+------------------------------------------------------------
