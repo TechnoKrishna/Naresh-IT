@@ -1,0 +1,331 @@
+Link :- https://chatgpt.com/share/691cce70-6ea0-8004-a5ae-a5f16cb8f6cf
+
+✅ STRING METHODS IN JAVA
+
+The String class in Java gives many predefined methods. These methods help us extract characters, compare strings, replace text, check length, etc.
+
+Let’s understand each method one by one.
+
+🔵 1. charAt(int index)
+
+✔ Purpose
+
+To get a single character from a string using index.
+
+✔ How it works
+
+Index starts from 0 → left to right.
+
+H  e  l  l  o
+0  1  2  3  4
+
+✔ Example
+
+String x = "Hello Hyderabad";
+char ch = x.charAt(0); // H
+char ch2 = x.charAt(7); // H from Hyderabad
+
+✔ Real-life example
+
+Aadhar number:
+If you want the 3rd digit, you pick it by index.
+String = “123456789012”
+charAt(2) → ‘3’
+
+-------------------------------------------------------------------------------
+
+🔵 2. concat(String str)
+
+✔ Purpose
+
+To join two strings.
+
+✔ Example
+
+String s1 = "Data";
+String s2 = "base";
+String s3 = s1.concat(s2); // "Database"
+
+OR simply:
+
+String s = "James" + " Gosling";
+
+✔ Real-life example
+
+Joining fname + lname
+"Krishna" + " Sonawane" → "Krishna Sonawane"
+
+-------------------------------------------------------------------------------
+
+🔵 3. equals(Object obj)
+
+✔ Purpose
+
+To compare content of two strings.
+
+✔ Notes
+
+Overridden from Object class.
+Checks content, not memory address.
+
+✔ Example
+
+String username = "NIT";
+
+if(username.equals("NIT")) {
+    System.out.println("Welcome");
+}
+
+✔ Real-life example
+
+Two friends have same name “Rahul”.
+Your phone compares letters to find contact.
+Not the person’s identity — only name.
+
+-------------------------------------------------------------------------------
+
+🔵 4. equalsIgnoreCase(String str)
+
+✔ Purpose
+
+Compare content, ignoring uppercase/lowercase differences.
+
+✔ Example
+
+"nit".equalsIgnoreCase("NIT") // true
+
+✔ Real-life example
+
+When you login:
+
+“KrIsHnA”
+“krishna”
+“KRISHNA”
+
+All should be accepted.
+
+-------------------------------------------------------------------------------
+
+🔥 Important Interview Question: == vs .equals()
+
+| Comparison  | What it checks             | Example       |
+| ----------- | -------------------------- | ------------- |
+| `==`        | Reference / memory address | s1 == s2      |
+| `.equals()` | Content of string          | s1.equals(s2) |
+
+✔ Example
+
+String s1 = "Java";
+String s2 = "Java";      // same SCP memory
+String s3 = new String("Java"); // new heap object
+
+
+Output:
+
+s1 == s2 → true  
+s1 == s3 → false  
+s1.equals(s2) → true  
+s1.equals(s3) → true
+
+✔ Real-life example
+
+== → compares two driving licenses (ID number)
+.equals() → compares two names
+
+-------------------------------------------------------------------------------
+
+🔵 5. length()
+
+✔ Purpose
+
+Returns number of characters.
+
+✔ Example
+String x = "Naresh Tech";
+int len = x.length(); // 11
+
+✔ Real-life example
+
+SMS message shows character count before sending.
+
+-------------------------------------------------------------------------------
+
+🔵 6. replace()
+
+Two versions:
+
+replace(char old, char new)
+replace(CharSequence old, CharSequence new)
+
+✔ Purpose
+
+Replace characters or words.
+
+✔ Examples
+String s = "abababab";
+s = s.replace('b', 'B');   // character
+
+String s2 = "Manager";
+s2 = s2.replace("Man", "Dam"); // substring replace
+
+✔ Real-life example
+
+Find and Replace in MS Word:
+Replace “Naresh” → “NIT” in a file.
+
+-------------------------------------------------------------------------------
+
+🔵 7. compareTo(String s) — Lexicographical Comparison
+
+✔ Purpose
+
+Compares two strings using ASCII/Unicode values.
+
+✔ Rules
+
+s1 == s2 → returns 0
+s1 > s2 → returns +ve
+s1 < s2 → returns -ve
+
+✔ Example
+
+"Apple".compareTo("apple") // -32
+
+Because ASCII difference between 'A' and 'a' is 32.
+
+✔ Real-life example
+
+Sorting contacts alphabetically:
+"Amit" comes before “Deepak”.
+
+-------------------------------------------------------------------------------
+
+🔵 8. substring(int startIndex)
+
+Extract part of string from startIndex to end.
+
+-------------------------------------------------------------------------------
+
+🔵 9. substring(int startIndex, int endIndex)
+
+Extract part from startIndex (inclusive) to endIndex (exclusive).
+
+H Y D E R A B A D
+0 1 2 3 4 5 6 7 8
+
+str.substring(2) → "DERABAD"
+str.substring(3,7) → "ERAB"
+str.substring(4,4) → "" (empty)
+str.substring(6,4) → error
+str.substring(3,-6) → error
+
+✔ Real-life example
+
+If mobile number is: 9876543210
+You want last 4 digits → substring(6)
+
+-------------------------------------------------------------------------------
+
+🔵 10. isEmpty()
+
+✔ Purpose
+
+Checks if string length is 0.
+
+✔ Example
+
+"".isEmpty() → true
+" ".isEmpty() → false (contains space)
+
+✔ Real-life example
+
+Checking if the user has entered something in a form field.
+
+-------------------------------------------------------------------------------
+
+🔵 11. isBlank() — JDK 11
+
+✔ Purpose
+
+Checks if string is empty OR contains only whitespaces.
+
+Includes:
+
+spaces " "
+newline \n
+tab \t
+
+✔ Example
+
+" ".isBlank() → true
+"\n\t".isBlank() → true
+
+✔ Real-life example
+
+When submitting a form:
+If user enters only spaces → treat it as empty.
+
+-------------------------------------------------------------------------------
+
+🌟 EXTRA IMPORTANT STRING CONCEPTS YOU MUST KNOW
+
+-------------------------------------------------------------------------------
+
+🔵 12. Strings are Immutable
+
+Once created → cannot be changed.
+
+✔ Example
+
+String x = "Hello";
+x = x.concat("World"); // new object created
+
+✔ Real-life example
+
+Like writing with a pen on paper:
+You can’t erase (modify), you must rewrite on new page.
+
+-------------------------------------------------------------------------------
+
+🔵 13. String Constant Pool (SCP)
+
+Java stores string literals in a special memory.
+"Java" stored once
+All variables referencing the same literal point to same memory
+
+✔ Example
+String s1 = "Java";
+String s2 = "Java"; // refers same SCP location
+
+-------------------------------------------------------------------------------
+
+🔵 14. intern() Method
+✔ Purpose
+
+Moves string to SCP (String Constant Pool).
+
+✔ Example
+String s1 = new String("Hello");
+String s2 = s1.intern();
+String s3 = "Hello";
+
+System.out.println(s2 == s3); // true
+
+-------------------------------------------------------------------------------
+
+🎁 Final Real-life Summary
+
+Think of a String as a WhatsApp message:
+
+| Operation     | Real-life Example                        |
+| ------------- | ---------------------------------------- |
+| `charAt()`    | Picking 5th letter in the message        |
+| `concat()`    | Adding extra text before sending         |
+| `equals()`    | Checking if two messages are same        |
+| `compareTo()` | Sorting chats alphabetically             |
+| `length()`    | Character count shown above keyboard     |
+| `replace()`   | Auto-correct replacing "hte" → "the"     |
+| `substring()` | Cropping part of a message               |
+| `isEmpty()`   | User typed nothing                       |
+| `isBlank()`   | User typed only spaces                   |
+| `intern()`    | Saving copy of message in special memory |
