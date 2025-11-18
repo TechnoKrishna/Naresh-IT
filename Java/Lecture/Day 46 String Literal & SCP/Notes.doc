@@ -1,0 +1,277 @@
+Link :- https://chatgpt.com/share/691b373a-055c-8004-85d7-f7605f6ce71e
+
+✅ 1. String Literal vs new String()
+
+String Literal
+
+String s1 = "India";
+
+Here "India" is stored in String Constant Pool (SCP).
+
+Why SCP exists?
+
+To avoid duplicate String objects and save memory.
+
+If another variable uses the same literal:
+
+String s2 = "India";
+
+✔ Java does not create a new object
+✔ Java gives same SCP object to s2
+
+So:
+
+s1 ---> "India" <--- s2  (SAME object)
+
+New Keyword
+
+String s3 = new String("India");
+
+This creates:
+
+One object in heap
+The literal "India" in SCP (if not already present)
+
+So:
+
+s3 ---> "India" (heap memory)
+SCP ---> "India" (existing literal)
+
+✔ Heap object is different from SCP object.
+
+⭐ REAL-LIFE EXAMPLE
+
+Imagine you have a roommate.
+
+When you create literal "India":
+
+🧸 SCP = Shared cupboard
+
+Anyone can reuse the same sweater from this cupboard.
+
+String s1 = "India"; // take sweater from shared cupboard
+String s2 = "India"; // reuse same sweater
+
+Both s1 and s2 use same sweater.
+
+But when you write:
+
+String s3 = new String("India");
+
+🎁 new = buying your own new sweater
+So you keep it in your personal cupboard (heap).
+
+❗ Why Strings are Immutable?
+
+Reasons:
+
+1. Multiple references share the same object (SCP)
+
+If String was mutable:
+
+s1 = “India”
+s2 = “India”
+
+If s1 changes it:
+
+s1.toUpperCase();  // INDIA
+
+Now suddenly s2 also becomes “INDIA” – WHICH IS WRONG.
+
+So immutability protects shared objects.
+
+2. Strings are used as HashMap keys
+
+HashMap works on hashCode().
+If String was changeable, key's hashCode would change → map breaks.
+
+3. Security
+
+String is used in:
+File paths
+Database URL
+Username
+Class loading
+Network connections
+
+If someone could modify Strings → huge security risk.
+
+⭐ REAL-LIFE EXAMPLE
+
+Think of String in SCP like a shared WhatsApp group name.
+Everyone sees it.
+If one person could modify the name → everyone sees wrong name.
+
+So Java makes Strings read-only.
+
+⭐ IMPORTANT: toUpperCase(), concat() create NEW object
+
+Because String is immutable.
+
+Example:
+
+String s = "india";
+String s2 = s.toUpperCase();
+
+🔹 Old object: "india"
+🔹 New object: "INDIA"
+
+🔥 PROOF PROGRAM: Literal is shared by multiple references
+
+public class Literal {
+    public static void main(String[] args) {
+        String s1 = "India";
+        System.out.println(s1.hashCode());
+
+        s1 = null;
+        System.gc(); // has no effect on SCP
+
+        String s2 = "India";
+        System.out.println(s2.hashCode());
+    }
+}
+
+✔ SCP objects are not garbage collected.
+
+⭐ Difference Between Literal & New
+
+| Statement                                       | SCP            | Heap   | No. of Objects |
+| ----------------------------------------------- | -------------- | ------ | -------------- |
+| `String x = "Naresh"`                           | Yes            | No     | 1              |
+| `String y = new String("Hyd")`                  | Yes            | Yes    | 2              |
+| `new String("Hyd")` when literal exists         | No new literal | Yes    | 1              |
+| `new String("Hyd")` when literal does not exist | 1 literal      | 1 heap | 2              |
+
+🔥 CASE-WISE EXPLANATION
+
+Case 1
+
+String x = "Naresh";
+Only 1 object in SCP.
+
+Case 2
+
+String y = new String("Hyderabad");
+
+Literal "Hyderabad" → SCP
+Object → heap
+
+Total = 2 objects.
+
+Case 3
+
+String s1 = "Java";
+String s2 = new String("Java");
+
+SCP: "Java"
+Heap: new "Java"
+
+== → false
+
+Case 4
+
+String s3 = new String("India");
+String s4 = new String("India");
+
+✔ 2 heap objects
+✔ Only 1 SCP literal
+
+🔥 intern() method
+
+intern() returns the SCP version of the String.
+
+String s1 = "Java";
+String s2 = new String("Java");
+
+s2 = s2.intern(); 
+
+System.out.println(s1 == s2); // true
+
+Because now both point to the SCP object.
+
+⭐ Real-life example of intern()
+
+Suppose:
+
+SCP = government marksheet
+heap object = xerox copy
+
+When you call intern():
+
+Take the original marksheet from govt office
+
+So both s1 and s2 point to same original.
+
+⭐ Ways to Put String into SCP
+
+1 > Literal
+
+String s = "Java";
+
+
+2 > intern()
+
+String s2 = new String("Java").intern();
+
+
+3 > valueOf()
+
+String s3 = String.valueOf("Java");
+
+
+4 > Compile-time concat
+
+String s4 = "Ja" + "va"; // compiler does interning
+
+⭐ JDK 1.6 vs 1.7 SCP Memory
+| Version      | SCP Location                      |
+| ------------ | --------------------------------- |
+| **JDK 1.6**  | Inside PermGen (Heap)             |
+| **JDK 1.7+** | Moved to Metaspace (outside heap) |
+
+
+✔ Metaspace grows dynamically → no OOM for Strings.
+
+
+🔥 String Method: charAt()
+
+String s = "India";
+System.out.println(s.charAt(2)); // d
+
+Indexing:
+
+I  n  d  i  a
+0  1  2  3  4
+
+✔ Returns character at given index.
+✔ Exception if index out of range.
+
+⭐ Real-life example for charAt()
+
+Think of string as a train:
+
+Coach numbers:
+I - 0
+n - 1
+d - 2
+i - 3
+a - 4
+
+charAt(2) means → Go to 3rd coach of the train.
+
+
+✅ Final Summary (Super Easy)
+
+String literal goes to SCP
+New String creates separate heap object
+Strings are immutable because:
+    shared references
+    security
+    HashMap keys
+intern() returns SCP copy
+SCP is shared memory to avoid duplicates
+From JDK 1.7 SCP moved to Metaspace
+charAt() returns character at position
+
+
+-----------------------------------------------------------------------------
