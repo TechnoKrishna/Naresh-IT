@@ -1,0 +1,413 @@
+Link :- https://chatgpt.com/share/691e166d-a624-8004-85fb-a3b060904ede
+
+--------------------------------------------------------------------------------------
+
+✅ 1. Ways to Load a Class File into JVM Memory
+
+A class file (.class) is loaded into JVM by Class Loader Sub-System.
+There are multiple ways, but these are the common ones.
+
+1) Using java command
+
+When we run:
+
+javac Test.java   // creates Test.class
+java Test         // loads Test.class into JVM
+
+JVM automatically calls Class Loader, which loads the class into Method Area.
+Here we are making a request to class loader sub system to load Test.class file into JVM memory
+
+👉 Real-life example:
+Like opening a Word file. Before you use it, Windows loads it into memory.
+
+2) By using Constructor (new keyword at the time of creating object).
+
+Demo d = new Demo();
+
+When JVM sees the class name for the first time during object creation, it loads the class into memory.
+
+3) By accessing static data member of the class.
+
+Even if you don't create an object, accessing any static member loads the class.
+System.out.println(Foo.x);  // class Foo is loaded
+Because static members belong to class, not object.
+
+4) By using inheritance (before sub class, super class will be loaded)
+
+Before loading a child class, JVM must load parent class first.
+
+class A {}
+class B extends A {}
+When B loads → A loads first.
+
+5) By using Reflection API
+
+Reflection = Loading classes dynamically at runtime.
+Class.forName("Demo");
+This loads Demo class without using new.
+
+📌 Reflection API Important Points
+
+Available in java.lang.Class
+forName() loads class at runtime.
+Throws ClassNotFoundException (checked exception)
+
+Two versions:
+
+✔ Using simple class name
+(Only works in simple editors like Notepad/EditPlus)
+Class.forName("Demo");
+
+✔ Using Fully Qualified Name (FQN)
+✔ Using Fully Qualified Name (FQN)
+Class.forName("com.ravi.class_loading.Demo");
+
+--------------------------------------------------------------------------------------
+
+public static Class<T> forName(String className) throws ClassNotFoundException
+
+//Program on EditPlus:
+
+class Demo
+{
+
+static
+{
+IO.println("SB");
+}
+}
+
+public class Test
+{
+public static void main(String[] args) throws Exception
+{
+Class.forName("Demo"); //load Demo.class file at runtime
+}
+}
+
+===========================================================
+
+//Program on Eclipse IDE:
+
+package com.ravi.class_loading;
+
+class Demo
+{
+
+static
+{
+IO.println("SB");
+}
+}
+
+public class ReflectionAPI
+{
+public static void main(String[] args) throws Exception
+{
+Class.forName("com.ravi.class_loading.Demo"); //FQN is required
+}
+}
+
+--------------------------------------------------------------------------------------
+
+✅ 2. What is Compile Time Constant
+
+A compile-time constant:
+
+✔ Must be static
+✔ Must be final
+✔ Must be assigned with a constant value, not a method call
+✔ Value is replaced directly into code during compilation
+
+Example:
+
+public static final int A = 100;
+
+This is a compile-time constant.
+The compiler replaces A with 100 directly in other classes.
+
+❌ Not a compile time constant:
+
+public static final int A = m1();  // method call
+Because value is known only at runtime, so JVM must load the class.
+
+At compile time, constant value will be converted by compiler at the time of compilation itself so, at runtime JVM can see the value but not the class name so class will not be loaded as shown in the program.
+
+--------------------------------------------------------------------------------------
+
+Example: 
+
+public static final int A = 100; //Valid [Here class will not be loaded by JVM]
+public static final int A = m1(); //valid [Here class will be loaded by JVM]
+
+//Program:
+
+class Sample
+{ 
+public static final int A = 100; //Compile Time Constant
+
+static
+{
+IO.println("Static Block");
+}
+}
+
+public class CompileTimeConstantDemo1
+{
+public static void main(String[] args)
+{
+System.out.println(Sample.A); //Sample.A will be replaced by 100
+}
+}
+
+--------------------------------------------------------------------------------------
+
+class Foo
+{
+public static final int A = m1(); //It is not a compile time constant
+
+public static int m1()
+{
+return 100;
+}
+
+static
+{
+IO.println("SB");
+}
+}
+
+public class CompileTimeConstantDemo2
+{
+public static void main(String[] args)
+{
+IO.println(Foo.A);
+}
+}
+
+--------------------------------------------------------------------------------------
+
+📌 Very Important Behavior
+
+Take two files:
+
+Test.java
+
+public class Test
+{ 
+    public static final int MAX_VALUE = 999;
+}
+
+Main.java
+
+public class Main
+{
+public static void main(String[] args)
+{
+System.out.println(Test.MAX_VALUE);
+}
+}
+
+Case:
+
+Compile both → runs → prints 999
+Change Test.java → MAX_VALUE = 1500
+Recompile only Test.java
+Run Main.java (without recompiling)
+
+➡ Output will still be 999
+
+👉 Because compiler had already replaced Test.MAX_VALUE with 999 in Main.class.
+
+📌 Real-life example:
+
+Imagine you save your friend’s phone number in your phone.
+Even if your friend changes their number later,
+your saved contacts still hold the old number until YOU update it.
+
+Similarly, Main.class still holds 999 until recompiled.
+
+--------------------------------------------------------------------------------------
+
+✅ 3. Why Static Method Cannot Access Instance (Non-Static) Variables?
+
+Reason:
+
+Because static executes during class loading,
+but object is created only during runtime.
+
+At the time static members run → no object exists → so no instance variables exist.
+
+At class loading phase object is not created because object is created in the 2nd phase i.e Runtime data area so at the TIME OF EXECUTION OF STATIC METHOD AT CLASS LOADING PAHSE, NON STATIC VARIABLE WILL NOT BE AVAILABLE BY DEFAULT henec we can't access non static variable from static context[static block, static method and static nested inner class] without creating the object..
+
+public class Demo
+{ 
+int x = 100;
+public static void main(String[] args){
+    System.out.println(x);  // ❌ Error, x is non-static
+}
+}
+
+✔ Real-life example:
+
+When the school building opens in the morning (static loading),
+students (objects) have not yet arrived.
+So teacher cannot call any student by name at that time (using instance variable).
+
+===========================================================
+
+class Test
+{
+private int x;
+
+public Test(int x)
+{
+this.x = x;
+}
+
+public static void print()
+{ 
+    IO.println("x value is :"+x); 
+}
+}
+
+public class StaticDemo
+{
+public static void main(String[] args)
+{
+Test t1 = new Test(100);
+Test.print();
+}
+}
+
+--------------------------------------------------------------------------------------
+
+✅ 4. Runtime Data Areas (JVM Memory Model)
+
+JVM divides memory into five areas:
+
+Once a class is loaded in the JVM then based on the content We have total 5 types of memories:
+
+===========================================================
+
+📍 1) Method Area (Class Area / Metadata Area)
+
+Whenever a class is loaded then the class is dumpped inside method area and returns java.lang.Class class object.
+
+It provides all the information regarding the class, like name of the class, name of the package, static and non static fields available in the class, methods available in the class and so on.
+
+We have only one method area per JVM that means for a single JVM we have only one Method area.
+
+This Method Area OR Class Area is sharable by all the objects.
+
+Stores: Class information, Static variables, Static blocks, Method code, Constant pool
+
+Real-life example:
+
+A book table where all textbooks (class info) are kept.
+All students (objects) use the same table.
+
+===========================================================
+
+📍 2) Heap Area
+
+Whenever we create an object in java then the properties and behavior of the object are Stored in a special memory area called HEAP AREA.
+
+We have only one HEAP AREA per JVM.
+
+Stores: Objects, Instance variables, Arrays, Strings (in SCP)
+
+Shared by all threads.
+
+===========================================================
+
+📍 3) Stack Area
+
+All the methods are executed as a part of Stack Area.
+
+Whenever we call a method in java then internally one stack Frame will be created to hold method related information.
+
+Every Stack frame contains 3 parts:
+1 > Local variables
+2 > Operand stack
+3 > Frame data
+
+We have multiple stack area for a single JVM.
+
+Everytime we create a new thread in java then JVM will create a separate Runtime Stack Memory. [Multithreading]
+
+Real-life example:
+
+Each employee has a personal notebook (stack).
+Inside it they write temporary daily tasks (method local variables).
+
+📍 4) PC Register
+
+Program Counter register.
+Each thread has its own.
+
+Stores address of the current executing instruction.
+
+Real-life example:
+
+A bookmark inside a book telling which line you're reading.
+
+📍 5) Native Method Stack
+
+Stores native (non-Java, C/C++) method execution data.
+
+⭐ Diagram in Easy Form
+
+                   JVM Memory
+-----------------------------------------------
+| Method Area (static data, class info)       |
+-----------------------------------------------
+| Heap Area (objects, instance data)          |
+-----------------------------------------------
+| Thread 1 Stack | Thread 2 Stack | ...       |
+-----------------------------------------------
+| PC Registers per thread                     |
+-----------------------------------------------
+| Native Method Stack                          |
+-----------------------------------------------
+
+--------------------------------------------------------------------------------------
+
+✔ Reflection API program
+
+    Basic idea: loads Demo class dynamically, static block executes.
+
+✔ Compile time constant programs
+
+Basic idea:
+
+    When constant is compile-time → JVM doesn't load class.
+    When constant is run-time (from method) → class loads.
+
+✔ Static method error program
+
+    Basic idea: static cannot directly use non-static variables.
+
+--------------------------------------------------------------------------------------
+
+🎉 Final Summary
+
+✔ Classes load into JVM in 5 ways:
+(1) java command
+(2) new keyword
+(3) static member access
+(4) inheritance
+(5) reflection (forName)
+
+✔ Compile time constant = static + final + constant value
+Compiler replaces value everywhere → class not loaded.
+
+✔ static cannot access non-static because static runs before object creation.
+
+✔ JVM memory = Method Area, Heap, Stack, PC Register, Native Stack.
+
+✔ Stack → methods
+✔ Heap → objects
+✔ Method Area → class + static data
+
+--------------------------------------------------------------------------------------
