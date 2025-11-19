@@ -1,0 +1,371 @@
+Link :- https://chatgpt.com/share/691e21ba-0350-8004-96a4-85157f1f6cc5
+
+--------------------------------------------------------------------------------------
+
+⭐ 1. HEAP & STACK MEMORY
+
+Java uses two major memory areas:
+
+STACK MEMORY
+
+✔ Stores local variables, method calls, and references
+✔ Works like a stack of books — last added, first removed
+✔ Each method call gets a new stack frame
+
+Example (from your program):
+
+main_stack
+   am1 → 2000x
+   am2 → 3000x
+   ar  → 4000x
+
+👉 These are NOT objects — these are addresses pointing to objects in HEAP.
+
+HEAP MEMORY
+
+✔ Stores objects created using new
+✔ Objects stay until garbage collector removes them
+✔ Shared by all methods and threads
+
+From your program:
+
+1000x : BetaObject  (static object)
+2000x : AlphaObject (val=15)
+3000x : AlphaObject (val=2)
+4000x : AlphaArrayObject [2000x] [2000x]
+
+--------------------------------------------------------------------------------------
+
+⭐ 2. Understanding Your Program’s Memory Behavior
+
+class Alpha
+{
+int val;
+
+static int sval = 200;
+
+static Beta b = new Beta();
+
+public Alpha(int val)
+{ 
+    this.val = val;
+}
+}
+
+public class Beta
+{
+public static Alpha [] fill (Alpha a1, Alpha a2)
+{
+a1.val = 15;
+Alpha fa[] = new Alpha [] {a2, a1};
+return fa;
+}
+
+public static void main(String[] args)
+{
+Alpha am1 = new Alpha(9);
+Alpha am2 = new Alpha(2);
+
+Alpha []ar = fill(am1, am2);
+
+ar[0] = am1;
+
+System.out.println(ar[0].val);
+System.out.println(ar[1].val);
+}
+}
+
+===============================================================================
+
+Step-by-step:
+
+✔ Alpha am1 = new Alpha(9);
+
+A new object created : 2000x → Alpha(val=9)
+
+✔ Alpha am2 = new Alpha(2);
+
+A new object created : 3000x → Alpha(val=2)
+
+✔ ar = fill(am1, am2);
+
+Inside fill() : a1.val = 15;  // This modifies am1’s value on HEAP
+
+So : 2000x → Alpha(val=15)
+
+Then : fa = new Alpha[]{a2, a1};
+
+Creates array : 4000x → [3000x, 2000x]
+
+Back in main:
+
+ar[0] = am1;   // overwrite 3000x with 2000x
+
+Final array : [2000x , 2000x]
+
+So:
+
+ar[0].val → 15
+ar[1].val → 15
+
+✔ Both point to same object → same value.
+
+--------------------------------------------------------------------------------------
+
+⭐ 3. PC REGISTER 
+
+PC = Program Counter Register
+
+Each thread in Java gets its own PC register.
+In order to hold the currently executing instruction of a running thread we should use PC Register.
+
+It stores:
+
+👉 The next instruction the thread must execute.
+
+
+Example:
+
+Thread-0 → PC: instruction 12
+Thread-1 → PC: instruction 28
+main thread → PC: instruction 5
+
+✔ Helps JVM know where each thread is in the program.
+
+Real-life example:
+Think of 3 people reading 3 different books.
+Each person uses their own bookmark (PC register).
+
+--------------------------------------------------------------------------------------
+
+⭐ 4. Native Method Stack
+
+Some Java methods use C/C++ code internally, for example:
+
+✔ System.arraycopy()
+✔ Thread.sleep()
+✔ File handling methods
+✔ OS-level operations
+
+These methods are marked as : native
+
+Java creates a special memory : 👉 Native Method Stack
+
+to store:
+✔ Native method instructions
+✔ Its local variables
+✔ Return values
+
+Real-life example:
+You speak Hindi but sometimes need English words.
+So you use a separate "memory" for English vocabulary.
+Same way Java uses a separate stack for native languages.
+
+--------------------------------------------------------------------------------------
+
+⭐ 5. IS-A Relation (Inheritance) — Limitation
+
+IS-A = Using extends
+
+Dog extends Animal
+
+Limitation:
+If you change Animal class → this automatically affects all subclasses (Dog, Cat, Tiger).
+
+👉 This makes classes tightly coupled.
+
+Real-life example:
+If a company changes rules for "Employees",
+every type of employee (Manager, Worker, Intern) is affected.
+
+--------------------------------------------------------------------------------------
+
+⭐ 6. HAS-A Relation (Composition & Aggregation)
+
+HAS-A means one class contains an object of another class.
+
+Two types:
+
+===========================================================
+
+⭐ A) Composition (Strong HAS-A)
+
+✔ Contained object cannot exist independently
+
+If main object is destroyed → contained object also destroyed.
+
+Examples:
+✔ Car → Engine
+✔ Human → Heart
+✔ University → Department
+
+Real-life:
+If you destroy the car, its engine also becomes useless.
+
+✔ In code
+
+Engine object is created inside Car constructor.
+You cannot change engine object (because it’s final).
+
+private final Engine engine;
+
+This makes relation strong.
+
+===========================================================
+
+⭐ B) Aggregation (Weak HAS-A)
+
+Object can exist independently
+
+Example:
+✔ College — Student
+✔ Library — Book
+✔ Company — Employee
+
+If college closes tomorrow, students still exist.
+
+This is weak link.
+
+--------------------------------------------------------------------------------------
+
+⭐ 7. Understanding the Composition Program (Basic Only)
+
+===========================================================
+
+package com.ravi.composition;
+
+public class Engine
+{
+private String type;
+private int horsePower;
+
+public Engine (String type, int horsePower)
+{ 
+    this.type = type;
+    this.horsePower = horsePower;
+}
+
+@Override
+public String toString()
+{
+return "Engine [type=" + type + ", horsePower=" + horsePower + "]";
+}
+}
+
+===========================================================
+
+package com.ravi.composition;
+
+public class Car
+{
+private String name;
+private int model;
+private final Engine engine; //HAS-A Relation [Blank final filed]
+
+public Car (String name, int model)
+{
+super();
+this.name = name;
+this.model = model;
+this.engine = new Engine ("Patrol", 1200); //Composition
+}
+
+
+@Override
+public String toString()
+{
+return "Car [name=" + name + ", model=" + model + ", engine=" + engine + "]";
+}
+}
+
+✔ Engine class
+Holds engine details. Has constructor and toString().
+
+✔ Car class
+Holds:
+name
+model
+final Engine engine (HAS-A)
+
+Inside constructor :    this.engine = new Engine("Petrol", 1200);
+
+Engine object created automatically → Composition.
+
+===========================================================
+
+package com.ravi.composition;
+
+public class CompositionDemo 
+{
+public static void main(String[] args)
+{
+Car car = new Car("Naxon", 2025);
+System.out.println(car);
+}
+}
+
+--------------------------------------------------------------------------------------
+
+⭐ 8. Real-Life Example
+
+Composition Example (Strong HAS-A)
+
+Human HAS-A Heart
+If human dies → heart dies.
+Human creates heart at birth → cannot change type of heart.
+That’s composition.
+
+===========================================================
+
+Aggregation Example (Weak HAS-A)
+
+Student HAS-A College
+If student leaves the college, student is still alive.
+No strong dependency.
+
+--------------------------------------------------------------------------------------
+
+⭐ 9. Add-On Concepts
+
+✔ Why use HAS-A instead of IS-A?
+
+HAS-A gives:
+
+✔ Flexibility
+✔ Loose coupling
+✔ Reusability
+✔ Better design
+
+✔ Composition is preferred over Inheritance
+
+This is a famous rule in OOP:
+
+“Favour Composition over Inheritance”
+
+Why?
+Because inheritance forces tight connection.
+
+✔ final field in Composition
+
+Using:  private final Engine engine;
+
+Means:
+
+✔ You must initialize engine
+✔ You cannot change engine reference
+✔ Ensures strong, permanent relation
+
+--------------------------------------------------------------------------------------
+
+⭐ 10. One Line Summary of All Concepts
+
+| Concept             | Meaning                                | Strength        |
+| ------------------- | -------------------------------------- | --------------- |
+| IS-A                | Inheritance                            | Strong coupling |
+| HAS-A               | Using object                           | Loose or strong |
+| Composition         | HAS-A (Strong)                         | Very strong     |
+| Aggregation         | HAS-A (Weak)                           | Loose           |
+| Stack               | Method calls + references              | Fast            |
+| Heap                | Objects                                | Shared          |
+| PC Register         | Tracks next instruction of each thread | Per thread      |
+| Native Method Stack | Stores C/C++ based method calls        | Separate area   |
