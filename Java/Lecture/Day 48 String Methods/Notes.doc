@@ -1,0 +1,379 @@
+✅ String & Array – Length vs length()
+
+✔ Array → .length (property)
+Array has length (variable/property)
+👉 It tells how many elements the array can store.
+
+String str[] = new String[5];
+IO.println(str.length);
+
+// OUTPUT : 5
+
+✔ String → .length() (method)
+String uses length() method
+👉 It counts how many characters are inside the string.
+
+String s1 = "India";
+IO.println(s1.length());
+
+// OUTPUT : 5
+
+----------------------------------------------------------------------------------
+
+✅ startsWith() & endsWith()
+
+public boolean startsWith(String prefix)
+public boolean endWith(String suffix)
+
+These methods check the beginning and ending of a string.
+
+✔ startsWith(prefix)
+Checks if the string starts with given prefix.
+
+✔ endsWith(suffix)
+Checks if the string ends with given suffix.
+
+Real Life Example:
+
+Password rules:
+– Must start with “Ab” → startsWith("Ab")
+– Must end with “@123” → endsWith("@123")
+
+void main()
+{
+String s="Sachin Tendulkar";
+IO.println(s.startsWith("Sa"));
+IO.println(s.endsWith("kar"));
+}
+
+// OUTPUT 
+// true
+// true
+
+----------------------------------------------------------------------------------
+
+✅ indexOf()
+
+public int indexOf(String str) :-
+
+✔ Finds the first occurrence of a substring.
+
+It is used to provide the index position of the specified String in the existing String.
+
+It will serach the index position of the first occurrance of the specified String as a parameter.
+
+If the specified string is not available in the existing string then it will return -1.
+
+IndexOf.java
+
+void main()
+{
+String str = "India is my country and It is in Asia";
+int index = str.indexOf("is");
+IO.println(index);
+}
+
+// OUTPUT : 6
+
+Real Life Example:
+Searching for the word “is” in a paragraph. You get the first position where “is” appears.
+
+----------------------------------------------------------------------------------
+
+✅ lastIndexOf()
+
+public int lastIndexOf(String x) :-
+
+It is used to find out the last index position of the Specified String in the existing String.
+
+It will search the index position of the last occurrance of the String.
+
+void main()
+{
+String s1 = "it is a nice city";
+int lastIndex = s1.lastIndexOf("it");
+IO.println("Last occurrance of it, is: "+lastIndex+ "th position");
+}
+
+// OUTPUT : Last occurrance of it, is: 14th position
+
+Real Life Example:
+In the sentence:
+“It is a nice city”
+The first “it” is at start
+The last “it” is at the end.
+
+----------------------------------------------------------------------------------
+
+✅ toUpperCase()
+
+Converts entire string to capital letters.
+
+public String toUpperCase()
+
+void main()
+{
+String str = "india";
+IO.println(str.toUpperCase()); // OUTPUT : INDIA
+}
+
+----------------------------------------------------------------------------------
+
+✅ toLowerCase()
+
+Converts entire string to small letters.
+
+public String toLowerCase()
+
+void main()
+{
+String str = "INDIA";
+IO.println(str.toLowerCase()); // OUTPUT : india
+}
+
+----------------------------------------------------------------------------------
+
+✅ trim()
+
+public String trim():
+
+It is used to remove the white spaces from the begning (heading) and end (trailing) from the String.
+
+It will not remove any white space in between the String. The return type of this method is String.
+
+Trim.java
+
+//program on trim()
+
+void main()
+{
+String s1="     Tata    "; 
+IO.println(s1+"Nagar"); // Tata Nagar
+
+s1 ="   Hello   Data    ";
+IO.println(s1.trim() +"Base"); //Hello  DataBase
+}
+
+----------------------------------------------------------------------------------
+
+✅ split(String regex)
+
+Used to break a string into parts, based on a pattern (regex).
+
+public String[] split(String regex): [regex -> Regular Expression]
+
+* Predefined method of String class, which is used to break OR split the the given String based on the given regex (Regular Expression).
+
+* The return type of this method is String[] (String array).
+
+void main()
+{
+        String s1 = "Hyderabad is a nice city";
+        String[] words = s1.split(" ");
+
+        for (String word : words) {
+            System.out.println(word);
+        }
+
+        System.out.println("..................................");
+
+        String s2 = "Hyderabad is a nice city";
+        words = s2.split("a");
+
+        for (String word : words) {
+            System.out.println(word);
+        }
+}
+
+// OUTPUT : 
+
+Hyderabad
+is
+a
+nice
+city
+..................................
+Hyder
+b
+d is
+ nice city
+
+----------------------------------------------------------------------------------
+
+✅ StringTokenizer
+
+Used to break a string into tokens (words).
+
+Program on StringTokenizer class
+
+import java.util.StringTokenizer;
+
+public class StringTokenizerDemo 
+{
+public static void main(String[] args) 
+{
+String str = "Hyderabad is a lovely place";
+StringTokenizer st = new StringTokenizer(str, " ");
+System.out.println("Number of tokens"+st.countTokens());
+while(st.hasMoreTokens())
+{
+System.out.println(st.nextToken());
+}
+}
+}
+
+// OUTPUT 
+
+Number of tokens5
+Hyderabad
+is
+a
+lovely
+place
+
+public int countTokens(): Will provide number of Tokens
+public boolean hasMoreTokens(): Will verify token is available or not
+public String nextToken(): Will provide the token in String format
+
+----------------------------------------------------------------------------------
+
+✅ toCharArray()
+
+public char[] toCharArray():
+
+It is used to convert the given string into a sequence of characters. The returned array length is equal to the length of the string.
+
+//public char[] toCharArray()
+
+void main()
+{
+String str = "Java technology";
+char characters[] = str.toCharArray();
+
+for(char ch: characters)
+{
+IO.print(ch+"\t");
+}
+
+IO.println("String length is: "+str.length());
+IO.println("Char array length is: "+characters.length);
+}
+
+OUTPUT : 
+
+// J       a       v       a               t       e       c       h       n       o       l       o       g       y       String length is: 15
+// Char array length is: 15
+
+Real Life Example:
+“INDIA” → Split into I, N, D, I, A
+Like breaking a chocolate bar into pieces.
+
+----------------------------------------------------------------------------------
+
+✅ getBytes()
+
+public byte[] getBytes():
+
+Converts your string into ASCII byte values.
+
+It is a used to encode the string into bytes. 
+
+It converts the string into a sequence of bytes and returns an array of bytes.
+
+It is very useful in file handling concept to convert the character into binary OR bytes.
+
+//public byte [] getBytes()
+
+//encode the String into sequence of bytes
+
+void main()
+{
+String str = "ABCDEF";
+byte []arr = str.getBytes();
+
+for(byte b: arr)
+{
+IO.println(b);
+}
+}
+
+// OUTPUT
+
+65
+66
+67
+68
+69
+70
+
+Real Life Example:
+Before sending text over the internet, it is converted into bytes (0s and 1s).
+“ABC” → [65, 66, 67]
+
+----------------------------------------------------------------------------------
+
+✅ contains(CharSequence sequence)
+
+public boolean contains(CharSequence sequence)
+
+It is used to check whether a particular sequence of characters (substring) exists in a given string or not.
+
+It accepts CharSequence interface as a parameter so we can pass String, StringBuffer and StringBuilder.
+
+//public boolean contains(CharSequance ch)
+
+void main()
+{
+String str = "Java is a platform independent language";
+boolean isAvailable = str.contains("independent");
+IO.println("Is Avilable:"+isAvailable);
+
+IO.println(".........................");
+
+isAvailable = str.contains("Python");
+IO.println("Is Avilable:"+isAvailable);
+}
+
+// OUTPUT :  
+
+// Is Avilable:true
+// .........................
+// Is Avilable:false
+
+Real Life Example:
+Checking if description contains word “urgent”.
+If yes → highlight the message.
+
+----------------------------------------------------------------------------------
+
+✅ Java 25 Example (readln, var, static imports)
+
+Java 25 improved input/output:
+readln() → like Scanner
+var → auto type detection
+Static imports of IO, Integer
+
+/////////////////////////////
+
+import static java.lang.IO.*;
+import static java.lang.Integer.*;
+
+//java 25
+
+void main()
+{
+println("Enter your Age:");
+var ag readln();
+int age = parseInt(ag);
+
+if(age >= 18)
+{
+println("Eligible for voting");
+}
+else
+{
+println("Not Eligible for voting");
+}
+}
+
+----------------------------------------------------------------------------------
