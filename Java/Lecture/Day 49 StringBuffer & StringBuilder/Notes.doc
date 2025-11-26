@@ -1,0 +1,222 @@
+Link :- https://chatgpt.com/share/69240cd3-0998-8004-a7dd-317a04025da0
+
+-------------------------------------------------------------------------------------
+
+🚀 STRING vs STRINGBUFFER vs STRINGBUILDER
+
+🧠 Why three different classes for text in Java?
+
+In Java, we have:
+
+1 > String
+2 > StringBuffer
+3 > StringBuilder
+
+All three handle text, but each one works differently and is made for a particular situation.
+
+-------------------------------------------------------------------------------------
+
+⭐ 1. String (Immutable Object)
+
+Version: Java 1.0
+Stored In: SCP (String Constant Pool) inside Heap memory
+Thread Safety: Yes (because immutable)
+Performance: Slow
+Use When: Data does NOT change frequently (e.g., name, email, constants)
+
+🔥 What is Immutability?
+
+Once a String object is created, you cannot change it.
+
+If you try to change it, Java creates a new object.
+
+🗣️ Real-Life Example
+
+Imagine your AADHAR Card.
+Your name printed on it cannot be modified.
+If you want to change your name → government issues a new updated AADHAR card.
+
+Similarly:
+
+String s = "Data";
+s = s + "Base";   // new object created
+
+So, Strings keep creating new objects → more memory usage.
+
+-------------------------------------------------------------------------------------
+
+⭐ 2. StringBuffer (Mutable + Thread Safe)
+
+Version: Java 1.0
+Stored In: Heap Memory
+Thread Safety: Yes (because methods are synchronized)
+Performance: Medium
+
+🔥 What is Mutability?
+
+You can modify the same existing object.
+
+StringBuffer sb = new StringBuffer("Data");
+sb.append("Base");   // modifies same object
+
+🗣️ Real-Life Example
+
+Imagine a whiteboard.
+You write something → You can erase it → you can update it.
+You are modifying the same board (same object).
+
+🔐 Why Thread Safe?
+
+All important methods are synchronized, meaning only one thread can access a method at a time.
+
+This gives safety, but makes it a bit slow.
+
+Use StringBuffer if:
+
+✔ Multiple threads are updating the same text
+✔ Data is changing frequently
+✔ Safety is required
+
+-------------------------------------------------------------------------------------
+
+⭐ 3. StringBuilder (Mutable + Not Thread Safe)
+
+Version: Java 1.5
+Stored In: Heap Memory
+Thread Safety: ❌ No
+Performance: ⭐ FASTEST
+
+StringBuilder is same as StringBuffer BUT without synchronization, hence faster.
+
+Use StringBuilder if:
+
+✔ Data changes very frequently
+✔ You DON’T need multi-thread safety
+✔ You need maximum performance
+✔ Example: Building JSON, generating dynamic HTML, loops, heavy string operations
+
+🗣️ Real-Life Example
+
+Imagine a personal notebook.
+Only you are using it, no one else is writing in it.
+So no need of locking → you can update it freely → very fast.
+
+-------------------------------------------------------------------------------------
+
+📌 Difference Table
+
+| Feature       | String              | StringBuffer               | StringBuilder                   |
+| ------------- | ------------------- | -------------------------- | ------------------------------- |
+| Version       | 1.0                 | 1.0                        | 1.5                             |
+| Nature        | Immutable           | Mutable                    | Mutable                         |
+| Thread Safety | Yes                 | Yes (synchronized)         | No                              |
+| Speed         | Slow                | Faster than String         | Fastest                         |
+| Where Stored  | SCP (Heap)          | Heap                       | Heap                            |
+| Memory Usage  | High                | Less                       | Less                            |
+| When To Use   | Data doesn’t change | Data changes + thread safe | Data changes + no thread safety |
+
+-------------------------------------------------------------------------------------
+
+⭐ PROGRAM
+
+//String, StringBuffer and StringBuilder Objects comparison
+
+void main()
+{
+    StringBuilder sb1 = new StringBuilder("Data"); //mutable
+    sb1.append("Base");
+    IO.println(sb1);
+
+    StringBuffer sb2 = new StringBuffer("Data"); //mutable
+    sb2.append("Base");
+    IO.println(sb2);
+
+    String s3 = new String("Data"); //immutable 
+    s3.concat("Base");
+    IO.println(s3);
+}
+
+-------------------------------------------------------------------------------------
+
+🔍 Why output is different?
+
+✔ StringBuilder
+
+Modifies same object → Output: DataBase
+
+✔ StringBuffer
+
+Modifies same object → Output: DataBase
+
+✔ String
+
+concat() creates a NEW object, but we never stored it.
+So original remains unchanged → Output: Data
+
+-------------------------------------------------------------------------------------
+
+⭐ Extra Important Concept: capacity()
+
+📌 Defined in StringBuffer & StringBuilder:
+
+    public int capacity()
+
+📌 Default capacity = 16 characters
+
+When you write:
+
+    StringBuffer sb = new StringBuffer();
+
+    Capacity = 16
+
+If you write:
+
+    StringBuffer sb = new StringBuffer("Data");
+
+    Capacity = 16 + length("Data") = 16 + 4 = 20
+
+
+🗣️ Real-Life Example
+
+Imagine a water bottle of 16 liters capacity.
+Even if it's empty, the maximum it can store is 16 liters.
+If water is more than 16 liters, you need a bigger bottle.
+
+Similarly:
+
+When characters exceed the capacity → Java increases capacity automatically:
+
+New capacity = (old capacity × 2) + 2
+
+Example:
+Old capacity = 16
+New capacity = 34
+
+So performance improves because memory allocation happens fewer times.
+
+-------------------------------------------------------------------------------------
+
+🎯 Summary
+
+✔ String → Immutable, slow, safe, used for fixed data
+✔ StringBuffer → Mutable, thread-safe, slower than StringBuilder
+✔ StringBuilder → Mutable, NOT thread-safe, fastest
+✔ capacity() → Shows available character space before memory expansion
+
+-------------------------------------------------------------------------------------
+
+🧁 Want a Real-Life Combined Example?
+
+Imagine you are writing a book.
+
+📘 String = Published Book
+Cannot change once printed.
+If you want to update → print a new book.
+
+📖 StringBuffer = Library Notice Board
+Many people can update the same notice, so locking is required.
+
+📝 StringBuilder = Personal Diary
+Only you update it → no locking → super fast.
+
+-------------------------------------------------------------------------------------
