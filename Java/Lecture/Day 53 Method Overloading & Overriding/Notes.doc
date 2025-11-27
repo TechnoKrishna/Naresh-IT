@@ -1,0 +1,158 @@
+📘 Method Overloading (MOL)
+
+Concept
+
+Polymorphism means “one name, many forms.”
+
+Method Overloading is an example of compile-time (static) polymorphism, where a single method name can perform different tasks depending on the parameters.
+
+Overloading can be done:
+In the same class
+Between superclass and subclass
+
+----------------------------------------------------------------------------------------------
+
+Key Points
+
+Access modifier can be modified
+Subclass can increase accessibility but cannot reduce it.
+
+Type Promotion
+Java automatically promotes smaller data types to larger data types when needed.
+
+Order of Type Promotion:
+char → int → long → float → double
+byte → short → int → long → float → double
+
+Method Overloading with Super & Sub Class
+Overloading can work across inheritance hierarchy, not just within one class.
+
+----------------------------------------------------------------------------------------------
+
+📘 Var-Args in Java
+
+Concept
+
+Introduced in JDK 1.5
+Stands for Variable Arguments, allowing a method to accept 0 or more parameters.
+Represented using ...
+Can hold heterogeneous types using Object type.
+Must be the last parameter in method.
+
+Extra Point:
+Var-args internally behaves like an array, so you can loop through values easily.
+
+Valid & Invalid Var-Args Rules
+
+❌ Invalid examples:
+
+public void accept(float... x, int... y) {} // multiple var-args not allowed
+public void accept(int... x, int y) {} // var-args must be last
+public void accept(int... x, int... y) {} // only one var-args allowed
+
+✔ Valid example:
+
+class Sample {
+    public void accept(int x, int... y) {
+        System.out.println("x value is: " + x);
+        for (int z : y) {
+            System.out.println(z);
+        }
+    }
+}
+
+public class VarArgsDemo4 {
+    public static void main(String... args) {
+        Sample s1 = new Sample();
+        s1.accept(12, 10, 20, 30, 40, 50);
+    }
+}
+
+You must give at least one main item, then additional items can be any number.
+
+----------------------------------------------------------------------------------------------
+
+📘 Method Overriding in Java
+
+Concept
+
+Method Overriding → Runtime (Dynamic) Polymorphism
+
+Redefining superclass non-static method in subclass with:
+1 > Same method name
+2 > Same parameters (method signature)
+3 > Compatible return type (Co-variant allowed)
+
+Static methods → Method Hiding (Not overriding)
+
+✔ Example of Overriding
+class Super {
+    public void m1() {
+    }
+}
+
+class Sub extends Super {
+    public void m1() {   // Overridden method
+        // New Implementation
+    }
+}
+
+Advantage of Method Overriding
+Allows subclass to provide its own behavior.
+Example:
+
+class Animal {
+    public void eat() {
+        System.out.println("Generic Eating");
+    }
+}
+
+class Dog extends Animal {
+    public void eat() {
+        System.out.println("Non Veg type");
+    }
+}
+
+class Horse extends Animal {
+    public void eat() {
+        System.out.println("Veg Type");
+    }
+}
+
+----------------------------------------------------------------------------------------------
+
+📘 Dynamic Polymorphism (Upcasting)
+
+Animal a = new Dog();
+
+Compiler: checks reference type (Animal)
+JVM: executes object type (Dog)
+
+Think of remote control (Animal a) connected to a device (Dog).
+Remote can only see buttons on Animal,
+Device executes Dog behavior.
+
+How Method Search Happens
+COMPILER: Searches in reference type (Super class)
+JVM: Executes from object type (Sub class)
+
+Extra Note:
+This explains why overriding is runtime polymorphism, while overloading is compile-time polymorphism.
+
+----------------------------------------------------------------------------------------------
+
+Overloading vs Overriding
+
+| Feature                | Overloading  | Overriding                |
+| ---------------------- | ------------ | ------------------------- |
+| Type                   | Compile-time | Runtime                   |
+| Same class or subclass | Yes          | Subclass only             |
+| Parameters             | Must differ  | Must be same              |
+| Return Type            | Can differ   | Must be compatible        |
+| Static Method          | Allowed      | Not allowed (Hiding only) |
+
+Var-Args Limitation: Only one per method, must be last parameter.
+
+Type Promotion: Char or byte gets promoted automatically if method does not exist for their type.
+
+----------------------------------------------------------------------------------------------
