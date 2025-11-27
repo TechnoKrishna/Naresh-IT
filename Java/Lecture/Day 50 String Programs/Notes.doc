@@ -1,0 +1,444 @@
+📘 StringBuffer & String Handling
+
+Constructors in StringBuffer
+
+StringBuffer has 4 commonly used constructors:
+
+==================================================
+
+1️⃣ StringBuffer sb1 = new StringBuffer();
+
+Creates a StringBuffer object with default capacity = 16 characters.
+Means: It reserves space for 16 characters initially.
+
+Like buying a lunch box with space for 16 items.
+If you add more, the box automatically becomes bigger.
+
+==================================================
+
+2️⃣ StringBuffer sb2 = new StringBuffer(int initialCapacity);
+
+Creates StringBuffer with user-defined capacity.
+You can set your own capacity.
+
+This is like buying a bag with your chosen size.
+
+==================================================
+
+3️⃣ StringBuffer sb3 = new StringBuffer(CharSequence ch);
+
+CharSequence is an interface implemented by:
+
+String
+StringBuffer
+StringBuilder
+
+This gives loose coupling → more flexibility.
+
+==================================================
+
+4️⃣ StringBuffer sb4 = new StringBuffer(String str);
+
+Converts String → StringBuffer.
+
+========================================================================================================
+
+1. capacity() Method in StringBuffer
+
+public int capacity()
+
+Purpose
+
+Returns the current capacity of the buffer.
+
+Formula for new capacity
+
+new capacity = (current capacity * 2) + 2
+
+🧠 Why this formula?
+To avoid frequent resizing as text grows.
+
+==================================================
+
+🔍 Real-life example
+
+Think of a WhatsApp group.
+Initially, max members = 16.
+If it fills, WhatsApp automatically increases limit like:
+
+New limit = (16 × 2) + 2 = 34
+
+Same happens with StringBuffer capacity.
+
+==================================================
+
+Example
+
+StringBuffer sb = new StringBuffer();   // capacity = 16
+// After exceeding:
+new capacity = (16 * 2) + 2 = 34
+
+Program Example – capacity()
+
+void main() {
+    StringBuffer sb1 = new StringBuffer();
+    IO.println(sb1.capacity()); // 16
+
+    IO.println("..............");
+
+    StringBuffer sb2 = new StringBuffer(25);
+    IO.println(sb2.capacity()); // 25
+
+    IO.println("..............");
+
+    StringBuffer sb3 = new StringBuffer("Java"); // 16 + 4 = 20
+    IO.println(sb3.capacity());
+
+    sb3.append(" is a platform dependent technology"); // (20*2)+2 = 42
+    IO.println(sb3.capacity());
+}
+
+========================================================================================================
+
+2. insert() Method
+
+public StringBuffer insert(int position, String str)
+👉 Inserts string at a given index.
+
+Example
+
+void main() {
+    StringBuffer sb1 = new StringBuffer("Hello");
+    sb1.insert(1, "JSE");
+    IO.println(sb1); // HeJSEllo
+
+    StringBuilder sb2 = new StringBuilder("Hello");
+    sb2.insert(2, "JEE");
+    IO.println(sb2); // HeJEEllo
+}
+
+========================================================================================================
+
+3. reverse() Method
+👉 Reverses characters.
+
+public AbstractStringBuilder reverse()
+
+Example
+
+void main() {
+    StringBuffer sb1 = new StringBuffer("Hello");
+    sb1.reverse();
+    IO.println(sb1); // olleH
+
+    StringBuilder sb2 = new StringBuilder("Java");
+    sb2.reverse();
+    IO.println(sb2); // avaJ
+}
+
+========================================================================================================
+
+Performance Comparison: StringBuffer vs StringBuilder
+
+StringBuilder is faster because it is not synchronized.
+
+StringBuffer → synchronized → thread-safe → slower
+StringBuilder → not synchronized → faster
+
+System.currentTimeMillis() → returns time in milliseconds.
+
+Code
+
+public class PerformanceTest {
+    public static void main(String[] args) {
+
+        int iteration = 1000000;
+
+        StringBuilder builder = new StringBuilder("Java");
+        long startTime = System.currentTimeMillis();
+
+        for(int i=1; i<=iteration; i++) {
+            builder.append(" technology");
+        }
+        long endTime = System.currentTimeMillis();
+        System.out.println("Time taken by StringBuilder: " + (endTime - startTime) + " ms");
+
+        System.out.println("...............................");
+
+        StringBuffer buffer = new StringBuffer("Java");
+        startTime = System.currentTimeMillis();
+
+        for(int i=1; i<=iteration; i++) {
+            buffer.append(" technology");
+        }
+        endTime = System.currentTimeMillis();
+        System.out.println("Time taken by StringBuffer: " + (endTime - startTime) + " ms");
+    }
+}
+
+========================================================================================================
+
+String Class Constructors
+
+Commonly used constructors:
+
+==================================================
+
+a) String s1 = new String();
+Creates an empty String.
+
+==================================================
+
+b) String s2 = new String("Java");
+Creates a new String with content.
+
+==================================================
+
+c) String s3 = new String(StringBuffer buffer);
+Converts StringBuffer → String
+
+==================================================
+d) String s4 = new String(StringBuilder builder);
+Converts StringBuilder → String
+
+==================================================
+e) String s5 = new String(char[] ch);
+Creates string from character array.
+
+Characters: ['J','A','V','A']
+→ "JAVA"
+
+==================================================
+
+f) String s6 = new String(byte[] b);
+Creates string using ASCII values.
+
+========================================================================================================
+
+Logical Programs with String
+
+========================================================================================================
+
+1. Reverse String (Without predefined methods)
+
+void main() {
+    IO.println("Enter your String:");
+    String str = IO.readln(); // RAJ
+
+    for(int i = str.length() - 1; i >= 0; i--) {
+        IO.print(str.charAt(i)); // JAR
+    }
+    IO.println();
+}
+
+========================================================================================================
+
+2. Reverse String (Using StringBuffer)
+
+void main() {
+    String str = IO.readln("Enter your String:");
+    StringBuffer sb1 = new StringBuffer(str);
+    IO.println("The reverse of " + str + " is : " + sb1.reverse());
+}
+
+========================================================================================================
+
+3. Find duplicate characters
+
+void main() {
+    String str = IO.readln("Enter a String:");
+    char []arr = str.toCharArray();
+    int count = 0;
+
+    for(int i=0; i<arr.length; i++) {
+        for(int j=i+1; j<arr.length; j++) {
+            if(arr[i] == arr[j]) {
+                IO.println("Duplicate Character: " + arr[j]);
+                count++;
+                break;
+            }
+        }
+    }
+    IO.println("Total duplicate characters: " + count);
+}
+
+========================================================================================================
+
+4. Remove a specific character
+
+void main() {
+    String str = IO.readln("Enter a String:");
+    IO.println("Enter character to remove:");
+
+    char removeChar = IO.readln().charAt(0);
+    StringBuilder result = new StringBuilder();
+
+    for(char c : str.toCharArray()) {
+        if(c != removeChar) {
+            result.append(c);
+        }
+    }
+    IO.println(result);
+}
+
+========================================================================================================
+
+5. Check if String contains vowels
+
+void main() {
+    String str = IO.readln("Enter a String:");
+    boolean containsVowel = false;
+
+    for(char c : str.toLowerCase().toCharArray()) {
+        if("aeiou".indexOf(c) != -1) {
+            containsVowel = true;
+            break;
+        }
+    }
+}
+
+========================================================================================================
+
+6. Sort characters of a String
+
+void main() {
+    String str = IO.readln("Enter a String:");
+    char[] chars = str.toCharArray();
+
+    for(int i=0; i<chars.length; i++) {
+        for(int j=i+1; j<chars.length; j++) {
+            if(chars[i] > chars[j]) {
+                char temp = chars[i];
+                chars[i] = chars[j];
+                chars[j] = temp;
+            }
+        }
+    }
+    IO.println(new String(chars));
+}
+
+========================================================================================================
+
+7. Count occurrences of a character
+
+void main() {
+    String str = IO.readln("Enter a String:").toLowerCase();
+    IO.println("Enter a character :");
+
+    char target = IO.readln().toLowerCase().charAt(0);
+    int count = 0;
+
+    for(int i=0; i<str.length(); i++) {
+        if(str.charAt(i) == target) {
+            count++;
+        }
+    }
+
+    IO.println("The character '" + target + "' appears " + count + " times in the string '" + str + "'");
+}
+
+========================================================================================================
+
+Character Class in Java
+
+Character class has useful static methods:
+
+isDigit(char ch)
+isUpperCase(char ch)
+isLowerCase(char ch)
+
+========================================================================================================
+
+1. Check if String contains digits
+
+void main() {
+    String str = IO.readln("Enter a String:");
+    boolean containsDigits = false;
+
+    for(int i = 0; i < str.length(); i++) {
+        if(Character.isDigit(str.charAt(i))) {
+            containsDigits = true;
+            break;
+        }
+    }
+
+    if(containsDigits)
+        IO.println("The string contains digits.");
+    else
+        IO.println("The string does not contain digits.");
+}
+
+========================================================================================================
+
+2. Count uppercase and lowercase characters
+
+void main() {
+    String str = IO.readln("Enter a string:");
+    int upperCase = 0, lowerCase = 0;
+
+    for(int i=0; i<str.length(); i++) {
+        char ch = str.charAt(i);
+
+        if(Character.isUpperCase(ch))
+            upperCase++;
+        else if(Character.isLowerCase(ch))
+            lowerCase++;
+    }
+
+    IO.println("Uppercase letters: " + upperCase);
+    IO.println("Lowercase letters: " + lowerCase);
+}
+
+========================================================================================================
+
+3. Count vowels and consonants
+
+void main() {
+    String str = IO.readln("Enter a string:");
+    int vowels = 0, consonants = 0;
+
+    for(int i=0; i<str.length(); i++) {
+        char c = str.charAt(i);
+
+        if("aeiouAEIOU".indexOf(c) != -1)
+            vowels++;
+        else
+            consonants++;
+    }
+
+    IO.println("Vowels: " + vowels);
+    IO.println("Consonants: " + consonants);
+}
+
+========================================================================================================
+
+Check Palindrome
+
+void main() {
+    String str = IO.readln("Enter a string:");
+    boolean isPalindrome = true;
+
+    for(int i=0; i < str.length()/2; i++) {
+        if(str.charAt(i) != str.charAt(str.length() - i - 1)) {
+            isPalindrome = false;
+            break;
+        }
+    }
+
+    if(isPalindrome)
+        IO.println(str + " is a palindrome.");
+    else
+        IO.println(str + " is not a palindrome.");
+}
+
+========================================================================================================
+
+
+
+
+
+
+
+
+
+
