@@ -1,0 +1,374 @@
+📘 Wrapper Classes in Java 
+
+Java has two types of data:
+
+1️⃣ Primitive Data Types – small, fast, simple (int, boolean, char, etc.)
+2️⃣ Objects – everything else in Java is an object.
+
+Primitive types are fast but very limited. Objects are powerful but heavy.
+
+--------------------------------------------------------------------------------------------------------
+
+✔ Why Wrapper Classes?
+
+Primitive data types:
+
+❌ cannot store null
+❌ cannot call any method (example: x.length() not allowed)
+❌ cannot be serialized (cannot be saved as an object)
+❌ cannot be cloned
+❌ cannot travel across networks (because only objects can travel)
+
+👉 Because of these limitations, Java introduced Wrapper Classes — one wrapper class for each primitive type.
+
+--------------------------------------------------------------------------------------------------------
+
+🎯 Real-Life Example – Why Wrapper Classes?
+
+Imagine you have:
+
+A small piece of paper with a number written on it → primitive
+A passport that contains your number + name + address + photo → object
+
+Primitive = paper → simple, light, no features
+Wrapper Object = passport → can travel, can be verified, can be given methods
+
+Java primitives cannot "travel" or "do work" alone.
+So Java packs them into a passport-like object = Wrapper Class.
+
+--------------------------------------------------------------------------------------------------------
+
+🔹 Wrapper Classes List
+Primitive Type	Wrapper Class
+byte	Byte
+short	Short
+int	Integer
+long	Long
+float	Float
+double	Double
+char	Character
+boolean	Boolean
+
+--------------------------------------------------------------------------------------------------------
+
+🟦 Autoboxing (Primitive → Wrapper Object)
+
+✔ Simple Meaning
+Autoboxing means:
+
+👉 Java automatically converts a primitive value into its wrapper object.
+
+This happens automatically from JDK 1.5 onwards.
+
+📌 Autoboxing Diagram
+Primitive Type → valueOf() → Wrapper Object
+
+--------------------------------------------------------------------------------------------------------
+
+🧠 Before JDK 1.4 (Manual Conversion)
+int x = 100;
+Integer obj = Integer.valueOf(x);
+System.out.println(obj); // 100
+
+You had to convert manually using valueOf().
+
+--------------------------------------------------------------------------------------------------------
+
+🧠 From JDK 1.5 (Automatic Autoboxing)
+int x = 90;
+Integer y = x;    // Automatically converted
+
+Java compiler internally changes it to:
+
+Integer y = Integer.valueOf(x);
+
+You write less, Java does more.
+
+--------------------------------------------------------------------------------------------------------
+
+🎯 Real-Life Example (Autoboxing)
+
+Primitive = loose change in your pocket (₹10 coin)
+Wrapper = putting the coin inside a small coin box
+
+When you put the loose coin into the coin box → Autoboxing.
+Now the coin becomes an “object” and can be handled like an item.
+
+--------------------------------------------------------------------------------------------------------
+
+🟦 Overloaded valueOf() Methods
+
+Wrapper classes have 3 versions of valueOf().
+
+1️⃣ valueOf(int x)
+
+Converts primitive → object.
+
+2️⃣ valueOf(String x)
+
+Converts string → wrapper object
+Example: "25" → Integer object
+
+✔ valueOf() → returns object
+✔ parseInt() → returns primitive
+
+3️⃣ valueOf(String x, int radix)
+
+Converts number-string using base (radix)
+
+📌 Radix range = 2 to 36
+
+Example:
+
+System.out.println(Character.MIN_RADIX); // 2
+System.out.println(Character.MAX_RADIX); // 36
+
+This means Java can understand number systems up to base 36.
+
+--------------------------------------------------------------------------------------------------------
+
+🟩 Examples of Autoboxing (Programs)
+
+byte b = 12;
+Byte b1 = Byte.valueOf(b);
+
+short s = 17;
+Short s1 = Short.valueOf(s);
+
+int i = 90;
+Integer i1 = Integer.valueOf(i);
+
+long g = 12;
+Long h = Long.valueOf(g);
+
+float f1 = 2.4f;
+Float f2 = Float.valueOf(f1);
+
+double k = 90.90;
+Double d = Double.valueOf(k);
+
+char ch = 'A';
+Character ch1 = Character.valueOf(ch);
+
+boolean x = true;
+Boolean x1 = Boolean.valueOf(x1);
+
+--------------------------------------------------------------------------------------------------------
+
+🔸 String → Wrapper using valueOf()
+Integer a = Integer.valueOf(15);
+Integer b = Integer.valueOf("25");
+Integer c = Integer.valueOf("111", 36);
+
+--------------------------------------------------------------------------------------------------------
+
+🔸 Primitive → String
+int x = 12;
+String str = Integer.toString(x);
+System.out.println(str + 1);
+
+--------------------------------------------------------------------------------------------------------
+
+🟦 Unboxing (Wrapper Object → Primitive)
+✔ Meaning (Easy)
+
+Unboxing = removing the value from the wrapper object.
+
+Wrapper → Primitive
+
+📌 Diagram
+Wrapper Object → xxxValue() → Primitive Type
+
+--------------------------------------------------------------------------------------------------------
+
+Example:
+Integer obj → obj.intValue() → int primitive
+
+🎯 Real-Life Example (Unboxing)
+
+Autoboxing = putting money into a box
+Unboxing = taking money out from the box
+
+The money is the actual primitive value.
+The box is the wrapper class.
+
+🟦 Before JDK 1.5 (Manual)
+Integer obj = 90;
+int x = obj.intValue();
+
+🟦 From JDK 1.5 (Automatic)
+Integer obj = 90;
+int x = obj;
+
+--------------------------------------------------------------------------------------------------------
+
+Compiler does:
+
+int x = obj.intValue();
+
+🟪 Wrapper Classes Extending Number Class
+
+6 numeric classes extend java.lang.Number:
+
+Byte
+
+Short
+
+Integer
+
+Long
+
+Float
+
+Double
+
+--------------------------------------------------------------------------------------------------------
+
+These classes share common methods:
+
+byteValue()
+
+shortValue()
+
+intValue()
+
+longValue()
+
+floatValue()
+
+doubleValue()
+
+✔ Useful for converting one numeric type → another primitive.
+
+--------------------------------------------------------------------------------------------------------
+
+⚠ Important Note
+
+✔ All wrapper classes are immutable
+✔ All override equals() and hashCode()
+
+--------------------------------------------------------------------------------------------------------
+
+🟧 Examples of Unboxing (Programs kept exactly as given)
+Integer obj = 15;
+int x = obj.intValue();
+
+Integer x = 25;
+int y = x;
+
+Integer i = 15;
+System.out.println(i.byteValue());
+System.out.println(i.shortValue());
+System.out.println(i.intValue());
+System.out.println(i.longValue());
+System.out.println(i.floatValue());
+System.out.println(i.doubleValue());
+
+Character c1 = 'A';
+char ch = c1.charValue();
+
+Boolean b1 = true;
+boolean b = b1.booleanValue();
+
+--------------------------------------------------------------------------------------------------------
+
+🚫 Wrapper → Wrapper Conversion NOT Allowed
+Long l = 12;   // Invalid
+Float f = 90;  // Invalid
+Double d = 123; // Invalid
+
+--------------------------------------------------------------------------------------------------------
+
+📌 Reason:
+Wrapper objects cannot directly convert into another wrapper type.
+
+Integer → Float ❌
+Long → Integer ❌
+
+✔ Valid Conversions
+long a = 12;       // widening
+Integer b = 15;    // autoboxing
+Long c = 20L;
+Float d = 12F;
+Double e = 90D;
+
+--------------------------------------------------------------------------------------------------------
+
+🟥 Integer Cache (VERY IMPORTANT for Interviews)
+
+Java maintains a cache for Integer values from:
+
+-128 to +127
+
+So these values come from the same memory.
+
+Example:
+
+Integer i = 127;
+Integer j = 127;
+System.out.println(i == j);   // true 
+
+Because they refer to same cached object.
+
+But:
+
+Integer x = 128;
+Integer y = 128;
+System.out.println(x == y);   // false
+
+128 is out of cache range → new object created.
+
+--------------------------------------------------------------------------------------------------------
+
+✔ Always use equals() to compare wrapper values.
+
+Integer p = 130;
+Integer q = 130;
+System.out.println(p.equals(q)); // true
+
+--------------------------------------------------------------------------------------------------------
+
+💡 Extra Add-On Concepts 
+
+✔ Boxing vs Autoboxing
+Boxing = converting primitive → wrapper (manual)
+Autoboxing = compiler does conversion automatically
+
+--------------------------------------------------------------------------------------------------------
+
+✔ Unboxing vs Auto-Unboxing
+Unboxing = manual conversion
+Auto-Unboxing = Java auto converts
+
+--------------------------------------------------------------------------------------------------------
+
+✔ Wrapper class objects are immutable
+Once created, value cannot be changed.
+
+--------------------------------------------------------------------------------------------------------
+
+✔ Wrapper objects can be null
+But unboxing a null wrapper causes:
+❌ NullPointerException
+
+Example:
+
+Integer a = null;
+int b = a;  // Error: NPE
+
+--------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
