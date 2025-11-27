@@ -1,0 +1,280 @@
+Upcasting and Downcasting
+
+----------------------------------------------------------------------------------------------
+
+1. Upcasting
+
+Upcasting is when we assign a subclass object to a superclass reference variable.
+
+Real-life Example:
+Think of a Dog. A Dog is-an Animal. So, if someone asks for an Animal, you can give a Dog.
+
+All Dogs are Animals ✅
+All Animals are Dogs ❌
+
+Example in Code:
+
+class Animal {
+    public void eat() {
+        System.out.println("Generic Eating");
+    }
+}
+
+class Dog extends Animal {
+    public void eat() {
+        System.out.println("Dog is Eating");
+    }
+}
+
+Animal a = new Dog(); // Upcasting
+
+Key Points:
+
+Upcasting is safe because every Dog is an Animal.
+
+We cannot directly assign an Animal object to a Dog reference because not all Animals are Dogs.
+
+----------------------------------------------------------------------------------------------
+
+2. Downcasting
+
+Downcasting is when we cast a superclass reference back to a subclass reference. It is required when we want to access subclass-specific methods.
+
+Rules:
+
+Downcasting cannot happen without first upcasting.
+JVM ensures that the object being cast is actually an instance of the subclass, otherwise ClassCastException occurs.
+
+Real-life Example:
+
+You have a general Animal ticket (Animal reference). You know the Animal is actually a Dog. To give Dog-specific training (Dog method), you need to cast it to Dog.
+
+Code Example:
+
+Animal animal = new Dog();
+Dog dog = (Dog) animal; // Downcasting
+dog.bark(); // Access subclass-specific method
+
+Explanation in Simple Words:
+
+Compiler checks that the reference is of type Dog, otherwise it won't compile.
+JVM checks that the actual object is Dog, otherwise it will throw an error.
+
+Important Concept:
+instanceof operator can be used before downcasting to safely check the type.
+
+if (animal instanceof Dog) {
+    Dog dog = (Dog) animal;
+    dog.bark();
+}
+
+----------------------------------------------------------------------------------------------
+
+3. Method Behavior in Upcasting
+
+Java behaves differently for static and non-static methods.
+
+Static Methods (Method Hiding)
+
+Compiler decides which method to call based on reference type.
+JVM does not override static methods; it hides them.
+
+| Code                                | Compiler search | JVM execution                |
+| ----------------------------------- | --------------- | ---------------------------- |
+| `Animal a = new Animal(); a.eat();` | Animal class    | Animal class                 |
+| `Dog d = new Dog(); d.eat();`       | Dog class       | Dog class                    |
+| `Animal a = new Dog(); a.eat();`    | Animal class    | Animal class (Method Hiding) |
+
+----------------------------------------------------------------------------------------------
+
+Non-Static Methods (Method Overriding / Runtime Polymorphism)
+
+JVM decides at runtime which method to execute based on object type, not reference type.
+
+| Code                                | Compiler search | JVM execution                 |
+| ----------------------------------- | --------------- | ----------------------------- |
+| `Animal a = new Animal(); a.eat();` | Animal class    | Animal class                  |
+| `Dog d = new Dog(); d.eat();`       | Dog class       | Dog class                     |
+| `Animal a = new Dog(); a.eat();`    | Animal class    | Dog class (Method Overriding) |
+
+Real-life Example:
+
+Static method: A printed manual says how to feed Animals (reference type matters).
+Non-static method: The actual animal behavior happens at runtime (object type matters).
+
+----------------------------------------------------------------------------------------------
+
+4. Example Programs
+
+4.1 Method Overriding
+
+class Animal {
+    public void eat() {
+        System.out.println("Generic Eating");
+    }
+}
+
+class Dog extends Animal {
+    public void eat() {
+        System.out.println("Dog is Eating");
+    }
+}
+
+class OverridingDemo1 {
+    public static void main(String[] args) {
+        Animal animal = new Dog();
+        animal.eat(); // Output: Dog is Eating
+    }
+}
+
+----------------------------------------------------------------------------------------------
+
+4.2 Dynamic Method Dispatch
+
+class Payment {
+    public void makePayment() {
+        System.out.println("Generic Payment!!!!");
+    }
+}
+
+class CreditCard extends Payment {
+    public void makePayment() {
+        System.out.println("Making a Payment through Credit Card");
+    }
+}
+
+class DebitCard extends Payment {
+    public void makePayment() {
+        System.out.println("Making a Payment through Debit Card");
+    }
+}
+
+class UPI extends Payment {
+    public void makePayment() {
+        System.out.println("Making a Payment through UPI");
+    }
+}
+
+public class OverridingDemo2 {
+    public static void main(String[] args) {
+        Payment p = null;
+        p = new DebitCard(); p.makePayment();
+        p = new CreditCard(); p.makePayment();
+        p = new UPI(); p.makePayment();
+    }
+}
+
+----------------------------------------------------------------------------------------------
+
+4.3 Searching Activity of Compiler and JVM
+
+class Bird {
+    public void sleep() {
+        System.out.println("Generic Bird is sleeping");
+    }
+}
+
+class Hen extends Bird {
+    public void sleep() {
+        System.out.println("Hen Bird is sleeping");
+    }
+}
+
+class Chick extends Hen {
+    public void sleep() {
+        System.out.println("Chick Bird is sleeping");
+    }
+}
+
+public class OverridingDemo3 {
+    public static void main(String[] args) {
+        Bird bird = new Chick();
+        bird.sleep(); // Output: Chick Bird is sleeping
+    }
+}
+
+Note:
+
+Compiler checks sleep() in Bird class.
+JVM executes the method from Chick class.
+If Chick doesn’t have it, JVM checks Hen class.
+
+----------------------------------------------------------------------------------------------
+
+5. @Override Annotation
+
+Definition:
+
+Introduced in JDK 1.5.
+Metadata that indicates the method is overriding a superclass method.
+
+Benefits:
+Compiler will show an error if the method is not actually overriding.
+Helps developers read and understand the code easily.
+Optional but recommended.
+
+Example:
+
+class Shape {
+    public void draw() {
+        System.out.println("Generic Draw");
+    } 
+}
+
+class Square extends Shape {
+    @Override
+    public void draw() {
+        System.out.println("Square Draw");
+    }
+}
+
+public class OverridingDemo4 {
+    public static void main(String[] args) {
+        Shape shape = new Square();
+        shape.draw(); // Output: Square Draw
+    }
+}
+
+Real-life Example:
+Think of @Override as a label on a document saying: “This document replaces the old version”. Compiler confirms it actually replaces an older document (method).
+
+----------------------------------------------------------------------------------------------
+
+6. Important Add-ons / Related Concepts
+
+6.1 Polymorphism
+
+Means one object, many forms.
+Example: A person can be a student, friend, or employee depending on the context.
+In Java, upcasting + overriding = polymorphism.
+
+6.1 Polymorphism
+
+Means one object, many forms.
+Example: A person can be a student, friend, or employee depending on the context.
+In Java, upcasting + overriding = polymorphism.
+
+6.3 Runtime vs Compile-time
+
+| Concept                 | Example                          | Time of Decision              |
+| ----------------------- | -------------------------------- | ----------------------------- |
+| Static method / Hiding  | `Animal a = new Dog(); a.eat();` | Compile-time (reference type) |
+| Non-static / Overriding | `Animal a = new Dog(); a.eat();` | Runtime (object type)         |
+
+----------------------------------------------------------------------------------------------
+
+✅ Summary (Easy Language)
+
+Upcasting: Subclass → Superclass, safe and automatic.
+
+Downcasting: Superclass → Subclass, requires explicit cast.
+
+Static Methods: Method hiding, executes based on reference type.
+
+Non-Static Methods: Method overriding, executes based on object type.
+
+@Override: Ensures correct overriding, improves code readability.
+
+Polymorphism: One reference, multiple behaviors.
+
+----------------------------------------------------------------------------------------------

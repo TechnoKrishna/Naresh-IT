@@ -1,0 +1,622 @@
+📘 Method Overloading Resolution
+
+Method Overloading happens when two or more methods in the same class have the same name but different parameters.
+
+Sometimes, the compiler faces a situation where more than one method could be called for the given arguments. This is called ambiguity.
+
+To resolve ambiguity, Java uses some rules and priorities.
+
+Before we understand these rules, we need to know three important concepts:
+
+----------------------------------------------------------------------------------------------
+
+1️⃣ Varargs in Java (int... a)
+
+Varargs allows a method to accept variable number of arguments.
+
+Example:
+
+void sum(int... numbers) {
+    // numbers is treated as an array
+}
+
+Real-life example: Think of a shopping bill where you can buy any number of items. The method calculateBill(int... prices) can handle 1 item, 5 items, or 20 items.
+
+----------------------------------------------------------------------------------------------
+
+2️⃣ Widening (Implicit Type Conversion)
+
+Widening means converting a smaller data type to a larger data type automatically.
+
+Rule:
+
+byte → short → int → long → float → double
+char → int → long → float → double
+
+Real-life example: Think of pouring water from a small cup (byte) into a big bottle (double). Water fits automatically because the bottle is bigger.
+
+----------------------------------------------------------------------------------------------
+
+3️⃣ Autoboxing (Primitive ↔ Wrapper Class)
+
+Autoboxing automatically converts a primitive type into its wrapper class.
+
+Example:
+
+Integer i = 10; // primitive int is automatically converted to Integer
+
+Real-life example: Like converting coins into a wallet automatically. Coins are primitive, but wallet is the object that can hold coins.
+
+----------------------------------------------------------------------------------------------
+
+📌 Rules of Method Overloading Resolution
+
+When the compiler sees more than one possible method, it uses priority rules:
+
+1. Most Specific Type
+
+Compiler chooses the method with the most specific data type.
+
+Type hierarchy:
+byte → short → int → long → float → double
+char → int → long → float → double
+
+Examples:
+
+double > float → float is chosen (float is more specific)
+float > long → float is more specific
+int > char → int is more specific
+short > byte → short is more specific
+
+Important Notes:
+
+char and short are not related. You cannot automatically convert one into another.
+char and byte are not related either.
+
+Real-life example:
+Imagine different sizes of boxes for storing gifts. If a gift fits perfectly in a small box, use that. Don’t put it in a bigger box unless there’s no small box.
+
+----------------------------------------------------------------------------------------------
+
+2. WAV Rule (Widening → Autoboxing → Varargs)
+
+If there is still ambiguity, Java follows WAV sequence:
+
+1. Widening – Convert smaller primitive to bigger primitive
+2. Autoboxing – Convert primitive to wrapper class
+3. Varargs – Accept variable number of arguments
+
+Real-life example:
+Think of packing items into boxes:
+
+1. First, try to fit into a perfect-size box (widening)
+2. Then, use a flexible box (autoboxing)
+3. If still not fitting, use a big bag (varargs)
+
+----------------------------------------------------------------------------------------------
+
+3. Specialized Class / Nearest Type
+
+Compiler prefers subclass over superclass.
+
+Examples of class hierarchy:
+
+Object
+┌───────┐
+Integer  String
+        null
+
+=============================
+
+Super class
+┌───────┐
+Sub class
+
+=============================
+
+Object
+┌───────┐
+Number
+┌───────┐
+Integer
+null
+
+Real-life example:
+Think of a family tree. If you have a gift meant for a child (subclass) and another for any person (superclass), the child gets the gift first.
+
+----------------------------------------------------------------------------------------------
+
+⚡ Extra Tips / Concepts
+
+1. Exact Match Wins:
+If a method matches the exact data type of the argument, it will always be selected first.
+
+2. Null Argument:
+If null can match more than one method, it may cause compilation error.
+If one method has a subclass and another has superclass, subclass is chosen.
+
+3. Ambiguity Errors:
+If compiler cannot decide between two equally specific methods, you get a compile-time error.
+
+----------------------------------------------------------------------------------------------
+
+✅ Summary in Easy Words
+
+Exact match > Most Specific Type > Widening > Autoboxing > Varargs
+Subclass method is preferred over Superclass method
+Null arguments may cause ambiguity
+Use these rules to predict which overloaded method will run
+
+Real-life analogy:
+Think of packing gifts of different sizes into boxes:
+
+1. Use the perfect-fit box (Exact match / Most specific type)
+2. If not, use a slightly bigger box (Widening)
+3. If still not fitting, convert gift to wallet or bag (Autoboxing / Varargs)
+4. Give priority to children (subclass) over any person (superclass)
+
+----------------------------------------------------------------------------------------------
+
+//Programs
+
+class Test
+{
+public void accept(double d)
+{
+System.out.println("double");
+}
+public void accept(float d)
+{
+System.out.println("float");
+}
+}
+
+public class Ambiguity Issue {
+public static void main(String[] args)
+{
+Test t = new Test();
+t.accept(6);
+}
+}
+Note: Here float will be executed becuase float is the most specific type.
+
+----------------------------------------------------------------------------------------------
+
+class class Test
+{
+public void accept(int d)
+{
+System.out.println("int");
+}
+public void accept(char d)
+{
+System.out.println("char");
+}
+}
+
+public class Ambiguity Issue {
+public static void main(String[] args)
+{
+Test t = new Test();
+t.accept(6);
+}
+}
+
+Here 6 is int type so int will be executed. [exact Match]
+
+----------------------------------------------------------------------------------------------
+
+class Test
+{
+public void accept(int ...d)
+{
+System.out.println("int");
+}
+public void accept(char ...d)
+{
+System.out.println("char");
+}
+}
+
+public class Ambiguity Issue {
+public static void main(String[] args)
+{
+Test t = new Test();
+t.accept();
+}
+}
+
+char will be executed becoz char is more specific type.
+
+----------------------------------------------------------------------------------------------
+
+class Test
+{
+public void accept(short...d)
+{
+System.out.println("short");
+}
+public void accept(char...d)
+{
+System.out.println("char");
+}
+}
+
+public class Ambiguity Issue {
+public static void main(String[] args)
+{
+Test t = new Test();
+t.accept();
+}
+}
+
+Here we will get compilation error because there is no relation between char and short based on the specific type rule.
+
+----------------------------------------------------------------------------------------------
+
+class Test
+{
+public void accept(short ...d)
+{
+System.out.println("short");
+}
+public void accept(byte ...d)
+{
+System.out.println("byte");
+}
+}
+
+public class AmbiguityIssue {
+public static void main(String[] args)
+{
+Test t = new Test();
+t.accept();
+}
+}
+Here byte will be executed because byte is the specific type.
+
+----------------------------------------------------------------------------------------------
+
+class Test
+{
+public void accept(double ...d)
+{
+System.out.println("double");
+}
+public void accept(long ...d)
+{
+System.out.println("long");
+}
+}
+
+public class Ambiguity Issue {
+public static void main(String[] args)
+{
+Test t = new Test();
+t.accept();
+}
+}
+Here long will be executed because long is the most specific type.
+
+----------------------------------------------------------------------------------------------
+
+class Test
+{
+public void accept(byte d)
+{
+System.out.println("byte");
+}
+public void accept(short s)
+{
+System.out.println("short");
+}
+}
+public class Ambiguity Issue {
+public static void main(String[] args)
+{
+Test t = new Test();
+t.accept(9); //error
+t.accept((byte)9); //byte
+t.accept((short)9); //short
+}
+}
+
+----------------------------------------------------------------------------------------------
+
+class Test
+{
+public void accept(int d)
+{
+System.out.println("int");
+}
+public void accept(long s)
+{
+System.out.println("long");
+}
+}
+
+public class Ambiguity Issue {
+public static void main(String[] args)
+{
+Test t = new Test();
+t.accept(9);
+}
+}
+Note: Here int will be executed because int is the nearest type
+
+----------------------------------------------------------------------------------------------
+
+class Test
+{
+public void accept(Object s)
+{
+System.out.println("Object");
+}
+public void accept(String s)
+{
+System.out.println("String");
+}
+}
+public class AmbiguityIssue {
+public static void main(String[] args)
+{
+Test t = new Test();
+t.accept(9);
+}
+}
+Here Object will be executed.
+
+----------------------------------------------------------------------------------------------
+
+class Test
+{
+public void accept(Object s)
+{
+System.out.println("Object");
+}
+public void accept(String s)
+{
+System.out.println("String");
+}
+}
+public class AmbiguityIssue {
+public static void main(String[] args)
+{
+Test t = new Test();
+t.accept("NIT");
+}
+}
+Here String will be executed
+
+----------------------------------------------------------------------------------------------
+
+class Test
+{
+public void accept(Object s)
+{
+System.out.println("Object");
+}
+public void accept(String s)
+{
+System.out.println("String");
+}
+public void accept (Integer i)
+{
+System.out.println("Integer");
+}
+}
+
+public class AmbiguityIssue {
+public static void main(String[] args)
+{
+Test t = new Test();
+t.accept(null);
+}
+}
+Here We will get compilation error
+
+----------------------------------------------------------------------------------------------
+
+class Alpha
+{
+}
+class Beta extends Alpha
+{
+}
+class Test
+{
+public void accept(Alpha s)
+{
+System.out.println("Alpha");
+}
+public void accept(Beta i)
+{
+System.out.println("Beta");
+}
+}
+public class Ambiguity Issue {
+public static void main(String[] args)
+{
+Test t = new Test();
+t.accept(null);
+}
+}
+Here Beta will be executed.
+
+----------------------------------------------------------------------------------------------
+
+class Test
+{
+public void accept(Number s)
+{
+System.out.println("Number");
+}
+public void accept(Integer i)
+{
+System.out.println("Integer");
+}
+}
+public class AmbiguityIssue {
+public static void main(String[] args)
+{
+Test t = new Test();
+t.accept(12);
+}
+}
+Here Integer will be executed.
+
+----------------------------------------------------------------------------------------------
+
+class Test
+{
+public void accept (Number s)
+{
+System.out.println("Number");
+}
+public void accept (Integer i)
+{
+System.out.println("Integer");
+}
+}
+public class AmbiguityIssue {
+public static void main(String[] args)
+{
+Test t = new Test();
+t.accept(12.0);
+}
+}
+Number will be executed
+
+----------------------------------------------------------------------------------------------
+
+class Test
+{
+public void accept(Number s)
+{
+System.out.println("Number");
+}
+public void accept(Long i)
+{
+System.out.println("Long");
+}
+}
+public class AmbiguityIssue {
+public static void main(String[] args)
+{
+Test t = new Test();
+t.accept(12);
+}
+}
+Number will be executed
+
+----------------------------------------------------------------------------------------------
+
+class Test
+{
+public void accept(long s)
+{
+System.out.println("Widening");
+}
+public void accept(Integer i)
+{
+System.out.println("Autoboxing");
+}
+}
+public class AmbiguityIssue {
+public static void main(String[] args)
+{
+Test t = new Test();
+t.accept(12);
+}
+}
+Here widening is having more priority
+
+----------------------------------------------------------------------------------------------
+
+class Test
+{
+public void accept(int ...s)
+{
+System.out.println("Var args");
+}
+public void accept (Integer i)
+{
+System.out.println("Autoboxing");
+}
+}
+public class AmbiguityIssue {
+public static void main(String[] args)
+{
+Test t = new Test();
+t.accept(12);
+}
+}
+Here Autoboxing will be executed.
+
+----------------------------------------------------------------------------------------------
+
+class Test
+{
+public void accept (Number n)
+{
+System.out.println("Number");
+}
+public void accept (Double d)
+{
+System.out.println("Double");
+}
+}
+public class AmbiguityIssue {
+public static void main(String[] args)
+{
+Test t = new Test();
+t.accept(12);
+}
+}
+Here Number will be executed.
+
+----------------------------------------------------------------------------------------------
+
+class Test
+{
+public void accept(int ...s)
+{
+System.out.println("Var args");
+}
+public void accept(long x, long y)
+{
+System.out.println("Widning");
+}
+}
+public class AmbiguityIssue {
+public static void main(String[] args)
+{
+Test t = new Test();
+t.accept(12,24);
+}
+}
+Widning is executed
+
+----------------------------------------------------------------------------------------------
+
+class Test
+{
+public void accept(int x, long y)
+{
+System.out.println("int - long");
+}
+public void accept(long x, int y)
+{
+System.out.println("long-int");
+}
+}
+public class Ambiguity Issue {
+public static void main(String[] args)
+{
+Test t = new Test();
+t.accept(1,2);
+}
+}
+Compilation error
+
+----------------------------------------------------------------------------------------------
