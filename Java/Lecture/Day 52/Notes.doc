@@ -1,0 +1,228 @@
+🌟 Polymorphism
+
+--------------------------------------------------------------------------------------------------------
+
+The word Polymorphism comes from:
+
+Poly → many
+Morphism → forms
+
+So Polymorphism means “one thing behaving in many ways.”
+
+🧍 Real-life example:
+
+Think about you.
+
+You = one person
+But you behave differently in different situations:
+
+As a student in class
+As a friend with your best friend
+As a customer in a shop
+As a player on a playground
+
+👉 Same person, different behaviors → Polymorphism
+
+--------------------------------------------------------------------------------------------------------
+
+💻 Programming connection:
+
+Just like a human behaves differently, a method can also behave differently depending on the parameters or object calling it.
+
+Example:
+
+void add(int a, int b)
+void add(int a, int b, int c)
+void add(float a, float b)
+void add(int a, float b)
+
+All methods have the same name (add)
+But each performs differently based on the parameters.
+
+--------------------------------------------------------------------------------------------------------
+
+⭐ Types of Polymorphism
+
+Polymorphism is divided into:
+
+1️⃣ Static Polymorphism (Compile-time / Early Binding)
+2️⃣ Dynamic Polymorphism (Runtime / Late Binding)
+
+--------------------------------------------------------------------------------------------------------
+
+🔵 1) Static Polymorphism (Compile-time Polymorphism)
+
+This type of polymorphism is decided during compilation by the compiler.
+
+✔ Why is it called compile-time?
+
+Because the compiler already knows which method to call, based on:
+Number of parameters
+Type of parameters
+Order of parameters
+
+✔ Binding at compile time
+
+The method is linked to the call before the program actually runs → this is called early binding.
+
+✔ Achieved using: 👉 Method Overloading
+
+🔍 Example:
+
+void show(int a)
+void show(double a)
+
+Here the compiler knows:
+
+If argument is int → call show(int)
+If argument is double → call show(double)
+
+🧍 Real-life example:
+
+When you dial a phone number:
+If you dial 100 → Police
+If you dial 101 → Fire
+If you dial 102 → Ambulance
+
+The system knows during dialing time which service to call.
+👉 Decision made immediately → compile-time
+
+--------------------------------------------------------------------------------------------------------
+
+🔴 2) Dynamic Polymorphism (Runtime Polymorphism)
+
+In this type, the decision is made at runtime (while the program is running).
+
+✔ Why runtime?
+
+Because JVM decides which method to call based on the object type, not the reference type.
+
+✔ Binding at runtime
+
+Method is linked to the object while running the program → late binding
+
+✔ Achieved using: 👉 Method Overriding
+
+🔍 Example:
+
+class A { void display(){} }
+class B extends A { void display(){} }
+
+If you write:
+
+A obj = new B();
+obj.display();
+
+JVM checks the object type (B) at runtime
+👉 It calls B’s version of display()
+
+🧍 Real-life example:
+
+Imagine you use a credit card to pay:
+If it's a Visa card, the Visa bank rules apply
+If it's a MasterCard, MasterCard rules apply
+Machine sees the actual card type at runtime, not before.
+
+--------------------------------------------------------------------------------------------------------
+
+🟣 Method Overloading
+
+👉 Definition
+
+Method Overloading means multiple methods with: 
+
+Same method name
+
+BUT
+
+Different parameter list
+
+💡 Why is it useful?
+
+Because we want the same action name, but for different types of inputs.
+
+Example:
+
+print(int)
+print(String)
+print(double)
+
+Same purpose: print something
+Different type of data → different method
+
+--------------------------------------------------------------------------------------------------------
+
+📘 Three Ways to Overload a Method
+
+--------------------------------------------------------------------------------------------------------
+
+1️⃣ Different number of parameters
+
+public void display(int a) {}
+public void display(int a, int b) {}
+
+--------------------------------------------------------------------------------------------------------
+
+2️⃣ Different type of parameters
+
+public void show(int a) {}
+public void show(double a) {}
+
+--------------------------------------------------------------------------------------------------------
+
+3️⃣ Different order of parameters
+
+public void test(int a, double b) {}
+public void test(double a, int b) {}
+
+--------------------------------------------------------------------------------------------------------
+
+🏦 Real-life Example for Method Overloading
+
+You go to a shop to make payment:
+
+You may pay using Cash
+Or UPI
+Or Credit Card
+
+All these are payments → same method name
+But the type of payment is different
+
+public void makePayment(Cash c) {}
+public void makePayment(UPI c) {}
+public void makePayment(CreditCard c) {}
+
+👉 The cashier handles all with the same name "payment"
+But behavior differs depending on the parameter (Cash/UPI/Card)
+
+--------------------------------------------------------------------------------------------------------
+
+📌 Rules for Method Overloading
+
+✔ Same method name
+✔ Must differ in number/type/order of parameters
+✔ Return type can be different
+✔ Access modifiers can change
+✔ Static methods can be overloaded
+✔ Java automatically promotes types
+(int → long → float → double)
+
+❌ Cannot overload only by changing return type
+Because compiler gets confused which one to call.
+
+--------------------------------------------------------------------------------------------------------
+
+🎯 Advantages of Method Overloading
+
+⭐ Makes code cleaner
+⭐ Same method name reused → better readability
+⭐ Handles different inputs easily
+⭐ Very useful in real classes (PrintStream, Scanner)
+
+Example:
+println() has 10+ versions for int, char, float, String, boolean, etc.
+
+--------------------------------------------------------------------------------------------------------
+
+
+
