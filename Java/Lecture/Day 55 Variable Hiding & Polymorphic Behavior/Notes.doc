@@ -1,0 +1,536 @@
+⭐ 1. Variable Hiding in Upcasting
+-------------------------------------------------------------------------------------
+
+✔ What is Variable Hiding?
+
+When a subclass defines a variable with the same name as the superclass, it hides the superclass variable.
+
+✔ Why variables cannot be overridden?
+
+Because variables represent properties, and Java doesn’t allow changing the property definition in runtime.
+Only methods (behavior) can change during runtime.
+
+✔ Rules:
+
+Variables → Based on reference type (compile time)
+Methods → Based on object type (runtime polymorphism)
+ 
+=====================================================
+
+▶ Example (your code):
+
+class Super {
+    int x = 100;
+}
+
+class Sub extends Super {
+    int x = 200;     // Variable Hiding
+}
+
+🔍 If you write:
+
+Super s = new Sub();
+System.out.println(s.x);
+
+Output → 100
+Because reference type = Super → so it uses Super’s variable.
+
+=====================================================
+
+🎯 Real-Life Example
+
+Think of an ATM card:
+
+Bank Card (superclass variable): dailyLimit = 50,000
+Premium Card (subclass variable): dailyLimit = 2,00,000
+
+If you refer using BankCard reference:
+
+BankCard card = new PremiumCard();
+
+ATM will use BankCard limit (50,000)
+but actual card behavior (methods like getRewards()) will come from PremiumCard.
+
+This is Variable Hiding.
+
+-------------------------------------------------------------------------------------
+
+⭐ 2. Fields vs Methods in Upcasting
+
+✔ Note
+
+Fields (variables) → Based on reference, fixed at compile time
+Methods → Based on object, decided at run time (runtime polymorphism)
+
+=====================================================
+
+✔ Example Program – Variable Hiding
+
+class RBI {
+    protected String ifscCode = "RBIHYD0001";
+
+    public String loan() {
+        return "Provide the loan to customer";
+    }
+}
+
+class SBI extends RBI {
+    protected String ifscCode = "SBIHYD00014";   // Variable Hiding
+
+    @Override
+    public String loan() {
+        return "Providing loan @ 9.2% ROI";
+    }
+}
+
+public class VariableHiding {
+    public static void main(String[] args) {
+        RBI rbi = new SBI();
+        System.out.println(rbi.ifscCode + " " + rbi.loan());
+    }
+}
+
+📌 rbi.ifscCode → from RBI (reference)
+📌 rbi.loan() → from SBI (object)
+
+=====================================================
+
+🎯 Real-Life Example
+
+You apply for a loan at SBI.
+But RBI rules still apply because RBI is the parent authority.
+
+IFSC code → RBI rules (reference type)
+Interest rate → SBI behavior (overridden method)
+
+-------------------------------------------------------------------------------------
+
+⭐ 3. Method Overriding & this/super
+
+✔ Key Concept:
+
+this.method() → calls child class method (runtime)
+super.method() → forces parent method call
+
+=====================================================
+
+class Vehicle {
+    public int tankCapacity() {
+        return 80;
+    }
+
+    public void printTankCapacity() {
+        System.out.println(this.tankCapacity());
+    }
+}
+
+class Car extends Vehicle {
+    @Override
+    public int tankCapacity() {
+        return 40;
+    }
+
+    public void printTankCapacity() // If this is commented, output is 40 {        
+        System.out.println(super.tankCapacity());
+    }
+}
+
+public class IQ {
+    public static void main(String[] args) {
+        Vehicle vehicle = new Car();
+        vehicle.printTankCapacity();
+    }
+}
+✔ If child’s printTankCapacity is removed → this.tankCapacity() → gives 40
+✔ If it exists → you manually call parent version using super.tankCapacity() → gives 80
+
+=====================================================
+
+real-Life Example
+
+Uber vehicle:
+
+Parent = Vehicle (default fuel capacity 80 liters)
+
+Child = Car (actual fuel capacity 40 liters)
+
+If app uses this → shows car capacity
+If app uses super → shows generic vehicle capacity.
+
+-------------------------------------------------------------------------------------
+
+⭐ 4. Can we override private methods?
+
+❌ No, private methods cannot be overridden.
+
+Reason:
+
+Private methods are not visible in the subclass → cannot override.
+Subclasses can only see public/protected/default methods.
+
+✔ Example
+
+class Super {
+    private void m1() {
+        System.out.println("M1 method in super class");
+    }
+}
+
+class Sub extends Super {
+    public void m1() {       // Method Re-declaration
+        System.out.println("M1 method in Sub class");
+    }
+}
+
+public class MethodAccessibility {
+    public static void main(String[] args) {
+        new Sub().m1();
+    }
+}
+
+This is not overriding, it is method re-declaration.
+
+=====================================================
+
+🎯 Real-Life Example
+
+Imagine your bank locker PIN is private:
+
+Parent's private PIN cannot be inherited.
+Child can create a new PIN — but cannot access parent’s PIN.
+
+-------------------------------------------------------------------------------------
+
+⭐ 5. Role of Access Modifiers in Overriding
+
+Rule:
+A subclass cannot reduce the visibility of the overridden method.
+
+✔ Visibility Order
+
+public > protected > default > private
+
+✔ Allowed Access Modifier Changes
+
+| Super Class Method | Allowed in Subclass             |
+| ------------------ | ------------------------------- |
+| default            | default, protected, public      |
+| protected          | protected, public               |
+| public             | public only                     |
+| private            | (Not inherited → no overriding) |
+
+❌ Wrong Example (Reducing visibility)
+
+class Alpha {
+    public void show() { }
+}
+
+class Beta extends Alpha {
+    @Override
+    protected void show() { }   // ERROR – cannot reduce visibility
+}
+
+✔ Cannot reduce public → protected.
+
+=====================================================
+
+🎯 Real-Life Example
+
+A father is publicly known (public method).
+Son cannot be less visible than the father — he must maintain at least the same visibility or more.
+
+-------------------------------------------------------------------------------------
+
+🔥 Polymorphic Behavior Using Method Overriding
+
+Case 1: Normal Method Overriding
+
+✔ Normal runtime polymorphism → overridden method executes from object type.
+
+class Animal {
+    public void sleep() {
+        System.out.println("Generic Animal is sleeping");
+    }
+}
+
+class Dog extends Animal {
+    public void sleep() {
+        System.out.println("Dog Animal is sleeping");
+    }
+}
+
+class Lion extends Animal {
+    public void sleep() {
+        System.out.println("Lion Animal is sleeping");
+    }
+}
+
+public class PolymorphicBehavior {
+    public static void main(String[] args) {
+        Animal a1;
+
+        a1 = new Dog();
+        executeAnimal(a1);
+
+        System.out.println(".......");
+
+        a1 = new Lion();
+        executeAnimal(a1);
+    }
+
+    public static void executeAnimal(Animal animal) {
+        animal.sleep();
+    }
+}
+
+=====================================================
+
+This shows:
+Animal a = new Dog(); → dog’s sleep() executes.
+
+=====================================================
+
+🎯 Real-Life Example
+
+Remote control (reference) → TV (object)
+Remote knows basic functions
+Actual TV model decides how functions behave.
+
+-------------------------------------------------------------------------------------
+
+Case 2: Downcasting to Call Specific Methods
+
+Used when we need subclass specific methods (bark(), roar()).
+
+class Animal {
+    public void sleep() {
+        System.out.println("Generic Animal is sleeping");
+    }
+}
+
+class Dog extends Animal {
+    public void sleep() {
+        System.out.println("Dog Animal is sleeping");
+    }
+
+    public void bark() {
+        System.out.println("Dog is barking");
+    }
+}
+
+class Lion extends Animal {
+    public void sleep() {
+        System.out.println("Lion Animal is sleeping");
+    }
+
+    public void roar() {
+        System.out.println("Lion is roaring");
+    }
+}
+
+public class PolymorphicBehavior {
+    public static void main(String[] args) {
+        Animal a1 = new Dog();
+        executeAnimal(a1);
+    }
+
+    public static void executeAnimal(Animal animal) {
+        Dog dog = (Dog) animal;   // Downcasting
+        dog.sleep();
+        dog.bark();
+    }
+}
+
+
+=====================================================
+
+🎯 Real-Life Example
+
+General vehicle reference → specific car object
+To use "openSunroof()" → must downcast to Car.
+
+-------------------------------------------------------------------------------------
+
+Case 3: Using instanceof (Java 16 Pattern Matching)
+
+
+class Animal {
+    public void sleep() {
+        System.out.println("Generic Animal is sleeping");
+    }
+}
+
+class Dog extends Animal {
+    public void sleep() {
+        System.out.println("Dog Animal is sleeping");
+    }
+
+    public void bark() {
+        System.out.println("Dog is barking");
+    }
+}
+
+class Lion extends Animal {
+    public void sleep() {
+        System.out.println("Lion Animal is sleeping");
+    }
+
+    public void roar() {
+        System.out.println("Lion is roaring");
+    }
+}
+
+public class PolymorphicBehavior {
+    public static void main(String[] args) {
+        Animal a1 = new Dog();
+        executeAnimal(a1);
+    }
+
+    public static void executeAnimal(Animal animal) {
+    if (animal instanceof Dog dog) {
+        dog.sleep();
+        dog.bark();
+    }
+    else if (animal instanceof Lion lion) {
+        lion.sleep();
+        lion.roar();
+    }
+}
+
+}
+
+=====================================================
+
+🎯 Real-Life Example
+
+Payment app:
+
+If payment is UPI → show UPI QR
+If payment is card → show POS machine options
+
+Same behavior here.
+
+-------------------------------------------------------------------------------------
+
+⭐ 9. Payment Example — Real Polymorphism
+
+🔥 Another Polymorphic Behavior Program (Payment Example)
+
+Perfect example of how different classes handle same method differently.
+
+class Payment {
+    public double makePayment(double amount) {
+        return 0.0;
+    }
+}
+
+class CreditCard extends Payment {
+    @Override
+    public double makePayment(double amount) {
+        return amount;
+    }
+
+    public void offer() {
+        System.out.println("Pay via Credit Card and get GOA holiday package");
+    }
+}
+
+class DebitCard extends Payment {
+    @Override
+    public double makePayment(double amount) {
+        return amount;
+    }
+}
+
+class UPI extends Payment {
+    @Override
+    public double makePayment(double amount) {
+        return amount;
+    }
+
+    public void offer() {
+        System.out.println("Pay via UPI and get ₹1000 cashback");
+    }
+}
+
+public class PolymorphicBehavior {
+    public static void main(String[] args) {
+        Payment p;
+
+        p = new CreditCard();
+        paymentGateway(p);
+
+        System.out.println("............");
+
+        p = new DebitCard();
+        paymentGateway(p);
+
+        System.out.println("............");
+
+        p = new UPI();
+        paymentGateway(p);
+    }
+
+    public static void paymentGateway(Payment payment) {
+        if (payment instanceof CreditCard card) {
+            double amount = card.makePayment(25000);
+            System.out.println("Paying " + amount + " via Credit Card");
+            card.offer();
+        }
+        else if (payment instanceof DebitCard card) {
+            double amount = card.makePayment(12000);
+            System.out.println("Paying " + amount + " via Debit Card");
+        }
+        else if (payment instanceof UPI upi) {
+            double amount = upi.makePayment(30000);
+            System.out.println("Paying " + amount + " via UPI");
+            upi.offer();
+        }
+    }
+}
+
+✔ Link:
+
+Method overriding → different payment types
+instanceof → specific rewards
+
+=====================================================
+
+🎯 Real-Life Example
+
+You pay using:
+
+CreditCard → holiday offer
+
+UPI → cashback
+
+DebitCard → no offer
+
+Same paymentGateway(), but different outputs.
+
+-------------------------------------------------------------------------------------
+
+⭐ Extra Concepts (Added for Better Understanding)
+✔ What is dynamic method dispatch?
+
+When overridden methods are decided at runtime based on object type.
+
+✔ Why doesn’t Java support variable overriding?
+
+Because it breaks memory model consistency; variables must be decided at compile time.
+
+✔ Why overriding supports runtime polymorphism?
+
+Because overridden methods are stored in vtable (virtual method table), so JVM decides method from object reference.
+
+-------------------------------------------------------------------------------------
+
+| Concept           | Works on             | Decided at                    |
+| ----------------- | -------------------- | ----------------------------- |
+| Variable Hiding   | Variables            | Compile time (reference type) |
+| Method Overriding | Methods              | Runtime (object type)         |
+| Access Modifiers  | Overriding rules     | Compile time                  |
+| Downcasting       | Access child methods | Runtime                       |
+| instanceof        | Type checking        | Runtime                       |
+
+-------------------------------------------------------------------------------------
