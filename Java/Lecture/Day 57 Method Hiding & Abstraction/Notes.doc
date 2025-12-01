@@ -1,0 +1,269 @@
+1. Method Hiding in Java
+
+Question / IQ:
+
+What is Method Hiding in Java?
+Can we override a static method?
+Can we override the main method?
+
+-----------------------------------------------------------------------------------------------------------------
+
+Definition:
+
+Method Hiding occurs when a static method in a subclass has the same name and signature as a static method in the superclass.
+Important: Static methods belong to class, not objects.
+Hence: Static methods cannot be overridden. They can only be hidden.
+
+Real-life Example:
+
+Think of a school principal (class) who issues a general notice. If a department head (subclass) issues a notice with the same heading, it doesn’t replace the principal’s notice; it’s just a notice from that specific department. Similarly, static methods are tied to class, not individual objects.
+
+-----------------------------------------------------------------------------------------------------------------
+
+Cases of Method Hiding
+
+-----------------------------------------------------------------------------------------------------------------
+
+Case 1: Calling Superclass Static Method
+
+A public static method in a superclass is automatically available to its subclass.
+The subclass can call this method directly.
+
+class Super {
+    public static void m1() {
+        System.out.println("m1 static method of super class");
+    }
+}
+
+class Sub extends Super {
+}
+
+public class MethodHidingDemo1 {
+    public static void main(String[] args) {
+        Sub sub = new Sub();
+        sub.m1();
+        System.out.println("...........");
+        Sub.m1();
+    }
+}
+
+Explanation:
+
+The subclass Sub can access Super class static method m1() because static methods are inherited by default.
+
+-----------------------------------------------------------------------------------------------------------------
+
+Case 2: Cannot Override Static with Non-Static
+
+Static method belongs to class.
+Non-static method belongs to object.
+Trying to override a static method with a non-static method causes compile-time error.
+
+class Super {
+    public static void m1() {
+        System.out.println("m1 static method of super class");
+    }
+}
+
+class Sub extends Super {
+    public void m1() { // Error: cannot override static method
+        System.out.println("m1 non-static method of sub class");
+    }
+}
+
+Real-life Example:
+
+A company policy (static method) applies to all employees. An individual employee cannot make a personal rule (non-static method) that overrides the company policy.
+
+-----------------------------------------------------------------------------------------------------------------
+
+Case 3: Cannot Override Non-Static with Static
+
+You cannot make a static method in subclass if the superclass method is non-static.
+Causes compile-time error.
+
+class Super {
+    public void m1() {
+        System.out.println("m1 non-static method of super class");
+    }
+}
+
+class Sub extends Super {
+    public static void m1() { // Error: cannot override
+        System.out.println("m1 static method of sub class");
+    }
+}
+
+Conclusion:
+
+Static ↔ Non-static overriding is not allowed.
+Static methods belong to class.
+Non-static methods belong to object.
+
+Tip: Always remember: Object methods can’t override Class methods and vice versa.
+
+-----------------------------------------------------------------------------------------------------------------
+
+Case 4: Method Hiding Only with Static Methods
+
+Only static methods in superclass and subclass can hide each other.
+
+class Super {
+    public static void m1() {
+        System.out.println("m1 static method of super class");
+    }
+}
+
+class Sub extends Super {
+    public static int m1() { // Method Hiding
+        System.out.println("m1 static method of sub class");
+        return 0;
+    }
+}
+
+Key Points:
+
+Method Hiding: static methods
+Method Overriding: non-static methods
+
+Real-life Example:
+
+A company has a global notification system (static method in Super).
+
+A department can send its own department-specific notification (static method in Sub) – this is method hiding, not overriding.
+
+-----------------------------------------------------------------------------------------------------------------
+
+Case 5: Static Method Hiding Behavior
+
+Static methods cannot be overridden.
+
+Writing a static method in the subclass with the same signature is method hiding, not overriding.
+
+Compiler searches for superclass method; JVM executes method according to reference type.
+
+class Bird {
+    protected static double height = 2.2;
+    public static void fly() {
+        System.out.println("Generic Bird is flying");
+    }
+}
+
+class Parrot extends Bird {
+    protected static double height = 1.2;
+    public static void fly() { // Method Hiding
+        System.out.println("Parrot Bird is flying");
+    }
+}
+
+class Sparrow extends Bird {
+    protected static double height = 1.0;
+    public static void fly() { // Method Hiding
+        System.out.println("Sparrow Bird is flying");
+    }
+}
+
+public class MethodHidingExample1 {
+    public static void main(String[] args) {
+        Bird bird = new Sparrow();
+        System.out.println("Height is: " + bird.height);
+        bird.fly();
+    }
+}
+
+Notes:
+
+@Override cannot be used for static methods.
+Static methods behave the same for all objects → called Static Polymorphism.
+A static or non-static field and static methods always execute according to current reference type.
+
+-----------------------------------------------------------------------------------------------------------------
+
+2. Abstraction in Java
+
+-----------------------------------------------------------------------------------------------------------------
+
+Definition:
+
+Abstraction: Hiding complexity and showing only essential details.
+Helps in simplifying the design and focusing on what a class does rather than how it does it.
+
+Real-life Example:
+
+Driving a car: you know how to drive (essential detail) without needing to understand the internal engine working (complexity).
+
+-----------------------------------------------------------------------------------------------------------------
+
+Achieved using:
+
+Abstract class and abstract method → partial abstraction (0–100%)
+Interface → full abstraction (100%)
+
+-----------------------------------------------------------------------------------------------------------------
+
+Abstract Method vs Concrete Method
+
+| Method Type     | Example                           | Description                                     |
+| --------------- | --------------------------------- | ----------------------------------------------- |
+| Concrete Method | `public void accept() { }`        | Instance / general method                       |
+| Concrete Static | `public static void accept() { }` | Static method                                   |
+| Abstract Method | `public abstract void accept();`  | No body, ends with `;`, uses `abstract` keyword |
+
+Key Points:
+
+Abstract methods do not have a body.
+Concrete methods have implementation.
+
+-----------------------------------------------------------------------------------------------------------------
+
+Abstract Method Scenario
+
+abstract class Vehicle {
+    public abstract void run();
+}
+
+class Bus extends Vehicle {
+    public void run() { }
+}
+
+class Car extends Vehicle {
+    public void run() { }
+}
+
+class Bike extends Vehicle {
+    public void run() { }
+}
+
+Explanation:
+
+Vehicle is abstract because the action run() is common but the implementation differs for each vehicle.
+
+Real-life Example:
+
+Think of Vehicle as a blueprint.
+Bus, Car, Bike implement the blueprint differently: all can move (run()), but the way they move is different.
+
+-----------------------------------------------------------------------------------------------------------------
+
+Key Points:
+
+Use abstract method when action is common, but implementation differs.
+If a class has at least one abstract method, it becomes an abstract class.
+Cannot create objects of an abstract class.
+Abstract methods of a superclass must be overridden in subclasses, otherwise the subclass also becomes abstract.
+
+Extra Tips:
+
+Abstract classes can have constructors, static methods, and fields.
+They can also have concrete methods alongside abstract methods.
+Interfaces (100% abstraction) are fully abstract, and a class can implement multiple interfaces for multiple inheritances.
+
+-----------------------------------------------------------------------------------------------------------------
+
+✅ Summary:
+
+Method Hiding: only for static methods, reference type decides behavior.
+Abstraction: hides complexity, uses abstract classes or interfaces, object-specific implementation is done in subclasses.
+Real-life examples help you remember the concept quickly.
+
+-----------------------------------------------------------------------------------------------------------------
